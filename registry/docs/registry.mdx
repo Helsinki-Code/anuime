@@ -53,6 +53,7 @@ Use flags for agent-friendly and CI-friendly scaffolding:
 
 ```sh
 bun --bun ./scripts/new.ts --type registry:block --name stats-panel --description "A metrics panel with reusable sample data."
+bun --bun ./scripts/new.ts --type registry:ui --name prompt-input --description "An AI prompt input." --target @ui/ai/prompt-input.tsx
 bun --bun ./scripts/new.ts --type registry:page --name dashboard-page --description "A starter dashboard page." --target app/dashboard/page.tsx
 bun --bun ./scripts/new.ts --type registry:file --name chart-theme --description "Shared chart theme tokens." --target styles/chart-theme.css --file-extension css
 bun --bun ./scripts/new.ts --type registry:font --name font-inter --description "Inter font metadata." --font-family "'Inter Variable', sans-serif" --font-import Inter --font-variable=--font-sans
@@ -64,7 +65,7 @@ Supported flags:
 - `--name`: required kebab-case item name.
 - `--title`: optional public title. Defaults from the name.
 - `--description`: required public description.
-- `--target`: required for `registry:page` and `registry:file`; optional for targeted universal `registry:item` files.
+- `--target`: required for `registry:page` and `registry:file`; optional for source-backed items that need a custom install path, including shadcn target placeholders like `@ui/ai/prompt-input.tsx`.
 - `--file-extension`: for `registry:file` and targeted `registry:item`; defaults to `ts`.
 - `--font-family`, `--font-import`, `--font-variable`: required for noninteractive `registry:font` scaffolds.
 
@@ -76,7 +77,7 @@ Use `_registry.mdx` for public metadata, usage docs, and the optional named `Pre
 
 For one-file `registry:ui` items, the catalog infers `<item-name>.tsx`. Hooks, libs, blocks, pages, target paths, and multi-file items should list `files` explicitly. Metadata-only styles, themes, fonts, bases, and universal items can omit `files`.
 
-List authored source files with paths relative to the item `_registry.mdx` file. The catalog automatically emits shadcn-facing JSON paths such as `ui/<name>.tsx`, `components/<name>.tsx`, `hooks/<name>.ts`, and `lib/<name>.ts` for the file types that install through `components.json` aliases. Use `target` for `registry:page` and `registry:file`; do not add `registry/items/**` prefixes or a separate `sourcePath` field.
+List authored source files with paths relative to the item `_registry.mdx` file. The catalog automatically emits `files[].target` placeholders such as `@ui/<name>.tsx`, `@components/<name>.tsx`, `@hooks/<name>.ts`, and `@lib/<name>.ts` for file types that should install through the user's `components.json` aliases. Use explicit `target` values for `registry:page`, `registry:file`, and nested alias installs like `@ui/ai/prompt-input.tsx`; do not add `registry/items/**` prefixes or a separate `sourcePath` field.
 
 Use `localRegistryDependencies` for dependencies on other local registry items.
 

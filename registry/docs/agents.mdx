@@ -51,6 +51,6 @@ For registry authoring tasks, agents should:
 1. Read `AGENTS.md`, this docs section, and `/llms.txt` or `/llms-full.txt` for project context.
 2. Use the `shadcn-registry` skill when available.
 3. Scaffold new items with `bun --bun ./scripts/new.ts --type <type> --name <kebab-name> --description "<description>"`.
-4. Add `--target` for `registry:page` and `registry:file`, and `--file-extension` for non-`ts` file or targeted universal items.
+4. Add `--target` for `registry:page`, `registry:file`, and custom alias installs like `@ui/ai/<file>.tsx`; use `--file-extension` for non-`ts` file or targeted universal items.
 5. Edit the generated source and `_registry.mdx` with previews, usage docs, and dependency metadata.
 6. Run focused checks and `bun --bun ./scripts/doctor.ts` before handoff.
