@@ -38,8 +38,8 @@ describe("Component Lab URL state", () => {
   });
 
   it("builds canonical install commands", () => {
-    expect(getInstallCommand("button")).toBe(
-      "npx shadcn@latest add https://anuime.dev/r/anuime-button.json",
+    expect(getInstallCommand("checkbox")).toBe(
+      "npx shadcn@latest add https://anuime.vercel.app/r/anuime-checkbox.json",
     );
   });
 });

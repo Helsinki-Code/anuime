@@ -27,7 +27,7 @@ Open the local URL shown in the terminal. The public registry index is available
 ## Install a Component
 
 ```sh
-npx shadcn@latest add https://anuime.dev/r/anuime-button.json
+npx shadcn@latest add https://anuime.vercel.app/r/anuime-button.json
 ```
 
 Installed components depend on the local `anuime-recipe` registry utility, which contains the shared character types and style contract.

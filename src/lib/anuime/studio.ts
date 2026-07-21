@@ -1,3 +1,4 @@
+import { getCanonicalRegistryItemUrl } from "../site-config";
 import {
   decodeAnuimeRecipe,
   defaultAnuimeRecipe,
@@ -248,7 +249,7 @@ export function studioSearchFromDocument(document: StudioDocument): StudioSearch
 }
 
 export function getInstallCommand(componentId: RegistryComponentId) {
-  return `npx shadcn@latest add https://anuime.dev/r/${componentCatalog[componentId].registryName}.json`;
+  return `npx shadcn@latest add ${getCanonicalRegistryItemUrl(componentCatalog[componentId].registryName)}`;
 }
 
 export function getUsageSnippet(document: StudioDocument) {

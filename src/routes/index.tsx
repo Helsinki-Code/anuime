@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { characterIds, characterSystems } from "@/lib/anuime/characters";
 
 import { getSeoHead } from "../lib/seo";
-import { siteConfig } from "../lib/site-config";
+import { getCanonicalRegistryItemUrl, siteConfig } from "../lib/site-config";
 
 export const Route = createFileRoute("/")({
   head: () =>
@@ -25,7 +25,7 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const installCommand = "npx shadcn@latest add https://anuime.dev/r/anuime-button.json";
+const installCommand = `npx shadcn@latest add ${getCanonicalRegistryItemUrl("anuime-button")}`;
 
 function HomePage() {
   return (
