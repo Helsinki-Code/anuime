@@ -32,7 +32,7 @@ export const Route = createFileRoute("/$section/$name")({
       },
     });
 
-    if (!detail.item) {
+    if (!detail?.item) {
       throw notFound();
     }
 

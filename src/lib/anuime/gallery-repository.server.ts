@@ -1,5 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { mkdirSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { dirname, resolve } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 
@@ -8,10 +9,7 @@ import { z } from "zod";
 import { directorRecipeSchema } from "./director";
 import { registryComponentIds, type RegistryComponentId } from "./studio";
 
-const databasePath =
-  process.env.ANUIME_GALLERY_DB_PATH ?? resolve(process.cwd(), ".data/anuime-gallery.sqlite");
-mkdirSync(dirname(databasePath), { recursive: true });
-const database = new DatabaseSync(databasePath);
+let galleryDatabase: DatabaseSync | undefined;
 const galleryEntryInputSchema = z.object({
   title: z.string(),
   description: z.string(),
@@ -20,7 +18,7 @@ const galleryEntryInputSchema = z.object({
   tags: z.array(z.string()).max(8).optional(),
   remixOf: z.string().nullable().optional(),
 });
-database.exec(`
+const gallerySchema = `
   PRAGMA journal_mode = WAL;
   PRAGMA foreign_keys = ON;
   CREATE TABLE IF NOT EXISTS gallery_users (
@@ -49,12 +47,28 @@ database.exec(`
     status TEXT NOT NULL DEFAULT 'open',
     created_at TEXT NOT NULL
   );
-`);
+`;
+
+export function getGalleryDatabasePath() {
+  if (process.env.ANUIME_GALLERY_DB_PATH) return process.env.ANUIME_GALLERY_DB_PATH;
+  if (process.env.VERCEL) return resolve(tmpdir(), "anuime-gallery.sqlite");
+  return resolve(process.cwd(), ".data/anuime-gallery.sqlite");
+}
+
+function getDatabase() {
+  if (galleryDatabase) return galleryDatabase;
+  const databasePath = getGalleryDatabasePath();
+  mkdirSync(dirname(databasePath), { recursive: true });
+  const database = new DatabaseSync(databasePath);
+  database.exec(gallerySchema);
+  galleryDatabase = database;
+  return database;
+}
 
 export function ensureGalleryUser(id: string, displayName: string) {
   const safeName = cleanText(displayName, 40);
   if (safeName.length < 2) throw new Error("Display name is too short.");
-  database
+  getDatabase()
     .prepare("INSERT OR IGNORE INTO gallery_users (id, display_name, created_at) VALUES (?, ?, ?)")
     .run(id, safeName, new Date().toISOString());
   return { id, displayName: safeName };
@@ -62,6 +76,7 @@ export function ensureGalleryUser(id: string, displayName: string) {
 
 export function createGalleryEntry(userId: string, input: unknown, submit: boolean) {
   const value = parseEntryInput(input);
+  const database = getDatabase();
   const user = database.prepare("SELECT id FROM gallery_users WHERE id = ?").get(userId);
   if (!user) throw new Error("Gallery account not found.");
   const id = randomUUID();
@@ -87,7 +102,7 @@ export function createGalleryEntry(userId: string, input: unknown, submit: boole
 }
 
 export function listGalleryEntries(status: "approved" | "pending" = "approved") {
-  return database
+  return getDatabase()
     .prepare(
       `SELECT e.*, u.display_name FROM gallery_entries e JOIN gallery_users u ON u.id = e.user_id WHERE e.status = ? ORDER BY e.created_at DESC`,
     )
@@ -97,7 +112,7 @@ export function listGalleryEntries(status: "approved" | "pending" = "approved") 
 export function reportGalleryEntry(entryId: string, reporterId: string | null, reason: string) {
   const safeReason = cleanText(reason, 240);
   if (safeReason.length < 3) throw new Error("Report reason is too short.");
-  database
+  getDatabase()
     .prepare(
       "INSERT INTO gallery_reports (id, entry_id, reporter_id, reason, created_at) VALUES (?, ?, ?, ?, ?)",
     )
@@ -105,19 +120,20 @@ export function reportGalleryEntry(entryId: string, reporterId: string | null, r
 }
 
 export function moderateGalleryEntry(entryId: string, status: "approved" | "rejected" | "removed") {
-  database
+  getDatabase()
     .prepare("UPDATE gallery_entries SET status = ?, updated_at = ? WHERE id = ?")
     .run(status, new Date().toISOString(), entryId);
 }
 
 export function exportGalleryAccount(userId: string) {
+  const database = getDatabase();
   const user = database.prepare("SELECT * FROM gallery_users WHERE id = ?").get(userId);
   const entries = database.prepare("SELECT * FROM gallery_entries WHERE user_id = ?").all(userId);
   return { user, entries };
 }
 
 export function deleteGalleryAccount(userId: string) {
-  database.prepare("DELETE FROM gallery_users WHERE id = ?").run(userId);
+  getDatabase().prepare("DELETE FROM gallery_users WHERE id = ?").run(userId);
 }
 
 function parseEntryInput(input: unknown) {

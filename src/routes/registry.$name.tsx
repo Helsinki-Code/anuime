@@ -17,7 +17,7 @@ export const Route = createFileRoute("/registry/$name")({
       },
     });
 
-    if (!detail.item) {
+    if (!detail?.item) {
       throw notFound();
     }
 
