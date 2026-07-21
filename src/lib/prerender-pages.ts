@@ -52,6 +52,12 @@ export function createPrerenderPages({
   };
 
   addPath("/");
+  addPath("/studio");
+  addPath("/characters");
+  addPath("/characters/kira");
+  addPath("/characters/mochi");
+  addPath("/characters/atlas");
+  addPath("/gallery");
   addPath(getCanonicalRegistryIndexPath());
   getAliasRegistryIndexPaths().forEach(addPath);
   addPath("/llms.txt");

@@ -49,6 +49,7 @@ const config = defineConfig({
     ],
     ignorePatterns: [
       "**/.nitro/**",
+      "**/.eve/**",
       "**/.output/**",
       "**/.tanstack/**",
       "**/dist/**",
@@ -97,6 +98,7 @@ const config = defineConfig({
     ],
     ignorePatterns: [
       "**/.nitro/**",
+      "**/.eve/**",
       "**/.output/**",
       "**/.tanstack/**",
       "**/dist/**",
@@ -112,6 +114,12 @@ const config = defineConfig({
   clearScreen: false,
   build: {
     rolldownOptions: {
+      onLog(level, log, handler) {
+        const isIdenticalRscAsset =
+          log.code === "FILE_NAME_CONFLICT" &&
+          /assets\/(?:styles-|geist(?:-mono)?-)[^ ]+ overwrites/u.test(log.message);
+        if (!isIdenticalRscAsset) handler(level, log);
+      },
       output: {
         codeSplitting: {
           groups: [
@@ -131,6 +139,7 @@ const config = defineConfig({
     watch: {
       ignored: [
         "**/.nitro/**",
+        "**/.eve/**",
         "**/.output/**",
         "**/.tanstack/**",
         "**/dist/**",

@@ -1,0 +1,17 @@
+"use client";
+import { AnuimeCard } from "./anuime-card";
+export function Preview() {
+  return (
+    <AnuimeCard
+      character="kira"
+      eyebrow="Signal 07"
+      title="Deploy at first light."
+      description="A sharp surface built from accessible semantic tokens."
+      action={
+        <button className="rounded-md bg-cyan-300 px-4 py-2 text-sm font-bold text-zinc-950">
+          Activate
+        </button>
+      }
+    />
+  );
+}

@@ -1,203 +1,76 @@
-# \_cn
+# AnUIme
 
-<p align="center"><a href="https://underscore-cn.vercel.app"><img width="2776" height="1596" alt="underscorecn" src="https://github.com/user-attachments/assets/04bbb481-9ca8-49c3-bc83-b7d9a72e4b61" /></a></p>
+**Where characters become design systems.**
 
-An intentionally minimal [TanStack Start](https://tanstack.com/start/latest) + [Vite+](https://viteplus.dev/) starter template for publishing a [shadcn-compatible registry](https://ui.shadcn.com/docs/registry) without writing the documentation site and registry plumbing from scratch.
+AnUIme is an open-source, shadcn-compatible React component registry where original anime characters represent complete, accessible design systems.
 
-The scaffold contains a typed registry authoring layer, authored docs, live preview pages, syntax-highlighted source snippets, schema validation, package-manager install commands, and TanStack Start server routes. [See a demo here.](https://ui.jarv.is)
+## Product
 
-> [!TIP]
-> `_cn` is pronounced "underscore-cn".
+- Three launch systems: Kira, Mochi, and Atlas
+- Twelve installable UI components and one authentication block
+- Deterministic character recipes
+- Interactive Character Studio
+- Source-owned React and TypeScript
+- Keyboard, focus, semantic status, and reduced-motion foundations
 
-## Quick Start
+## Local Development
 
-You can either [create a new repository](https://github.com/new?template_name=_cn&template_owner=jakejarvis) based on this template directly in your GitHub account/organization, or use a tool like [`degit`](https://github.com/Rich-Harris/degit) to scaffold a fresh repo locally with the latest \_cn code.
+Use Vite+ for the application workflow:
 
-```bash
-npx degit jakejarvis/_cn
-
-# or use the "Use this template" button and then clone:
-git clone https://github.com/your-username/my-cn.git
-```
-
-Once cloned, ensure you have [Vite+](https://viteplus.dev/guide/) (`vp`) installed on your system; this will ensure all other requirements are taken care of for you.
-
-```bash
-# Install Vite+
-curl -fsSL https://vite.plus | bash
-
-# Setup and start local server
+```sh
 vp install
 vp dev
 ```
 
-Open the localhost URL from the Vite+ output and browse the starter docs, component, block, and utility pages. A good place to start customizing is the [`config.ts`](registry/config.ts) file.
+Open the local URL shown in the terminal. The public registry index is available at `/registry.json`; installable item JSON is served from `/r/<name>.json`.
 
-## Agent Skill
+## Install a Component
 
-This repository includes an installable Agent Skill for authoring `_cn` registry items. Install it into your harness from the upstream template using the [Skills CLI](https://skills.sh/):
-
-```bash
-npx skills add jakejarvis/_cn --skill shadcn-registry
+```sh
+npx shadcn@latest add https://anuime.dev/r/anuime-button.json
 ```
 
-After installing the skill, ask your agent for registry authoring work directly:
+Installed components depend on the local `anuime-recipe` registry utility, which contains the shared character types and style contract.
 
-- "add a button component to the registry"
-- "adapt this modal from my app to make it reusable via this shadcn registry"
-- "add a reusable hook to the registry"
-- "turn this dashboard section into a registry block"
+## Author a Registry Item
 
-## Deploy
+Published source belongs under `registry/items/**`; `src/components/ui/**` is reserved for the documentation app shell.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fjakejarvis%2F_cn&project-name=my-registry&repository-name=my-registry&demo-title=_cn%20Registry&demo-url=https%3A%2F%2Funderscore-cn.vercel.app)
-
-Above is a one-click button to fork the template and deploy it to Vercel as a platform-agnostic [Nitro server](https://nitro.build/).
-
-You can just as easily use any other platform (Cloudflare Workers, Netlify, etc.) by following the [TanStack Start docs](https://tanstack.com/start/latest/docs/framework/react/guide/hosting#deployment) to make a few adjustments to your `vite.config.ts` file (agents are usually pretty good at this too).
-
-## Usage
-
-### Configuration
-
-Edit `registry/config.ts`.
-
-```ts
-export const registryConfig = {
-  name: "_cn",
-  registryName: "_cn",
-  namespace: "@_cn",
-  description: "Installable components for your project.",
-  homepage: "https://underscore-cn.vercel.app",
-  repositoryUrl: "https://github.com/jakejarvis/_cn",
-} as const;
+```sh
+bun --bun ./scripts/new.ts \
+  --type registry:ui \
+  --name anuime-badge \
+  --description "A character-driven status badge."
 ```
 
-Set `homepage` before deploying. Install commands and local registry dependency URLs are built from this value.
+Then complete the generated source, `_registry.mdx`, and `_preview.tsx` files.
 
-### Author Docs
+## Verification
 
-Create public documentation pages under `registry/docs/`.
+```sh
+vp check --fix <touched-files>
+bun --bun ./scripts/doctor.ts
+vp build
+```
+
+## Architecture
 
 ```text
-registry/docs/
-  index.mdx
-  installation.mdx
-  registry.mdx
+registry/items/       installable source and previews
+registry/docs/        public product documentation
+src/lib/anuime/       Studio character and recipe model
+src/routes/studio.tsx deterministic Character Studio
+src/routes/index.tsx  product landing page
 ```
 
-Docs render under `/docs`: `registry/docs/index.mdx` becomes `/docs`, and `registry/docs/installation.mdx` becomes `/docs/installation`. Keep docs files directly under `registry/docs` for now; nested docs pages are not supported yet.
+The AI Director described in the product proposal is intentionally outside the launch-critical application. It will be evaluated as a separate service only after the deterministic workflow demonstrates adoption.
 
-```mdx
----
-title: Installation
-description: Install and run this registry.
-order: 1
-group: Getting Started
----
+## Principles
 
-# Installation
+- Original characters and artwork only
+- No arbitrary generated component implementations
+- Accessibility belongs to every character system
+- Users own the installed source
+- Recipes are explicit, versioned, and deterministic
 
-Use Markdown or MDX with the built-in docs components.
-```
-
-### Add A Registry Item
-
-#### Automatic
-
-Run `bun --bun ./scripts/new.ts` to interactively scaffold new registry items under `registry/items/**`.
-
-It's always a good idea to also run `bun --bun ./scripts/doctor.ts` after making changes in the `registry` directory; this validates registry metadata and reports ignored or suspicious files within the directory.
-
-#### Manual
-
-Create a folder under `registry/items/<section>/<item-name>/`.
-
-```text
-registry/items/components/example-card/
-  _registry.mdx
-  _preview.tsx
-  example-card.tsx
-```
-
-Write metadata and usage docs in `_registry.mdx`.
-
-````mdx
----
-name: example-card
-type: registry:ui
-title: Example Card
-description: A compact card component.
-registryDependencies:
-  - card
-localRegistryDependencies:
-  - other-local-item
----
-
-Use the component anywhere you need a compact content summary.
-
-```tsx
-import { ExampleCard } from "@/components/ui/example-card";
-
-export function Example() {
-  return <ExampleCard />;
-}
-```
-````
-
-Put the interactive preview in `_preview.tsx`.
-
-```tsx
-"use client";
-
-import { ExampleCard } from "./example-card";
-
-export function Preview() {
-  return <ExampleCard />;
-}
-```
-
-For a one-file component, the catalog infers the source file from the item root and `name`, then emits a shadcn target placeholder such as `@ui/example-card.tsx`. List `files` explicitly in frontmatter for hooks, libs, blocks, pages, custom target paths, or any item with multiple published files; file paths are relative to the item `_registry.mdx` file. Metadata-only styles, themes, fonts, bases, and universal items can omit `files`. Do not publish `_registry.mdx`, `_preview.tsx`, or other authoring-only files.
-
-The MDX body renders as the optional Usage section on the docs page. Fenced code blocks are syntax highlighted and keep the docs site's copy button. `_preview.tsx` is authoring-only and can use local state or events behind its `"use client"` boundary, but server-only logic should stay out of previews. Use `localRegistryDependencies` for dependencies on other local registry items; they are converted into canonical registry URLs in the public JSON.
-
-## Server
-
-The public registry index is available at both the root and `/r` paths, while installable item JSON lives under `/r`:
-
-- `/registry.json` serves the registry index.
-- `/r/registry.json` serves the same registry index.
-- `/r/<name>.json` serves an item JSON file.
-- `/llms.txt` and `/llms-full.txt` are generated from the same Markdown docs and registry item pages used by the site.
-
-> [!TIP]
-> \_cn validates authored registry metadata against schemas directly from [`shadcn/schema`](https://github.com/shadcn-ui/ui/blob/main/packages/shadcn/src/registry/schema.ts) to ensure compatibility.
-
-### Content Negotiation
-
-Human-facing registry URLs support the shadcn CLI's request headers. CLI requests with `Accept: application/vnd.shadcn.v1+json` or `User-Agent: shadcn` receive the shadcn-compliant JSON from the same URL as the human-readable docs page:
-
-- `/registry` returns the registry index JSON.
-- `/registry/<name>` and section item pages like `/components/<name>` return item JSON.
-
-All pages also support Markdown content negotiation (inspired by [Fumadocs](https://www.fumadocs.dev/docs/headless/utils/negotiation)). AI clients that request `text/markdown`, `text/x-markdown`, or `text/plain` in the `Accept` header receive the Markdown version of the current page directly, while normal browser requests still receive HTML.
-
-## Checklist
-
-- [ ] Choose a registry name, namespace, domain, and repository URL in `registry/config.ts`.
-- [ ] Update or replace the starter docs under `registry/docs`.
-- [ ] Update or replace the starter registry items in `registry/items`; use `bun --bun ./scripts/new.ts` to generate new stubs.
-- [ ] Run `bun --bun ./scripts/doctor.ts` to verify changes.
-- [ ] Run `vp check` and `vp build`.
-- [ ] Deploy!
-- [ ] Test the install commands with npm, pnpm, yarn, bun, vite+, and deno.
-- [ ] Optionally submit your registry to shadcn's [official directory](https://ui.shadcn.com/docs/directory).
-
-## Gotchas
-
-> [!WARNING]
-> The docs site uses the local shadcn UI configuration in [`components.json`](components.json); that styling is for this app shell and does **not** affect the published registry items in any way.
-
-## License
-
-[MIT](LICENSE)
+See the in-app documentation for character-system, recipe, accessibility, and originality guidance.

@@ -1,10 +1,31 @@
 {
   "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["apps/ai-director", "fixtures"],
   "compilerOptions": {
     "target": "ES2023",
     "jsx": "react-jsx",
     "module": "ESNext",
     "paths": {
+      "@/lib/anuime-recipe": ["./registry/items/lib/anuime-recipe/anuime-recipe.ts"],
+      "@/components/ui/anuime-accordion": [
+        "./registry/items/components/anuime-accordion/anuime-accordion.tsx"
+      ],
+      "@/components/ui/anuime-button": [
+        "./registry/items/components/anuime-button/anuime-button.tsx"
+      ],
+      "@/components/ui/anuime-card": ["./registry/items/components/anuime-card/anuime-card.tsx"],
+      "@/components/ui/anuime-command-palette": [
+        "./registry/items/components/anuime-command-palette/anuime-command-palette.tsx"
+      ],
+      "@/components/ui/anuime-data-table": [
+        "./registry/items/components/anuime-data-table/anuime-data-table.tsx"
+      ],
+      "@/components/ui/anuime-popover": [
+        "./registry/items/components/anuime-popover/anuime-popover.tsx"
+      ],
+      "@/components/ui/anuime-progress": [
+        "./registry/items/components/anuime-progress/anuime-progress.tsx"
+      ],
       "@/*": ["./src/*"],
       "content-collections": ["./.content-collections/generated"]
     },

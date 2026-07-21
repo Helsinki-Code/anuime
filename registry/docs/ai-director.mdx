@@ -1,0 +1,14 @@
+---
+title: AI Director
+description: Architecture and safeguards for the optional Eve-powered recipe assistant.
+order: 8
+group: Product
+---
+
+The AI Director is an isolated, feature-gated prototype under `apps/ai-director`. It is not required to use Component Lab or install components.
+
+The service is pinned to the official Vercel Eve framework and requires Node 24. Its callable surface is limited to catalog inspection, character inspection, recipe proposal, and recipe validation. Shell, filesystem, web, and delegation tools are disabled, and sandbox egress is deny-all.
+
+The Director may recommend only schema-valid recipes. It cannot generate CSS, React source, registry items, or repository changes. A user must preview and explicitly apply every proposal.
+
+Production browser clients must use an authenticated, rate-limited server proxy. They must not persist Eve continuation tokens as browser credentials.

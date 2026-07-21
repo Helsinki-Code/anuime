@@ -1,4 +1,4 @@
-import { IconBrandGithub, IconMenu2 } from "@tabler/icons-react";
+import { IconBrandGithub, IconMenu2, IconSparkles } from "@tabler/icons-react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import * as React from "react";
 
@@ -49,7 +49,36 @@ export function SiteHeader() {
           {visibleSections.map((section) => (
             <HeaderSectionLink key={section.id} section={section} pathname={pathname} />
           ))}
+          <Link
+            to="/characters"
+            className={cn(
+              "rounded-md px-3 py-1.5 text-sm transition-colors hover:text-foreground",
+              pathname.startsWith("/characters") ? "text-foreground" : "text-muted-foreground",
+            )}
+          >
+            Characters
+          </Link>
+          <Link
+            to="/gallery"
+            className={cn(
+              "rounded-md px-3 py-1.5 text-sm transition-colors hover:text-foreground",
+              pathname.startsWith("/gallery") ? "text-foreground" : "text-muted-foreground",
+            )}
+          >
+            Gallery
+          </Link>
         </nav>
+
+        <Button
+          variant="ghost"
+          size="sm"
+          nativeButton={false}
+          className="hidden md:inline-flex"
+          render={<Link to="/studio" />}
+        >
+          <IconSparkles data-icon="inline-start" />
+          Studio
+        </Button>
 
         <div className="ml-auto flex items-center gap-1">
           <SearchDialog />
@@ -114,22 +143,19 @@ function isSectionActive(section: SiteNavigationSection, pathname: string) {
 function RegistryLogo(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 36 36" fill="none" focusable="false" {...props}>
+      <defs>
+        <linearGradient id="anuime-mark" x1="4" y1="3" x2="32" y2="34">
+          <stop stopColor="#22d3ee" />
+          <stop offset="0.52" stopColor="#8b5cf6" />
+          <stop offset="1" stopColor="#f472b6" />
+        </linearGradient>
+      </defs>
+      <rect width="36" height="36" rx="11" fill="url(#anuime-mark)" />
       <path
-        fill="#3B88C3"
-        d="M32 0H4a4 4 0 0 0-4 4v28a4 4 0 0 0 4 4h28a4 4 0 0 0 4-4V4a4 4 0 0 0-4-4"
+        d="M9 26 17.2 9h2.9L28 26h-4.7l-1.5-3.7h-6.9L13.3 26H9Zm7.3-7.4h4.1l-2-5.1-2.1 5.1Z"
+        fill="white"
       />
-      <path
-        fill="#FFF"
-        d="M19 7h-2a1 1 0 0 0-1 1v20a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1"
-      />
-      <path
-        fill="#FFF"
-        d="m26.617 11.09l1.105 1.667a1 1 0 0 1-.281 1.386L10.769 25.191a1 1 0 0 1-1.386-.281l-1.105-1.667a1 1 0 0 1 .281-1.386L25.231 10.81a1 1 0 0 1 1.386.28"
-      />
-      <path
-        fill="#FFF"
-        d="m9.383 11.09l-1.105 1.667a1 1 0 0 0 .281 1.386L25.231 25.19a1 1 0 0 0 1.386-.281l1.105-1.667a1 1 0 0 0-.281-1.386L10.769 10.809a1 1 0 0 0-1.386.281"
-      />
+      <path d="m24.8 7 .8 2.1 2.2.8-2.2.8-.8 2.1-.8-2.1-2.2-.8 2.2-.8.8-2.1Z" fill="white" />
     </svg>
   );
 }

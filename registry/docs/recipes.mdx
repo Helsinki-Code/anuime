@@ -1,0 +1,27 @@
+---
+title: Recipes
+description: Mix character dimensions with deterministic, shareable configuration.
+order: 3
+group: Design System
+---
+
+An AnUIme recipe chooses approved values for color, shape, structure, motion, density, motion intensity, and display mode.
+
+```ts
+type AnuimeRecipeV2 = {
+  version: 2;
+  colorSystem: "kira" | "mochi" | "atlas";
+  shapeSystem: "kira" | "mochi" | "atlas";
+  structureSystem: "kira" | "mochi" | "atlas";
+  motionSystem: "kira" | "mochi" | "atlas";
+  density: "compact" | "comfortable" | "spacious";
+  motionLevel: "still" | "calm" | "expressive";
+  mode: "light" | "dark" | "system";
+};
+```
+
+The installable `anuime-recipe` registry item is the canonical implementation used by Component Lab and every installable component. It exports creation, migration, encoding, decoding, validation, and resolution helpers.
+
+Components accept either a complete `recipe` or the backwards-compatible `character` shorthand. When both are present, `recipe` wins.
+
+Version-one five-part and six-part recipe URLs migrate to v2 in memory. Unknown or malformed recipes fail safely and produce a visible recovery message. Recipes contain no generated CSS, executable code, personal information, or secrets.

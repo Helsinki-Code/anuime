@@ -10,17 +10,20 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UtilitiesDotmdRouteImport } from './routes/utilities[.]md'
+import { Route as StudioRouteImport } from './routes/studio'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as RegistryDotmdRouteImport } from './routes/registry[.]md'
 import { Route as RegistryDotjsonRouteImport } from './routes/registry[.]json'
 import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as LlmsFullDottxtRouteImport } from './routes/llms-full[.]txt'
+import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as DocsDotmdRouteImport } from './routes/docs[.]md'
 import { Route as ComponentsDotmdRouteImport } from './routes/components[.]md'
 import { Route as BlocksDotmdRouteImport } from './routes/blocks[.]md'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as RegistryIndexRouteImport } from './routes/registry.index'
 import { Route as DocsIndexRouteImport } from './routes/docs.index'
+import { Route as CharactersIndexRouteImport } from './routes/characters.index'
 import { Route as SectionIndexRouteImport } from './routes/$section.index'
 import { Route as RegistryChar123nameChar125DotmdRouteImport } from './routes/registry.{$name}[.]md'
 import { Route as RegistryNameRouteImport } from './routes/registry.$name'
@@ -28,12 +31,26 @@ import { Route as RChar123nameChar125DotjsonRouteImport } from './routes/r/{$nam
 import { Route as RRegistryDotjsonRouteImport } from './routes/r/registry[.]json'
 import { Route as DocsChar123slugChar125DotmdRouteImport } from './routes/docs.{$slug}[.]md'
 import { Route as DocsSlugRouteImport } from './routes/docs.$slug'
+import { Route as CharactersCharacterRouteImport } from './routes/characters.$character'
+import { Route as ApiAnalyticsRouteImport } from './routes/api.analytics'
 import { Route as SectionChar123nameChar125DotmdRouteImport } from './routes/$section.{$name}[.]md'
 import { Route as SectionNameRouteImport } from './routes/$section.$name'
+import { Route as ApiGallerySessionRouteImport } from './routes/api.gallery.session'
+import { Route as ApiGalleryReportsRouteImport } from './routes/api.gallery.reports'
+import { Route as ApiGalleryModerationRouteImport } from './routes/api.gallery.moderation'
+import { Route as ApiGalleryEntriesRouteImport } from './routes/api.gallery.entries'
+import { Route as ApiGalleryAccountRouteImport } from './routes/api.gallery.account'
+import { Route as ApiDirectorSessionRouteImport } from './routes/api.director.session'
+import { Route as ApiDirectorProposeRouteImport } from './routes/api.director.propose'
 
 const UtilitiesDotmdRoute = UtilitiesDotmdRouteImport.update({
   id: '/utilities.md',
   path: '/utilities.md',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudioRoute = StudioRouteImport.update({
+  id: '/studio',
+  path: '/studio',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
@@ -59,6 +76,11 @@ const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
 const LlmsFullDottxtRoute = LlmsFullDottxtRouteImport.update({
   id: '/llms-full.txt',
   path: '/llms-full.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DocsDotmdRoute = DocsDotmdRouteImport.update({
@@ -89,6 +111,11 @@ const RegistryIndexRoute = RegistryIndexRouteImport.update({
 const DocsIndexRoute = DocsIndexRouteImport.update({
   id: '/docs/',
   path: '/docs/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CharactersIndexRoute = CharactersIndexRouteImport.update({
+  id: '/characters/',
+  path: '/characters/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SectionIndexRoute = SectionIndexRouteImport.update({
@@ -129,6 +156,16 @@ const DocsSlugRoute = DocsSlugRouteImport.update({
   path: '/docs/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CharactersCharacterRoute = CharactersCharacterRouteImport.update({
+  id: '/characters/$character',
+  path: '/characters/$character',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAnalyticsRoute = ApiAnalyticsRouteImport.update({
+  id: '/api/analytics',
+  path: '/api/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SectionChar123nameChar125DotmdRoute =
   SectionChar123nameChar125DotmdRouteImport.update({
     id: '/$section/{$name}.md',
@@ -140,20 +177,59 @@ const SectionNameRoute = SectionNameRouteImport.update({
   path: '/$section/$name',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiGallerySessionRoute = ApiGallerySessionRouteImport.update({
+  id: '/api/gallery/session',
+  path: '/api/gallery/session',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiGalleryReportsRoute = ApiGalleryReportsRouteImport.update({
+  id: '/api/gallery/reports',
+  path: '/api/gallery/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiGalleryModerationRoute = ApiGalleryModerationRouteImport.update({
+  id: '/api/gallery/moderation',
+  path: '/api/gallery/moderation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiGalleryEntriesRoute = ApiGalleryEntriesRouteImport.update({
+  id: '/api/gallery/entries',
+  path: '/api/gallery/entries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiGalleryAccountRoute = ApiGalleryAccountRouteImport.update({
+  id: '/api/gallery/account',
+  path: '/api/gallery/account',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiDirectorSessionRoute = ApiDirectorSessionRouteImport.update({
+  id: '/api/director/session',
+  path: '/api/director/session',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiDirectorProposeRoute = ApiDirectorProposeRouteImport.update({
+  id: '/api/director/propose',
+  path: '/api/director/propose',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/blocks.md': typeof BlocksDotmdRoute
   '/components.md': typeof ComponentsDotmdRoute
   '/docs.md': typeof DocsDotmdRoute
+  '/gallery': typeof GalleryRoute
   '/llms-full.txt': typeof LlmsFullDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/registry.json': typeof RegistryDotjsonRoute
   '/registry.md': typeof RegistryDotmdRoute
   '/robots.txt': typeof RobotsDottxtRoute
+  '/studio': typeof StudioRoute
   '/utilities.md': typeof UtilitiesDotmdRoute
   '/$section/$name': typeof SectionNameRoute
   '/$section/{$name}.md': typeof SectionChar123nameChar125DotmdRoute
+  '/api/analytics': typeof ApiAnalyticsRoute
+  '/characters/$character': typeof CharactersCharacterRoute
   '/docs/$slug': typeof DocsSlugRoute
   '/docs/{$slug}.md': typeof DocsChar123slugChar125DotmdRoute
   '/r/registry.json': typeof RRegistryDotjsonRoute
@@ -161,22 +237,34 @@ export interface FileRoutesByFullPath {
   '/registry/$name': typeof RegistryNameRoute
   '/registry/{$name}.md': typeof RegistryChar123nameChar125DotmdRoute
   '/$section/': typeof SectionIndexRoute
+  '/characters/': typeof CharactersIndexRoute
   '/docs/': typeof DocsIndexRoute
   '/registry/': typeof RegistryIndexRoute
+  '/api/director/propose': typeof ApiDirectorProposeRoute
+  '/api/director/session': typeof ApiDirectorSessionRoute
+  '/api/gallery/account': typeof ApiGalleryAccountRoute
+  '/api/gallery/entries': typeof ApiGalleryEntriesRoute
+  '/api/gallery/moderation': typeof ApiGalleryModerationRoute
+  '/api/gallery/reports': typeof ApiGalleryReportsRoute
+  '/api/gallery/session': typeof ApiGallerySessionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/blocks.md': typeof BlocksDotmdRoute
   '/components.md': typeof ComponentsDotmdRoute
   '/docs.md': typeof DocsDotmdRoute
+  '/gallery': typeof GalleryRoute
   '/llms-full.txt': typeof LlmsFullDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/registry.json': typeof RegistryDotjsonRoute
   '/registry.md': typeof RegistryDotmdRoute
   '/robots.txt': typeof RobotsDottxtRoute
+  '/studio': typeof StudioRoute
   '/utilities.md': typeof UtilitiesDotmdRoute
   '/$section/$name': typeof SectionNameRoute
   '/$section/{$name}.md': typeof SectionChar123nameChar125DotmdRoute
+  '/api/analytics': typeof ApiAnalyticsRoute
+  '/characters/$character': typeof CharactersCharacterRoute
   '/docs/$slug': typeof DocsSlugRoute
   '/docs/{$slug}.md': typeof DocsChar123slugChar125DotmdRoute
   '/r/registry.json': typeof RRegistryDotjsonRoute
@@ -184,8 +272,16 @@ export interface FileRoutesByTo {
   '/registry/$name': typeof RegistryNameRoute
   '/registry/{$name}.md': typeof RegistryChar123nameChar125DotmdRoute
   '/$section': typeof SectionIndexRoute
+  '/characters': typeof CharactersIndexRoute
   '/docs': typeof DocsIndexRoute
   '/registry': typeof RegistryIndexRoute
+  '/api/director/propose': typeof ApiDirectorProposeRoute
+  '/api/director/session': typeof ApiDirectorSessionRoute
+  '/api/gallery/account': typeof ApiGalleryAccountRoute
+  '/api/gallery/entries': typeof ApiGalleryEntriesRoute
+  '/api/gallery/moderation': typeof ApiGalleryModerationRoute
+  '/api/gallery/reports': typeof ApiGalleryReportsRoute
+  '/api/gallery/session': typeof ApiGallerySessionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -193,14 +289,18 @@ export interface FileRoutesById {
   '/blocks.md': typeof BlocksDotmdRoute
   '/components.md': typeof ComponentsDotmdRoute
   '/docs.md': typeof DocsDotmdRoute
+  '/gallery': typeof GalleryRoute
   '/llms-full.txt': typeof LlmsFullDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/registry.json': typeof RegistryDotjsonRoute
   '/registry.md': typeof RegistryDotmdRoute
   '/robots.txt': typeof RobotsDottxtRoute
+  '/studio': typeof StudioRoute
   '/utilities.md': typeof UtilitiesDotmdRoute
   '/$section/$name': typeof SectionNameRoute
   '/$section/{$name}.md': typeof SectionChar123nameChar125DotmdRoute
+  '/api/analytics': typeof ApiAnalyticsRoute
+  '/characters/$character': typeof CharactersCharacterRoute
   '/docs/$slug': typeof DocsSlugRoute
   '/docs/{$slug}.md': typeof DocsChar123slugChar125DotmdRoute
   '/r/registry.json': typeof RRegistryDotjsonRoute
@@ -208,8 +308,16 @@ export interface FileRoutesById {
   '/registry/$name': typeof RegistryNameRoute
   '/registry/{$name}.md': typeof RegistryChar123nameChar125DotmdRoute
   '/$section/': typeof SectionIndexRoute
+  '/characters/': typeof CharactersIndexRoute
   '/docs/': typeof DocsIndexRoute
   '/registry/': typeof RegistryIndexRoute
+  '/api/director/propose': typeof ApiDirectorProposeRoute
+  '/api/director/session': typeof ApiDirectorSessionRoute
+  '/api/gallery/account': typeof ApiGalleryAccountRoute
+  '/api/gallery/entries': typeof ApiGalleryEntriesRoute
+  '/api/gallery/moderation': typeof ApiGalleryModerationRoute
+  '/api/gallery/reports': typeof ApiGalleryReportsRoute
+  '/api/gallery/session': typeof ApiGallerySessionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -218,14 +326,18 @@ export interface FileRouteTypes {
     | '/blocks.md'
     | '/components.md'
     | '/docs.md'
+    | '/gallery'
     | '/llms-full.txt'
     | '/llms.txt'
     | '/registry.json'
     | '/registry.md'
     | '/robots.txt'
+    | '/studio'
     | '/utilities.md'
     | '/$section/$name'
     | '/$section/{$name}.md'
+    | '/api/analytics'
+    | '/characters/$character'
     | '/docs/$slug'
     | '/docs/{$slug}.md'
     | '/r/registry.json'
@@ -233,22 +345,34 @@ export interface FileRouteTypes {
     | '/registry/$name'
     | '/registry/{$name}.md'
     | '/$section/'
+    | '/characters/'
     | '/docs/'
     | '/registry/'
+    | '/api/director/propose'
+    | '/api/director/session'
+    | '/api/gallery/account'
+    | '/api/gallery/entries'
+    | '/api/gallery/moderation'
+    | '/api/gallery/reports'
+    | '/api/gallery/session'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/blocks.md'
     | '/components.md'
     | '/docs.md'
+    | '/gallery'
     | '/llms-full.txt'
     | '/llms.txt'
     | '/registry.json'
     | '/registry.md'
     | '/robots.txt'
+    | '/studio'
     | '/utilities.md'
     | '/$section/$name'
     | '/$section/{$name}.md'
+    | '/api/analytics'
+    | '/characters/$character'
     | '/docs/$slug'
     | '/docs/{$slug}.md'
     | '/r/registry.json'
@@ -256,22 +380,34 @@ export interface FileRouteTypes {
     | '/registry/$name'
     | '/registry/{$name}.md'
     | '/$section'
+    | '/characters'
     | '/docs'
     | '/registry'
+    | '/api/director/propose'
+    | '/api/director/session'
+    | '/api/gallery/account'
+    | '/api/gallery/entries'
+    | '/api/gallery/moderation'
+    | '/api/gallery/reports'
+    | '/api/gallery/session'
   id:
     | '__root__'
     | '/'
     | '/blocks.md'
     | '/components.md'
     | '/docs.md'
+    | '/gallery'
     | '/llms-full.txt'
     | '/llms.txt'
     | '/registry.json'
     | '/registry.md'
     | '/robots.txt'
+    | '/studio'
     | '/utilities.md'
     | '/$section/$name'
     | '/$section/{$name}.md'
+    | '/api/analytics'
+    | '/characters/$character'
     | '/docs/$slug'
     | '/docs/{$slug}.md'
     | '/r/registry.json'
@@ -279,8 +415,16 @@ export interface FileRouteTypes {
     | '/registry/$name'
     | '/registry/{$name}.md'
     | '/$section/'
+    | '/characters/'
     | '/docs/'
     | '/registry/'
+    | '/api/director/propose'
+    | '/api/director/session'
+    | '/api/gallery/account'
+    | '/api/gallery/entries'
+    | '/api/gallery/moderation'
+    | '/api/gallery/reports'
+    | '/api/gallery/session'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -288,14 +432,18 @@ export interface RootRouteChildren {
   BlocksDotmdRoute: typeof BlocksDotmdRoute
   ComponentsDotmdRoute: typeof ComponentsDotmdRoute
   DocsDotmdRoute: typeof DocsDotmdRoute
+  GalleryRoute: typeof GalleryRoute
   LlmsFullDottxtRoute: typeof LlmsFullDottxtRoute
   LlmsDottxtRoute: typeof LlmsDottxtRoute
   RegistryDotjsonRoute: typeof RegistryDotjsonRoute
   RegistryDotmdRoute: typeof RegistryDotmdRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
+  StudioRoute: typeof StudioRoute
   UtilitiesDotmdRoute: typeof UtilitiesDotmdRoute
   SectionNameRoute: typeof SectionNameRoute
   SectionChar123nameChar125DotmdRoute: typeof SectionChar123nameChar125DotmdRoute
+  ApiAnalyticsRoute: typeof ApiAnalyticsRoute
+  CharactersCharacterRoute: typeof CharactersCharacterRoute
   DocsSlugRoute: typeof DocsSlugRoute
   DocsChar123slugChar125DotmdRoute: typeof DocsChar123slugChar125DotmdRoute
   RRegistryDotjsonRoute: typeof RRegistryDotjsonRoute
@@ -303,8 +451,16 @@ export interface RootRouteChildren {
   RegistryNameRoute: typeof RegistryNameRoute
   RegistryChar123nameChar125DotmdRoute: typeof RegistryChar123nameChar125DotmdRoute
   SectionIndexRoute: typeof SectionIndexRoute
+  CharactersIndexRoute: typeof CharactersIndexRoute
   DocsIndexRoute: typeof DocsIndexRoute
   RegistryIndexRoute: typeof RegistryIndexRoute
+  ApiDirectorProposeRoute: typeof ApiDirectorProposeRoute
+  ApiDirectorSessionRoute: typeof ApiDirectorSessionRoute
+  ApiGalleryAccountRoute: typeof ApiGalleryAccountRoute
+  ApiGalleryEntriesRoute: typeof ApiGalleryEntriesRoute
+  ApiGalleryModerationRoute: typeof ApiGalleryModerationRoute
+  ApiGalleryReportsRoute: typeof ApiGalleryReportsRoute
+  ApiGallerySessionRoute: typeof ApiGallerySessionRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -314,6 +470,13 @@ declare module '@tanstack/react-router' {
       path: '/utilities.md'
       fullPath: '/utilities.md'
       preLoaderRoute: typeof UtilitiesDotmdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/studio': {
+      id: '/studio'
+      path: '/studio'
+      fullPath: '/studio'
+      preLoaderRoute: typeof StudioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/robots.txt': {
@@ -349,6 +512,13 @@ declare module '@tanstack/react-router' {
       path: '/llms-full.txt'
       fullPath: '/llms-full.txt'
       preLoaderRoute: typeof LlmsFullDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/docs.md': {
@@ -391,6 +561,13 @@ declare module '@tanstack/react-router' {
       path: '/docs'
       fullPath: '/docs/'
       preLoaderRoute: typeof DocsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/characters/': {
+      id: '/characters/'
+      path: '/characters'
+      fullPath: '/characters/'
+      preLoaderRoute: typeof CharactersIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/$section/': {
@@ -442,6 +619,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/characters/$character': {
+      id: '/characters/$character'
+      path: '/characters/$character'
+      fullPath: '/characters/$character'
+      preLoaderRoute: typeof CharactersCharacterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/analytics': {
+      id: '/api/analytics'
+      path: '/api/analytics'
+      fullPath: '/api/analytics'
+      preLoaderRoute: typeof ApiAnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/$section/{$name}.md': {
       id: '/$section/{$name}.md'
       path: '/$section/{$name}.md'
@@ -456,6 +647,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SectionNameRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/gallery/session': {
+      id: '/api/gallery/session'
+      path: '/api/gallery/session'
+      fullPath: '/api/gallery/session'
+      preLoaderRoute: typeof ApiGallerySessionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/gallery/reports': {
+      id: '/api/gallery/reports'
+      path: '/api/gallery/reports'
+      fullPath: '/api/gallery/reports'
+      preLoaderRoute: typeof ApiGalleryReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/gallery/moderation': {
+      id: '/api/gallery/moderation'
+      path: '/api/gallery/moderation'
+      fullPath: '/api/gallery/moderation'
+      preLoaderRoute: typeof ApiGalleryModerationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/gallery/entries': {
+      id: '/api/gallery/entries'
+      path: '/api/gallery/entries'
+      fullPath: '/api/gallery/entries'
+      preLoaderRoute: typeof ApiGalleryEntriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/gallery/account': {
+      id: '/api/gallery/account'
+      path: '/api/gallery/account'
+      fullPath: '/api/gallery/account'
+      preLoaderRoute: typeof ApiGalleryAccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/director/session': {
+      id: '/api/director/session'
+      path: '/api/director/session'
+      fullPath: '/api/director/session'
+      preLoaderRoute: typeof ApiDirectorSessionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/director/propose': {
+      id: '/api/director/propose'
+      path: '/api/director/propose'
+      fullPath: '/api/director/propose'
+      preLoaderRoute: typeof ApiDirectorProposeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -464,14 +704,18 @@ const rootRouteChildren: RootRouteChildren = {
   BlocksDotmdRoute: BlocksDotmdRoute,
   ComponentsDotmdRoute: ComponentsDotmdRoute,
   DocsDotmdRoute: DocsDotmdRoute,
+  GalleryRoute: GalleryRoute,
   LlmsFullDottxtRoute: LlmsFullDottxtRoute,
   LlmsDottxtRoute: LlmsDottxtRoute,
   RegistryDotjsonRoute: RegistryDotjsonRoute,
   RegistryDotmdRoute: RegistryDotmdRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
+  StudioRoute: StudioRoute,
   UtilitiesDotmdRoute: UtilitiesDotmdRoute,
   SectionNameRoute: SectionNameRoute,
   SectionChar123nameChar125DotmdRoute: SectionChar123nameChar125DotmdRoute,
+  ApiAnalyticsRoute: ApiAnalyticsRoute,
+  CharactersCharacterRoute: CharactersCharacterRoute,
   DocsSlugRoute: DocsSlugRoute,
   DocsChar123slugChar125DotmdRoute: DocsChar123slugChar125DotmdRoute,
   RRegistryDotjsonRoute: RRegistryDotjsonRoute,
@@ -479,8 +723,16 @@ const rootRouteChildren: RootRouteChildren = {
   RegistryNameRoute: RegistryNameRoute,
   RegistryChar123nameChar125DotmdRoute: RegistryChar123nameChar125DotmdRoute,
   SectionIndexRoute: SectionIndexRoute,
+  CharactersIndexRoute: CharactersIndexRoute,
   DocsIndexRoute: DocsIndexRoute,
   RegistryIndexRoute: RegistryIndexRoute,
+  ApiDirectorProposeRoute: ApiDirectorProposeRoute,
+  ApiDirectorSessionRoute: ApiDirectorSessionRoute,
+  ApiGalleryAccountRoute: ApiGalleryAccountRoute,
+  ApiGalleryEntriesRoute: ApiGalleryEntriesRoute,
+  ApiGalleryModerationRoute: ApiGalleryModerationRoute,
+  ApiGalleryReportsRoute: ApiGalleryReportsRoute,
+  ApiGallerySessionRoute: ApiGallerySessionRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

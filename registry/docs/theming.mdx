@@ -1,11 +1,32 @@
 ---
-title: Theming
-description: Customize the docs shell and published components with your own design tokens.
-order: 5
+title: Character Systems
+description: Understand how Kira, Mochi, and Atlas coordinate visual decisions.
+order: 2
+group: Design System
 ---
 
-The docs app uses the local shadcn configuration in `components.json` and the global theme in `src/styles.css`.
+A character system is more than a palette. It coordinates five explicit dimensions:
 
-Published registry items are independent from the docs shell. Put installable component source in `registry/items/**`, and include any required CSS, dependencies, or registry dependencies in the item frontmatter.
+| Dimension | Controls                                                      |
+| --------- | ------------------------------------------------------------- |
+| Color     | Semantic foregrounds, surfaces, accents, and status treatment |
+| Shape     | Radius, clipping, border geometry, and control silhouette     |
+| Structure | Density, grouping, hierarchy, and modular composition         |
+| Motion    | Duration, easing, choreography, and feedback personality      |
+| Density   | Compact, comfortable, or spacious layout rhythm               |
 
-Use semantic tokens such as `background`, `foreground`, `primary`, `muted`, and `border` so installed components remain easy to customize.
+## Kira // Neon Ronin
+
+Use Kira for developer tools, gaming experiences, and launches that need decisive energy. Preserve high contrast and keep glitch-like details decorative.
+
+## Mochi // Dream Familiar
+
+Use Mochi for communities, creator tools, and welcoming onboarding. Friendly does not mean low contrast: text and focus indicators must remain clear.
+
+## Atlas // Mecha Architect
+
+Use Atlas for dashboards, productivity systems, and dense information. Technical framing must support hierarchy rather than become visual noise.
+
+## Reduced Motion
+
+Every decorative transformation must have a reduced-motion fallback. A user preference overrides the selected character's motion personality.

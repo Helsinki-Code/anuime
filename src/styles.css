@@ -208,3 +208,184 @@
     display: none;
   }
 }
+
+@layer components {
+  .anuime-grid {
+    background-image:
+      linear-gradient(
+        to right,
+        color-mix(in oklab, var(--border) 44%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in oklab, var(--border) 44%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 32px 32px;
+  }
+  .anuime-aurora {
+    background:
+      radial-gradient(circle at 20% 15%, oklch(0.82 0.17 205 / 0.45), transparent 34%),
+      radial-gradient(circle at 75% 20%, oklch(0.67 0.23 295 / 0.36), transparent 37%),
+      radial-gradient(circle at 58% 62%, oklch(0.78 0.18 345 / 0.28), transparent 32%);
+    mask-image: linear-gradient(to bottom, black, transparent 92%);
+  }
+  .anuime-character,
+  .anuime-stage {
+    --anuime-accent: #0e7490;
+    --anuime-glow: #8b5cf6;
+  }
+  .anuime-kira {
+    --anuime-accent: #0e7490;
+    --anuime-glow: #8b5cf6;
+  }
+  .anuime-mochi {
+    --anuime-accent: #be185d;
+    --anuime-glow: #fbbf24;
+  }
+  .anuime-atlas {
+    --anuime-accent: #1d4ed8;
+    --anuime-glow: #94a3b8;
+  }
+  .dark .anuime-character,
+  .dark .anuime-stage,
+  .dark .anuime-kira {
+    --anuime-accent: #67e8f9;
+  }
+  .dark .anuime-mochi {
+    --anuime-accent: #f9a8d4;
+  }
+  .dark .anuime-atlas {
+    --anuime-accent: #93c5fd;
+  }
+  .anuime-avatar {
+    display: grid;
+    width: 4.5rem;
+    height: 4.5rem;
+    place-items: center;
+    border: 1px solid color-mix(in oklab, var(--anuime-accent) 50%, var(--border));
+    border-radius: 1.3rem;
+    background: linear-gradient(
+      145deg,
+      color-mix(in oklab, var(--anuime-accent) 28%, var(--background)),
+      color-mix(in oklab, var(--anuime-glow) 20%, var(--background))
+    );
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.2),
+      0 15px 40px color-mix(in oklab, var(--anuime-accent) 20%, transparent);
+    color: var(--anuime-accent);
+    font-size: 1.6rem;
+    font-weight: 800;
+  }
+  .anuime-avatar-sm {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.9rem;
+    font-size: 1rem;
+  }
+  .anuime-avatar-xs {
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 0.7rem;
+    font-size: 0.75rem;
+  }
+  .anuime-cta {
+    background:
+      radial-gradient(circle at 15% 20%, rgb(34 211 238 / 0.22), transparent 30%),
+      radial-gradient(circle at 85% 80%, rgb(244 114 182 / 0.2), transparent 34%), #111025;
+  }
+  .anuime-stage {
+    background-color: color-mix(in oklab, var(--background) 94%, var(--anuime-accent));
+  }
+  .anuime-preview-card {
+    border-radius: 1rem;
+  }
+  .shape-kira .anuime-preview-card {
+    border-radius: 0.35rem 1rem 0.35rem 1rem;
+    clip-path: polygon(
+      0 0,
+      calc(100% - 12px) 0,
+      100% 12px,
+      100% 100%,
+      12px 100%,
+      0 calc(100% - 12px)
+    );
+  }
+  .shape-mochi .anuime-preview-card {
+    border-radius: 1.75rem;
+  }
+  .shape-atlas .anuime-preview-card {
+    border-radius: 0.25rem;
+    border-width: 2px;
+  }
+  .density-compact .anuime-preview-card {
+    padding: 1rem;
+  }
+  .density-spacious .anuime-preview-card {
+    padding: 2.25rem;
+  }
+  .anuime-preview-primary {
+    border-radius: 0.6rem;
+    background: var(--anuime-accent);
+    color: #081015;
+    box-shadow: 0 10px 24px color-mix(in oklab, var(--anuime-accent) 24%, transparent);
+  }
+  .shape-mochi .anuime-preview-primary,
+  .shape-mochi .anuime-preview-secondary,
+  .shape-mochi .anuime-preview-input {
+    border-radius: 999px;
+  }
+  .shape-atlas .anuime-preview-primary,
+  .shape-atlas .anuime-preview-secondary,
+  .shape-atlas .anuime-preview-input {
+    border-radius: 0.15rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .anuime-preview-secondary,
+  .anuime-preview-input {
+    border-radius: 0.6rem;
+  }
+  .anuime-signal {
+    border-radius: 999px;
+    box-shadow: 0 0 18px var(--anuime-accent);
+  }
+  .motion-level-expressive .anuime-preview-primary {
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease;
+  }
+  .motion-level-expressive .anuime-preview-primary:hover {
+    transform: translateY(-2px) scale(1.015);
+    box-shadow: 0 14px 34px color-mix(in oklab, var(--anuime-accent) 34%, transparent);
+  }
+  .motion-level-calm .anuime-preview-primary {
+    transition: opacity 240ms ease;
+  }
+  .motion-level-calm .anuime-preview-primary:hover {
+    opacity: 0.84;
+  }
+  .anuime-motion-still *,
+  .anuime-motion-still *::before,
+  .anuime-motion-still *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .anuime-preview-primary {
+      transition: none !important;
+      transform: none !important;
+    }
+    .anuime-preview-canvas *,
+    .anuime-preview-canvas *::before,
+    .anuime-preview-canvas *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}

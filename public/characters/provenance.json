@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-21",
+  "generator": "OpenAI built-in image generation",
+  "artDirection": "Original AnUIme cast; polished 2D concept illustration; no named franchise or copyrighted-character references",
+  "reviewStatus": "pending-human-cleanup-legal-and-originality-review",
+  "licenseStatus": "project-use-pending-final-approval",
+  "assets": [
+    {
+      "character": "kira",
+      "source": "kira-key-art.png",
+      "delivery": "kira-key-art.webp",
+      "sha256": "29000f1d4f69b2e367667a09c21258d8df6d508b10447a8cbb0457075cca08cd"
+    },
+    {
+      "character": "mochi",
+      "source": "mochi-key-art.png",
+      "delivery": "mochi-key-art.webp",
+      "sha256": "96e5f9489f0b4762d6b63cfe3cb57dc72435d0f8110c8cb0121299660c0a537b"
+    },
+    {
+      "character": "atlas",
+      "source": "atlas-key-art.png",
+      "delivery": "atlas-key-art.webp",
+      "sha256": "fbe61bab8c735ddcfa20c7810a31bbf7720b82586594a0f6c0395eb9021ae33d"
+    },
+    {
+      "character": "kira",
+      "purpose": "Signal Cut turnaround, silhouette, expressions, and power demonstration",
+      "source": "kira-signal-cut-sheet.png",
+      "delivery": ["kira-signal-cut-sheet.webp", "kira-signal-cut-sheet.avif"],
+      "sha256": {
+        "webp": "ff49c4fadb9cfbfd087fc88a9dc80c23fb31c2cdaf7c4ac6b445e1192779de1f",
+        "avif": "1b3e33545860a4e21d1ee112e7a2b3a0a0b4da5f0459a9b40868e4fc4b5dcb47"
+      }
+    },
+    {
+      "character": "mochi",
+      "purpose": "Dream Cache turnaround, silhouette, expressions, and power demonstration",
+      "source": "mochi-dream-cache-sheet.png",
+      "delivery": ["mochi-dream-cache-sheet.webp", "mochi-dream-cache-sheet.avif"],
+      "sha256": {
+        "webp": "faae469c92123b3adc1ce8e346433c348f75e0a3b1a3b66f28763c3d27545d0e",
+        "avif": "5b371e55535e1cd4998eab26e1b5c51ef179627a6c792ad2cd4a1d59e7b9df80"
+      }
+    },
+    {
+      "character": "atlas",
+      "purpose": "Gridforge turnaround, silhouette, expressions, and power demonstration",
+      "source": "atlas-gridforge-sheet.png",
+      "delivery": ["atlas-gridforge-sheet.webp", "atlas-gridforge-sheet.avif"],
+      "sha256": {
+        "webp": "9911de1be1321c885c053e293b3e1ecc2c1571cbfa13b520b5c621d60d9b541b",
+        "avif": "1a901a1b979ae1146354ed62a9ee33f683ccc9e56ee2397881e9201b9278d8c0"
+      }
+    }
+  ],
+  "requiredBeforeProduction": [
+    "Human anatomy and costume cleanup",
+    "Similarity review against recognizable third-party characters",
+    "Commercial and open-source usage approval"
+  ]
+}

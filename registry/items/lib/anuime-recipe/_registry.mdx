@@ -1,0 +1,17 @@
+---
+name: anuime-recipe
+type: registry:lib
+title: "AnUIme Recipe"
+description: "Versioned recipe schema and deterministic character mixing helpers."
+files:
+  - path: anuime-recipe.ts
+    type: registry:lib
+---
+
+Versioned recipe schema and deterministic character mixing helpers.
+
+```ts
+import { createAnuimeRecipe } from "@/lib/anuime-recipe";
+
+const recipe = createAnuimeRecipe("kira");
+```

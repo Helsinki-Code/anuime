@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.13
+      - run: bun install --frozen-lockfile
+      - run: bunx vp check
+      - run: bun --bun ./scripts/doctor.ts
+      - run: bunx vp test run
+      - run: bunx vp build
+
+  ai-director:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/ai-director
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: apps/ai-director/package-lock.json
+      - run: npm ci
+      - run: npm run info
+      - run: npm run build
+
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.13
+      - run: bun install --frozen-lockfile
+      - run: bunx playwright install --with-deps chromium
+      - run: bunx vp build
+      - run: bun run test:browser --project=chromium
+
+  consumer-fixtures:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        fixture: [vite-react, next-react, tanstack-start]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.13
+      - run: node scripts/sync-consumer-fixtures.mjs
+      - working-directory: fixtures/${{ matrix.fixture }}
+        run: bun install
+      - working-directory: fixtures/${{ matrix.fixture }}
+        run: bun run build
