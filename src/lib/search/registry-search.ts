@@ -12,7 +12,7 @@ import {
 } from "../registry/sections";
 
 const DEFAULT_SEARCH_LIMIT = 20;
-const MAX_SEARCH_LIMIT = 50;
+const MAX_SEARCH_LIMIT = 200;
 
 const registrySearchSchema = {
   id: "string",

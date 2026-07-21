@@ -10,6 +10,11 @@
       "@/components/ui/anuime-accordion": [
         "./registry/items/components/anuime-accordion/anuime-accordion.tsx"
       ],
+      "@/components/ui/anuime-alert": ["./registry/items/components/anuime-alert/anuime-alert.tsx"],
+      "@/components/ui/anuime-avatar": [
+        "./registry/items/components/anuime-avatar/anuime-avatar.tsx"
+      ],
+      "@/components/ui/anuime-badge": ["./registry/items/components/anuime-badge/anuime-badge.tsx"],
       "@/components/ui/anuime-button": [
         "./registry/items/components/anuime-button/anuime-button.tsx"
       ],
@@ -20,11 +25,31 @@
       "@/components/ui/anuime-data-table": [
         "./registry/items/components/anuime-data-table/anuime-data-table.tsx"
       ],
+      "@/components/ui/anuime-empty-state": [
+        "./registry/items/components/anuime-empty-state/anuime-empty-state.tsx"
+      ],
+      "@/components/ui/anuime-kbd": ["./registry/items/components/anuime-kbd/anuime-kbd.tsx"],
       "@/components/ui/anuime-popover": [
         "./registry/items/components/anuime-popover/anuime-popover.tsx"
       ],
       "@/components/ui/anuime-progress": [
         "./registry/items/components/anuime-progress/anuime-progress.tsx"
+      ],
+      "@/components/ui/anuime-sidebar": [
+        "./registry/items/components/anuime-sidebar/anuime-sidebar.tsx"
+      ],
+      "@/components/ui/anuime-skeleton": [
+        "./registry/items/components/anuime-skeleton/anuime-skeleton.tsx"
+      ],
+      "@/components/ui/anuime-table": ["./registry/items/components/anuime-table/anuime-table.tsx"],
+      "@/components/blocks/atlas-operations-center": [
+        "./registry/items/blocks/atlas-operations-center/atlas-operations-center.tsx"
+      ],
+      "@/components/blocks/kira-command-center": [
+        "./registry/items/blocks/kira-command-center/kira-command-center.tsx"
+      ],
+      "@/components/blocks/mochi-creator-companion": [
+        "./registry/items/blocks/mochi-creator-companion/mochi-creator-companion.tsx"
       ],
       "@/*": ["./src/*"],
       "content-collections": ["./.content-collections/generated"]

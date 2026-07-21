@@ -7,7 +7,7 @@ AnUIme is an open-source, shadcn-compatible React component registry where origi
 ## Product
 
 - Three launch systems: Kira, Mochi, and Atlas
-- Twelve installable UI components and one authentication block
+- Fifty-one installable UI components and ten composed blocks
 - Deterministic character recipes
 - Interactive Character Studio
 - Source-owned React and TypeScript
