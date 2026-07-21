@@ -75,6 +75,7 @@ describe("prerender pages", () => {
 
     expect(paths).toContain(registryCatalog.basePath);
     expect(paths).toContain(getDocsMarkdownPath(registryCatalog.basePath));
+    expect(paths).not.toContain("/studio");
 
     for (const section of getRegistrySectionsWithItems(registryItems)) {
       expect(paths).toContain(section.basePath);

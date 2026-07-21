@@ -19,6 +19,18 @@ test("restores shared Studio state and browser history", async ({ page }) => {
   await expect(componentPicker).toHaveValue("popover");
 });
 
+test("shared Studio URLs hydrate without client errors", async ({ page }) => {
+  const pageErrors: string[] = [];
+  page.on("pageerror", (error) => pageErrors.push(error.message));
+
+  await page.goto("/studio?component=alert&state=warning");
+  await waitForStudio(page);
+
+  await expect(page.locator("aside").getByLabel("Component")).toHaveValue("alert");
+  await expect(page.getByText("Warning transmission")).toBeVisible();
+  expect(pageErrors).toEqual([]);
+});
+
 test("recovers from invalid recipes", async ({ page }) => {
   await page.goto("/studio?recipe=not-a-recipe");
   await waitForStudio(page);

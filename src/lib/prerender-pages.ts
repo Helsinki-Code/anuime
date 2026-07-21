@@ -52,7 +52,6 @@ export function createPrerenderPages({
   };
 
   addPath("/");
-  addPath("/studio");
   addPath("/characters");
   addPath("/characters/kira");
   addPath("/characters/mochi");
