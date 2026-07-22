@@ -13,7 +13,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/anuime/anuime.git"
+    "url": "https://github.com/Helsinki-Code/anuime.git"
   },
   "type": "module",
   "scripts": {

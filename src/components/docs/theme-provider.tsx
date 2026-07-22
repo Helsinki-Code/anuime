@@ -3,7 +3,12 @@ import * as React from "react";
 
 const THEME_STORAGE_KEY = "theme";
 
-type Theme = "light" | "dark" | "system";
+export type Theme = "light" | "dark" | "system";
+
+export type ThemeTransitionOrigin = {
+  x: number;
+  y: number;
+};
 
 type ThemeProviderProps = {
   children: React.ReactNode;
@@ -14,10 +19,11 @@ type ThemeProviderProps = {
 type ThemeContextValue = {
   theme: Theme;
   resolvedTheme: "light" | "dark";
-  setTheme: (theme: Theme) => void;
+  setTheme: (theme: Theme, origin?: ThemeTransitionOrigin) => void;
 };
 
 const ThemeContext = React.createContext<ThemeContextValue | null>(null);
+let transitionCleanupTimer: number | undefined;
 
 function isTheme(value: string | null): value is Theme {
   return value === "light" || value === "dark" || value === "system";
@@ -57,6 +63,30 @@ function applyTheme(theme: Theme) {
   return resolvedTheme;
 }
 
+function getCurrentResolvedTheme(): "light" | "dark" {
+  return document.documentElement.classList.contains("dark") ? "dark" : "light";
+}
+
+function prepareThemeTransition(resolvedTheme: "light" | "dark", origin?: ThemeTransitionOrigin) {
+  const root = document.documentElement;
+  const x = Math.min(window.innerWidth, Math.max(0, origin?.x ?? window.innerWidth - 28));
+  const y = Math.min(window.innerHeight, Math.max(0, origin?.y ?? 28));
+
+  root.style.setProperty("--theme-transition-x", `${x}px`);
+  root.style.setProperty("--theme-transition-y", `${y}px`);
+  root.dataset.themeTransition = resolvedTheme;
+  root.classList.add("theme-switching");
+}
+
+function cleanupThemeTransition() {
+  window.clearTimeout(transitionCleanupTimer);
+  transitionCleanupTimer = undefined;
+
+  const root = document.documentElement;
+  root.classList.remove("theme-switching", "theme-view-transition", "theme-fallback-transition");
+  delete root.dataset.themeTransition;
+}
+
 function getThemeScript(storageKey: string, defaultTheme: Theme) {
   const key = JSON.stringify(storageKey);
   const fallback = JSON.stringify(defaultTheme);
@@ -76,9 +106,35 @@ export function ThemeProvider({
   const [mounted, setMounted] = React.useState(false);
 
   const setTheme = React.useCallback(
-    (nextTheme: Theme) => {
+    (nextTheme: Theme, origin?: ThemeTransitionOrigin) => {
       window.localStorage.setItem(storageKey, nextTheme);
-      setThemeState(nextTheme);
+      const nextResolvedTheme = getResolvedTheme(nextTheme);
+      const currentResolvedTheme = getCurrentResolvedTheme();
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const commitTheme = () => {
+        setResolvedTheme(applyTheme(nextTheme));
+        setThemeState(nextTheme);
+      };
+
+      cleanupThemeTransition();
+
+      if (prefersReducedMotion || nextResolvedTheme === currentResolvedTheme) {
+        commitTheme();
+        return;
+      }
+
+      prepareThemeTransition(nextResolvedTheme, origin);
+
+      if (typeof document.startViewTransition === "function" && !document.activeViewTransition) {
+        document.documentElement.classList.add("theme-view-transition");
+        const transition = document.startViewTransition(commitTheme);
+        void transition.finished.catch(() => undefined).finally(cleanupThemeTransition);
+      } else {
+        document.documentElement.classList.add("theme-fallback-transition");
+        commitTheme();
+      }
+
+      transitionCleanupTimer = window.setTimeout(cleanupThemeTransition, 900);
     },
     [storageKey],
   );

@@ -99,7 +99,7 @@ function RootRoute() {
     <ThemeProvider>
       <TooltipProvider>
         <NavigationProgress />
-        <div className="flex min-h-svh flex-col">
+        <div data-theme-canvas className="flex min-h-svh flex-col">
           <SiteHeader />
           <div className="flex-1">
             <Outlet />

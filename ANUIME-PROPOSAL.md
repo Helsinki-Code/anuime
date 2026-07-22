@@ -18,7 +18,7 @@ Each original AnUIme character embodies a coherent visual language—color, typo
 
 The result is not “anime decoration on generic UI.” It is a new way to browse, understand, and combine design systems through memorable characters.
 
-AnUIme will launch as an open-source React registry with three character systems and twelve essential components. The initial product will prioritize component quality, accessibility, installation, and remixability. Community creation, additional characters, and commercial team features will follow only after the core workflow proves useful.
+AnUIme now operates as an open-source React registry with three character systems, 51 installable components, and ten composed blocks. The product prioritizes component quality, accessibility, installation, and remixability. Community creation, additional characters, and commercial team features follow only after the core workflow proves useful.
 
 ---
 
@@ -133,7 +133,7 @@ All characters and artwork will be original, with a public visual provenance and
 
 ### 5.2 Component Registry
 
-The launch collection will contain twelve deeply finished components:
+The original launch baseline contained the following twelve components. The live registry has since expanded to 51 installable components, with `/components` as the canonical inventory:
 
 1. Button
 2. Input
@@ -274,7 +274,7 @@ The launch should demonstrate one component transforming across three systems, t
 1. Publish the manifesto and interactive three-character Button demonstration.
 2. Recruit 25 design-engineer alpha users from anime, gaming, and indie-product communities.
 3. Release the first six components and collect task-based usability feedback.
-4. Complete the twelve-component launch collection and public registry.
+4. Expand and validate the public registry to 51 installable components and ten composed blocks.
 5. Open a curated recipe gallery and waitlist for the AI Director.
 6. Introduce paid Studio capabilities only after repeat installation is demonstrated.
 
@@ -302,7 +302,7 @@ The launch should demonstrate one component transforming across three systems, t
 
 ### Phase 2 — Public MVP | Weeks 9–16
 
-- Complete all twelve launch components
+- Complete and validate the expanded 51-component catalog
 - Ship light/dark and reduced-motion behavior
 - Publish contribution and original-IP policies
 - Add recipes, search, and installation analytics

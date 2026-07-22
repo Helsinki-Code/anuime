@@ -5,6 +5,10 @@
 **Base repository:** TanStack Start + shadcn-compatible registry
 **Target:** Public MVP in 16 weeks, followed by a gated AI Director proof
 
+> **Current implementation status:** The original twelve-component MVP baseline has been exceeded.
+> AnUIme now publishes 51 installable components and ten composed blocks; `/components` and
+> `/blocks` are the canonical live inventories.
+
 ## 1. Product goal
 
 Launch AnUIme as an open-source React component registry where three original anime characters represent complete, accessible design systems.
@@ -20,7 +24,7 @@ The MVP is not an AI code generator, social network, character game, marketplace
 ### Included
 
 - Three original character systems: Kira, Mochi, and Atlas
-- Twelve production-ready registry components
+- 51 production-ready registry components and ten composed blocks
 - Character switching on every component preview
 - Deterministic mixing across color, shape, structure, motion, and density
 - Shareable recipe URLs
@@ -43,7 +47,7 @@ The MVP is not an AI code generator, social network, character game, marketplace
 - Custom model training
 - AR/VR, sound-reactive animation, or mobile applications
 
-## 3. Launch components
+## 3. Original launch baseline components
 
 Build in risk order rather than marketing order.
 
@@ -299,7 +303,7 @@ Add character switching to previews and create the first “one component, three
 
 **Exit gate**
 
-- All twelve components pass the definition of done.
+- All 51 published components pass the definition of done.
 - Production build and registry doctor pass.
 - Every component installs into a clean consumer fixture.
 - There is a documented rollback path for registry releases.
