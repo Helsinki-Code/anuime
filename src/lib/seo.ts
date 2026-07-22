@@ -68,6 +68,7 @@ export function getSeoHead({
   const pageTitle = getPageTitle(title);
   const pageDescription = description.trim() || siteConfig.description;
   const canonicalUrl = getCanonicalSiteUrl(path);
+  const socialImageUrl = getCanonicalSiteUrl("/logo/og_image.png");
 
   return {
     meta: [
@@ -78,9 +79,15 @@ export function getSeoHead({
       { property: "og:site_name", content: siteConfig.name },
       { property: "og:type", content: ogType },
       { property: "og:url", content: canonicalUrl },
-      { name: "twitter:card", content: "summary" },
+      { property: "og:image", content: socialImageUrl },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: `${siteConfig.name} logo` },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: pageTitle },
       { name: "twitter:description", content: pageDescription },
+      { name: "twitter:image", content: socialImageUrl },
+      { name: "twitter:image:alt", content: `${siteConfig.name} logo` },
     ],
     links: [
       { rel: "canonical", href: canonicalUrl },
@@ -237,6 +244,7 @@ function getOrganizationJsonLd(): JsonLdObject {
     "@type": "Organization",
     name: siteConfig.name,
     url: getCanonicalSiteUrl("/"),
+    logo: getCanonicalSiteUrl("/logo/app_icon_1024.png"),
     sameAs: [siteConfig.repositoryUrl],
   };
 }

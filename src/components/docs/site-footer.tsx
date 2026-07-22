@@ -1,15 +1,22 @@
 import { IconArrowUpRight, IconHeart } from "@tabler/icons-react";
+import { Link } from "@tanstack/react-router";
 
 import { siteConfig } from "../../lib/site-config";
+import { SiteLogo } from "./site-logo";
 
 export function SiteFooter() {
   return (
     <footer className="mt-10">
-      <div className="mx-auto flex max-w-screen-2xl flex-col items-center justify-between gap-3 px-4 py-7 text-xs text-muted-foreground sm:flex-row sm:px-6 lg:px-8">
-        <p className="inline-flex items-center gap-1.5">
-          Built with <IconHeart className="size-3.5 text-fuchsia-500" aria-label="care" /> for
-          expressive interfaces.
-        </p>
+      <div className="mx-auto flex max-w-screen-2xl flex-col items-center justify-between gap-4 px-4 py-7 text-xs text-muted-foreground sm:flex-row sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
+          <Link to="/" aria-label={`${siteConfig.name} home`}>
+            <SiteLogo />
+          </Link>
+          <p className="inline-flex items-center gap-1.5">
+            Built with <IconHeart className="size-3.5 text-fuchsia-500" aria-label="care" /> for
+            expressive interfaces.
+          </p>
+        </div>
         <a
           href={siteConfig.repositoryUrl}
           target="_blank"

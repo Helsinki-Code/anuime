@@ -46,6 +46,14 @@ describe("seo helpers", () => {
       property: "og:type",
       content: "article",
     });
+    expect(head.meta).toContainEqual({
+      property: "og:image",
+      content: getCanonicalSiteUrl("/logo/og_image.png"),
+    });
+    expect(head.meta).toContainEqual({
+      name: "twitter:card",
+      content: "summary_large_image",
+    });
     expect(head.scripts).toContainEqual({
       type: "application/ld+json",
       children: expect.stringContaining('"@type":"TechArticle"'),

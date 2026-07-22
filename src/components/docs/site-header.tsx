@@ -4,6 +4,7 @@ import * as React from "react";
 
 import { DocsSidebar } from "@/components/docs/docs-sidebar";
 import { SearchDialog } from "@/components/docs/search-dialog";
+import { SiteLogo } from "@/components/docs/site-logo";
 import { ThemeToggle } from "@/components/docs/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -38,11 +39,9 @@ export function SiteHeader() {
           </SheetContent>
         </Sheet>
 
-        <Link to="/" className="flex items-center gap-2.5">
-          <RegistryLogo className="size-5 shrink-0" aria-hidden="true" />
-          <span className="font-mono text-sm font-semibold tracking-tighter">
-            {siteConfig.name}
-          </span>
+        <Link to="/" className="shrink-0" aria-label={`${siteConfig.name} home`}>
+          <SiteLogo compact className="sm:hidden" />
+          <SiteLogo className="hidden sm:inline-block" />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -138,24 +137,4 @@ function HeaderSectionLink({
 
 function isSectionActive(section: SiteNavigationSection, pathname: string) {
   return pathname === section.basePath || pathname.startsWith(`${section.basePath}/`);
-}
-
-function RegistryLogo(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 36 36" fill="none" focusable="false" {...props}>
-      <defs>
-        <linearGradient id="anuime-mark" x1="4" y1="3" x2="32" y2="34">
-          <stop stopColor="#22d3ee" />
-          <stop offset="0.52" stopColor="#8b5cf6" />
-          <stop offset="1" stopColor="#f472b6" />
-        </linearGradient>
-      </defs>
-      <rect width="36" height="36" rx="11" fill="url(#anuime-mark)" />
-      <path
-        d="M9 26 17.2 9h2.9L28 26h-4.7l-1.5-3.7h-6.9L13.3 26H9Zm7.3-7.4h4.1l-2-5.1-2.1 5.1Z"
-        fill="white"
-      />
-      <path d="m24.8 7 .8 2.1 2.2.8-2.2.8-.8 2.1-.8-2.1-2.2-.8 2.2-.8.8-2.1Z" fill="white" />
-    </svg>
-  );
 }

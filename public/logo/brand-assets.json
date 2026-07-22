@@ -1,0 +1,29 @@
+{
+  "brand": "AnUIme",
+  "masters": {
+    "darkSurfaceWordmark": "dark_theme_logo.png",
+    "lightSurfaceWordmark": "light_theme_logo.png",
+    "darkSurfaceMark": "mark_for_dark.png",
+    "lightSurfaceMark": "mark_for_light.png"
+  },
+  "web": {
+    "darkSurfaceWordmark": "dark_theme_logo_site.png",
+    "lightSurfaceWordmark": "light_theme_logo_site.png",
+    "appIcon": "app_icon_1024.png",
+    "maskableIcon": "maskable_icon_1024.png"
+  },
+  "social": {
+    "openGraph": "og_image.png",
+    "twitter": "twitter_card.png",
+    "github": "github_social_preview.png",
+    "transparent": "social_logo_transparent.png"
+  },
+  "palette": {
+    "nightInk": "#07152F",
+    "signalCyan": "#22D3EE",
+    "gridBlue": "#60A5FA",
+    "energyViolet": "#8B5CF6",
+    "dreamRose": "#F472B6",
+    "cloudWhite": "#FAFAFA"
+  }
+}
