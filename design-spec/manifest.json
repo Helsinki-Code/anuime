@@ -1,0 +1,69 @@
+{
+  "$schema": "./schema.json",
+  "specVersion": "2.0.0-phase-0",
+  "status": "awaiting-user-signoff",
+  "designAuthority": "The six approved Design Component HTML boards are the only design source of truth. Repository code is legacy wherever it contradicts this spec.",
+  "scope": {
+    "phase": 0,
+    "implementationAuthorized": false,
+    "nextGate": "User approval of this extraction before any registry v2 code.",
+    "nextCheckpointAfterApproval": "Stop after the first three rebuilt components, one per character."
+  },
+  "sources": [
+    {
+      "character": "kira",
+      "theme": "light",
+      "path": "Character Design Systems 3/Kira Light.dc.html",
+      "sha256": "0bb33db657b5a26c5cb0612c082f2338dc85513496beca337e52a13bb71bba1f",
+      "lines": 354
+    },
+    {
+      "character": "kira",
+      "theme": "dark",
+      "path": "Character Design Systems 3/Kira Dark.dc.html",
+      "sha256": "ee497579bab4e04603b78b09a75956a7c128157361086a10b0691e263577f6ee",
+      "lines": 358
+    },
+    {
+      "character": "mochi",
+      "theme": "light",
+      "path": "Character Design Systems 3/Mochi Light.dc.html",
+      "sha256": "bb9365a2ad4281f638d13dc52c7930aa4604eca04fbac2b2c3e9eaeba72e5c3c",
+      "lines": 359
+    },
+    {
+      "character": "mochi",
+      "theme": "dark",
+      "path": "Character Design Systems 3/Mochi Dark.dc.html",
+      "sha256": "fa8542237d136641c496138b13c7d7b7a5379b13eb5ac8715105c5b5354e8897",
+      "lines": 362
+    },
+    {
+      "character": "atlas",
+      "theme": "light",
+      "path": "Character Design Systems 3/Atlas Light.dc.html",
+      "sha256": "2e4cd3f117b30a788ad1e4978d92c0f74814d81cb319db9be74a8568d2490d51",
+      "lines": 376
+    },
+    {
+      "character": "atlas",
+      "theme": "dark",
+      "path": "Character Design Systems 3/Atlas Dark.dc.html",
+      "sha256": "91403e042b0af5379daddee50d0ee0f11213740299da6275dd8dbade982d9d7e",
+      "lines": 376
+    }
+  ],
+  "files": {
+    "themes": "themes.json",
+    "motifsAndConstraints": "laws.json",
+    "componentConstruction": "components.json",
+    "expressiveMotion": "motion.json",
+    "derivedReviewList": "derived-not-specified.json"
+  },
+  "extractionConventions": {
+    "declared": "Copied directly from board data or captions.",
+    "normalized": "Board-authored values grouped under stable machine keys without changing values.",
+    "interpreted": "A source conflict or scope boundary made an implementation interpretation necessary; every such field carries sourceEvidence and requires sign-off.",
+    "derived": "A future component treatment inferred from motif laws because no board construction exists; all such registry items are isolated in derived-not-specified.json."
+  }
+}

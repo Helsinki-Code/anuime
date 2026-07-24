@@ -1,0 +1,731 @@
+{
+  "specVersion": "2.0.0-phase-0",
+  "globalConstraints": [
+    {
+      "id": "global.boards-are-authority",
+      "level": "must",
+      "rule": "The six approved HTML boards override repository legacy and implementation instinct.",
+      "enforcement": {
+        "review": "Reject any token, geometry, motion, or carrier that contradicts an extracted board value or caption."
+      },
+      "sourceEvidence": [{ "file": "pasted-text-1.txt", "lines": "Phase 0 opening paragraph" }]
+    },
+    {
+      "id": "global.two-tier",
+      "level": "must",
+      "rule": "Workhorse components stay strictly abstract. Only waiting and transition states may channel character power.",
+      "enforcement": {
+        "workhorseAnimation": "forbidden except functional state transition",
+        "expressiveAnimation": "allowed only for loader, text reveal, success, empty/waiting transition states",
+        "characterIllustrationInWorkhorse": "forbidden"
+      },
+      "sourceEvidence": [
+        { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "247-250" },
+        { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "246-249" },
+        { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "261-264" }
+      ]
+    },
+    {
+      "id": "global.seven-plus-power",
+      "level": "must",
+      "rule": "Each character has seven workhorse motif laws. POWER is a separate expressive-only assembly of the same vocabulary.",
+      "enforcement": {
+        "workhorseMotifCount": 7,
+        "powerCarrierTier": "expressive-only",
+        "powerMayBecomeGeneralDecoration": false
+      },
+      "sourceEvidence": [
+        { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "339-347" },
+        { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "344-352" },
+        { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "361-369" }
+      ]
+    },
+    {
+      "id": "global.theme-geometry-parity",
+      "level": "must",
+      "rule": "Light and dark variants use identical component and motif geometry. Theme changes color and whether light is drawn or emitted.",
+      "enforcement": {
+        "geometryDiffAcrossThemes": "none",
+        "allowedThemeDiffs": ["token values", "glow", "shadow intensity", "emission wording"]
+      },
+      "sourceEvidence": [
+        { "file": "Character Design Systems 3/Kira Dark.dc.html", "lines": "238-243" },
+        { "file": "Character Design Systems 3/Mochi Dark.dc.html", "lines": "236-242" },
+        { "file": "Character Design Systems 3/Atlas Dark.dc.html", "lines": "244-257" }
+      ]
+    },
+    {
+      "id": "global.reduced-motion",
+      "level": "must",
+      "rule": "Every Expressive Moments implementation must disable animation when prefers-reduced-motion is reduce and retain a recognizable static state.",
+      "enforcement": {
+        "requiredMediaQuery": "@media (prefers-reduced-motion: reduce)",
+        "requiredEffect": "animation: none !important",
+        "staticContentRequired": true
+      },
+      "sourceEvidence": [
+        { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "24" },
+        { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "23" },
+        { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "27" }
+      ]
+    },
+    {
+      "id": "global.token-only-color",
+      "level": "must",
+      "rule": "Registry v2 components must use the approved theme token ladder; raw board support values must first be promoted to named theme roles.",
+      "enforcement": {
+        "rawHexInComponentSource": "forbidden",
+        "rawRgbInComponentSource": "forbidden",
+        "exception": "SVG alpha may use a color-mix or named alpha token derived from an approved color."
+      },
+      "sourceEvidence": [
+        {
+          "file": "pasted-text-1.txt",
+          "lines": "Phase 1 theme requirement and MCP review requirements"
+        }
+      ]
+    }
+  ],
+  "characters": {
+    "kira": {
+      "motifLaws": [
+        {
+          "id": "kira.hairpin",
+          "artifact": "hairpin",
+          "geometry": {
+            "name": "chevron",
+            "prototype": "Open polyline: (12,24) → (22,12) → (32,24), no fill, 2px accent stroke.",
+            "qualities": ["sharp", "open", "mitered"]
+          },
+          "componentCarriers": ["tabs indicator", "checkbox check", "menu marker"],
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "340" }
+          ]
+        },
+        {
+          "id": "kira.earring",
+          "artifact": "earring",
+          "geometry": {
+            "name": "kite",
+            "prototype": "12×12 square outline rotated 45°, 1.8px accent stroke.",
+            "qualities": ["faceted", "balanced", "outlined"]
+          },
+          "componentCarriers": ["slider thumb", "tooltip pointer"],
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "341" }
+          ]
+        },
+        {
+          "id": "kira.circuit",
+          "artifact": "circuit",
+          "geometry": {
+            "name": "node line",
+            "prototype": "1.5px support line with 3px active circles and an outlined pending circle.",
+            "qualities": ["connected", "sequenced", "hairline"]
+          },
+          "componentCarriers": ["progress nodes", "status dots", "focus stem"],
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "342" }
+          ]
+        },
+        {
+          "id": "kira.strap",
+          "artifact": "strap",
+          "geometry": {
+            "name": "buckle",
+            "prototype": "28×14 rounded rectangle frame, rx 3, containing an 8×8 inset buckle frame, rx 1.5.",
+            "qualities": ["rectangular", "framed", "never pill"]
+          },
+          "componentCarriers": ["switch", "toggle group"],
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "343" }
+          ]
+        },
+        {
+          "id": "kira.collar",
+          "artifact": "collar",
+          "geometry": {
+            "name": "ring and stem",
+            "prototype": "7px-radius accent ring with a vertical stem descending from y21 to y30.",
+            "qualities": ["focus", "anchored", "thin light"]
+          },
+          "componentCarriers": ["focus ring and stem", "active badge"],
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "344" }
+          ]
+        },
+        {
+          "id": "kira.fringe",
+          "artifact": "fringe",
+          "geometry": {
+            "name": "diagonal",
+            "prototype": "Paired directional hairlines using the 114° system axis; primary accent line plus support line.",
+            "qualities": ["single directional pitch", "sweeping", "thin"]
+          },
+          "componentCarriers": ["skeleton shimmer", "card sweep", "dialog sweep"],
+          "sourceEvidence": [
+            {
+              "file": "Character Design Systems 3/Kira Light.dc.html",
+              "lines": "100, 118, 210-214, 345"
+            }
+          ]
+        },
+        {
+          "id": "kira.shard",
+          "artifact": "light shard",
+          "geometry": {
+            "name": "fragment",
+            "prototype": "Narrow 6×14 accent rectangle skewed −18°.",
+            "qualities": ["small", "skewed", "incisive"]
+          },
+          "componentCarriers": ["toast marker", "error marker", "degraded status marker"],
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "346" }
+          ]
+        }
+      ],
+      "powerAssembly": {
+        "id": "kira.power",
+        "name": "blade-light",
+        "tier": "expressive-only",
+        "geometry": "A 2.4px slash plus a narrow −18° shard; motion follows the 114° fringe axis.",
+        "componentCarriers": ["loader slash", "text ignition", "success crystallize"],
+        "sourceEvidence": [
+          { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "347" }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "kira.no-pills",
+          "level": "must-not",
+          "rule": "No elongated pill geometry anywhere in the workhorse set.",
+          "enforcement": {
+            "rejectWhen": "width != height AND border-radius >= min(width,height)/2",
+            "allow": [
+              "true circles used as circuit nodes/status points",
+              "the authored collar ring"
+            ],
+            "interpretationStatus": "requires-signoff"
+          },
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "80-94" },
+            {
+              "file": "Character Design Systems 3/Kira Light.dc.html",
+              "lines": "171, 192, 335-336"
+            }
+          ]
+        },
+        {
+          "id": "kira.directional-angle",
+          "level": "must",
+          "rule": "114° is the only directional system axis.",
+          "enforcement": {
+            "allowedDirectionalAnglesDeg": [114],
+            "constructionTransformExceptionsDeg": [45, -18, -24],
+            "exceptionScope": {
+              "45": ["kite rotation"],
+              "-18": ["shard skew", "degraded marker skew"],
+              "-24": ["blade body skew"]
+            },
+            "interpretationStatus": "requires-signoff"
+          },
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "210-214" },
+            {
+              "file": "Character Design Systems 3/Kira Light.dc.html",
+              "lines": "162, 199, 256-258"
+            }
+          ]
+        },
+        {
+          "id": "kira.light-in-lines",
+          "level": "must",
+          "rule": "Light lives in thin lines and seams, not broad decorative fills.",
+          "enforcement": {
+            "accentUse": ["hairline", "state", "focus", "small motif"],
+            "largeAccentSurface": "forbidden except transient expressive wash"
+          },
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "243" },
+            { "file": "Character Design Systems 3/Kira Dark.dc.html", "lines": "32" }
+          ]
+        }
+      ],
+      "boardCaptions": [
+        {
+          "id": "intro",
+          "light": "A blade in daylight. Violet-tinted paper, cyan withdrawn to hairlines and state — and seven artifacts from the artwork abstracted into pure geometry: chevron, kite, circuit node, strap-buckle, collar ring, fringe diagonal, light shard.",
+          "dark": "Nocturne — the native condition. Dark violet mass, light living in thin emissive seams — carrying the same seven abstracted artifacts: chevron, kite, circuit node, strap-buckle, collar ring, fringe diagonal, light shard."
+        },
+        {
+          "id": "focus",
+          "light": "Collar-ring focus: 1.5px cyan ring with a descending circuit stem — the collar's ring and chest seam.",
+          "dark": "Collar-ring focus with descending circuit stem — emissive in the dark."
+        },
+        {
+          "id": "switch-toggle",
+          "light": "Rectangular strap track, square buckle-frame thumb — no pill geometry anywhere in the set.",
+          "dark": "Rectangular strap track, square buckle-frame thumb — no pill geometry anywhere in the set."
+        },
+        {
+          "id": "dropdown",
+          "light": "Hovered row carries the hairpin chevron as its leading marker.",
+          "dark": "Hovered row carries the hairpin chevron as its leading marker."
+        },
+        {
+          "id": "skeleton",
+          "light": "Shimmer runs at 114° — the fringe's diagonal, the only angle in the system.",
+          "dark": "Shimmer runs at 114° — the fringe's diagonal, the only angle in the system."
+        },
+        {
+          "id": "data-table",
+          "light": "Circuit-node dots for healthy rows; a skewed shard marks the degraded one.",
+          "dark": "Circuit-node dots for healthy rows; a skewed shard marks the degraded one."
+        },
+        {
+          "id": "signature",
+          "light": "On keyboard focus a 1px cyan line traces the perimeter in 240ms, then settles into the collar ring + stem. Light lives in lines.",
+          "dark": "The 240ms perimeter trace, emissive in the dark, settling into the collar ring + stem. Geometry identical to light; only the light behaves differently."
+        },
+        {
+          "id": "two-tier",
+          "light": "Two-tier rule: workhorse components stay strictly abstract. Only waiting & transition states channel Kira's blade-light — same geometry, drawn as linework in daylight.",
+          "dark": "Two-tier rule: workhorse components stay strictly abstract. Only waiting & transition states channel Kira's blade-light — same geometry, emitted as neon light in the dark."
+        }
+      ],
+      "forbidden": [
+        "elongated pill/capsule geometry",
+        "directional system axes other than 114°",
+        "off-token colors",
+        "broad cyan decoration on workhorse surfaces",
+        "blade-light power animation on non-waiting, non-transition workhorses",
+        "dark-only geometry"
+      ]
+    },
+    "mochi": {
+      "motifLaws": [
+        {
+          "id": "mochi.clasp",
+          "artifact": "clasp",
+          "geometry": {
+            "name": "gold bar",
+            "prototype": "20×10 rounded rectangle frame, rx 3, with short centered side bars.",
+            "qualities": ["framed", "jewelry-like", "restrained"]
+          },
+          "componentCarriers": ["switch", "toggle group"],
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "345" }
+          ]
+        },
+        {
+          "id": "mochi.pearl",
+          "artifact": "pearl",
+          "geometry": {
+            "name": "bead",
+            "prototype": "3.5px rose beads strung on a 1.2px support line; pending bead is gold outline.",
+            "qualities": ["circular", "strung", "graduated"]
+          },
+          "componentCarriers": ["slider thumb", "progress beads", "status dots"],
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "346" }
+          ]
+        },
+        {
+          "id": "mochi.crescent",
+          "artifact": "crescent",
+          "geometry": {
+            "name": "moon",
+            "prototype": "Subtractive crescent formed from nested arcs.",
+            "qualities": ["hanging", "soft", "asymmetric"]
+          },
+          "componentCarriers": ["tabs indicator", "menu marker"],
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "347" }
+          ]
+        },
+        {
+          "id": "mochi.star",
+          "artifact": "star",
+          "geometry": {
+            "name": "sparkle",
+            "prototype": "Four-point star with long vertical and horizontal tips.",
+            "qualities": ["small", "gold", "state marker"]
+          },
+          "componentCarriers": ["toast marker", "error marker"],
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "348" }
+          ]
+        },
+        {
+          "id": "mochi.ribbon",
+          "artifact": "ribbon",
+          "geometry": {
+            "name": "gold rule",
+            "prototype": "Parallel horizontal rules: 1.4px gold primary plus 1.4px support line.",
+            "qualities": ["horizontal", "fine", "trim-like"]
+          },
+          "componentCarriers": ["card rule", "table header", "separators"],
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "349" }
+          ]
+        },
+        {
+          "id": "mochi.drape",
+          "artifact": "drape",
+          "geometry": {
+            "name": "curve",
+            "prototype": "Single quadratic curve from (8,12) through (22,30) to (36,12).",
+            "qualities": ["settling", "fabric-like", "gracious"]
+          },
+          "componentCarriers": ["radius profile", "skeleton easing"],
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "350" }
+          ]
+        },
+        {
+          "id": "mochi.veil",
+          "artifact": "veil",
+          "geometry": {
+            "name": "mist",
+            "prototype": "Concentric rose circles at 22% and 50% opacity, implemented as a restrained radial wash.",
+            "qualities": ["soft", "translucent", "localized"]
+          },
+          "componentCarriers": ["dialog scrim", "bloom focus"],
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "351" }
+          ]
+        }
+      ],
+      "powerAssembly": {
+        "id": "mochi.power",
+        "name": "bloom-orbit",
+        "tier": "expressive-only",
+        "geometry": "A thin gold orbit with rose pearls at graduated opacity, composed with a gold sparkle.",
+        "componentCarriers": ["loader orbit", "word bloom", "success blossom"],
+        "sourceEvidence": [
+          { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "352" }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "mochi.gracious-never-sweet",
+          "level": "must",
+          "rule": "The system is gracious, never sweet.",
+          "enforcement": {
+            "allow": [
+              "restrained rose state",
+              "champagne/candlelit gold hairlines",
+              "ivory or plum mass",
+              "measured curves"
+            ],
+            "reject": [
+              "candy saturation",
+              "cute mascot treatment",
+              "excess sparkles",
+              "ornament without state or structure"
+            ]
+          },
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "31" }
+          ]
+        },
+        {
+          "id": "mochi.dark-not-black",
+          "level": "must-not",
+          "rule": "Mochi dark is derived from the artwork's mauve backdrop, not black.",
+          "enforcement": {
+            "blackSurface": "forbidden",
+            "requiredDarkFamily": "warm plum/mauve"
+          },
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Mochi Dark.dc.html", "lines": "31" }
+          ]
+        },
+        {
+          "id": "mochi.motion-never-brisk",
+          "level": "must",
+          "rule": "Mochi workhorse shimmer and bloom motion eases like fabric settling; it is never brisk.",
+          "enforcement": {
+            "skeletonDurationMs": 2600,
+            "skeletonTimingFunction": "ease-in-out",
+            "fastLinearShimmer": "forbidden"
+          },
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "207-213" }
+          ]
+        },
+        {
+          "id": "mochi.warmth-as-feedback",
+          "level": "must",
+          "rule": "Warmth is feedback and must be applied with restraint at the interaction point.",
+          "enforcement": {
+            "bloomOrigin": "interaction point",
+            "persistentFullSurfaceBloom": "forbidden",
+            "settleRequired": true
+          },
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "235-242" }
+          ]
+        }
+      ],
+      "boardCaptions": [
+        {
+          "id": "intro",
+          "light": "Atelier daylight. Warm ivory paper, champagne-gold hairlines, rose held for state. Seven artifacts abstracted to geometry: clasp, pearl, crescent, star, ribbon, drape, veil. Gracious — never sweet.",
+          "dark": "Dusk salon — derived from the artwork's mauve backdrop, not from black. Deep warm plum surfaces; gold and rose turn candlelit. The same seven artifacts: clasp, pearl, crescent, star, ribbon, drape, veil."
+        },
+        {
+          "id": "focus",
+          "light": "Bloom focus: the ring arrives inside a soft rose veil that breathes, then settles.",
+          "dark": "The bloom warms by candlelight — rose veiled in gold."
+        },
+        {
+          "id": "switch-toggle",
+          "light": "Soft-rectangular clasp track; the pearl thumb wears a gold rim. Pressed toggles take the gold clasp frame.",
+          "dark": "The pearl thumb keeps its gold rim; by dusk the clasp glows faintly rose."
+        },
+        {
+          "id": "dropdown",
+          "light": "The hovered row carries a small crescent — the artwork's hanging moons.",
+          "dark": "The hovered row carries a small crescent — the artwork's hanging moons."
+        },
+        {
+          "id": "skeleton",
+          "light": "The shimmer eases like fabric settling — 2.6s, never brisk.",
+          "dark": "The shimmer eases like fabric settling — 2.6s, never brisk."
+        },
+        {
+          "id": "data-table",
+          "light": "The header rule is gold — the ribbon trim; pearl dots carry status.",
+          "dark": "The gold header rule holds by candlelight; pearl dots glow softly."
+        },
+        {
+          "id": "signature",
+          "light": "Focus and selection bloom — a soft radial wash rises from the interaction point and settles, like the artwork's drifting sparkle. Warmth as feedback, applied with restraint.",
+          "dark": "By dusk the bloom is candlelit — rose wrapped in a gold undertone, rising from the interaction point and settling. Same geometry as daylight; warmer air."
+        },
+        {
+          "id": "two-tier",
+          "light": "Two-tier rule: workhorse components stay strictly abstract. Only waiting & transition states channel Mochi's bloom-magic — same geometry, drawn as linework in daylight.",
+          "dark": "Two-tier rule: workhorse components stay strictly abstract. Only waiting & transition states channel Mochi's bloom-magic — same geometry, candlelit by dusk."
+        }
+      ],
+      "forbidden": [
+        "black or neutral-charcoal dark surfaces",
+        "candy saturation or saccharine/cute styling",
+        "brisk linear shimmer",
+        "unrestrained full-surface rose or gold glow",
+        "off-token colors",
+        "bloom-magic animation on non-waiting, non-transition workhorses",
+        "dark-only geometry"
+      ]
+    },
+    "atlas": {
+      "motifLaws": [
+        {
+          "id": "atlas.buckle",
+          "artifact": "buckle",
+          "geometry": {
+            "name": "frame",
+            "prototype": "28×14 rectangular frame, rx 2, with centered vertical prong slot.",
+            "qualities": ["load-bearing", "framed", "mechanical"]
+          },
+          "componentCarriers": ["switch", "toggle group"],
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "362" }
+          ]
+        },
+        {
+          "id": "atlas.strap",
+          "artifact": "strap band",
+          "geometry": {
+            "name": "band",
+            "prototype": "Repeated 7×5 segments plus a 2px horizontal structural band.",
+            "qualities": ["segmented", "measured", "horizontal"]
+          },
+          "componentCarriers": ["tabs band", "progress segments"],
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "363" }
+          ]
+        },
+        {
+          "id": "atlas.panel",
+          "artifact": "panel bracket",
+          "geometry": {
+            "name": "bracket",
+            "prototype": "Four independent 90° corner brackets with 2px cobalt stroke.",
+            "qualities": ["docking", "structural", "corner-seated"]
+          },
+          "componentCarriers": ["dock focus", "dialog corners"],
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "364" }
+          ]
+        },
+        {
+          "id": "atlas.grid",
+          "artifact": "diamond grid",
+          "geometry": {
+            "name": "survey diamond",
+            "prototype": "10×10 outlined square and 5×5 filled square, both rotated 45°.",
+            "qualities": ["surveyed", "point-like", "grid-aligned"]
+          },
+          "componentCarriers": ["card grid", "status points", "menu marker"],
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "365" }
+          ]
+        },
+        {
+          "id": "atlas.lens",
+          "artifact": "lens bezel",
+          "geometry": {
+            "name": "bezel",
+            "prototype": "24×14 outer frame, rx 3, with 16×8 inset frame, rx 1.5.",
+            "qualities": ["inset", "double-frame", "optical"]
+          },
+          "componentCarriers": ["input inset", "tooltip frame"],
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "366" }
+          ]
+        },
+        {
+          "id": "atlas.beam",
+          "artifact": "light beam",
+          "geometry": {
+            "name": "ray",
+            "prototype": "Paired near-vertical lines at the authored 76° pitch, primary 2.2px and support 1.6px.",
+            "qualities": ["deliberate", "linear", "near-vertical"]
+          },
+          "componentCarriers": ["skeleton shimmer", "toast marker"],
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "216-222, 367" }
+          ]
+        },
+        {
+          "id": "atlas.core",
+          "artifact": "core ring",
+          "geometry": {
+            "name": "ring",
+            "prototype": "8px-radius 2px outline ring with 2.5px filled core.",
+            "qualities": ["central", "powered", "certified"]
+          },
+          "componentCarriers": ["slider thumb", "certified badge"],
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "368" }
+          ]
+        }
+      ],
+      "powerAssembly": {
+        "id": "atlas.power",
+        "name": "HUD assembly",
+        "tier": "expressive-only",
+        "geometry": "Core ring composed with docking brackets, scan line, and survey diamond.",
+        "componentCarriers": ["loader assembly", "scan reveal", "dock-lock"],
+        "sourceEvidence": [
+          { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "369" }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "atlas.load-bearing",
+          "level": "must",
+          "rule": "Atlas construction must read as load-bearing, not decorative.",
+          "enforcement": {
+            "ornamentWithoutStructuralCarrier": "forbidden",
+            "preferredQualities": ["framed", "segmented", "inset", "surveyed", "docked"]
+          },
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "88-102" }
+          ]
+        },
+        {
+          "id": "atlas.beam-angle",
+          "level": "must",
+          "rule": "Atlas beam shimmer uses the deliberate 76° near-vertical pitch.",
+          "enforcement": {
+            "beamDirectionalAnglesDeg": [76],
+            "diamondConstructionRotationDeg": 45
+          },
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "216-222" }
+          ]
+        },
+        {
+          "id": "atlas.selection-structural",
+          "level": "must",
+          "rule": "Selection is a structural docking event.",
+          "enforcement": {
+            "focusMechanism": "four panel brackets converge and seat around the control",
+            "focusDurationMs": 180,
+            "genericSoftHaloOnly": "forbidden"
+          },
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "244-257" }
+          ]
+        },
+        {
+          "id": "atlas.dark-emitted-data",
+          "level": "must",
+          "rule": "In dark mode cobalt reads as emitted data radiating from structure, not as broad decorative fill.",
+          "enforcement": {
+            "cobaltUse": ["linework", "survey state", "focus bracket", "small emission"],
+            "broadCobaltSurface": "forbidden"
+          },
+          "sourceEvidence": [
+            { "file": "Character Design Systems 3/Atlas Dark.dc.html", "lines": "35" }
+          ]
+        }
+      ],
+      "boardCaptions": [
+        {
+          "id": "intro",
+          "light": "Engineering drawing. Cool paper, cobalt linework, gunmetal text — structural and calm. Seven artifacts abstracted to geometry: buckle, strap band, panel bracket, diamond grid, lens bezel, light beam, core ring.",
+          "dark": "Blueprint luminescence — the native condition. Ink-navy volume; cobalt reads as emitted data, radiating from structure. The same seven artifacts: buckle, strap band, panel bracket, diamond grid, lens bezel, light beam, core ring."
+        },
+        {
+          "id": "focus",
+          "light": "Dock focus: panel brackets seat around the control — the chest console's frame.",
+          "dark": "The docked brackets emit — holographic in the dark."
+        },
+        {
+          "id": "switch-toggle",
+          "light": "Rectangular buckle track; the plate thumb carries a prong slot. Load-bearing, not decorative.",
+          "dark": "Rectangular buckle track; the plate thumb carries a prong slot. Load-bearing, not decorative."
+        },
+        {
+          "id": "dropdown",
+          "light": "The hovered row carries a diamond survey point from the backdrop grid.",
+          "dark": "The hovered row carries a diamond survey point from the backdrop grid."
+        },
+        {
+          "id": "skeleton",
+          "light": "Shimmer at 76° — the near-vertical pitch of the artwork's light beams. Deliberate, linear.",
+          "dark": "Shimmer at 76° — the near-vertical pitch of the artwork's light beams. Deliberate, linear."
+        },
+        {
+          "id": "data-table",
+          "light": "Mono uppercase header — the drawing's title block; diamond survey points carry status.",
+          "dark": "Mono uppercase header — the drawing's title block; diamond survey points glow like the backdrop grid."
+        },
+        {
+          "id": "signature",
+          "light": "On focus, four corner brackets converge and seat around the control in 180ms — the holographic panel docking to Atlas's chest console. Selection is a structural event.",
+          "dark": "The same 180ms docking, now emissive — the holographic panel seating onto the chest console. Geometry identical to light; the light is emitted instead of drawn."
+        },
+        {
+          "id": "two-tier",
+          "light": "Two-tier rule: workhorse components stay strictly abstract. Only waiting & transition states channel Atlas's HUD-power — same geometry, drawn as cobalt linework in daylight.",
+          "dark": "Two-tier rule: workhorse components stay strictly abstract. Only waiting & transition states channel Atlas's HUD-power — same geometry, emitted as holographic light in the dark."
+        }
+      ],
+      "forbidden": [
+        "ornament without structural function",
+        "beam directions other than 76°",
+        "generic halo-only focus in place of docking brackets",
+        "broad cobalt decorative fills",
+        "off-token colors",
+        "HUD-power animation on non-waiting, non-transition workhorses",
+        "dark-only geometry"
+      ]
+    }
+  }
+}

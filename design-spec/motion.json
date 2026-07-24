@@ -1,0 +1,448 @@
+{
+  "specVersion": "2.0.0-phase-0",
+  "policy": {
+    "tier": "Expressive power motion is limited to waiting and transition states.",
+    "verbatimRule": "Every keyframe string below is copied byte-for-byte from the corresponding board style block.",
+    "reducedMotion": "The boards disable animation for every descendant of an `.xm` Expressive Moments container.",
+    "productionIterationTension": {
+      "status": "requires-signoff",
+      "issue": "Board preview declarations use `infinite` for success and some lock/settle animations, while captions describe a settled or held terminal state.",
+      "proposal": "Keep keyframes verbatim. In production items, default success and lock moments to one iteration with fill-mode both/forwards; expose looping only for previews. Keep loader, ambient empty, and explicitly looping text reveals infinite.",
+      "sourceEvidence": [
+        { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "280-284" },
+        { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "282-288" },
+        { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "296-308" }
+      ]
+    }
+  },
+  "characters": {
+    "kira": {
+      "themes": {
+        "light": {
+          "source": { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "16-24" },
+          "keyframesVerbatim": [
+            "@keyframes kiratrace{to{stroke-dashoffset:-352}}",
+            "@keyframes kirasweep{from{background-position:-260px 0}to{background-position:420px 0}}",
+            "@keyframes kslash{0%{transform:translateX(-150%) skewX(-24deg);opacity:0}20%{opacity:1}55%{opacity:1}100%{transform:translateX(150%) skewX(-24deg);opacity:0}}",
+            "@keyframes kshardfade{0%,100%{opacity:0;transform:translate(0,0) skewX(-18deg)}40%{opacity:.9}70%{opacity:0;transform:translate(9px,-7px) skewX(-18deg)}}",
+            "@keyframes kreveal{0%{clip-path:inset(0 100% 0 0)}70%,100%{clip-path:inset(0 0 0 0)}}",
+            "@keyframes kdraw{0%{stroke-dashoffset:64}55%,100%{stroke-dashoffset:0}}",
+            "@keyframes kfloat{0%,100%{transform:translate(0,0);opacity:.4}50%{transform:translate(8px,-7px);opacity:.75}}",
+            "@keyframes kglow{0%,100%{opacity:.35}50%{opacity:.85}}"
+          ],
+          "reducedMotionVerbatim": "@media (prefers-reduced-motion:reduce){.xm *{animation:none !important}}"
+        },
+        "dark": {
+          "source": { "file": "Character Design Systems 3/Kira Dark.dc.html", "lines": "16-24" },
+          "keyframesVerbatim": [
+            "@keyframes kiratrace{to{stroke-dashoffset:-352}}",
+            "@keyframes kirasweep{from{background-position:-260px 0}to{background-position:420px 0}}",
+            "@keyframes kslash{0%{transform:translateX(-150%) skewX(-24deg);opacity:0}20%{opacity:1}55%{opacity:1}100%{transform:translateX(150%) skewX(-24deg);opacity:0}}",
+            "@keyframes kshardfade{0%,100%{opacity:0;transform:translate(0,0) skewX(-18deg)}40%{opacity:.95}70%{opacity:0;transform:translate(9px,-7px) skewX(-18deg)}}",
+            "@keyframes kreveal{0%{clip-path:inset(0 100% 0 0)}70%,100%{clip-path:inset(0 0 0 0)}}",
+            "@keyframes kdraw{0%{stroke-dashoffset:64}55%,100%{stroke-dashoffset:0}}",
+            "@keyframes kfloat{0%,100%{transform:translate(0,0);opacity:.4}50%{transform:translate(8px,-7px);opacity:.8}}",
+            "@keyframes kglow{0%,100%{opacity:.4}50%{opacity:1}}"
+          ],
+          "reducedMotionVerbatim": "@media (prefers-reduced-motion:reduce){.xm *{animation:none !important}}"
+        }
+      },
+      "expressiveMoments": {
+        "loader": {
+          "name": "Blade-slash",
+          "tier": "waiting",
+          "geometry": [
+            "150×64 stage",
+            "16px-wide blade body at 44%, linear-gradient(90deg, transparent → accent), skewX(-24deg)",
+            "5×12 shard at 40%/16px and 4×9 shard at 56%/34px, each skewX(-18deg)"
+          ],
+          "animationsVerbatim": [
+            "kslash 1.15s ease-in-out infinite",
+            "kshardfade 1.15s ease-in-out .12s infinite",
+            "kshardfade 1.15s ease-in-out .26s infinite"
+          ],
+          "timing": {
+            "durationMs": 1150,
+            "shardDelaysMs": [120, 260],
+            "iteration": "infinite"
+          },
+          "caption": {
+            "light": "① cyan blade sweeps at the 114° fringe angle · ② shard traces flick off the edge · ③ dissolve, loop (1.15s).",
+            "dark": "① emissive cyan blade sweeps at the 114° fringe angle · ② shard traces flick off, glowing · ③ dissolve, loop (1.15s)."
+          },
+          "reducedMotionFallback": "Static centered blade and two visible shards; no translation, flick, dissolve, or glow pulsing.",
+          "source": {
+            "light": {
+              "file": "Character Design Systems 3/Kira Light.dc.html",
+              "lines": "252-264"
+            },
+            "dark": { "file": "Character Design Systems 3/Kira Dark.dc.html", "lines": "252-264" }
+          }
+        },
+        "textReveal": {
+          "name": "Circuit ignition",
+          "tier": "transition",
+          "geometry": [
+            "20px/600 Space Grotesk uppercase text with .03em tracking",
+            "dim base glyph layer plus an absolutely overlaid foreground glyph layer",
+            "light adds a restrained cyan text shadow; dark increases emission"
+          ],
+          "animationsVerbatim": ["kreveal 1.7s ease-out infinite"],
+          "timing": { "durationMs": 1700, "iteration": "infinite" },
+          "caption": {
+            "light": "① glyphs sit dim · ② a glowing cyan edge wipes left→right, igniting each letter · ③ holds lit, loops.",
+            "dark": "① glyphs sit dark · ② a glowing cyan edge wipes left→right, igniting each letter · ③ holds lit, loops."
+          },
+          "reducedMotionFallback": "Foreground word is fully visible over the dim base word; no clipping wipe.",
+          "source": {
+            "light": {
+              "file": "Character Design Systems 3/Kira Light.dc.html",
+              "lines": "266-276"
+            },
+            "dark": { "file": "Character Design Systems 3/Kira Dark.dc.html", "lines": "266-276" }
+          }
+        },
+        "success": {
+          "name": "Chevron crystallize",
+          "tier": "transition",
+          "geometry": [
+            "56×56 SVG",
+            "faint 2px slash from (12,40) to (34,14)",
+            "3px round-capped polyline through (16,30) → (25,39) → (42,16), stroke-dasharray 64"
+          ],
+          "animationsVerbatim": ["kdraw 1.2s ease-out infinite"],
+          "timing": { "durationMs": 1200, "iterationInBoardPreview": "infinite" },
+          "caption": {
+            "light": "① the slash lingers · ② it snaps into the hairpin chevron, drawn edge-first · ③ settles (1.2s).",
+            "dark": "① the slash lingers · ② it snaps into the hairpin chevron, drawn edge-first · ③ settles, glowing (1.2s)."
+          },
+          "reducedMotionFallback": "Complete chevron/check remains visible with the faint source slash.",
+          "source": {
+            "light": {
+              "file": "Character Design Systems 3/Kira Light.dc.html",
+              "lines": "278-285"
+            },
+            "dark": { "file": "Character Design Systems 3/Kira Dark.dc.html", "lines": "278-285" }
+          }
+        },
+        "empty": {
+          "name": "Smoke & shard",
+          "tier": "waiting-ambient",
+          "geometry": [
+            "130×74 stage",
+            "64×28 blurred violet radial ellipse at (26,22)",
+            "5×13 accent shard at (78,14), skewX(-18deg)"
+          ],
+          "animationsVerbatim": [
+            "kfloat 3.2s ease-in-out infinite",
+            "kglow 2.6s ease-in-out infinite"
+          ],
+          "timing": { "smokeDurationMs": 3200, "shardDurationMs": 2600, "iteration": "infinite" },
+          "caption": {
+            "light": "Nothing here yet — a violet smoke wisp drifts while a single cyan shard glimmers (2.6–3.2s ambient).",
+            "dark": "Nothing here yet — a violet smoke wisp drifts while a single cyan shard glimmers (2.6–3.2s ambient)."
+          },
+          "reducedMotionFallback": "Static blurred violet wisp and a single visible cyan shard.",
+          "source": {
+            "light": {
+              "file": "Character Design Systems 3/Kira Light.dc.html",
+              "lines": "287-297"
+            },
+            "dark": { "file": "Character Design Systems 3/Kira Dark.dc.html", "lines": "287-297" }
+          }
+        }
+      },
+      "nonExpressiveBoardMotion": {
+        "skeleton": "kirasweep 1.8s linear infinite",
+        "signaturePreview": "kiratrace 2.2s linear infinite",
+        "productionSignatureDurationMs": 240
+      }
+    },
+    "mochi": {
+      "themes": {
+        "light": {
+          "source": { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "16-23" },
+          "keyframesVerbatim": [
+            "@keyframes mochisweep{from{background-position:-260px 0}to{background-position:420px 0}}",
+            "@keyframes mochibloom{0%,100%{opacity:.45;transform:scale(.92)}50%{opacity:.9;transform:scale(1.06)}}",
+            "@keyframes mspin{to{transform:rotate(360deg)}}",
+            "@keyframes msparkle{0%,100%{opacity:.2;transform:scale(.5)}50%{opacity:1;transform:scale(1)}}",
+            "@keyframes mbloomword{0%,100%{opacity:.2;filter:blur(6px)}30%,70%{opacity:1;filter:blur(0)}}",
+            "@keyframes mblossom{0%{transform:scale(0) rotate(-35deg)}60%{transform:scale(1.15) rotate(5deg)}100%{transform:scale(1) rotate(0)}}",
+            "@keyframes mfall{0%{transform:translateY(-6px);opacity:0}30%{opacity:1}100%{transform:translateY(18px);opacity:0}}"
+          ],
+          "reducedMotionVerbatim": "@media (prefers-reduced-motion:reduce){.xm *{animation:none !important}}"
+        },
+        "dark": {
+          "source": { "file": "Character Design Systems 3/Mochi Dark.dc.html", "lines": "16-23" },
+          "keyframesVerbatim": [
+            "@keyframes mochisweep{from{background-position:-260px 0}to{background-position:420px 0}}",
+            "@keyframes mochibloom{0%,100%{opacity:.45;transform:scale(.92)}50%{opacity:.9;transform:scale(1.06)}}",
+            "@keyframes mspin{to{transform:rotate(360deg)}}",
+            "@keyframes msparkle{0%,100%{opacity:.2;transform:scale(.5)}50%{opacity:1;transform:scale(1)}}",
+            "@keyframes mbloomword{0%,100%{opacity:.2;filter:blur(6px)}30%,70%{opacity:1;filter:blur(0)}}",
+            "@keyframes mblossom{0%{transform:scale(0) rotate(-35deg)}60%{transform:scale(1.15) rotate(5deg)}100%{transform:scale(1) rotate(0)}}",
+            "@keyframes mfall{0%{transform:translateY(-6px);opacity:0}30%{opacity:1}100%{transform:translateY(18px);opacity:0}}"
+          ],
+          "reducedMotionVerbatim": "@media (prefers-reduced-motion:reduce){.xm *{animation:none !important}}"
+        }
+      },
+      "expressiveMoments": {
+        "loader": {
+          "name": "Pearl orbit",
+          "tier": "waiting",
+          "geometry": [
+            "70×70 orbit stage",
+            "four rose pearls at the cardinal points with diameters 9, 8, 7, and 6px and opacities 1, .7, .45, and .28",
+            "12×12 four-point gold sparkle centered at (35,35)"
+          ],
+          "animationsVerbatim": [
+            "mspin 1.15s linear infinite",
+            "msparkle 1.15s ease-in-out infinite"
+          ],
+          "timing": { "durationMs": 1150, "iteration": "infinite" },
+          "caption": {
+            "light": "① four pearls orbit, brightest leading · ② a gold sparkle pulses at centre · ③ the trail fades round (1.15s).",
+            "dark": "① four pearls orbit, brightest leading · ② a gold sparkle glows at centre · ③ the trail fades round (1.15s)."
+          },
+          "reducedMotionFallback": "Four static graduated pearls remain around a visible central gold sparkle.",
+          "source": {
+            "light": {
+              "file": "Character Design Systems 3/Mochi Light.dc.html",
+              "lines": "251-267"
+            },
+            "dark": { "file": "Character Design Systems 3/Mochi Dark.dc.html", "lines": "251-267" }
+          }
+        },
+        "textReveal": {
+          "name": "Word bloom",
+          "tier": "transition",
+          "geometry": ["Cormorant Garamond 23px/600 text", "three word spans separated by 8px"],
+          "animationsVerbatim": [
+            "mbloomword 1.7s ease-in-out infinite",
+            "mbloomword 1.7s ease-in-out .16s infinite",
+            "mbloomword 1.7s ease-in-out .32s infinite"
+          ],
+          "timing": { "durationMs": 1700, "staggerMs": 160, "iteration": "infinite" },
+          "caption": {
+            "light": "① each word rises from a soft blur in turn · ② settles crisp · ③ gently re-blooms, staggered (0.16s).",
+            "dark": "① each word rises from a soft blur in turn · ② settles crisp · ③ gently re-blooms, staggered (0.16s)."
+          },
+          "reducedMotionFallback": "All words render crisp, fully opaque, and in normal reading order.",
+          "source": {
+            "light": {
+              "file": "Character Design Systems 3/Mochi Light.dc.html",
+              "lines": "269-280"
+            },
+            "dark": { "file": "Character Design Systems 3/Mochi Dark.dc.html", "lines": "269-280" }
+          }
+        },
+        "success": {
+          "name": "Star blossom",
+          "tier": "transition",
+          "geometry": [
+            "56×56 SVG",
+            "four-point gold star path with points at (28,6), (48,28), (28,50), and (8,28)",
+            "transform origin at 28px 28px"
+          ],
+          "animationsVerbatim": ["mblossom 1.2s ease-out infinite"],
+          "timing": { "durationMs": 1200, "iterationInBoardPreview": "infinite" },
+          "caption": {
+            "light": "① a gold star bursts from nothing · ② overshoots then eases back · ③ settles warm (1.2s).",
+            "dark": "① a gold star bursts from nothing · ② overshoots then eases back · ③ settles candlelit (1.2s)."
+          },
+          "reducedMotionFallback": "Complete gold star remains at final scale and rotation.",
+          "source": {
+            "light": {
+              "file": "Character Design Systems 3/Mochi Light.dc.html",
+              "lines": "282-289"
+            },
+            "dark": { "file": "Character Design Systems 3/Mochi Dark.dc.html", "lines": "282-289" }
+          }
+        },
+        "empty": {
+          "name": "Waning crescent",
+          "tier": "waiting-ambient",
+          "geometry": [
+            "120×78 stage",
+            "30×30 rose crescent at (45,8), 80% opacity",
+            "4px gold sparkle at (38,40) and 3px rose sparkle at (72,36)"
+          ],
+          "animationsVerbatim": [
+            "mfall 2.4s ease-in .1s infinite",
+            "mfall 2.4s ease-in .8s infinite"
+          ],
+          "timing": { "durationMs": 2400, "delaysMs": [100, 800], "iteration": "infinite" },
+          "caption": {
+            "light": "No reservations tonight — a rose crescent hangs while faint sparkles drift down (2.4s ambient).",
+            "dark": "No reservations tonight — a rose crescent hangs while faint sparkles drift down (2.4s ambient)."
+          },
+          "reducedMotionFallback": "Static rose crescent with two visible stationary sparkles.",
+          "source": {
+            "light": {
+              "file": "Character Design Systems 3/Mochi Light.dc.html",
+              "lines": "291-302"
+            },
+            "dark": { "file": "Character Design Systems 3/Mochi Dark.dc.html", "lines": "291-302" }
+          }
+        }
+      },
+      "nonExpressiveBoardMotion": {
+        "skeleton": "mochisweep 2.6s ease-in-out infinite",
+        "signaturePreview": "mochibloom 2.6s ease-in-out infinite",
+        "productionSignatureBehavior": "Localized bloom rises from interaction point and settles; do not loop indefinitely."
+      }
+    },
+    "atlas": {
+      "themes": {
+        "light": {
+          "source": { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "16-27" },
+          "keyframesVerbatim": [
+            "@keyframes atlassweep{from{background-position:-260px 0}to{background-position:420px 0}}",
+            "@keyframes atlasdock{0%,100%{transform:scale(1.14);opacity:.45}50%{transform:scale(1);opacity:1}}",
+            "@keyframes aspin{to{transform:rotate(360deg)}}",
+            "@keyframes apulse{0%,100%{transform:rotate(45deg) scale(1);opacity:.5}50%{transform:rotate(45deg) scale(1.25);opacity:1}}",
+            "@keyframes aconvTL{0%,100%{transform:translate(-12px,-12px);opacity:0}35%,80%{transform:translate(0,0);opacity:1}}",
+            "@keyframes aconvTR{0%,100%{transform:translate(12px,-12px);opacity:0}35%,80%{transform:translate(0,0);opacity:1}}",
+            "@keyframes aconvBL{0%,100%{transform:translate(-12px,12px);opacity:0}35%,80%{transform:translate(0,0);opacity:1}}",
+            "@keyframes aconvBR{0%,100%{transform:translate(12px,12px);opacity:0}35%,80%{transform:translate(0,0);opacity:1}}",
+            "@keyframes areveal{0%{clip-path:inset(0 100% 0 0)}65%,100%{clip-path:inset(0 0 0 0)}}",
+            "@keyframes ascan{0%{transform:translateY(-6px);opacity:0}12%{opacity:1}85%{opacity:.7}100%{transform:translateY(30px);opacity:0}}",
+            "@keyframes adraw{0%{stroke-dashoffset:101}60%,100%{stroke-dashoffset:0}}"
+          ],
+          "reducedMotionVerbatim": "@media (prefers-reduced-motion:reduce){.xm *{animation:none !important}}"
+        },
+        "dark": {
+          "source": { "file": "Character Design Systems 3/Atlas Dark.dc.html", "lines": "16-27" },
+          "keyframesVerbatim": [
+            "@keyframes atlassweep{from{background-position:-260px 0}to{background-position:420px 0}}",
+            "@keyframes atlasdock{0%,100%{transform:scale(1.14);opacity:.45}50%{transform:scale(1);opacity:1}}",
+            "@keyframes aspin{to{transform:rotate(360deg)}}",
+            "@keyframes apulse{0%,100%{transform:rotate(45deg) scale(1);opacity:.5}50%{transform:rotate(45deg) scale(1.25);opacity:1}}",
+            "@keyframes aconvTL{0%,100%{transform:translate(-12px,-12px);opacity:0}35%,80%{transform:translate(0,0);opacity:1}}",
+            "@keyframes aconvTR{0%,100%{transform:translate(12px,-12px);opacity:0}35%,80%{transform:translate(0,0);opacity:1}}",
+            "@keyframes aconvBL{0%,100%{transform:translate(-12px,12px);opacity:0}35%,80%{transform:translate(0,0);opacity:1}}",
+            "@keyframes aconvBR{0%,100%{transform:translate(12px,12px);opacity:0}35%,80%{transform:translate(0,0);opacity:1}}",
+            "@keyframes areveal{0%{clip-path:inset(0 100% 0 0)}65%,100%{clip-path:inset(0 0 0 0)}}",
+            "@keyframes ascan{0%{transform:translateY(-6px);opacity:0}12%{opacity:1}85%{opacity:.7}100%{transform:translateY(30px);opacity:0}}",
+            "@keyframes adraw{0%{stroke-dashoffset:101}60%,100%{stroke-dashoffset:0}}"
+          ],
+          "reducedMotionVerbatim": "@media (prefers-reduced-motion:reduce){.xm *{animation:none !important}}"
+        }
+      },
+      "expressiveMoments": {
+        "loader": {
+          "name": "HUD assembly",
+          "tier": "waiting",
+          "geometry": [
+            "72×72 stage",
+            "32×32, 2px core ring at (20,20) with low-alpha border and cobalt top segment",
+            "10×10 filled survey diamond at (31,31)",
+            "four 12×12, 2px cobalt corner brackets"
+          ],
+          "animationsVerbatim": [
+            "aspin 1s linear infinite",
+            "apulse 1.15s ease-in-out infinite",
+            "aconvTL 1.15s ease-in-out infinite",
+            "aconvTR 1.15s ease-in-out infinite",
+            "aconvBL 1.15s ease-in-out infinite",
+            "aconvBR 1.15s ease-in-out infinite"
+          ],
+          "timing": { "ringDurationMs": 1000, "assemblyDurationMs": 1150, "iteration": "infinite" },
+          "caption": {
+            "light": "① four brackets converge from the corners · ② the core ring spins up, the diamond pulses · ③ resets (1.15s).",
+            "dark": "① four brackets converge from the corners · ② the core ring spins up, the diamond pulses · ③ resets (1.15s)."
+          },
+          "reducedMotionFallback": "Static complete HUD: four seated brackets, visible ring with cobalt top segment, and a central survey diamond.",
+          "source": {
+            "light": {
+              "file": "Character Design Systems 3/Atlas Light.dc.html",
+              "lines": "266-281"
+            },
+            "dark": { "file": "Character Design Systems 3/Atlas Dark.dc.html", "lines": "266-281" }
+          }
+        },
+        "textReveal": {
+          "name": "Blueprint plot-in",
+          "tier": "transition",
+          "geometry": [
+            "JetBrains Mono 15px/500 telemetry line",
+            "muted base glyph layer plus absolutely overlaid foreground layer",
+            "2px cobalt scan line spanning 4px beyond both text edges"
+          ],
+          "animationsVerbatim": ["areveal 1.7s ease-out infinite", "ascan 1.7s linear infinite"],
+          "timing": { "durationMs": 1700, "iterationInBoardPreview": "infinite" },
+          "caption": {
+            "light": "① a cobalt scan-line passes top→bottom · ② mono glyphs plot in behind it left→right · ③ locks (1.7s).",
+            "dark": "① a cobalt scan-line passes top→bottom, emitting · ② mono glyphs plot in behind it left→right · ③ locks (1.7s)."
+          },
+          "reducedMotionFallback": "Foreground telemetry is fully visible; scan line stays hidden because its authored base opacity is 0.",
+          "source": {
+            "light": {
+              "file": "Character Design Systems 3/Atlas Light.dc.html",
+              "lines": "283-294"
+            },
+            "dark": { "file": "Character Design Systems 3/Atlas Dark.dc.html", "lines": "283-294" }
+          }
+        },
+        "success": {
+          "name": "Dock-lock",
+          "tier": "transition",
+          "geometry": [
+            "64×64 stage",
+            "16px-radius, 2.5px cobalt ring with stroke-dasharray 101",
+            "four 12×12, 2px cobalt corner brackets"
+          ],
+          "animationsVerbatim": [
+            "adraw 1.2s ease-out infinite",
+            "aconvTL 1.2s ease-out infinite",
+            "aconvTR 1.2s ease-out infinite",
+            "aconvBL 1.2s ease-out infinite",
+            "aconvBR 1.2s ease-out infinite"
+          ],
+          "timing": { "durationMs": 1200, "iterationInBoardPreview": "infinite" },
+          "caption": {
+            "light": "① brackets seat onto the control · ② the core ring draws closed and locks · ③ holds (1.2s).",
+            "dark": "① brackets seat onto the control · ② the core ring draws closed and locks, glowing · ③ holds (1.2s)."
+          },
+          "reducedMotionFallback": "Complete core ring and all four seated brackets remain visible.",
+          "source": {
+            "light": {
+              "file": "Character Design Systems 3/Atlas Light.dc.html",
+              "lines": "296-309"
+            },
+            "dark": { "file": "Character Design Systems 3/Atlas Dark.dc.html", "lines": "296-309" }
+          }
+        },
+        "empty": {
+          "name": "Dormant grid",
+          "tier": "waiting-ambient",
+          "geometry": [
+            "130×78 field",
+            "16px repeating horizontal and vertical 1px cobalt grid at 8% alpha",
+            "9×9 cobalt survey diamond at (60,34)"
+          ],
+          "animationsVerbatim": ["apulse 2.4s ease-in-out infinite"],
+          "timing": { "durationMs": 2400, "iteration": "infinite" },
+          "caption": {
+            "light": "No structures loaded — the survey grid rests while a single point pulses on standby (2.4s ambient).",
+            "dark": "No structures loaded — the survey grid rests while a single point pulses on standby (2.4s ambient)."
+          },
+          "reducedMotionFallback": "Static blueprint grid with one centered survey diamond.",
+          "source": {
+            "light": {
+              "file": "Character Design Systems 3/Atlas Light.dc.html",
+              "lines": "311-320"
+            },
+            "dark": { "file": "Character Design Systems 3/Atlas Dark.dc.html", "lines": "311-320" }
+          }
+        }
+      },
+      "nonExpressiveBoardMotion": {
+        "skeleton": "atlassweep 2.2s linear infinite",
+        "signaturePreview": "atlasdock 2s ease-in-out infinite",
+        "productionSignatureDurationMs": 180
+      }
+    }
+  }
+}

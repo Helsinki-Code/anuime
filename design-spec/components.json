@@ -1,0 +1,663 @@
+{
+  "specVersion": "2.0.0-phase-0",
+  "interpretation": {
+    "themeGeometry": "All construction below is theme-invariant by board law.",
+    "lightTreatment": {
+      "kira": "Use Kira light tokens; cyan is hairline/state with no persistent glow.",
+      "mochi": "Use Mochi light tokens; rose is state and gold is hairline/rim.",
+      "atlas": "Use Atlas light tokens; cobalt is drawn linework."
+    },
+    "darkTreatment": {
+      "kira": "Use Kira dark tokens; the same cyan lines may emit a restrained cyan glow.",
+      "mochi": "Use Mochi dark tokens; the same rose/gold geometry may gain restrained candlelit warmth.",
+      "atlas": "Use Atlas dark tokens; the same cobalt lines may emit a restrained holographic glow."
+    },
+    "anatomyPolicy": "Preserve current shadcn anatomy and prop APIs in Phase 1. This file specifies visual construction only."
+  },
+  "explicitBoardComponents": [
+    "anuime-button",
+    "anuime-badge",
+    "anuime-card",
+    "anuime-checkbox",
+    "anuime-data-table",
+    "anuime-dialog",
+    "anuime-dropdown-menu",
+    "anuime-input",
+    "anuime-progress",
+    "anuime-skeleton",
+    "anuime-slider",
+    "anuime-switch",
+    "anuime-tabs",
+    "anuime-toast",
+    "anuime-toggle",
+    "anuime-tooltip"
+  ],
+  "components": {
+    "button": {
+      "kira": {
+        "dimensions": { "heightPx": 36, "paddingInlinePx": 18, "radiusPx": 5 },
+        "type": { "family": "Space Grotesk", "sizePx": 13.5, "weight": 500 },
+        "transition": { "property": "background", "durationMs": 120, "timing": "ease-out" },
+        "variants": {
+          "primary": "foreground fill with background text",
+          "secondary": "subtle fill with foreground text",
+          "ghost": "transparent; subtle on hover",
+          "destructive": "destructive fill with destructiveForeground text"
+        },
+        "focus": "2px background separation ring, 1.5px accent ring, and a centered 1.5px × 8px descending circuit stem.",
+        "motifs": ["collar ring", "circuit stem"],
+        "source": { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "49-63" }
+      },
+      "mochi": {
+        "dimensions": { "heightPx": 36, "paddingInlinePx": 20, "radiusPx": 10 },
+        "type": { "family": "Karla", "sizePx": 13.5, "weight": 600 },
+        "transition": { "property": "background", "durationMs": 250, "timing": "ease" },
+        "variants": {
+          "primary": "foreground fill with background text",
+          "secondary": "subtle fill with border and foreground text",
+          "ghost": "transparent; subtle on hover",
+          "destructive": "destructive fill with destructiveForeground text"
+        },
+        "focus": "2px background separation ring plus 1.5px rose ring inside a localized rose veil extending 14px from the control; the veil breathes then settles.",
+        "motifs": ["veil", "bloom focus"],
+        "source": { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "48-62" }
+      },
+      "atlas": {
+        "dimensions": { "heightPx": 36, "paddingInlinePx": 18, "radiusPx": 7 },
+        "type": { "family": "Archivo", "sizePx": 13.5, "weight": 500 },
+        "transition": { "property": "background", "durationMs": 180, "timing": "linear" },
+        "variants": {
+          "primary": "foreground fill with background text",
+          "secondary": "subtle fill with border and foreground text",
+          "ghost": "transparent; subtle on hover",
+          "destructive": "destructive fill with destructiveForeground text"
+        },
+        "focus": "2px background separation ring plus 1.5px cobalt ring and four 9×9, 2px corner brackets positioned 7px outside the control.",
+        "motifs": ["panel bracket", "dock focus"],
+        "source": { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "52-71" }
+      }
+    },
+    "input": {
+      "kira": {
+        "dimensions": { "heightPx": 36, "paddingInlinePx": 12, "radiusPx": 5, "borderPx": 1 },
+        "type": { "family": "Space Grotesk", "sizePx": 13.5 },
+        "default": "surface fill, borderStrong perimeter, no native outline",
+        "invalid": "destructive border plus 3px 10%-alpha destructive ring; error message begins with a 4×8 shard skewed −18°.",
+        "motifs": ["shard error marker"],
+        "source": { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "66-76" }
+      },
+      "mochi": {
+        "dimensions": { "heightPx": 36, "paddingInlinePx": 14, "radiusPx": 10, "borderPx": 1 },
+        "type": { "family": "Karla", "sizePx": 13.5 },
+        "default": "surface fill, borderStrong perimeter, no native outline",
+        "invalid": "destructive border plus 3px 8%-alpha destructive ring; error message begins with a small four-point destructive star.",
+        "motifs": ["star error marker"],
+        "source": { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "65-75" }
+      },
+      "atlas": {
+        "dimensions": { "heightPx": 36, "paddingInlinePx": 12, "radiusPx": 7, "borderPx": 1 },
+        "type": { "family": "Archivo", "sizePx": 13.5 },
+        "default": "surface fill, borderStrong perimeter, inset 0 1px 2px 6%-alpha foreground shadow",
+        "invalid": "destructive border plus existing inset and 3px 8%-alpha destructive ring; error message begins with a 2.5×11 vertical beam.",
+        "motifs": ["lens bezel", "beam error marker"],
+        "source": { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "74-84" }
+      }
+    },
+    "switch": {
+      "kira": {
+        "track": { "widthPx": 40, "heightPx": 22, "radiusPx": 5 },
+        "thumb": {
+          "widthPx": 16,
+          "heightPx": 16,
+          "radiusPx": 3,
+          "activeLeftPx": 21,
+          "inactiveLeftPx": 2
+        },
+        "active": "accent track; surface square buckle thumb with inset accent rim",
+        "inactive": "transparent bordered track; subtle thumb with inset borderStrong rim",
+        "motifs": ["strap", "buckle"],
+        "source": { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "79-88" }
+      },
+      "mochi": {
+        "track": { "widthPx": 40, "heightPx": 22, "radiusPx": 8 },
+        "thumb": {
+          "widthPx": 16,
+          "heightPx": 16,
+          "radius": "circle",
+          "activeLeftPx": 21,
+          "inactiveLeftPx": 2
+        },
+        "active": "rose track; surface pearl thumb with inset 1.5px gold rim",
+        "inactive": "transparent bordered track; subtle pearl thumb with borderStrong rim",
+        "motifs": ["clasp", "pearl"],
+        "source": { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "78-87" }
+      },
+      "atlas": {
+        "track": { "widthPx": 40, "heightPx": 22, "radiusPx": 4 },
+        "thumb": {
+          "widthPx": 16,
+          "heightPx": 16,
+          "radiusPx": 2,
+          "activeLeftPx": 21,
+          "inactiveLeftPx": 2
+        },
+        "active": "cobalt track; surface plate thumb containing a centered 1.5×8 cobalt prong slot",
+        "inactive": "transparent bordered track; subtle plate thumb containing a borderStrong prong slot",
+        "motifs": ["buckle frame"],
+        "source": { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "87-96" }
+      }
+    },
+    "toggle": {
+      "kira": {
+        "dimensions": { "heightPx": 32, "paddingInlinePx": 14, "radiusPx": 5 },
+        "pressed": "subtle fill, borderStrong perimeter, 1px surface inset ring",
+        "unpressed": "transparent border and mutedForeground",
+        "motifs": ["strap buckle frame"],
+        "source": { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "89-94" }
+      },
+      "mochi": {
+        "dimensions": { "heightPx": 32, "paddingInlinePx": 16, "radiusPx": 8 },
+        "pressed": "subtle fill with 1px gold clasp frame",
+        "unpressed": "transparent border and mutedForeground",
+        "motifs": ["gold clasp"],
+        "source": { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "88-93" }
+      },
+      "atlas": {
+        "dimensions": { "heightPx": 32, "paddingInlinePx": 14, "radiusPx": 5 },
+        "pressed": "subtle fill, borderStrong perimeter, 1px surface inset ring",
+        "unpressed": "transparent border and mutedForeground",
+        "motifs": ["buckle frame"],
+        "source": { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "97-102" }
+      }
+    },
+    "card": {
+      "kira": {
+        "dimensions": { "paddingPx": 20, "radiusPx": 8, "borderPx": 1 },
+        "surface": "surface fill with border and restrained 0 1px 2px shadow",
+        "signatureLayer": "full inset 114° linear gradient from 7%-alpha accent at 0% to transparent by 34%",
+        "motifs": ["fringe diagonal"],
+        "source": { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "97-111" }
+      },
+      "mochi": {
+        "dimensions": { "paddingPx": 20, "radiusPx": 14, "borderPx": 1 },
+        "surface": "surface fill with border and restrained 0 2px 10px shadow",
+        "signatureLayer": "1px gold ribbon rule at the top, inset 20px from each side, 55% opacity",
+        "title": "Cormorant Garamond 19px/600",
+        "motifs": ["ribbon rule"],
+        "source": { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "96-110" }
+      },
+      "atlas": {
+        "dimensions": { "paddingPx": 20, "radiusPx": 9, "borderPx": 1 },
+        "surface": "surface fill with border and restrained 0 1px 2px shadow",
+        "signatureLayer": "top 64px blueprint field: 16px repeating horizontal and vertical 1px cobalt grid at 6% alpha, masked to transparent downward",
+        "motifs": ["diamond grid"],
+        "source": { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "105-119" }
+      }
+    },
+    "dialog": {
+      "kira": {
+        "scrim": "28%-alpha foreground over the underlying context, radius 8 in the specimen",
+        "panel": { "maxWidthPx": 320, "paddingPx": 22, "radiusPx": 8, "borderPx": 1 },
+        "shadow": "0 12px 32px 20%-alpha foreground",
+        "signatureLayer": "full inset 114° linear gradient from 6%-alpha accent to transparent by 30%",
+        "motifs": ["fringe diagonal"],
+        "source": { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "114-126" }
+      },
+      "mochi": {
+        "scrim": "30%-alpha foreground veil over the underlying context, radius 14 in the specimen",
+        "panel": { "maxWidthPx": 320, "paddingPx": 22, "radiusPx": 14, "borderPx": 1 },
+        "shadow": "0 18px 44px 18%-alpha foreground",
+        "signatureLayer": "1px gold ribbon rule at the top, inset 20px from each side, 55% opacity",
+        "title": "Cormorant Garamond 19px/600",
+        "motifs": ["veil scrim", "ribbon rule"],
+        "source": { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "113-125" }
+      },
+      "atlas": {
+        "scrim": "30%-alpha foreground over the underlying context, radius 9 in the specimen",
+        "panel": { "maxWidthPx": 320, "paddingPx": 22, "radiusPx": 9, "borderPx": 1 },
+        "shadow": "0 12px 32px 18%-alpha foreground",
+        "signatureLayer": "2px cobalt panel brackets seated at panel corners; board specimen visibly emphasizes the two top brackets",
+        "motifs": ["panel bracket"],
+        "source": { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "122-135" }
+      }
+    },
+    "dropdown-menu": {
+      "kira": {
+        "dimensions": {
+          "widthPx": 230,
+          "paddingPx": 4,
+          "radiusPx": 6,
+          "rowHeightPx": 32,
+          "rowRadiusPx": 4,
+          "rowPaddingInlinePx": 10
+        },
+        "surface": "surface fill, border, 0 6px 20px shadow",
+        "hoveredRow": "subtle fill; leading 9×10 open accent chevron",
+        "separator": "1px border line inset 6px",
+        "motifs": ["hairpin chevron"],
+        "source": { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "129-138" }
+      },
+      "mochi": {
+        "dimensions": {
+          "widthPx": 230,
+          "paddingPx": 5,
+          "radiusPx": 12,
+          "rowHeightPx": 32,
+          "rowRadiusPx": 8,
+          "rowPaddingInlinePx": 11
+        },
+        "surface": "surface fill, border, 0 8px 24px shadow",
+        "hoveredRow": "subtle fill; leading 10×10 rose crescent",
+        "separator": "1px border line inset 8px",
+        "motifs": ["crescent"],
+        "source": { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "128-137" }
+      },
+      "atlas": {
+        "dimensions": {
+          "widthPx": 230,
+          "paddingPx": 4,
+          "radiusPx": 7,
+          "rowHeightPx": 32,
+          "rowRadiusPx": 4,
+          "rowPaddingInlinePx": 10
+        },
+        "surface": "surface fill, border, 0 6px 20px shadow",
+        "hoveredRow": "subtle fill; leading 6×6 cobalt survey diamond",
+        "separator": "1px border line inset 6px",
+        "motifs": ["survey diamond"],
+        "source": { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "138-147" }
+      }
+    },
+    "tabs": {
+      "kira": {
+        "list": {
+          "display": "inline-flex",
+          "paddingPx": 3,
+          "gapPx": 2,
+          "radiusPx": 6,
+          "fill": "subtle"
+        },
+        "trigger": { "heightPx": 30, "paddingInlinePx": 16, "radiusPx": 4 },
+        "active": "surface fill, restrained shadow, open accent hairpin centered 8px below",
+        "motifs": ["hairpin chevron"],
+        "source": { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "141-147" }
+      },
+      "mochi": {
+        "list": {
+          "display": "inline-flex",
+          "paddingPx": 3,
+          "gapPx": 2,
+          "radiusPx": 10,
+          "fill": "subtle"
+        },
+        "trigger": { "heightPx": 30, "paddingInlinePx": 16, "radiusPx": 8 },
+        "active": "surface fill, restrained shadow, 12×6 rose crescent curve centered 8px below",
+        "motifs": ["crescent"],
+        "source": { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "140-146" }
+      },
+      "atlas": {
+        "list": { "display": "flex", "gapPx": 4, "borderBottomPx": 1 },
+        "trigger": { "heightPx": 36, "paddingInlinePx": 16, "radiusPx": 0 },
+        "active": "foreground text at weight 600; 2px cobalt strap band inset 8px under the trigger",
+        "motifs": ["strap band"],
+        "source": { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "150-156" }
+      }
+    },
+    "checkbox": {
+      "kira": {
+        "dimensions": { "widthPx": 16, "heightPx": 16, "radiusPx": 3 },
+        "checked": "foreground fill containing a 10×8 accent mitered chevron/check",
+        "unchecked": "surface fill with borderStrong perimeter",
+        "motifs": ["hairpin chevron"],
+        "source": { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "148-153" }
+      },
+      "mochi": {
+        "dimensions": { "widthPx": 16, "heightPx": 16, "radiusPx": 5 },
+        "checked": "rose fill containing a 10×8 white rounded check",
+        "unchecked": "surface fill with borderStrong perimeter",
+        "motifs": ["soft drape profile"],
+        "source": { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "147-152" }
+      },
+      "atlas": {
+        "dimensions": { "widthPx": 16, "heightPx": 16, "radiusPx": 3 },
+        "checked": "cobalt fill containing a 10×8 white mitered check",
+        "unchecked": "surface fill with borderStrong perimeter",
+        "motifs": ["buckle-scale structural square"],
+        "source": { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "157-162" }
+      }
+    },
+    "slider": {
+      "kira": {
+        "track": { "heightPx": 3, "radiusPx": 2, "inactive": "border", "active": "accent" },
+        "thumb": {
+          "widthPx": 12,
+          "heightPx": 12,
+          "radiusPx": 2,
+          "rotationDeg": 45,
+          "fill": "surface",
+          "border": "1.5px accent"
+        },
+        "motifs": ["kite"],
+        "source": { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "157-165" }
+      },
+      "mochi": {
+        "track": { "heightPx": 3, "radiusPx": 2, "inactive": "border", "active": "rose" },
+        "thumb": {
+          "widthPx": 14,
+          "heightPx": 14,
+          "radius": "circle",
+          "fill": "surface",
+          "border": "1.5px gold",
+          "shadow": "0 1px 3px 15%-alpha foreground"
+        },
+        "motifs": ["pearl"],
+        "source": { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "156-164" }
+      },
+      "atlas": {
+        "track": { "heightPx": 3, "radiusPx": 2, "inactive": "border", "active": "cobalt" },
+        "thumb": {
+          "widthPx": 14,
+          "heightPx": 14,
+          "radius": "circle",
+          "fill": "surface",
+          "border": "2px cobalt",
+          "coreDiameterPx": 4
+        },
+        "motifs": ["core ring"],
+        "source": { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "166-174" }
+      }
+    },
+    "progress": {
+      "kira": {
+        "track": { "heightPx": 3, "radiusPx": 2, "active": "accent", "inactive": "border" },
+        "nodes": {
+          "count": 5,
+          "positionsPercent": [0, 25, 50, 75, 100],
+          "diameterPx": 7,
+          "borderPx": 1.5
+        },
+        "completedNode": "accent fill and border",
+        "pendingNode": "surface fill with borderStrong",
+        "motifs": ["circuit node line"],
+        "source": {
+          "file": "Character Design Systems 3/Kira Light.dc.html",
+          "lines": "166-175, 330-332"
+        }
+      },
+      "mochi": {
+        "track": { "heightPx": 2, "radiusPx": 2, "active": "gold", "inactive": "border" },
+        "nodes": {
+          "count": 5,
+          "positionsPercent": [0, 25, 50, 75, 100],
+          "diameterPx": 8,
+          "borderPx": 1.5
+        },
+        "completedNode": "rose fill and border",
+        "pendingNode": "surface fill with gold border",
+        "motifs": ["strung pearls"],
+        "source": {
+          "file": "Character Design Systems 3/Mochi Light.dc.html",
+          "lines": "165-174, 335-337"
+        }
+      },
+      "atlas": {
+        "track": { "display": "10 equal flex segments", "gapPx": 3 },
+        "segment": { "heightPx": 5, "radiusPx": 1.5 },
+        "completedSegment": "cobalt fill",
+        "pendingSegment": "border fill",
+        "motifs": ["strap segments"],
+        "source": {
+          "file": "Character Design Systems 3/Atlas Light.dc.html",
+          "lines": "175-183, 346-347"
+        }
+      }
+    },
+    "tooltip": {
+      "kira": {
+        "content": {
+          "radiusPx": 4,
+          "paddingBlockPx": 6,
+          "paddingInlinePx": 11,
+          "fill": "foreground",
+          "text": "background"
+        },
+        "pointer": { "widthPx": 8, "heightPx": 8, "rotationDeg": 45, "radiusPx": 0 },
+        "motifs": ["kite"],
+        "source": { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "176-181" }
+      },
+      "mochi": {
+        "content": {
+          "radiusPx": 8,
+          "paddingBlockPx": 6,
+          "paddingInlinePx": 12,
+          "fill": "foreground",
+          "text": "background"
+        },
+        "pointer": { "widthPx": 8, "heightPx": 8, "rotationDeg": 45, "radiusPx": 2 },
+        "motifs": ["softened pointer"],
+        "source": { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "175-180" }
+      },
+      "atlas": {
+        "content": {
+          "radiusPx": 4,
+          "paddingBlockPx": 6,
+          "paddingInlinePx": 11,
+          "fill": "foreground",
+          "text": "background"
+        },
+        "frame": "1px surface separation plus 1px borderStrong outer bezel",
+        "pointer": { "widthPx": 8, "heightPx": 8, "rotationDeg": 45, "radiusPx": 0 },
+        "motifs": ["lens bezel"],
+        "source": { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "184-189" }
+      }
+    },
+    "badge": {
+      "kira": {
+        "dimensions": { "heightPx": 22, "paddingInlinePx": 9, "radiusPx": 4 },
+        "type": { "sizePx": 12, "weight": 500 },
+        "status": "10%-alpha accent fill, 30%-alpha accent border, accentForeground text, 7px outlined circuit node",
+        "motifs": ["collar/circuit node"],
+        "source": { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "185-194" }
+      },
+      "mochi": {
+        "dimensions": { "heightPx": 22, "paddingInlinePx": 11, "radius": "pill" },
+        "type": { "sizePx": 12, "weight": 600 },
+        "status": "12%-alpha gold fill, 40%-alpha gold border, goldForeground text, 6px gold pearl",
+        "motifs": ["pearl", "intentional capsule exception"],
+        "source": { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "184-193" }
+      },
+      "atlas": {
+        "dimensions": { "heightPx": 22, "paddingInlinePx": 9, "radiusPx": 4 },
+        "type": { "sizePx": 12, "weight": 500 },
+        "status": "8%-alpha cobalt fill, 30%-alpha cobalt border, cobalt text, 7px outlined core",
+        "motifs": ["core ring"],
+        "source": { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "193-202" }
+      }
+    },
+    "toast": {
+      "kira": {
+        "dimensions": {
+          "widthPx": 340,
+          "paddingBlockPx": 14,
+          "paddingInlinePx": 16,
+          "radiusPx": 6,
+          "gapPx": 12
+        },
+        "surface": "surface fill, border, 0 8px 24px shadow",
+        "marker": "5×10 accent shard skewed −18°",
+        "action": { "heightPx": 28, "paddingInlinePx": 12, "radiusPx": 5 },
+        "motifs": ["shard"],
+        "source": { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "196-205" }
+      },
+      "mochi": {
+        "dimensions": {
+          "widthPx": 340,
+          "paddingBlockPx": 14,
+          "paddingInlinePx": 16,
+          "radiusPx": 12,
+          "gapPx": 12
+        },
+        "surface": "surface fill, border, 0 10px 28px shadow",
+        "marker": "12×12 gold four-point star",
+        "action": { "heightPx": 28, "paddingInlinePx": 13, "radiusPx": 8 },
+        "motifs": ["star"],
+        "source": { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "195-204" }
+      },
+      "atlas": {
+        "dimensions": {
+          "widthPx": 340,
+          "paddingBlockPx": 14,
+          "paddingInlinePx": 16,
+          "radiusPx": 7,
+          "gapPx": 12
+        },
+        "surface": "surface fill, border, 0 8px 24px shadow",
+        "marker": "2.5×16 vertical cobalt beam",
+        "action": { "heightPx": 28, "paddingInlinePx": 12, "radiusPx": 5 },
+        "motifs": ["beam"],
+        "source": { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "204-213" }
+      }
+    },
+    "skeleton": {
+      "kira": {
+        "bars": [
+          { "heightPx": 14, "widthPercent": 60, "radiusPx": 4 },
+          { "heightPx": 10, "widthPercent": 90, "radiusPx": 4 },
+          { "heightPx": 10, "widthPercent": 78, "radiusPx": 4 }
+        ],
+        "gapPx": 8,
+        "gradient": "114deg, base 32%, highlight 46%, base 60%; background-size 620px 100%",
+        "animation": "kirasweep 1.8s linear infinite",
+        "motifs": ["fringe diagonal"],
+        "source": { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "207-214" }
+      },
+      "mochi": {
+        "bars": [
+          { "heightPx": 14, "widthPercent": 60, "radiusPx": 7 },
+          { "heightPx": 10, "widthPercent": 90, "radiusPx": 5 },
+          { "heightPx": 10, "widthPercent": 78, "radiusPx": 5 }
+        ],
+        "gapPx": 8,
+        "gradient": "100deg, base 32%, highlight 46%, base 60%; background-size 620px 100%",
+        "animation": "mochisweep 2.6s ease-in-out infinite",
+        "motifs": ["drape"],
+        "source": { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "206-213" }
+      },
+      "atlas": {
+        "bars": [
+          { "heightPx": 14, "widthPercent": 60, "radiusPx": 4 },
+          { "heightPx": 10, "widthPercent": 90, "radiusPx": 4 },
+          { "heightPx": 10, "widthPercent": 78, "radiusPx": 4 }
+        ],
+        "gapPx": 8,
+        "gradient": "76deg, base 32%, highlight 46%, base 60%; background-size 620px 100%",
+        "animation": "atlassweep 2.2s linear infinite",
+        "motifs": ["beam"],
+        "source": { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "215-222" }
+      }
+    },
+    "data-table": {
+      "kira": {
+        "surface": { "radiusPx": 8, "borderPx": 1, "fill": "surface" },
+        "columns": ["2.2fr", "1fr", "1.2fr", "1fr"],
+        "header": {
+          "heightPx": 40,
+          "paddingInlinePx": 16,
+          "sizePx": 12,
+          "weight": 500,
+          "borderBottom": "border"
+        },
+        "row": { "heightPx": 46, "paddingInlinePx": 16, "sizePx": 13, "borderBottom": "canvas" },
+        "status": "7px accent circuit nodes for healthy; 5×10 destructive shard skewed −18° for degraded",
+        "motifs": ["circuit node", "shard"],
+        "source": { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "218-233" }
+      },
+      "mochi": {
+        "surface": { "radiusPx": 14, "borderPx": 1, "fill": "surface" },
+        "columns": ["2.2fr", "1.2fr", "1.2fr", "1fr"],
+        "header": {
+          "heightPx": 40,
+          "paddingInlinePx": 18,
+          "sizePx": 12,
+          "weight": 600,
+          "borderBottom": "gold"
+        },
+        "row": {
+          "heightPx": 46,
+          "paddingInlinePx": 18,
+          "sizePx": 13,
+          "borderBottom": "skeletonBase"
+        },
+        "status": "6px rose/gold/destructive pearl dots",
+        "motifs": ["ribbon rule", "pearl"],
+        "source": { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "217-232" }
+      },
+      "atlas": {
+        "surface": { "radiusPx": 9, "borderPx": 1, "fill": "surface" },
+        "columns": ["2.2fr", "1.2fr", "1.2fr", "1fr"],
+        "header": {
+          "heightPx": 40,
+          "paddingInlinePx": 16,
+          "family": "JetBrains Mono",
+          "sizePx": 10.5,
+          "letterSpacingEm": 0.08,
+          "transform": "uppercase",
+          "borderBottom": "border"
+        },
+        "row": {
+          "heightPx": 46,
+          "paddingInlinePx": 16,
+          "sizePx": 13,
+          "borderBottom": "rowDivider"
+        },
+        "status": "6×6 cobalt/destructive survey diamonds rotated 45°",
+        "motifs": ["blueprint title block", "survey diamond"],
+        "source": { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "226-241" }
+      }
+    }
+  },
+  "signatureFocusSystems": {
+    "kira": {
+      "name": "Trace focus",
+      "trigger": "keyboard focus",
+      "construction": "A 1px cyan perimeter line traces for 240ms then resolves to the collar ring plus descending circuit stem.",
+      "specimenLoop": "kiratrace 2.2s linear infinite is demonstration-only; production focus transition duration is 240ms.",
+      "themeBehavior": {
+        "light": "drawn cyan hairline",
+        "dark": "same line and geometry with restrained cyan emission"
+      },
+      "source": {
+        "light": { "file": "Character Design Systems 3/Kira Light.dc.html", "lines": "236-243" },
+        "dark": { "file": "Character Design Systems 3/Kira Dark.dc.html", "lines": "236-243" }
+      }
+    },
+    "mochi": {
+      "name": "Bloom focus",
+      "trigger": "focus or selection",
+      "construction": "A localized soft radial rose wash extends 18px from the control, rises from the interaction point, and settles; the button retains a 2px surface separation plus 1.5px rose ring.",
+      "specimenLoop": "mochibloom 2.6s ease-in-out infinite is demonstration-only; production feedback must settle rather than loop indefinitely.",
+      "themeBehavior": {
+        "light": "rose wash with 10%-alpha gold undertone",
+        "dark": "same geometry with candlelit rose and gold glow"
+      },
+      "source": {
+        "light": { "file": "Character Design Systems 3/Mochi Light.dc.html", "lines": "235-242" },
+        "dark": { "file": "Character Design Systems 3/Mochi Dark.dc.html", "lines": "235-242" }
+      }
+    },
+    "atlas": {
+      "name": "Dock focus",
+      "trigger": "focus or selection",
+      "construction": "Four 10×10, 2px cobalt panel brackets begin 8px outside the control, converge, and seat in 180ms.",
+      "specimenLoop": "atlasdock 2s ease-in-out infinite is demonstration-only; production docking duration is 180ms.",
+      "themeBehavior": {
+        "light": "drawn cobalt brackets",
+        "dark": "same brackets with restrained holographic emission"
+      },
+      "source": {
+        "light": { "file": "Character Design Systems 3/Atlas Light.dc.html", "lines": "244-257" },
+        "dark": { "file": "Character Design Systems 3/Atlas Dark.dc.html", "lines": "244-257" }
+      }
+    }
+  }
+}

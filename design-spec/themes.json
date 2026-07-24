@@ -1,0 +1,905 @@
+{
+  "specVersion": "2.0.0-phase-0",
+  "tokenPolicy": {
+    "declaredTokens": "Names and values are copied verbatim from each board's palette array.",
+    "roleLadder": "Additional values repeatedly used by board components are normalized to stable roles. Values are copied; only the role names are normalized.",
+    "sourceColorInventory": "Every distinct hex color present in the board source. This prevents supporting hover, inset, scrim, shimmer, and glow values from being lost.",
+    "darkActivation": ".dark class",
+    "contrastPolicy": "Do not alter a board value silently. Record any WCAG AA failure and propose the smallest value adjustment for approval."
+  },
+  "characters": {
+    "kira": {
+      "characterAdjective": "incisive",
+      "typography": {
+        "sans": {
+          "family": "Space Grotesk",
+          "weights": [400, 500, 600, 700],
+          "usage": "body, controls, titles"
+        },
+        "mono": {
+          "family": "JetBrains Mono",
+          "weights": [400, 500],
+          "usage": "eyebrows, metrics, status, technical labels"
+        }
+      },
+      "geometry": {
+        "controlHeightPx": 36,
+        "compactControlHeightPx": 32,
+        "radiusLadderPx": {
+          "nodeOrCheck": 3,
+          "tooltipOrBadge": 4,
+          "control": 5,
+          "menu": 6,
+          "surface": 8
+        },
+        "directionalAxisDeg": 114,
+        "authoredConstructionTransformsDeg": {
+          "kiteRotation": 45,
+          "shardSkew": -18,
+          "bladeSkew": -24
+        },
+        "transitionStyle": "fast, decisive, ease-out",
+        "generalTransitionMs": 120,
+        "focusTraceMs": 240
+      },
+      "themes": {
+        "light": {
+          "source": {
+            "file": "Character Design Systems 3/Kira Light.dc.html",
+            "paletteLines": "324-328"
+          },
+          "boardDescription": "A blade in daylight. Violet-tinted paper, cyan withdrawn to hairlines and state — and seven artifacts from the artwork abstracted into pure geometry: chevron, kite, circuit node, strap-buckle, collar ring, fringe diagonal, light shard.",
+          "declaredTokens": [
+            { "name": "--background", "value": "#f7f5fa", "status": "declared" },
+            { "name": "--surface", "value": "#fdfcff", "status": "declared" },
+            { "name": "--border", "value": "#e4dfee", "status": "declared" },
+            { "name": "--foreground", "value": "#241d31", "status": "declared" },
+            { "name": "--muted-fg", "value": "#6f6880", "status": "declared" },
+            { "name": "--primary", "value": "#241d31", "status": "declared" },
+            { "name": "--accent-edge", "value": "#0aa3c2", "status": "declared" },
+            { "name": "--destructive", "value": "#c13851", "status": "declared" }
+          ],
+          "roleLadder": [
+            {
+              "name": "canvas",
+              "value": "#efecf5",
+              "status": "normalized",
+              "usage": "outer board canvas"
+            },
+            {
+              "name": "background",
+              "value": "#f7f5fa",
+              "status": "normalized",
+              "usage": "system page and inverse control text"
+            },
+            {
+              "name": "surface",
+              "value": "#fdfcff",
+              "status": "normalized",
+              "usage": "inputs, cards, dialogs, menus"
+            },
+            {
+              "name": "subtle",
+              "value": "#ece8f4",
+              "status": "normalized",
+              "usage": "secondary controls, active rows, skeleton body"
+            },
+            {
+              "name": "subtleHover",
+              "value": "#e1dbee",
+              "status": "normalized",
+              "usage": "secondary hover"
+            },
+            {
+              "name": "border",
+              "value": "#e4dfee",
+              "status": "normalized",
+              "usage": "surface perimeter and separators"
+            },
+            {
+              "name": "borderStrong",
+              "value": "#d5cfe3",
+              "status": "normalized",
+              "usage": "control border and motif line"
+            },
+            {
+              "name": "foreground",
+              "value": "#241d31",
+              "status": "normalized",
+              "usage": "primary text and primary control fill"
+            },
+            {
+              "name": "mutedForeground",
+              "value": "#6f6880",
+              "status": "normalized",
+              "usage": "secondary text"
+            },
+            {
+              "name": "accent",
+              "value": "#0aa3c2",
+              "status": "normalized",
+              "usage": "geometry, active fill, focus"
+            },
+            {
+              "name": "accentForeground",
+              "value": "#087e9f",
+              "status": "normalized",
+              "usage": "accent text that needs stronger contrast"
+            },
+            {
+              "name": "destructive",
+              "value": "#c13851",
+              "status": "normalized",
+              "usage": "destructive and error state"
+            },
+            {
+              "name": "destructiveHover",
+              "value": "#ad2f46",
+              "status": "normalized",
+              "usage": "destructive hover"
+            },
+            {
+              "name": "destructiveForeground",
+              "value": "#fdf5f6",
+              "status": "normalized",
+              "usage": "text on destructive"
+            }
+          ],
+          "sourceColorInventory": [
+            "#087e9f",
+            "#0aa3c2",
+            "#241d31",
+            "#372d49",
+            "#6f6880",
+            "#ad2f46",
+            "#c13851",
+            "#c9c2d6",
+            "#d5cfe3",
+            "#e1dbee",
+            "#e4dfee",
+            "#ece8f4",
+            "#efecf5",
+            "#f4f1f9",
+            "#f7f4fb",
+            "#f7f5fa",
+            "#fdf5f6",
+            "#fdfcff"
+          ],
+          "lightBehavior": "Cyan is withdrawn to hairlines and state; power geometry is drawn as linework."
+        },
+        "dark": {
+          "source": {
+            "file": "Character Design Systems 3/Kira Dark.dc.html",
+            "paletteLines": "328-333"
+          },
+          "boardDescription": "Nocturne — the native condition. Dark violet mass, light living in thin emissive seams — carrying the same seven abstracted artifacts: chevron, kite, circuit node, strap-buckle, collar ring, fringe diagonal, light shard.",
+          "declaredTokens": [
+            { "name": "--background", "value": "#171226", "status": "declared" },
+            { "name": "--surface", "value": "#1f1830", "status": "declared" },
+            { "name": "--elevated", "value": "#292040", "status": "declared" },
+            { "name": "--border", "value": "#3a2f57", "status": "declared" },
+            { "name": "--foreground", "value": "#ece8f4", "status": "declared" },
+            { "name": "--muted-fg", "value": "#9a92ab", "status": "declared" },
+            { "name": "--primary", "value": "#4fd8f0", "status": "declared" },
+            { "name": "--accent-edge", "value": "#4fd8f0", "status": "declared" },
+            { "name": "--destructive", "value": "#e14b66", "status": "declared" }
+          ],
+          "roleLadder": [
+            {
+              "name": "canvas",
+              "value": "#0d0b12",
+              "status": "normalized",
+              "usage": "outer board canvas"
+            },
+            {
+              "name": "background",
+              "value": "#171226",
+              "status": "normalized",
+              "usage": "system page"
+            },
+            {
+              "name": "surface",
+              "value": "#1f1830",
+              "status": "normalized",
+              "usage": "inputs, cards, dialogs, menus"
+            },
+            {
+              "name": "elevated",
+              "value": "#292040",
+              "status": "normalized",
+              "usage": "secondary controls, active rows, skeleton body"
+            },
+            {
+              "name": "elevatedHighlight",
+              "value": "#332b44",
+              "status": "normalized",
+              "usage": "skeleton shimmer highlight"
+            },
+            {
+              "name": "border",
+              "value": "#3a2f57",
+              "status": "normalized",
+              "usage": "surface perimeter and separators"
+            },
+            {
+              "name": "borderStrong",
+              "value": "#453b58",
+              "status": "normalized",
+              "usage": "supporting motif line"
+            },
+            {
+              "name": "foreground",
+              "value": "#ece8f4",
+              "status": "normalized",
+              "usage": "primary text"
+            },
+            {
+              "name": "mutedForeground",
+              "value": "#9a92ab",
+              "status": "normalized",
+              "usage": "secondary text"
+            },
+            {
+              "name": "accent",
+              "value": "#4fd8f0",
+              "status": "normalized",
+              "usage": "emissive geometry, active state, focus"
+            },
+            {
+              "name": "accentHover",
+              "value": "#7ce4f6",
+              "status": "normalized",
+              "usage": "link hover"
+            },
+            {
+              "name": "accentForeground",
+              "value": "#0e7d99",
+              "status": "normalized",
+              "usage": "dark text where cyan is a fill"
+            },
+            {
+              "name": "destructive",
+              "value": "#e14b66",
+              "status": "normalized",
+              "usage": "destructive and error state"
+            },
+            {
+              "name": "destructiveHover",
+              "value": "#e9647c",
+              "status": "normalized",
+              "usage": "destructive hover"
+            },
+            {
+              "name": "destructiveDeep",
+              "value": "#1c0e13",
+              "status": "normalized",
+              "usage": "destructive dark backing"
+            }
+          ],
+          "sourceColorInventory": [
+            "#0d0b12",
+            "#0e1420",
+            "#0e7d99",
+            "#171226",
+            "#1c0e13",
+            "#1f1830",
+            "#221d2c",
+            "#292040",
+            "#302842",
+            "#332b44",
+            "#362e45",
+            "#3a2f57",
+            "#453b58",
+            "#4a4358",
+            "#4fd8f0",
+            "#6fe0f2",
+            "#7ce4f6",
+            "#9a92ab",
+            "#e14b66",
+            "#e9647c",
+            "#ece8f4"
+          ],
+          "darkBehavior": "Light lives in thin emissive cyan seams. Geometry remains identical to light; only glow, emission, and dark-surface values change."
+        }
+      }
+    },
+    "mochi": {
+      "characterAdjective": "gracious",
+      "typography": {
+        "display": {
+          "family": "Cormorant Garamond",
+          "weights": [500, 600, 700],
+          "usage": "display titles, card and dialog titles"
+        },
+        "sans": {
+          "family": "Karla",
+          "weights": [400, 500, 600],
+          "usage": "body and controls"
+        },
+        "mono": {
+          "family": "JetBrains Mono",
+          "weights": [400, 500],
+          "usage": "eyebrows, metrics, status"
+        }
+      },
+      "geometry": {
+        "controlHeightPx": 36,
+        "compactControlHeightPx": 32,
+        "radiusLadderPx": {
+          "checkbox": 5,
+          "compact": 8,
+          "control": 10,
+          "menuOrToast": 12,
+          "surface": 14
+        },
+        "intentionalCircularGeometry": [
+          "pearl thumb",
+          "progress bead",
+          "status bead",
+          "badge capsule"
+        ],
+        "skeletonDirectionalAxisDeg": 100,
+        "transitionStyle": "gentle, settling, never brisk",
+        "generalTransitionMs": 250,
+        "bloomAmbientMs": 2600
+      },
+      "themes": {
+        "light": {
+          "source": {
+            "file": "Character Design Systems 3/Mochi Light.dc.html",
+            "paletteLines": "329-333"
+          },
+          "boardDescription": "Atelier daylight. Warm ivory paper, champagne-gold hairlines, rose held for state. Seven artifacts abstracted to geometry: clasp, pearl, crescent, star, ribbon, drape, veil. Gracious — never sweet.",
+          "declaredTokens": [
+            { "name": "--background", "value": "#faf6f1", "status": "declared" },
+            { "name": "--surface", "value": "#fffdfa", "status": "declared" },
+            { "name": "--border-gold", "value": "#e8dcc8", "status": "declared" },
+            { "name": "--foreground", "value": "#3d2e33", "status": "declared" },
+            { "name": "--muted-fg", "value": "#8a7a80", "status": "declared" },
+            { "name": "--rose", "value": "#c2708a", "status": "declared" },
+            { "name": "--gold", "value": "#b08d57", "status": "declared" },
+            { "name": "--destructive", "value": "#a83e50", "status": "declared" }
+          ],
+          "roleLadder": [
+            {
+              "name": "canvas",
+              "value": "#f2ece4",
+              "status": "normalized",
+              "usage": "outer board canvas"
+            },
+            {
+              "name": "background",
+              "value": "#faf6f1",
+              "status": "normalized",
+              "usage": "system page and inverse control text"
+            },
+            {
+              "name": "surface",
+              "value": "#fffdfa",
+              "status": "normalized",
+              "usage": "inputs, cards, dialogs, menus"
+            },
+            {
+              "name": "subtle",
+              "value": "#f3ebdf",
+              "status": "normalized",
+              "usage": "secondary controls and selected rows"
+            },
+            {
+              "name": "subtleHover",
+              "value": "#ece2d2",
+              "status": "normalized",
+              "usage": "secondary hover"
+            },
+            {
+              "name": "border",
+              "value": "#e8dcc8",
+              "status": "normalized",
+              "usage": "surface perimeter and gold-warm separators"
+            },
+            {
+              "name": "borderStrong",
+              "value": "#ddd0bb",
+              "status": "normalized",
+              "usage": "control border and pearl string"
+            },
+            {
+              "name": "foreground",
+              "value": "#3d2e33",
+              "status": "normalized",
+              "usage": "primary text and primary fill"
+            },
+            {
+              "name": "mutedForeground",
+              "value": "#8a7a80",
+              "status": "normalized",
+              "usage": "secondary text"
+            },
+            {
+              "name": "rose",
+              "value": "#c2708a",
+              "status": "normalized",
+              "usage": "state, pearls, crescent, bloom"
+            },
+            {
+              "name": "roseForeground",
+              "value": "#a05a72",
+              "status": "normalized",
+              "usage": "rose text that needs stronger contrast"
+            },
+            {
+              "name": "gold",
+              "value": "#b08d57",
+              "status": "normalized",
+              "usage": "hairlines, clasps, stars, pearl rims"
+            },
+            {
+              "name": "goldForeground",
+              "value": "#8a6a3c",
+              "status": "normalized",
+              "usage": "gold status text"
+            },
+            {
+              "name": "destructive",
+              "value": "#a83e50",
+              "status": "normalized",
+              "usage": "destructive and error state"
+            },
+            {
+              "name": "destructiveHover",
+              "value": "#953646",
+              "status": "normalized",
+              "usage": "destructive hover"
+            },
+            {
+              "name": "destructiveForeground",
+              "value": "#fdf6f5",
+              "status": "normalized",
+              "usage": "text on destructive"
+            }
+          ],
+          "sourceColorInventory": [
+            "#3d2e33",
+            "#54424a",
+            "#8a6a3c",
+            "#8a7a80",
+            "#953646",
+            "#a05a72",
+            "#a83e50",
+            "#b08d57",
+            "#c2708a",
+            "#ddd0bb",
+            "#e8dcc8",
+            "#ece2d2",
+            "#f0e8db",
+            "#f2ece4",
+            "#f3ebdf",
+            "#f7f1e8",
+            "#f8f2e9",
+            "#faf6f1",
+            "#fdf6f5",
+            "#fffdfa"
+          ],
+          "lightBehavior": "Warm ivory paper, champagne-gold hairlines, and rose reserved for state; expressive power is drawn as linework."
+        },
+        "dark": {
+          "source": {
+            "file": "Character Design Systems 3/Mochi Dark.dc.html",
+            "paletteLines": "332-336"
+          },
+          "boardDescription": "Dusk salon — derived from the artwork's mauve backdrop, not from black. Deep warm plum surfaces; gold and rose turn candlelit. The same seven artifacts: clasp, pearl, crescent, star, ribbon, drape, veil.",
+          "declaredTokens": [
+            { "name": "--background", "value": "#241a22", "status": "declared" },
+            { "name": "--surface", "value": "#2e222c", "status": "declared" },
+            { "name": "--border", "value": "#443340", "status": "declared" },
+            { "name": "--foreground", "value": "#f3e9e6", "status": "declared" },
+            { "name": "--muted-fg", "value": "#a8929e", "status": "declared" },
+            { "name": "--rose", "value": "#e0899f", "status": "declared" },
+            { "name": "--gold", "value": "#d4ad72", "status": "declared" },
+            { "name": "--destructive", "value": "#d96a7c", "status": "declared" }
+          ],
+          "roleLadder": [
+            {
+              "name": "canvas",
+              "value": "#1c141b",
+              "status": "normalized",
+              "usage": "outer board canvas; explicitly mauve-derived, not black"
+            },
+            {
+              "name": "background",
+              "value": "#241a22",
+              "status": "normalized",
+              "usage": "system page"
+            },
+            {
+              "name": "surface",
+              "value": "#2e222c",
+              "status": "normalized",
+              "usage": "inputs, cards, dialogs, menus"
+            },
+            {
+              "name": "subtle",
+              "value": "#332631",
+              "status": "normalized",
+              "usage": "secondary controls, selected rows, skeleton body"
+            },
+            {
+              "name": "subtleHighlight",
+              "value": "#41313e",
+              "status": "normalized",
+              "usage": "skeleton shimmer highlight"
+            },
+            {
+              "name": "border",
+              "value": "#443340",
+              "status": "normalized",
+              "usage": "surface perimeter and separators"
+            },
+            {
+              "name": "borderStrong",
+              "value": "#4f3c4a",
+              "status": "normalized",
+              "usage": "control border and pearl string"
+            },
+            {
+              "name": "foreground",
+              "value": "#f3e9e6",
+              "status": "normalized",
+              "usage": "primary text"
+            },
+            {
+              "name": "mutedForeground",
+              "value": "#a8929e",
+              "status": "normalized",
+              "usage": "secondary text"
+            },
+            {
+              "name": "rose",
+              "value": "#e0899f",
+              "status": "normalized",
+              "usage": "state, pearls, crescent, bloom"
+            },
+            {
+              "name": "gold",
+              "value": "#d4ad72",
+              "status": "normalized",
+              "usage": "hairlines, clasps, stars, pearl rims"
+            },
+            {
+              "name": "destructive",
+              "value": "#d96a7c",
+              "status": "normalized",
+              "usage": "destructive and error state"
+            },
+            {
+              "name": "destructiveHover",
+              "value": "#e07f8f",
+              "status": "normalized",
+              "usage": "destructive hover"
+            },
+            {
+              "name": "destructiveDeep",
+              "value": "#2b1216",
+              "status": "normalized",
+              "usage": "destructive dark backing"
+            },
+            {
+              "name": "inverseForeground",
+              "value": "#fffaf7",
+              "status": "normalized",
+              "usage": "high-contrast text on dark fills"
+            }
+          ],
+          "sourceColorInventory": [
+            "#1c141b",
+            "#241a22",
+            "#2a1f28",
+            "#2b1216",
+            "#2b1f29",
+            "#2e222c",
+            "#332631",
+            "#3d2e3b",
+            "#41313e",
+            "#443340",
+            "#4f3c4a",
+            "#a8929e",
+            "#d4ad72",
+            "#d96a7c",
+            "#e07f8f",
+            "#e0899f",
+            "#e3c18a",
+            "#f3e9e6",
+            "#fffaf7"
+          ],
+          "darkBehavior": "Use deep warm plum, never black. Rose and gold become candlelit with restrained glow; geometry stays identical to daylight."
+        }
+      }
+    },
+    "atlas": {
+      "characterAdjective": "monumental",
+      "typography": {
+        "sans": {
+          "family": "Archivo",
+          "weights": [400, 500, 600, 700],
+          "usage": "body, controls, titles"
+        },
+        "mono": {
+          "family": "JetBrains Mono",
+          "weights": [400, 500],
+          "usage": "eyebrows, metrics, blueprint title blocks"
+        }
+      },
+      "geometry": {
+        "controlHeightPx": 36,
+        "compactControlHeightPx": 32,
+        "radiusLadderPx": {
+          "progressSegment": 1.5,
+          "buckleThumb": 2,
+          "switchTrack": 4,
+          "compact": 5,
+          "controlOrMenu": 7,
+          "surface": 9
+        },
+        "beamDirectionalAxisDeg": 76,
+        "surveyDiamondRotationDeg": 45,
+        "transitionStyle": "deliberate, linear, structural",
+        "generalTransitionMs": 180,
+        "dockFocusMs": 180
+      },
+      "themes": {
+        "light": {
+          "source": {
+            "file": "Character Design Systems 3/Atlas Light.dc.html",
+            "paletteLines": "349-353"
+          },
+          "boardDescription": "Engineering drawing. Cool paper, cobalt linework, gunmetal text — structural and calm. Seven artifacts abstracted to geometry: buckle, strap band, panel bracket, diamond grid, lens bezel, light beam, core ring.",
+          "declaredTokens": [
+            { "name": "--background", "value": "#f4f6f9", "status": "declared" },
+            { "name": "--surface", "value": "#fcfdfe", "status": "declared" },
+            { "name": "--border", "value": "#d9e0ea", "status": "declared" },
+            { "name": "--foreground", "value": "#2a3340", "status": "declared" },
+            { "name": "--muted-fg", "value": "#6b7686", "status": "declared" },
+            { "name": "--primary", "value": "#2a3340", "status": "declared" },
+            { "name": "--cobalt-line", "value": "#2458c5", "status": "declared" },
+            { "name": "--destructive", "value": "#c03d47", "status": "declared" }
+          ],
+          "roleLadder": [
+            {
+              "name": "canvas",
+              "value": "#e9edf3",
+              "status": "normalized",
+              "usage": "outer board canvas"
+            },
+            {
+              "name": "background",
+              "value": "#f4f6f9",
+              "status": "normalized",
+              "usage": "system page and inverse control text"
+            },
+            {
+              "name": "surface",
+              "value": "#fcfdfe",
+              "status": "normalized",
+              "usage": "inputs, cards, dialogs, menus"
+            },
+            {
+              "name": "subtle",
+              "value": "#e8edf4",
+              "status": "normalized",
+              "usage": "secondary controls and selected rows"
+            },
+            {
+              "name": "subtleHover",
+              "value": "#dde5ef",
+              "status": "normalized",
+              "usage": "secondary hover"
+            },
+            {
+              "name": "border",
+              "value": "#d9e0ea",
+              "status": "normalized",
+              "usage": "surface perimeter and separators"
+            },
+            {
+              "name": "borderStrong",
+              "value": "#c8d2e0",
+              "status": "normalized",
+              "usage": "control border and bezel inset"
+            },
+            {
+              "name": "foreground",
+              "value": "#2a3340",
+              "status": "normalized",
+              "usage": "primary text and primary fill"
+            },
+            {
+              "name": "mutedForeground",
+              "value": "#6b7686",
+              "status": "normalized",
+              "usage": "secondary text"
+            },
+            {
+              "name": "cobalt",
+              "value": "#2458c5",
+              "status": "normalized",
+              "usage": "linework, focus, structural state"
+            },
+            {
+              "name": "cobaltHover",
+              "value": "#1a46a3",
+              "status": "normalized",
+              "usage": "link hover"
+            },
+            {
+              "name": "destructive",
+              "value": "#c03d47",
+              "status": "normalized",
+              "usage": "destructive and error state"
+            },
+            {
+              "name": "destructiveHover",
+              "value": "#aa353e",
+              "status": "normalized",
+              "usage": "destructive hover"
+            },
+            {
+              "name": "destructiveForeground",
+              "value": "#fdf5f5",
+              "status": "normalized",
+              "usage": "text on destructive"
+            }
+          ],
+          "sourceColorInventory": [
+            "#1a46a3",
+            "#2458c5",
+            "#2a3340",
+            "#3a4759",
+            "#6b7686",
+            "#aa353e",
+            "#aab4c4",
+            "#c03d47",
+            "#c8d2e0",
+            "#d9e0ea",
+            "#dde5ef",
+            "#e4e9f1",
+            "#e8edf4",
+            "#e9edf3",
+            "#edf1f6",
+            "#eef2f7",
+            "#f0f4f9",
+            "#f4f6f9",
+            "#fcfdfe",
+            "#fdf5f5"
+          ],
+          "lightBehavior": "Cool paper with cobalt drawn linework and gunmetal mass; structural and calm."
+        },
+        "dark": {
+          "source": {
+            "file": "Character Design Systems 3/Atlas Dark.dc.html",
+            "paletteLines": "349-353"
+          },
+          "boardDescription": "Blueprint luminescence — the native condition. Ink-navy volume; cobalt reads as emitted data, radiating from structure. The same seven artifacts: buckle, strap band, panel bracket, diamond grid, lens bezel, light beam, core ring.",
+          "declaredTokens": [
+            { "name": "--background", "value": "#0e1420", "status": "declared" },
+            { "name": "--surface", "value": "#151d2d", "status": "declared" },
+            { "name": "--border", "value": "#263349", "status": "declared" },
+            { "name": "--foreground", "value": "#e7edf6", "status": "declared" },
+            { "name": "--muted-fg", "value": "#8fa0b8", "status": "declared" },
+            { "name": "--primary", "value": "#e7edf6", "status": "declared" },
+            { "name": "--cobalt-line", "value": "#5b8cff", "status": "declared" },
+            { "name": "--destructive", "value": "#e0596a", "status": "declared" }
+          ],
+          "roleLadder": [
+            {
+              "name": "canvas",
+              "value": "#0a0f18",
+              "status": "normalized",
+              "usage": "outer board canvas"
+            },
+            {
+              "name": "background",
+              "value": "#0e1420",
+              "status": "normalized",
+              "usage": "system page"
+            },
+            {
+              "name": "surface",
+              "value": "#151d2d",
+              "status": "normalized",
+              "usage": "inputs, cards, dialogs, menus"
+            },
+            {
+              "name": "subtle",
+              "value": "#1c2536",
+              "status": "normalized",
+              "usage": "secondary controls, selected rows, skeleton body"
+            },
+            {
+              "name": "subtleHighlight",
+              "value": "#26324a",
+              "status": "normalized",
+              "usage": "skeleton shimmer highlight"
+            },
+            {
+              "name": "border",
+              "value": "#263349",
+              "status": "normalized",
+              "usage": "surface perimeter and separators"
+            },
+            {
+              "name": "borderStrong",
+              "value": "#3a4b6b",
+              "status": "normalized",
+              "usage": "bezel inset and support line"
+            },
+            {
+              "name": "foreground",
+              "value": "#e7edf6",
+              "status": "normalized",
+              "usage": "primary text and primary fill"
+            },
+            {
+              "name": "mutedForeground",
+              "value": "#8fa0b8",
+              "status": "normalized",
+              "usage": "secondary text"
+            },
+            {
+              "name": "cobalt",
+              "value": "#5b8cff",
+              "status": "normalized",
+              "usage": "emitted data, focus, structural state"
+            },
+            {
+              "name": "cobaltHover",
+              "value": "#84a9ff",
+              "status": "normalized",
+              "usage": "link hover"
+            },
+            {
+              "name": "destructive",
+              "value": "#e0596a",
+              "status": "normalized",
+              "usage": "destructive and error state"
+            },
+            {
+              "name": "destructiveHover",
+              "value": "#e87482",
+              "status": "normalized",
+              "usage": "destructive hover"
+            },
+            {
+              "name": "destructiveDeep",
+              "value": "#1f0e12",
+              "status": "normalized",
+              "usage": "destructive dark backing"
+            }
+          ],
+          "sourceColorInventory": [
+            "#0a0f18",
+            "#0e1420",
+            "#131b2a",
+            "#151d2d",
+            "#1a2334",
+            "#1c2536",
+            "#1f0e12",
+            "#232e42",
+            "#26324a",
+            "#263349",
+            "#2f3d57",
+            "#3a4b6b",
+            "#4a5a75",
+            "#5b8cff",
+            "#84a9ff",
+            "#8fa0b8",
+            "#e0596a",
+            "#e7edf6",
+            "#e87482",
+            "#ffffff"
+          ],
+          "darkBehavior": "Ink-navy volume with cobalt emitted as data. Geometry stays identical to daylight and gains controlled holographic glow."
+        }
+      }
+    }
+  }
+}

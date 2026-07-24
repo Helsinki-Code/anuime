@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anuime.dev/design-spec/v2-phase-0.schema.json",
+  "title": "AnUIme v2 Phase-0 Design Spec",
+  "type": "object",
+  "description": "Lightweight validation contract shared by the Phase-0 JSON artifacts.",
+  "$defs": {
+    "sourceRef": {
+      "type": "object",
+      "required": ["file", "lines"],
+      "properties": {
+        "file": { "type": "string" },
+        "lines": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "token": {
+      "type": "object",
+      "required": ["name", "value", "status"],
+      "properties": {
+        "name": { "type": "string" },
+        "value": { "type": "string" },
+        "status": { "enum": ["declared", "normalized", "interpreted"] },
+        "usage": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "constraint": {
+      "type": "object",
+      "required": ["id", "level", "rule", "enforcement"],
+      "properties": {
+        "id": { "type": "string" },
+        "level": { "enum": ["must", "must-not", "should", "exception"] },
+        "rule": { "type": "string" },
+        "enforcement": { "type": "object" },
+        "sourceEvidence": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/sourceRef" }
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}
