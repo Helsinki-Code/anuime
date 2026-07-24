@@ -14,18 +14,9 @@ describe("AnUIme recipe v2", () => {
     expect(decodeAnuimeRecipe(encodeAnuimeRecipe(recipe))).toEqual(recipe);
   });
 
-  it("migrates five-part and six-part v1 URLs", () => {
-    expect(decodeAnuimeRecipe("atlas.kira.mochi.atlas.compact")).toMatchObject({
-      version: 2,
-      colorSystem: "atlas",
-      motionLevel: "calm",
-      mode: "system",
-    });
-    expect(decodeAnuimeRecipe("kira.kira.kira.kira.comfortable.expressive")).toMatchObject({
-      version: 2,
-      colorSystem: "kira",
-      motionLevel: "expressive",
-    });
+  it("accepts only explicitly versioned v2 URLs", () => {
+    expect(decodeAnuimeRecipe("atlas.kira.mochi.atlas.compact")).toBeNull();
+    expect(decodeAnuimeRecipe("kira.kira.kira.kira.comfortable.expressive")).toBeNull();
   });
 
   it("rejects malformed and unknown recipes", () => {
@@ -37,7 +28,7 @@ describe("AnUIme recipe v2", () => {
   it("lets a recipe take precedence over the character shorthand", () => {
     const result = resolveAnuimeRecipe(createAnuimeRecipe("mochi"), "atlas");
     expect(result.recipe.colorSystem).toBe("mochi");
-    expect(result.primary).toContain("bg-pink-700");
+    expect(result.primary).toContain("bg-primary");
   });
 
   it("resolves mixed dimensions independently", () => {
@@ -47,8 +38,8 @@ describe("AnUIme recipe v2", () => {
       structureSystem: "atlas",
       density: "spacious",
     });
-    expect(result.primary).toContain("rounded-full");
+    expect(result.primary).toContain("rounded-[10px]");
     expect(result.primary).toContain("min-h-12");
-    expect(result.surface).toContain("border-blue-400/35");
+    expect(result.surface).toContain("--anuime-border-strong");
   });
 });

@@ -7,7 +7,8 @@ export {
   decodeAnuimeRecipe,
   defaultAnuimeRecipe,
   encodeAnuimeRecipe,
-  migrateAnuimeRecipe,
+  isAnuimeCharacter,
+  isAnuimeRecipe,
   pureCharacterRecipes,
   resolveAnuimeRecipe,
   validateAnuimeRecipe,
@@ -17,7 +18,6 @@ export {
   type AnuimeMotionLevel,
   type AnuimeRecipe,
   type AnuimeRecipeV2,
-  type LegacyAnuimeRecipeV1,
   type RecipeValidationIssue,
 } from "../../../registry/items/lib/anuime-recipe/anuime-recipe";
 

@@ -1,13 +1,15 @@
 {
   "$schema": "./schema.json",
   "specVersion": "2.0.0-phase-0",
-  "status": "awaiting-user-signoff",
+  "status": "approved",
   "designAuthority": "The six approved Design Component HTML boards are the only design source of truth. Repository code is legacy wherever it contradicts this spec.",
   "scope": {
     "phase": 0,
-    "implementationAuthorized": false,
-    "nextGate": "User approval of this extraction before any registry v2 code.",
-    "nextCheckpointAfterApproval": "Stop after the first three rebuilt components, one per character."
+    "implementationAuthorized": true,
+    "approvalDate": "2026-07-25",
+    "approvalCondition": "Contrast audit added with failing pairs reported and proposed adjustments left unapplied.",
+    "nextGate": "Review the first three rebuilt components before mass-producing the remaining catalog.",
+    "nextCheckpointAfterApproval": "Stop after Kira Checkbox, Mochi Switch, and Atlas Progress."
   },
   "sources": [
     {

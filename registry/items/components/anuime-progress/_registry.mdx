@@ -2,10 +2,13 @@
 name: anuime-progress
 type: registry:ui
 title: "AnUIme Progress"
-description: "Determinate and indeterminate progress with recipe-aware visuals."
+description: "Recipe-aware progress led by Atlas’s ten drafted strap segments."
 localRegistryDependencies:
   - anuime-recipe
 ---
+
+Atlas’s default treatment uses ten equal 5px strap segments with 3px gaps. Determinate and static
+indeterminate states retain the existing progress API and accessible value semantics.
 
 ```tsx
 import { AnuimeProgress } from "@/components/ui/anuime-progress";

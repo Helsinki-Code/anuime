@@ -901,5 +901,182 @@
         }
       }
     }
+  },
+  "contrastAudit": {
+    "status": "computed-with-proposals-not-applied",
+    "standard": "WCAG 2.2 relative luminance and contrast ratio",
+    "scope": "Every canonical declared text foreground token (--foreground and --muted-fg) paired with its theme's declared --background across all six character/theme variants.",
+    "thresholds": {
+      "bodyTextAA": 4.5,
+      "largeTextAndUiComponent": 3
+    },
+    "results": [
+      {
+        "character": "kira",
+        "theme": "light",
+        "foregroundToken": "--foreground",
+        "foregroundValue": "#241d31",
+        "backgroundToken": "--background",
+        "backgroundValue": "#f7f5fa",
+        "ratio": 14.9765,
+        "bodyTextAAPass": true,
+        "largeTextAndUiComponentPass": true
+      },
+      {
+        "character": "kira",
+        "theme": "light",
+        "foregroundToken": "--muted-fg",
+        "foregroundValue": "#6f6880",
+        "backgroundToken": "--background",
+        "backgroundValue": "#f7f5fa",
+        "ratio": 4.8885,
+        "bodyTextAAPass": true,
+        "largeTextAndUiComponentPass": true
+      },
+      {
+        "character": "kira",
+        "theme": "dark",
+        "foregroundToken": "--foreground",
+        "foregroundValue": "#ece8f4",
+        "backgroundToken": "--background",
+        "backgroundValue": "#171226",
+        "ratio": 15.1316,
+        "bodyTextAAPass": true,
+        "largeTextAndUiComponentPass": true
+      },
+      {
+        "character": "kira",
+        "theme": "dark",
+        "foregroundToken": "--muted-fg",
+        "foregroundValue": "#9a92ab",
+        "backgroundToken": "--background",
+        "backgroundValue": "#171226",
+        "ratio": 6.1459,
+        "bodyTextAAPass": true,
+        "largeTextAndUiComponentPass": true
+      },
+      {
+        "character": "mochi",
+        "theme": "light",
+        "foregroundToken": "--foreground",
+        "foregroundValue": "#3d2e33",
+        "backgroundToken": "--background",
+        "backgroundValue": "#faf6f1",
+        "ratio": 11.9224,
+        "bodyTextAAPass": true,
+        "largeTextAndUiComponentPass": true
+      },
+      {
+        "character": "mochi",
+        "theme": "light",
+        "foregroundToken": "--muted-fg",
+        "foregroundValue": "#8a7a80",
+        "backgroundToken": "--background",
+        "backgroundValue": "#faf6f1",
+        "ratio": 3.7706,
+        "bodyTextAAPass": false,
+        "largeTextAndUiComponentPass": true
+      },
+      {
+        "character": "mochi",
+        "theme": "dark",
+        "foregroundToken": "--foreground",
+        "foregroundValue": "#f3e9e6",
+        "backgroundToken": "--background",
+        "backgroundValue": "#241a22",
+        "ratio": 14.134,
+        "bodyTextAAPass": true,
+        "largeTextAndUiComponentPass": true
+      },
+      {
+        "character": "mochi",
+        "theme": "dark",
+        "foregroundToken": "--muted-fg",
+        "foregroundValue": "#a8929e",
+        "backgroundToken": "--background",
+        "backgroundValue": "#241a22",
+        "ratio": 5.8355,
+        "bodyTextAAPass": true,
+        "largeTextAndUiComponentPass": true
+      },
+      {
+        "character": "atlas",
+        "theme": "light",
+        "foregroundToken": "--foreground",
+        "foregroundValue": "#2a3340",
+        "backgroundToken": "--background",
+        "backgroundValue": "#f4f6f9",
+        "ratio": 11.7841,
+        "bodyTextAAPass": true,
+        "largeTextAndUiComponentPass": true
+      },
+      {
+        "character": "atlas",
+        "theme": "light",
+        "foregroundToken": "--muted-fg",
+        "foregroundValue": "#6b7686",
+        "backgroundToken": "--background",
+        "backgroundValue": "#f4f6f9",
+        "ratio": 4.253,
+        "bodyTextAAPass": false,
+        "largeTextAndUiComponentPass": true
+      },
+      {
+        "character": "atlas",
+        "theme": "dark",
+        "foregroundToken": "--foreground",
+        "foregroundValue": "#e7edf6",
+        "backgroundToken": "--background",
+        "backgroundValue": "#0e1420",
+        "ratio": 15.6567,
+        "bodyTextAAPass": true,
+        "largeTextAndUiComponentPass": true
+      },
+      {
+        "character": "atlas",
+        "theme": "dark",
+        "foregroundToken": "--muted-fg",
+        "foregroundValue": "#8fa0b8",
+        "backgroundToken": "--background",
+        "backgroundValue": "#0e1420",
+        "ratio": 6.9221,
+        "bodyTextAAPass": true,
+        "largeTextAndUiComponentPass": true
+      }
+    ],
+    "failures": [
+      {
+        "character": "mochi",
+        "theme": "light",
+        "foregroundToken": "--muted-fg",
+        "currentValue": "#8a7a80",
+        "currentRatio": 3.7706,
+        "proposedValue": "#826c72",
+        "proposedRatio": 4.5,
+        "proposalApplied": false,
+        "adjustmentMethod": "Closest 8-bit sRGB color by OKLab distance that produces a computed ratio >= 4.5 while keeping --background fixed."
+      },
+      {
+        "character": "atlas",
+        "theme": "light",
+        "foregroundToken": "--muted-fg",
+        "currentValue": "#6b7686",
+        "currentRatio": 4.253,
+        "proposedValue": "#677282",
+        "proposedRatio": 4.5046,
+        "proposalApplied": false,
+        "adjustmentMethod": "Closest 8-bit sRGB color by OKLab distance that produces a computed ratio >= 4.5 while keeping --background fixed."
+      }
+    ],
+    "proposalSearch": {
+      "candidateSpace": "All 16,777,216 8-bit sRGB colors",
+      "distanceMetric": "Euclidean distance in OKLab",
+      "fixedTokens": [
+        "--background",
+        "--foreground",
+        "all declared tokens except the proposed --muted-fg"
+      ],
+      "declaredTokenValuesChanged": false
+    }
   }
 }

@@ -1,6 +1,7 @@
 # AnUIme v2 — Phase 0 extraction
 
-Status: **awaiting user sign-off**. No v2 registry or site implementation is authorized by this phase.
+Status: **approved on 2026-07-25**. Phase 1 is authorized through the first-three-component
+checkpoint only.
 
 The six HTML boards in `Character Design Systems 3/` are the only source of design truth. Their exact hashes are recorded in `manifest.json`. The extraction is split so future code and lint tools can consume it without parsing prose:
 
@@ -27,7 +28,7 @@ The six HTML boards in `Character Design Systems 3/` are the only source of desi
 5. Reduced motion disables all motion in an Expressive Moments container. Static geometry must remain recognizable and usable.
 6. Token values are never silently adjusted for contrast. Any WCAG failure must be reported with a minimal proposed adjustment.
 
-## Source tensions requiring sign-off
+## Approved source interpretations
 
 - Kira says “114° … the only angle in the system,” while the same source explicitly uses 45° kite rotation, −18° shard skew, and −24° blade skew. The machine rule scopes 114° to **directional system axes** (sweeps, fringe/light direction) and allows the three authored construction transforms only for their named motifs.
 - Kira says “no pill geometry anywhere in the set,” while the source uses true circles for nodes/status marks. The machine rule forbids elongated capsule geometry (`width != height` with maximal radius) but retains authored circles as circuit nodes.
@@ -37,4 +38,6 @@ The six HTML boards in `Character Design Systems 3/` are the only source of desi
 
 The current registry contains 51 component items. Sixteen have explicit workhorse constructions on all three boards. The remaining 35 are listed for review in `derived-not-specified.json`; several have close source anatomy (for example `table`, `field`, `empty-state`, and `spinner`) but no explicit standalone board construction, so they remain flagged rather than being treated as specified.
 
-Phase 1 must not begin until this extraction and the three interpretations above are approved.
+The three interpretations above are approved. `themes.json` also contains the required computed
+contrast audit. Its Mochi Light and Atlas Light muted-foreground corrections remain proposals and
+have not changed any declared token.
