@@ -13,7 +13,7 @@ export function AnuimeTable({
   className = "",
   ...props
 }: TableHTMLAttributes<HTMLTableElement> & RecipeProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "table");
   return (
     <div className={`${styles.surface} overflow-x-auto`}>
       <table className={`w-full border-collapse text-sm ${className}`} {...props} />
@@ -21,13 +21,13 @@ export function AnuimeTable({
   );
 }
 export function AnuimeTableHeader(props: HTMLAttributes<HTMLTableSectionElement>) {
-  return <thead className="border-b bg-black/5 text-left dark:bg-white/5" {...props} />;
+  return <thead className="border-b bg-secondary/60 text-left" {...props} />;
 }
 export function AnuimeTableBody(props: HTMLAttributes<HTMLTableSectionElement>) {
   return <tbody className="divide-y" {...props} />;
 }
 export function AnuimeTableRow(props: HTMLAttributes<HTMLTableRowElement>) {
-  return <tr className="hover:bg-black/5 dark:hover:bg-white/5" {...props} />;
+  return <tr className="hover:bg-secondary/60" {...props} />;
 }
 export function AnuimeTableHead(props: HTMLAttributes<HTMLTableCellElement>) {
   return <th scope="col" className="px-4 py-3 font-semibold" {...props} />;

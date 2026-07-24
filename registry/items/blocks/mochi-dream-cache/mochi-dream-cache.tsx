@@ -12,8 +12,11 @@ export function MochiDreamCache({
   recipe?: AnuimeRecipeV2;
 }) {
   return (
-    <section className="rounded-[2rem] border border-pink-300 bg-pink-50 p-6 text-pink-950 shadow-xl dark:bg-pink-950 dark:text-pink-50">
-      <p className="font-mono text-xs tracking-[0.2em] text-pink-500 uppercase">
+    <section
+      data-character="mochi"
+      className="rounded-[14px] border border-border bg-[var(--anuime-surface,var(--card))] p-6 text-foreground shadow-[0_12px_32px_-24px_color-mix(in_oklab,var(--foreground)_24%,transparent)]"
+    >
+      <p className="font-mono text-xs tracking-[0.2em] text-[var(--anuime-accent,var(--accent))] uppercase">
         Mochi · Dream Cache
       </p>
       <div className="mt-4 grid gap-5 lg:grid-cols-2">
@@ -24,7 +27,7 @@ export function MochiDreamCache({
           description="A warm onboarding block keeps help close without interrupting progress."
           action={<AnuimeButton recipe={recipe}>Continue creating</AnuimeButton>}
         />
-        <div className="grid content-between gap-5 rounded-3xl border border-pink-300/60 bg-white/60 p-5 dark:bg-pink-900/30">
+        <div className="grid content-between gap-5 rounded-[14px] border border-border bg-secondary/45 p-5">
           <AnuimeProgress recipe={recipe} label="Your setup" value={66} />
           <AnuimePopover
             recipe={recipe}

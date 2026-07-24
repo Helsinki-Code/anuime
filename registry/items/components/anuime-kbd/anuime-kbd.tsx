@@ -19,7 +19,7 @@ export function AnuimeKbd({
   className = "",
   ...props
 }: AnuimeKbdProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "kbd");
   return (
     <kbd
       className={`${styles.shapeControl} ${styles.secondary} inline-flex min-h-0 items-center border-b-2 px-2 py-1 font-mono text-xs font-bold ${className}`}

@@ -17,7 +17,9 @@ export function Preview() {
         {
           key: "status",
           header: "Status",
-          render: (value) => <span className="rounded-full border px-2 py-1 text-xs">{value}</span>,
+          render: (value) => (
+            <span className="rounded-[4px] border px-2 py-1 text-xs">{value}</span>
+          ),
         },
       ]}
     />

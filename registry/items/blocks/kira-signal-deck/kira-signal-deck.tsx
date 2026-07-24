@@ -16,14 +16,17 @@ export function KiraSignalDeck({
   primaryAction = "Activate Signal Cut",
 }: KiraSignalDeckProps) {
   return (
-    <section className="grid gap-5 rounded-xl border border-cyan-400/30 bg-zinc-950 p-5 text-zinc-50 shadow-2xl lg:grid-cols-[1fr_22rem]">
-      <div className="flex min-h-72 flex-col justify-between border-l-2 border-cyan-300 pl-5">
+    <section
+      data-character="kira"
+      className="grid gap-5 rounded-[8px] border border-[var(--anuime-border-strong,var(--border))] bg-[var(--anuime-surface,var(--card))] p-5 text-foreground shadow-[0_16px_40px_-28px_color-mix(in_oklab,var(--foreground)_35%,transparent)] lg:grid-cols-[1fr_22rem]"
+    >
+      <div className="flex min-h-72 flex-col justify-between border-l-2 border-[var(--anuime-accent,var(--accent))] pl-5">
         <div>
-          <p className="font-mono text-xs tracking-[0.2em] text-cyan-300 uppercase">
+          <p className="font-mono text-xs tracking-[0.2em] text-[var(--anuime-accent,var(--accent))] uppercase">
             Kira · Signal Cut
           </p>
           <h2 className="mt-4 max-w-xl text-4xl font-semibold tracking-tight">{mission}</h2>
-          <p className="mt-4 max-w-lg text-sm leading-6 text-zinc-400">
+          <p className="mt-4 max-w-lg text-sm leading-6 text-muted-foreground">
             One decisive action is elevated. Everything else remains reachable through the command
             deck.
           </p>

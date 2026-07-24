@@ -10,10 +10,10 @@ export function AtlasAnalyticsWorkspace({
   title = "Product intelligence",
 }: AtlasAnalyticsWorkspaceProps) {
   return (
-    <main className="grid gap-5 bg-slate-950 p-4 text-slate-50 sm:p-8">
+    <main data-character="atlas" className="grid gap-5 bg-background p-4 text-foreground sm:p-8">
       <header className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="font-mono text-xs tracking-[0.2em] text-blue-400 uppercase">
+          <p className="font-mono text-xs tracking-[0.2em] text-[var(--anuime-accent,var(--accent))] uppercase">
             Atlas Analytics Workspace
           </p>
           <h1 className="mt-2 text-4xl font-bold">{title}</h1>

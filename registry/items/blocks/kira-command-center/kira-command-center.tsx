@@ -29,6 +29,7 @@ export function KiraCommandCenter({
   const styles = resolveAnuimeRecipe(recipe, "kira");
   return (
     <section
+      data-character="kira"
       className={`${styles.surface} ${styles.surfacePadding} grid gap-5 lg:grid-cols-[13rem_minmax(0,1fr)_17rem]`}
     >
       <nav aria-label="Signal Rail" className="grid content-start gap-2">
@@ -38,7 +39,7 @@ export function KiraCommandCenter({
         {commands.map((command) => (
           <button
             key={command.id}
-            className={`${styles.shapeControl} flex items-center justify-between px-3 py-2 text-left text-sm hover:bg-white/10 focus-visible:ring-2`}
+            className={`${styles.shapeControl} flex items-center justify-between px-3 py-2 text-left text-sm hover:bg-[var(--anuime-subtle-hover,var(--secondary))] focus-visible:ring-2`}
           >
             <span>{command.label}</span>
             <AnuimeKbd recipe={recipe}>{command.shortcut}</AnuimeKbd>

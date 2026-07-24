@@ -12,7 +12,7 @@ export type AnuimeAccordionProps = {
 };
 
 export function AnuimeAccordion({ character = "kira", recipe, items }: AnuimeAccordionProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "accordion");
   return (
     <div className={`grid w-full max-w-xl ${styles.gap}`}>
       {items.map((item, index) => (

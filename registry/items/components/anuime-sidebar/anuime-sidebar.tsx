@@ -34,7 +34,7 @@ export function AnuimeSidebar({
   footer,
   collapsed = false,
 }: AnuimeSidebarProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "sidebar");
   return (
     <aside
       aria-label="Application sidebar"
@@ -48,7 +48,7 @@ export function AnuimeSidebar({
             href={item.href}
             aria-current={item.active ? "page" : undefined}
             title={collapsed ? item.label : undefined}
-            className={`${styles.shapeControl} flex items-center gap-3 px-3 py-2 text-sm font-medium ${item.active ? styles.secondary : "hover:bg-white/10"}`}
+            className={`${styles.shapeControl} flex items-center gap-3 px-3 py-2 text-sm font-medium ${item.active ? styles.secondary : "hover:bg-secondary"}`}
           >
             {item.icon}
             {collapsed ? <span className="sr-only">{item.label}</span> : item.label}

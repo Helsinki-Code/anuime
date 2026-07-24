@@ -12,7 +12,7 @@ export function Preview() {
       action={
         <a
           href="#studio"
-          className="ml-2 rounded-sm bg-blue-400 px-3 py-2 text-sm font-bold text-slate-950"
+          className="ml-2 rounded-[4px] bg-primary px-3 py-2 text-sm font-bold text-primary-foreground"
         >
           Studio
         </a>

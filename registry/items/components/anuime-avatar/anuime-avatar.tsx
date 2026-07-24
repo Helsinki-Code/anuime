@@ -18,9 +18,9 @@ export type AnuimeAvatarProps = HTMLAttributes<HTMLSpanElement> & {
 
 const sizes = { sm: "size-8 text-xs", md: "size-10 text-sm", lg: "size-14 text-base" } as const;
 const statuses = {
-  online: "bg-emerald-500",
-  busy: "bg-amber-500",
-  offline: "bg-zinc-400",
+  online: "bg-[var(--anuime-accent,var(--accent))]",
+  busy: "bg-[var(--anuime-secondary-accent,var(--accent))]",
+  offline: "bg-muted-foreground",
 } as const;
 
 export function AnuimeAvatar({
@@ -34,9 +34,14 @@ export function AnuimeAvatar({
   className = "",
   ...props
 }: AnuimeAvatarProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "avatar");
+  const system = styles.recipe.structureSystem;
   return (
-    <span className={`relative inline-flex shrink-0 ${className}`} {...props}>
+    <span
+      data-character={system}
+      className={`relative inline-flex shrink-0 ${className}`}
+      {...props}
+    >
       <span
         className={`${sizes[size]} ${styles.shapeControl} ${styles.surface} inline-flex items-center justify-center overflow-hidden font-bold`}
       >
@@ -44,7 +49,9 @@ export function AnuimeAvatar({
       </span>
       {status ? (
         <span
-          className={`absolute right-0 bottom-0 size-3 rounded-full border-2 border-background ${statuses[status]}`}
+          className={`absolute right-0 bottom-0 size-3 border-2 border-background ${
+            system === "atlas" ? "rotate-45 rounded-[1px]" : "rounded-full"
+          } ${statuses[status]}`}
         >
           <span className="sr-only">{status}</span>
         </span>

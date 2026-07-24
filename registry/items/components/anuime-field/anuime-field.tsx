@@ -28,7 +28,7 @@ export function AnuimeField({
   className = "",
   ...props
 }: AnuimeFieldProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "field");
   return (
     <div className={`grid ${styles.gap} ${className}`} {...props}>
       <AnuimeLabel htmlFor={htmlFor} required={required}>
@@ -36,7 +36,7 @@ export function AnuimeField({
       </AnuimeLabel>
       {children}
       {error ? (
-        <p role="alert" className="text-sm text-red-500">
+        <p role="alert" className="text-sm text-destructive">
           {error}
         </p>
       ) : description ? (
@@ -56,7 +56,7 @@ export function AnuimeLabel({
     <label className={`text-sm font-semibold ${className}`} {...props}>
       {children}
       {required ? (
-        <span aria-hidden="true" className="ml-1 text-red-500">
+        <span aria-hidden="true" className="ml-1 text-destructive">
           *
         </span>
       ) : null}
@@ -72,7 +72,7 @@ export function AnuimeFieldset({
   children,
   ...props
 }: FieldsetHTMLAttributes<HTMLFieldSetElement> & RecipeProps & { legend?: ReactNode }) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "field");
   return (
     <fieldset
       className={`${styles.surface} ${styles.surfacePadding} grid ${styles.gap} ${className}`}

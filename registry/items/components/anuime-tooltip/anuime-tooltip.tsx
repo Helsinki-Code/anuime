@@ -18,9 +18,11 @@ export type AnuimeTooltipProps = {
 export function AnuimeTooltip({ character = "kira", recipe, label, children }: AnuimeTooltipProps) {
   const id = useId();
   const [visible, setVisible] = useState(false);
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "tooltip");
+  const system = styles.recipe.structureSystem;
   return (
     <span
+      data-character={system}
       className="relative inline-flex"
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => setVisible(false)}
@@ -37,9 +39,17 @@ export function AnuimeTooltip({ character = "kira", recipe, label, children }: A
         id={id}
         role="tooltip"
         hidden={!visible}
-        className={`absolute bottom-full left-1/2 z-50 mb-2 w-max max-w-64 -translate-x-1/2 px-3 py-2 text-xs shadow-xl ${styles.surface}`}
+        className={`absolute bottom-full left-1/2 z-50 mb-2 w-max max-w-64 -translate-x-1/2 bg-foreground text-background shadow-xl ${
+          system === "mochi" ? "rounded-[8px] px-3 py-1.5" : "rounded-[4px] px-[11px] py-1.5"
+        } ${system === "atlas" ? "ring-1 ring-[var(--anuime-border-strong,var(--border))] ring-offset-1 ring-offset-[var(--anuime-surface,var(--background))]" : ""}`}
       >
         {label}
+        <span
+          aria-hidden="true"
+          className={`absolute top-full left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-foreground ${
+            system === "mochi" ? "rounded-[2px]" : "rounded-none"
+          }`}
+        />
       </span>
     </span>
   );

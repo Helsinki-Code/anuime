@@ -19,7 +19,7 @@ export function AnuimeHoverCard({
   trigger = "Focus or hover for details",
   children = "Helpful context appears without blocking the active task.",
 }: AnuimeHoverCardProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "hover-card");
   return (
     <span className="group relative inline-block">
       <button

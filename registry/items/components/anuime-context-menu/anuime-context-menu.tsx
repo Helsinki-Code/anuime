@@ -34,7 +34,7 @@ export function AnuimeContextMenu({
     { id: "remove", label: "Remove", destructive: true },
   ],
 }: AnuimeContextMenuProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "context-menu");
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -75,7 +75,7 @@ export function AnuimeContextMenu({
               key={item.id}
               role="menuitem"
               disabled={item.disabled}
-              className={`block w-full px-3 py-2 text-left text-sm outline-none hover:bg-white/10 focus-visible:bg-white/10 disabled:opacity-50 ${item.destructive ? "text-red-500" : ""}`}
+              className={`block w-full px-3 py-2 text-left text-sm outline-none hover:bg-secondary focus-visible:bg-secondary disabled:opacity-50 ${item.destructive ? "text-destructive" : ""}`}
               onClick={() => {
                 item.onSelect?.();
                 setOpen(false);

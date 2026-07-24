@@ -23,7 +23,7 @@ export function AnuimeInputGroup({
   className = "",
   ...props
 }: AnuimeInputGroupProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "input-group");
   return (
     <label className="grid gap-2 text-sm font-semibold">
       <span>{label}</span>

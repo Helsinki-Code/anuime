@@ -29,7 +29,7 @@ export function AnuimeScrollArea({
   tabIndex = 0,
   ...props
 }: AnuimeScrollAreaProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "scroll-area");
   return (
     <div
       role="region"

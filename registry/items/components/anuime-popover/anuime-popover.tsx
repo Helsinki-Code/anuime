@@ -25,7 +25,7 @@ export function AnuimePopover({
 }: AnuimePopoverProps) {
   const id = useId();
   const [open, setOpen] = useState(false);
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "popover");
   return (
     <div className="relative inline-block">
       <button
@@ -49,7 +49,7 @@ export function AnuimePopover({
               type="button"
               aria-label="Close popover"
               onClick={() => setOpen(false)}
-              className="rounded px-2 py-1 text-xs hover:bg-black/10"
+              className="rounded-[4px] px-2 py-1 text-xs hover:bg-secondary"
             >
               Close
             </button>

@@ -35,7 +35,7 @@ export function AnuimeHeading({
   className = "",
   ...props
 }: TypographyProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "typography");
   return (
     <h2
       className={`${styles.accent} text-3xl font-bold tracking-tight text-balance ${className}`}
@@ -74,7 +74,7 @@ export function AnuimeCode({
 }: TypographyProps) {
   return (
     <code
-      className={`rounded bg-black/10 px-1.5 py-1 font-mono text-sm dark:bg-white/10 ${className}`}
+      className={`rounded-[4px] bg-secondary px-1.5 py-1 font-mono text-sm ${className}`}
       {...props}
     >
       {children}

@@ -28,7 +28,7 @@ export function AnuimeSheet({
   children,
 }: AnuimeSheetProps) {
   const ref = useRef<HTMLDialogElement>(null);
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "sheet");
   return (
     <>
       <button
@@ -39,7 +39,7 @@ export function AnuimeSheet({
       </button>
       <dialog
         ref={ref}
-        className={`${styles.surface} ${styles.surfacePadding} ${side === "left" ? "mr-auto rounded-l-none" : "ml-auto rounded-r-none"} h-full max-h-none w-full max-w-md backdrop:bg-black/60`}
+        className={`${styles.surface} ${styles.surfacePadding} ${side === "left" ? "mr-auto rounded-l-none" : "ml-auto rounded-r-none"} h-full max-h-none w-full max-w-md backdrop:bg-foreground/30`}
       >
         <div className="flex items-start justify-between gap-4">
           <div>

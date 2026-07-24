@@ -26,7 +26,13 @@ export function AnuimeDialog({
   children,
 }: AnuimeDialogProps) {
   const ref = useRef<HTMLDialogElement>(null);
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "dialog");
+  const system = styles.recipe.structureSystem;
+  const panelLayer = {
+    kira: "bg-[linear-gradient(114deg,color-mix(in_oklab,var(--anuime-accent,var(--accent))_6%,transparent),transparent_30%)] shadow-[0_12px_32px_color-mix(in_oklab,var(--foreground)_20%,transparent)]",
+    mochi: "shadow-[0_18px_44px_color-mix(in_oklab,var(--foreground)_18%,transparent)]",
+    atlas: "shadow-[0_12px_32px_color-mix(in_oklab,var(--foreground)_18%,transparent)]",
+  }[system];
   return (
     <>
       <button
@@ -38,13 +44,18 @@ export function AnuimeDialog({
       </button>
       <dialog
         ref={ref}
-        className={`m-auto w-[min(32rem,calc(100%-2rem))] p-0 backdrop:bg-black/70 ${styles.surface}`}
+        data-character={system}
+        className={`m-auto w-[min(320px,calc(100%-2rem))] p-0 backdrop:bg-foreground/30 ${panelLayer} ${styles.surface}`}
       >
-        <div className="p-6">
+        <div className="p-[22px]">
           <div className={`font-mono text-xs tracking-[0.18em] uppercase ${styles.accent}`}>
             AnUIme transmission
           </div>
-          <h2 className="mt-3 text-2xl font-semibold">{title}</h2>
+          <h2
+            className={`mt-3 font-semibold ${system === "mochi" ? "font-serif text-[19px]" : "text-xl"}`}
+          >
+            {title}
+          </h2>
           {description ? <p className="mt-2 text-sm leading-6 opacity-70">{description}</p> : null}
           {children ? <div className="mt-5">{children}</div> : null}
           <form method="dialog" className="mt-6 flex justify-end">

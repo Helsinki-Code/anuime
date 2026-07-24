@@ -22,7 +22,7 @@ export function AnuimeProgress({
   value,
   max = 100,
 }: AnuimeProgressProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "progress");
   const system = styles.recipe.structureSystem;
   const safeMax = max > 0 ? max : 100;
   const percent =

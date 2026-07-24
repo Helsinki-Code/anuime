@@ -27,7 +27,7 @@ export function AnuimeSelect({
 }: AnuimeSelectProps) {
   const generatedId = useId();
   const selectId = id ?? generatedId;
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "select");
   return (
     <label htmlFor={selectId} className="grid w-full max-w-sm gap-2 text-sm font-medium">
       {label}

@@ -25,7 +25,7 @@ export function AnuimeEmptyState({
   className = "",
   ...props
 }: AnuimeEmptyStateProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "empty-state");
   return (
     <div
       className={`${styles.surface} ${styles.surfacePadding} text-center ${className}`}

@@ -14,7 +14,7 @@ export function AnuimeToolbar({
   className = "",
   ...props
 }: HTMLAttributes<HTMLDivElement> & RecipeProps & { label?: string }) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "toolbar");
   return (
     <div
       role="toolbar"
@@ -31,11 +31,11 @@ export function AnuimeToolbarButton({
   type = "button",
   ...props
 }: ButtonHTMLAttributes<HTMLButtonElement> & RecipeProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "toolbar");
   return (
     <button
       type={type}
-      className={`${styles.shapeControl} min-h-9 px-3 text-sm font-semibold hover:bg-white/10 focus-visible:ring-2 ${className}`}
+      className={`${styles.shapeControl} min-h-9 px-3 text-sm font-semibold hover:bg-secondary focus-visible:ring-2 ${className}`}
       {...props}
     />
   );

@@ -22,12 +22,12 @@ export function AnuimeSpinner({
   className = "",
   ...props
 }: AnuimeSpinnerProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "spinner");
   return (
     <span role="status" className={`inline-flex items-center gap-2 ${className}`} {...props}>
       <span
         aria-hidden="true"
-        className={`${styles.accent} ${sizes[size]} animate-spin rounded-full border-current border-r-transparent motion-reduce:animate-pulse`}
+        className={`${styles.accent} ${sizes[size]} animate-spin rounded-full border-current border-r-transparent motion-reduce:animate-none`}
       />
       <span className="sr-only">{label}</span>
     </span>

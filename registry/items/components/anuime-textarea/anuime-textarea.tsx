@@ -27,7 +27,7 @@ export function AnuimeTextarea({
   const generatedId = useId();
   const inputId = id ?? generatedId;
   const descriptionId = `${inputId}-description`;
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "textarea");
   return (
     <label className="grid w-full max-w-md gap-2 text-sm font-medium" htmlFor={inputId}>
       {label}
@@ -35,13 +35,13 @@ export function AnuimeTextarea({
         id={inputId}
         aria-invalid={Boolean(error)}
         aria-describedby={hint || error ? descriptionId : undefined}
-        className={`min-h-28 w-full resize-y border px-4 py-3 outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${styles.field} ${error ? "border-red-500" : ""} ${className}`}
+        className={`min-h-28 w-full resize-y border px-4 py-3 outline-none aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/10 ${styles.field} ${className}`}
         {...props}
       />
       {hint || error ? (
         <span
           id={descriptionId}
-          className={`text-xs ${error ? "text-red-500" : "text-muted-foreground"}`}
+          className={`text-xs ${error ? "text-destructive" : "text-muted-foreground"}`}
         >
           {error ?? hint}
         </span>

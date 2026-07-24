@@ -24,7 +24,7 @@ export function AnuimeBreadcrumb({
   ],
   linkProps,
 }: AnuimeBreadcrumbProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "breadcrumb");
   return (
     <nav aria-label="Breadcrumb">
       <ol className="flex flex-wrap items-center gap-2 text-sm">

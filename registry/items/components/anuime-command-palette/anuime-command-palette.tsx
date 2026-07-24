@@ -30,7 +30,8 @@ export function AnuimeCommandPalette({
 }: AnuimeCommandPaletteProps) {
   const ref = useRef<HTMLDialogElement>(null);
   const [query, setQuery] = useState("");
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "command-palette");
+  const system = styles.recipe.structureSystem;
   const results = useMemo(
     () =>
       commands.filter((command) =>
@@ -50,7 +51,8 @@ export function AnuimeCommandPalette({
       </button>
       <dialog
         ref={ref}
-        className={`m-auto w-[min(38rem,calc(100%-2rem))] p-0 backdrop:bg-black/70 ${styles.surface}`}
+        data-character={system}
+        className={`m-auto w-[min(38rem,calc(100%-2rem))] p-0 backdrop:bg-foreground/30 ${styles.surface}`}
       >
         <div className="p-3">
           <label className="sr-only" htmlFor="anuime-command-query">
@@ -68,7 +70,7 @@ export function AnuimeCommandPalette({
               <li key={command.id}>
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-left text-sm hover:bg-white/10"
+                  className="flex w-full items-center justify-between rounded-[var(--anuime-control-radius,6px)] px-3 py-3 text-left text-sm hover:bg-secondary"
                   onClick={() => {
                     command.onSelect?.();
                     ref.current?.close();

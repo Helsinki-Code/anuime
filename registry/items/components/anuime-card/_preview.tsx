@@ -8,7 +8,7 @@ export function Preview() {
       title="Deploy at first light."
       description="A sharp surface built from accessible semantic tokens."
       action={
-        <button className="rounded-md bg-cyan-300 px-4 py-2 text-sm font-bold text-zinc-950">
+        <button className="rounded-[5px] bg-primary px-4 py-2 text-sm font-bold text-primary-foreground">
           Activate
         </button>
       }

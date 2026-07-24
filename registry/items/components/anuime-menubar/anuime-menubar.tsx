@@ -36,13 +36,13 @@ export function AnuimeMenubar({
   ],
   endContent,
 }: AnuimeMenubarProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "menubar");
   return (
     <nav aria-label={label} className={`${styles.surface} flex items-center gap-1 p-1`}>
       {items.map((menu) => (
         <details key={menu.id} className="group relative">
           <summary
-            className={`${styles.shapeControl} cursor-pointer list-none px-3 py-2 text-sm font-semibold marker:hidden hover:bg-white/10`}
+            className={`${styles.shapeControl} cursor-pointer list-none px-3 py-2 text-sm font-semibold marker:hidden hover:bg-secondary`}
           >
             {menu.label}
           </summary>
@@ -54,7 +54,7 @@ export function AnuimeMenubar({
               <button
                 key={item.id}
                 role="menuitem"
-                className="flex w-full items-center justify-between gap-5 px-3 py-2 text-left text-sm hover:bg-white/10 focus-visible:ring-2"
+                className="flex w-full items-center justify-between gap-5 px-3 py-2 text-left text-sm hover:bg-secondary focus-visible:ring-2"
                 onClick={item.onSelect}
               >
                 <span>{item.label}</span>

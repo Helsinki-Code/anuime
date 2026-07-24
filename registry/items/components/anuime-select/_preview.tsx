@@ -6,9 +6,9 @@ export function Preview() {
       character="mochi"
       label="Choose your familiar"
       options={[
-        { value: "kira", label: "Kira — Neon Ronin" },
-        { value: "mochi", label: "Mochi — Dream Familiar" },
-        { value: "atlas", label: "Atlas — Mecha Architect" },
+        { value: "kira", label: "Kira — Incisive" },
+        { value: "mochi", label: "Mochi — Gracious" },
+        { value: "atlas", label: "Atlas — Engineered" },
       ]}
       hint="You can mix individual dimensions later."
     />

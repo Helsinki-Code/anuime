@@ -14,7 +14,7 @@ export function AnuimeButtonGroup({
   className = "",
   ...props
 }: HTMLAttributes<HTMLDivElement> & RecipeProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "button-group");
   return (
     <div
       role="group"
@@ -31,7 +31,7 @@ export function AnuimeButtonGroupItem({
   type = "button",
   ...props
 }: ButtonHTMLAttributes<HTMLButtonElement> & RecipeProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "button-group");
   return (
     <button
       type={type}
@@ -54,7 +54,7 @@ export function AnuimeSplitButton({
   onPrimary?: () => void;
   onMenu?: () => void;
 }) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "button-group");
   return (
     <div role="group" className={`inline-flex overflow-hidden ${styles.shapeControl}`}>
       <button className={`${styles.primary} ${styles.control} rounded-none`} onClick={onPrimary}>
@@ -62,7 +62,7 @@ export function AnuimeSplitButton({
       </button>
       <button
         aria-label={menuLabel}
-        className={`${styles.primary} min-w-10 rounded-none border-l border-black/20`}
+        className={`${styles.primary} min-w-10 rounded-none border-l border-current/20`}
         onClick={onMenu}
       >
         ▾

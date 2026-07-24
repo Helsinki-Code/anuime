@@ -47,7 +47,7 @@ export function AnuimeSwitch({
   const id = useId();
   const [internal, setInternal] = useState(defaultChecked);
   const active = checked ?? internal;
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "switch");
   const system = styles.recipe.structureSystem;
   const construction = switchConstruction[system];
   const toggle = () => {

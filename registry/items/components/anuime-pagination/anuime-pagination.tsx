@@ -19,7 +19,7 @@ export function AnuimePagination({
   pageCount,
   onPageChange,
 }: AnuimePaginationProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "pagination");
   const pages = Array.from({ length: pageCount }, (_, index) => index + 1);
   return (
     <nav aria-label="Pagination" className="flex flex-wrap items-center gap-2">

@@ -39,5 +39,5 @@ The six HTML boards in `Character Design Systems 3/` are the only source of desi
 The current registry contains 51 component items. Sixteen have explicit workhorse constructions on all three boards. The remaining 35 are listed for review in `derived-not-specified.json`; several have close source anatomy (for example `table`, `field`, `empty-state`, and `spinner`) but no explicit standalone board construction, so they remain flagged rather than being treated as specified.
 
 The three interpretations above are approved. `themes.json` also contains the required computed
-contrast audit. Its Mochi Light and Atlas Light muted-foreground corrections remain proposals and
-have not changed any declared token.
+contrast audit. The approved Mochi Light (`#826c72`) and Atlas Light (`#677282`)
+muted-foreground corrections are applied and clear the 4.5:1 body-text threshold.

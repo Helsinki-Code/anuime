@@ -32,7 +32,7 @@ export function AnuimeRadioGroup({
   disabled,
 }: AnuimeRadioGroupProps) {
   const id = useId();
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "radio-group");
   return (
     <fieldset disabled={disabled} className={`grid max-w-md ${styles.gap}`}>
       <legend className="mb-2 text-sm font-semibold">{legend}</legend>

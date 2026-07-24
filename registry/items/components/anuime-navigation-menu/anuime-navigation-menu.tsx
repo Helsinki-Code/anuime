@@ -27,7 +27,7 @@ export function AnuimeNavigationMenu({
   action,
 }: AnuimeNavigationMenuProps) {
   const [open, setOpen] = useState(false);
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "navigation-menu");
   return (
     <nav
       aria-label="Primary navigation"
@@ -51,7 +51,7 @@ export function AnuimeNavigationMenu({
             <a
               key={item.href}
               href={item.href}
-              className="rounded px-3 py-2 text-sm font-medium opacity-70 transition hover:bg-white/10 hover:opacity-100"
+              className="rounded-[var(--anuime-control-radius,6px)] px-3 py-2 text-sm font-medium opacity-70 transition hover:bg-secondary hover:opacity-100"
             >
               {item.label}
             </a>

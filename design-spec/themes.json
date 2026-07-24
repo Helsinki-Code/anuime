@@ -355,7 +355,12 @@
             { "name": "--surface", "value": "#fffdfa", "status": "declared" },
             { "name": "--border-gold", "value": "#e8dcc8", "status": "declared" },
             { "name": "--foreground", "value": "#3d2e33", "status": "declared" },
-            { "name": "--muted-fg", "value": "#8a7a80", "status": "declared" },
+            {
+              "name": "--muted-fg",
+              "value": "#826c72",
+              "status": "approved-contrast-adjustment",
+              "originalBoardValue": "#8a7a80"
+            },
             { "name": "--rose", "value": "#c2708a", "status": "declared" },
             { "name": "--gold", "value": "#b08d57", "status": "declared" },
             { "name": "--destructive", "value": "#a83e50", "status": "declared" }
@@ -411,8 +416,8 @@
             },
             {
               "name": "mutedForeground",
-              "value": "#8a7a80",
-              "status": "normalized",
+              "value": "#826c72",
+              "status": "approved-contrast-adjustment",
               "usage": "secondary text"
             },
             {
@@ -658,7 +663,12 @@
             { "name": "--surface", "value": "#fcfdfe", "status": "declared" },
             { "name": "--border", "value": "#d9e0ea", "status": "declared" },
             { "name": "--foreground", "value": "#2a3340", "status": "declared" },
-            { "name": "--muted-fg", "value": "#6b7686", "status": "declared" },
+            {
+              "name": "--muted-fg",
+              "value": "#677282",
+              "status": "approved-contrast-adjustment",
+              "originalBoardValue": "#6b7686"
+            },
             { "name": "--primary", "value": "#2a3340", "status": "declared" },
             { "name": "--cobalt-line", "value": "#2458c5", "status": "declared" },
             { "name": "--destructive", "value": "#c03d47", "status": "declared" }
@@ -714,8 +724,8 @@
             },
             {
               "name": "mutedForeground",
-              "value": "#6b7686",
-              "status": "normalized",
+              "value": "#677282",
+              "status": "approved-contrast-adjustment",
               "usage": "secondary text"
             },
             {
@@ -903,7 +913,7 @@
     }
   },
   "contrastAudit": {
-    "status": "computed-with-proposals-not-applied",
+    "status": "computed-with-approved-adjustments-applied",
     "standard": "WCAG 2.2 relative luminance and contrast ratio",
     "scope": "Every canonical declared text foreground token (--foreground and --muted-fg) paired with its theme's declared --background across all six character/theme variants.",
     "thresholds": {
@@ -970,11 +980,11 @@
         "character": "mochi",
         "theme": "light",
         "foregroundToken": "--muted-fg",
-        "foregroundValue": "#8a7a80",
+        "foregroundValue": "#826c72",
         "backgroundToken": "--background",
         "backgroundValue": "#faf6f1",
-        "ratio": 3.7706,
-        "bodyTextAAPass": false,
+        "ratio": 4.5,
+        "bodyTextAAPass": true,
         "largeTextAndUiComponentPass": true
       },
       {
@@ -1014,11 +1024,11 @@
         "character": "atlas",
         "theme": "light",
         "foregroundToken": "--muted-fg",
-        "foregroundValue": "#6b7686",
+        "foregroundValue": "#677282",
         "backgroundToken": "--background",
         "backgroundValue": "#f4f6f9",
-        "ratio": 4.253,
-        "bodyTextAAPass": false,
+        "ratio": 4.5046,
+        "bodyTextAAPass": true,
         "largeTextAndUiComponentPass": true
       },
       {
@@ -1044,7 +1054,8 @@
         "largeTextAndUiComponentPass": true
       }
     ],
-    "failures": [
+    "failures": [],
+    "appliedAdjustments": [
       {
         "character": "mochi",
         "theme": "light",
@@ -1053,7 +1064,8 @@
         "currentRatio": 3.7706,
         "proposedValue": "#826c72",
         "proposedRatio": 4.5,
-        "proposalApplied": false,
+        "proposalApplied": true,
+        "approvedByUser": true,
         "adjustmentMethod": "Closest 8-bit sRGB color by OKLab distance that produces a computed ratio >= 4.5 while keeping --background fixed."
       },
       {
@@ -1064,7 +1076,8 @@
         "currentRatio": 4.253,
         "proposedValue": "#677282",
         "proposedRatio": 4.5046,
-        "proposalApplied": false,
+        "proposalApplied": true,
+        "approvedByUser": true,
         "adjustmentMethod": "Closest 8-bit sRGB color by OKLab distance that produces a computed ratio >= 4.5 while keeping --background fixed."
       }
     ],
@@ -1076,7 +1089,8 @@
         "--foreground",
         "all declared tokens except the proposed --muted-fg"
       ],
-      "declaredTokenValuesChanged": false
+      "declaredTokenValuesChanged": true,
+      "changedDeclaredTokens": ["mochi.light.--muted-fg", "atlas.light.--muted-fg"]
     }
   }
 }

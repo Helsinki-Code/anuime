@@ -32,7 +32,8 @@ export function AnuimeAlertDialog({
   onConfirm,
 }: AnuimeAlertDialogProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "alert-dialog");
+  const system = styles.recipe.structureSystem;
   return (
     <>
       <button
@@ -43,7 +44,8 @@ export function AnuimeAlertDialog({
       </button>
       <dialog
         ref={dialogRef}
-        className={`${styles.surface} ${styles.surfacePadding} m-auto max-w-md backdrop:bg-black/60`}
+        data-character={system}
+        className={`${styles.surface} ${styles.surfacePadding} m-auto max-w-md backdrop:bg-foreground/30`}
       >
         <h2 className="text-lg font-bold">{title}</h2>
         <div className="mt-2 text-sm opacity-80">{description}</div>
@@ -55,7 +57,7 @@ export function AnuimeAlertDialog({
             {cancelLabel}
           </button>
           <button
-            className={`${destructive ? "bg-red-600 text-white hover:bg-red-500" : styles.primary} ${styles.control}`}
+            className={`${destructive ? "bg-destructive text-destructive-foreground hover:bg-[var(--anuime-destructive-hover,var(--destructive))]" : styles.primary} ${styles.control}`}
             onClick={() => {
               onConfirm?.();
               dialogRef.current?.close();

@@ -11,7 +11,9 @@ test("restores shared Studio state and browser history", async ({ page }) => {
   );
   await waitForStudio(page);
   await expect(page.getByRole("heading", { name: "Popover" })).toBeVisible();
-  const componentPicker = page.locator("aside").getByLabel("Component");
+  const mobileControls = page.getByText("Open Studio controls", { exact: true });
+  if (await mobileControls.isVisible()) await mobileControls.click();
+  const componentPicker = page.locator('select[aria-label="Component"]:visible');
   await expect(componentPicker).toHaveValue("popover");
   await componentPicker.selectOption("accordion");
   await expect(page).toHaveURL(/component=accordion/u);
@@ -41,7 +43,9 @@ test("recovers from invalid recipes", async ({ page }) => {
 test("undo, redo, component switching, and responsive controls work", async ({ page }) => {
   await page.goto("/studio");
   await waitForStudio(page);
-  const componentPicker = page.locator("aside").getByLabel("Component");
+  const mobileControls = page.getByText("Open Studio controls", { exact: true });
+  if (await mobileControls.isVisible()) await mobileControls.click();
+  const componentPicker = page.locator('select[aria-label="Component"]:visible');
   await componentPicker.selectOption("switch");
   await page.getByRole("button", { name: "mobile", exact: true }).click();
   await page.getByRole("button", { name: "Undo" }).click();

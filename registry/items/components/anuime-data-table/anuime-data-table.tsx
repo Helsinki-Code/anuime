@@ -26,9 +26,17 @@ export function AnuimeDataTable<Row extends { id: string }>({
   rows,
   emptyMessage = "No records found.",
 }: AnuimeDataTableProps<Row>) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "data-table");
+  const system = styles.recipe.structureSystem;
+  const cellPadding = system === "mochi" ? "px-[18px]" : "px-4";
+  const rowMarker = {
+    kira: "size-[7px] rounded-full bg-[var(--anuime-accent,var(--accent))]",
+    mochi:
+      "size-1.5 rounded-full border border-[var(--anuime-secondary-accent,var(--border))] bg-[var(--anuime-accent,var(--accent))]",
+    atlas: "size-1.5 rotate-45 bg-[var(--anuime-accent,var(--accent))]",
+  }[system];
   return (
-    <div className={`w-full overflow-x-auto ${styles.surface}`}>
+    <div data-character={system} className={`w-full overflow-x-auto ${styles.surface}`}>
       <table className="w-full min-w-[36rem] border-collapse text-left text-sm">
         <caption className="sr-only">{caption}</caption>
         <thead>
@@ -37,7 +45,7 @@ export function AnuimeDataTable<Row extends { id: string }>({
               <th
                 key={String(column.key)}
                 scope="col"
-                className={`px-4 py-3 font-mono text-xs tracking-wider uppercase ${styles.accent}`}
+                className={`${cellPadding} h-10 font-mono text-[11px] tracking-[0.08em] uppercase ${styles.accent}`}
               >
                 {column.header}
               </th>
@@ -48,12 +56,15 @@ export function AnuimeDataTable<Row extends { id: string }>({
           {rows.map((row) => (
             <tr
               key={row.id}
-              className="border-b border-current/10 last:border-0 hover:bg-current/5"
+              className="h-[46px] border-b border-border/70 last:border-0 hover:bg-secondary/50"
             >
               {columns.map((column) => {
                 const value = row[column.key];
                 return (
-                  <td key={String(column.key)} className="px-4 py-3">
+                  <td key={String(column.key)} className={`${cellPadding} py-3`}>
+                    {column === columns[0] ? (
+                      <span aria-hidden="true" className={`mr-2 inline-block ${rowMarker}`} />
+                    ) : null}
                     {column.render ? column.render(value, row) : String(value)}
                   </td>
                 );

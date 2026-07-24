@@ -10,10 +10,10 @@ export function KiraDeveloperConsole({
   project = "anuime-production",
 }: KiraDeveloperConsoleProps) {
   return (
-    <main className="grid gap-5 bg-zinc-950 p-4 text-zinc-50 sm:p-8">
+    <main data-character="kira" className="grid gap-5 bg-background p-4 text-foreground sm:p-8">
       <header className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="font-mono text-xs tracking-[0.2em] text-cyan-300 uppercase">
+          <p className="font-mono text-xs tracking-[0.2em] text-[var(--anuime-accent,var(--accent))] uppercase">
             Kira Developer Console
           </p>
           <h1 className="mt-2 text-3xl font-bold">{project}</h1>

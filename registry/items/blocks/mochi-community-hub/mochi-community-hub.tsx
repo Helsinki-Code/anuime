@@ -11,7 +11,7 @@ export function MochiCommunityHub({
   community = "Dream Makers",
 }: MochiCommunityHubProps) {
   return (
-    <main className="grid gap-6 bg-pink-50 p-4 text-pink-950 sm:p-8 dark:bg-pink-950 dark:text-pink-50">
+    <main data-character="mochi" className="grid gap-6 bg-background p-4 text-foreground sm:p-8">
       <header className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <AnuimeBadge recipe={recipe}>Mochi Community Hub</AnuimeBadge>

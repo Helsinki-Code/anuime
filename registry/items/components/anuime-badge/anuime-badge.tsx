@@ -14,10 +14,25 @@ export type AnuimeBadgeProps = HTMLAttributes<HTMLSpanElement> & {
 };
 
 const tones = {
-  neutral: "",
-  success: "border-emerald-500/40 text-emerald-600",
-  warning: "border-amber-500/40 text-amber-600",
-  danger: "border-red-500/40 text-red-600",
+  neutral: "border-border bg-secondary text-secondary-foreground",
+  success:
+    "border-[color-mix(in_oklab,var(--anuime-accent,var(--accent))_30%,transparent)] bg-[color-mix(in_oklab,var(--anuime-accent,var(--accent))_10%,transparent)] text-[var(--anuime-accent-foreground,var(--foreground))]",
+  warning:
+    "border-[color-mix(in_oklab,var(--anuime-secondary-accent,var(--accent))_40%,transparent)] bg-[color-mix(in_oklab,var(--anuime-secondary-accent,var(--accent))_12%,transparent)] text-[var(--anuime-secondary-accent-foreground,var(--foreground))]",
+  danger: "border-destructive/40 bg-destructive/10 text-destructive",
+} as const;
+
+const badgeConstruction = {
+  kira: "h-[22px] rounded-[4px] px-[9px] font-medium",
+  mochi: "h-[22px] rounded-full px-[11px] font-semibold",
+  atlas: "h-[22px] rounded-[4px] px-[9px] font-medium",
+} as const;
+
+const statusConstruction = {
+  kira: "size-[7px] rounded-full border border-current bg-transparent",
+  mochi:
+    "size-1.5 rounded-full border border-[var(--anuime-secondary-accent,var(--border))] bg-[var(--anuime-secondary-accent,var(--accent))]",
+  atlas: "size-[7px] rotate-45 border border-current bg-transparent",
 } as const;
 
 export function AnuimeBadge({
@@ -28,10 +43,12 @@ export function AnuimeBadge({
   className = "",
   ...props
 }: AnuimeBadgeProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "badge");
+  const system = styles.recipe.structureSystem;
   return (
     <span
-      className={`${styles.shapeControl} ${styles.secondary} ${tones[tone]} inline-flex items-center border px-2.5 py-1 text-xs font-bold ${className}`}
+      data-character={system}
+      className={`inline-flex items-center border text-xs ${badgeConstruction[system]} ${tones[tone]} ${className}`}
       {...props}
     >
       {children}
@@ -40,19 +57,17 @@ export function AnuimeBadge({
 }
 
 export function AnuimeStatusIndicator({
+  character = "kira",
+  recipe,
   label = "Online",
   tone = "success",
   ...props
 }: Omit<AnuimeBadgeProps, "children"> & { label?: string }) {
-  const dot = {
-    neutral: "bg-current",
-    success: "bg-emerald-500",
-    warning: "bg-amber-500",
-    danger: "bg-red-500",
-  }[tone];
+  const styles = resolveAnuimeRecipe(recipe, character, "badge");
+  const system = styles.recipe.structureSystem;
   return (
-    <AnuimeBadge tone={tone} {...props}>
-      <span aria-hidden="true" className={`mr-1.5 size-1.5 rounded-full ${dot}`} />
+    <AnuimeBadge character={character} recipe={recipe} tone={tone} {...props}>
+      <span aria-hidden="true" className={`mr-1.5 ${statusConstruction[system]}`} />
       {label}
     </AnuimeBadge>
   );

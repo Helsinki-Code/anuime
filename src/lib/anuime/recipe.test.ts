@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  anuimeComponentConstructionMap,
   createAnuimeRecipe,
   decodeAnuimeRecipe,
   encodeAnuimeRecipe,
@@ -32,14 +33,53 @@ describe("AnUIme recipe v2", () => {
   });
 
   it("resolves mixed dimensions independently", () => {
-    const result = resolveAnuimeRecipe({
-      ...createAnuimeRecipe("kira"),
-      shapeSystem: "mochi",
-      structureSystem: "atlas",
-      density: "spacious",
-    });
-    expect(result.primary).toContain("rounded-[10px]");
-    expect(result.primary).toContain("min-h-12");
+    const result = resolveAnuimeRecipe(
+      {
+        ...createAnuimeRecipe("kira"),
+        shapeSystem: "mochi",
+        structureSystem: "atlas",
+        density: "spacious",
+      },
+      "kira",
+      "button",
+    );
+    expect(result.control).toContain("rounded-[10px]");
+    expect(result.control).toContain("min-h-12");
     expect(result.surface).toContain("--anuime-border-strong");
+    expect(result.primary).toContain("outline-offset-4");
+  });
+
+  it("maps every v2 catalog component to an explicit motif carrier", () => {
+    expect(Object.keys(anuimeComponentConstructionMap)).toHaveLength(51);
+    for (const construction of Object.values(anuimeComponentConstructionMap)) {
+      expect(["specified", "derived"]).toContain(construction.specification);
+      expect(construction.carrier.length).toBeGreaterThan(2);
+    }
+  });
+
+  it("keeps all mixed systems within the bounded construction laws", () => {
+    const characters = ["kira", "mochi", "atlas"] as const;
+    for (const colorSystem of characters) {
+      for (const shapeSystem of characters) {
+        for (const structureSystem of characters) {
+          for (const motionSystem of characters) {
+            const result = resolveAnuimeRecipe(
+              {
+                ...createAnuimeRecipe("kira"),
+                colorSystem,
+                shapeSystem,
+                structureSystem,
+                motionSystem,
+              },
+              "kira",
+              "badge",
+            );
+            expect(result.control).not.toContain("rounded-full");
+            expect(result.primary).toContain("bg-primary");
+            expect(result.construction?.carrier).toBe("status-ring");
+          }
+        }
+      }
+    }
   });
 });

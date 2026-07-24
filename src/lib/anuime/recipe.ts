@@ -1,5 +1,6 @@
 export {
   anuimeCharacters,
+  anuimeComponentConstructionMap,
   anuimeDensities,
   anuimeModes,
   anuimeMotionLevels,
@@ -13,6 +14,7 @@ export {
   resolveAnuimeRecipe,
   validateAnuimeRecipe,
   type AnuimeCharacter,
+  type AnuimeComponentName,
   type AnuimeDensity,
   type AnuimeMode,
   type AnuimeMotionLevel,

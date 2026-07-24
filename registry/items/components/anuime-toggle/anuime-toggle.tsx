@@ -9,6 +9,12 @@ import {
 } from "@/lib/anuime-recipe";
 
 type RecipeProps = { character?: AnuimeCharacter; recipe?: AnuimeRecipeV2 };
+
+const toggleConstruction = {
+  kira: "h-8 rounded-[5px] px-3.5",
+  mochi: "h-8 rounded-[8px] px-4",
+  atlas: "h-8 rounded-[5px] px-3.5",
+} as const;
 export type AnuimeToggleProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onChange"> &
   RecipeProps & {
     pressed?: boolean;
@@ -28,12 +34,18 @@ export function AnuimeToggle({
 }: AnuimeToggleProps) {
   const [internal, setInternal] = useState(defaultPressed);
   const active = pressed ?? internal;
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "toggle");
+  const system = styles.recipe.structureSystem;
   return (
     <button
       type="button"
       aria-pressed={active}
-      className={`${active ? styles.primary : styles.secondary} ${styles.control} outline-none focus-visible:ring-2 ${className}`}
+      data-character={system}
+      className={`border text-sm font-medium transition-colors outline-none ${
+        active
+          ? "border-[var(--anuime-border-strong,var(--input))] bg-secondary text-foreground shadow-[inset_0_0_0_1px_var(--anuime-surface,var(--background))]"
+          : "border-transparent bg-transparent text-muted-foreground hover:bg-secondary/60 hover:text-foreground"
+      } ${toggleConstruction[system]} focus-visible:ring-[1.5px] focus-visible:ring-[var(--anuime-accent,var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-background ${className}`}
       onClick={() => {
         if (pressed === undefined) setInternal(!active);
         onPressedChange?.(!active);
@@ -63,8 +75,21 @@ export function AnuimeToggleGroup({
 }) {
   const [internal, setInternal] = useState(value ?? options[0]?.value);
   const selected = value ?? internal;
+  const styles = resolveAnuimeRecipe(recipe, character, "toggle");
+  const system = styles.recipe.structureSystem;
   return (
-    <div role="group" aria-label={label} className="inline-flex gap-1">
+    <div
+      role="group"
+      aria-label={label}
+      data-character={system}
+      className={`inline-flex gap-1 border p-1 ${
+        system === "mochi"
+          ? "rounded-[10px] border-[var(--anuime-secondary-accent,var(--border))]"
+          : system === "atlas"
+            ? "rounded-[7px] border-[var(--anuime-border-strong,var(--border))]"
+            : "rounded-[6px] border-[var(--anuime-border-strong,var(--border))]"
+      }`}
+    >
       {options.map((option) => (
         <AnuimeToggle
           key={option.value}

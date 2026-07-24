@@ -73,7 +73,7 @@ export function AnuimeAuthPanel({
         <button
           type="submit"
           disabled={loading}
-          className={`mt-2 h-11 px-4 text-sm font-bold disabled:opacity-50 ${styles.primary}`}
+          className={`mt-2 h-11 px-4 text-sm font-bold disabled:opacity-50 ${styles.primary} ${styles.shapeControl}`}
         >
           {loading ? "Opening portal…" : "Enter Studio"}
         </button>

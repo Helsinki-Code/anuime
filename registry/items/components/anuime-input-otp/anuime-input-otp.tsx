@@ -19,7 +19,7 @@ export function AnuimeInputOtp({
   className = "",
   ...props
 }: AnuimeInputOtpProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "input-otp");
   return (
     <label className="grid gap-2 text-sm font-semibold">
       <span>{label}</span>

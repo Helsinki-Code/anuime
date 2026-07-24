@@ -23,7 +23,7 @@ export function AnuimeCalendar({
   className = "",
   ...props
 }: AnuimeCalendarProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "calendar");
   const inputClass = `${styles.field} ${styles.shapeControl} min-h-10 border px-3 py-2 outline-none focus-visible:ring-2 ${className}`;
   return (
     <fieldset className={`grid ${styles.gap}`}>

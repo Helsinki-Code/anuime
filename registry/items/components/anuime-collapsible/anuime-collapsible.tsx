@@ -21,7 +21,7 @@ export function AnuimeCollapsible({
   className = "",
   ...props
 }: AnuimeCollapsibleProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "collapsible");
   return (
     <details className={`${styles.surface} overflow-hidden ${className}`} {...props}>
       <summary

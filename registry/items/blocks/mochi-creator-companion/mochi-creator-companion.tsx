@@ -22,6 +22,7 @@ export function MochiCreatorCompanion({
   const styles = resolveAnuimeRecipe(recipe, "mochi");
   return (
     <section
+      data-character="mochi"
       className={`${styles.surface} ${styles.surfacePadding} grid gap-5 lg:grid-cols-[minmax(0,1fr)_19rem]`}
     >
       <div>

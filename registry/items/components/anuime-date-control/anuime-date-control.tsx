@@ -23,7 +23,7 @@ export function AnuimeDateControl({
 }: AnuimeDateControlProps) {
   const generatedId = useId();
   const inputId = id ?? generatedId;
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "date-control");
   return (
     <label className="grid w-full max-w-sm gap-2 text-sm font-medium" htmlFor={inputId}>
       {label}

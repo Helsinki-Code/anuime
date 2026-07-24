@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { createAnuimeRecipe, encodeAnuimeRecipe } from "./recipe";
+import { createAnuimeRecipe } from "./recipe";
 import {
   getInstallCommand,
   parseStudioSearch,
@@ -20,14 +20,13 @@ describe("Component Lab URL state", () => {
     expect(studioDocumentFromSearch(studioSearchFromDocument(document))).toEqual(document);
   });
 
-  it("migrates v1 recipes and reports invalid recipes", () => {
-    const migrated = parseStudioSearch({
+  it("rejects v1 recipes and reports invalid recipes without a compatibility shim", () => {
+    const legacy = parseStudioSearch({
       recipe: "mochi.mochi.mochi.mochi.spacious.calm",
       component: "card",
     });
-    expect(migrated.recipe).toBe(
-      encodeAnuimeRecipe({ ...createAnuimeRecipe("mochi"), density: "spacious" }),
-    );
+    expect(legacy.recipe).toBeUndefined();
+    expect(legacy.warning).toBe("invalid-recipe");
     expect(parseStudioSearch({ recipe: "not-a-recipe" }).warning).toBe("invalid-recipe");
   });
 

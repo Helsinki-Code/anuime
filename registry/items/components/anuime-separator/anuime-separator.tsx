@@ -21,7 +21,7 @@ export function AnuimeSeparator({
   className = "",
   ...props
 }: AnuimeSeparatorProps) {
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "separator");
   return (
     <div
       role={decorative ? "presentation" : "separator"}

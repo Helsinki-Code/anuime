@@ -46,7 +46,7 @@ export function AnuimeCheckbox({
 }: AnuimeCheckboxProps) {
   const generatedId = useId();
   const inputId = id ?? generatedId;
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "checkbox");
   const construction = checkboxConstruction[styles.recipe.structureSystem];
 
   return (

@@ -28,7 +28,7 @@ export function AnuimeDrawer({
   placement = "bottom",
 }: AnuimeDrawerProps) {
   const ref = useRef<HTMLDialogElement>(null);
-  const styles = resolveAnuimeRecipe(recipe, character);
+  const styles = resolveAnuimeRecipe(recipe, character, "drawer");
   const position =
     placement === "bottom"
       ? "mt-auto w-full max-w-none rounded-b-none"
@@ -45,7 +45,7 @@ export function AnuimeDrawer({
       </button>
       <dialog
         ref={ref}
-        className={`${styles.surface} ${styles.surfacePadding} ${position} max-w-lg backdrop:bg-black/60`}
+        className={`${styles.surface} ${styles.surfacePadding} ${position} max-w-lg backdrop:bg-foreground/30`}
       >
         <div className="flex items-start justify-between gap-4">
           <div>

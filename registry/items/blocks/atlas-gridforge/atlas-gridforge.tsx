@@ -10,9 +10,12 @@ export function AtlasGridforge({
   recipe?: AnuimeRecipeV2;
 }) {
   return (
-    <section className="grid gap-5 rounded-sm border-2 border-blue-400/35 bg-slate-950 p-5 text-slate-50 shadow-[12px_12px_0_-4px_rgba(96,165,250,0.18)] xl:grid-cols-[1.4fr_0.8fr]">
+    <section
+      data-character="atlas"
+      className="grid gap-5 rounded-[9px] border-2 border-[var(--anuime-border-strong,var(--border))] bg-[var(--anuime-surface,var(--card))] p-5 text-foreground shadow-[12px_12px_0_-4px_color-mix(in_oklab,var(--anuime-accent,var(--accent))_18%,transparent)] xl:grid-cols-[1.4fr_0.8fr]"
+    >
       <div>
-        <p className="font-mono text-xs tracking-[0.2em] text-blue-400 uppercase">
+        <p className="font-mono text-xs tracking-[0.2em] text-[var(--anuime-accent,var(--accent))] uppercase">
           Atlas · Gridforge
         </p>
         <h2 className="mt-3 text-3xl font-semibold">Operations control grid</h2>

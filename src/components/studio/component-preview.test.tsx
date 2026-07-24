@@ -44,7 +44,7 @@ describe("Component Lab registry previews", () => {
         }}
       />,
     );
-    expect(markup).toContain("rounded-full");
+    expect(markup).toContain("rounded-[10px]");
     expect(markup).toContain("min-h-12");
   });
 });

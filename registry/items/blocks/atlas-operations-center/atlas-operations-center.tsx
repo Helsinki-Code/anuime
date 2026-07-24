@@ -29,6 +29,7 @@ export function AtlasOperationsCenter({
   const styles = resolveAnuimeRecipe(recipe, "atlas");
   return (
     <section
+      data-character="atlas"
       className={`${styles.surface} grid min-h-[30rem] overflow-hidden lg:grid-cols-[15rem_minmax(0,1fr)]`}
     >
       <AnuimeSidebar
