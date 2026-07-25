@@ -58,6 +58,15 @@ export function SiteHeader() {
             Characters
           </Link>
           <Link
+            to="/design-philosophy"
+            className={cn(
+              "rounded-md px-3 py-1.5 text-sm transition-colors hover:text-foreground",
+              pathname === "/design-philosophy" ? "text-foreground" : "text-muted-foreground",
+            )}
+          >
+            Philosophy
+          </Link>
+          <Link
             to="/gallery"
             className={cn(
               "rounded-md px-3 py-1.5 text-sm transition-colors hover:text-foreground",

@@ -405,6 +405,258 @@ html.theme-switching [data-theme-control] {
   .dark .anuime-atlas {
     --anuime-accent: #93c5fd;
   }
+  .anuime-system {
+    --anuime-control-height: 2.25rem;
+    --anuime-compact-control-height: 2rem;
+
+    color: var(--foreground);
+    background-color: var(--background);
+  }
+  .anuime-system-kira {
+    --radius: 0.3125rem;
+    --background: #f7f5fa;
+    --foreground: #241d31;
+    --card: #fdfcff;
+    --card-foreground: #241d31;
+    --popover: #fdfcff;
+    --popover-foreground: #241d31;
+    --primary: #241d31;
+    --primary-foreground: #f7f5fa;
+    --secondary: #ece8f4;
+    --secondary-foreground: #241d31;
+    --muted: #ece8f4;
+    --muted-foreground: #6f6880;
+    --accent: #0aa3c2;
+    --accent-foreground: #241d31;
+    --destructive: #c13851;
+    --destructive-foreground: #fdf5f6;
+    --border: #e4dfee;
+    --input: #d5cfe3;
+    --ring: #0aa3c2;
+    --anuime-canvas: #efecf5;
+    --anuime-surface: #fdfcff;
+    --anuime-elevated: #fdfcff;
+    --anuime-subtle: #ece8f4;
+    --anuime-subtle-hover: #e1dbee;
+    --anuime-border-strong: #d5cfe3;
+    --anuime-accent: #0aa3c2;
+    --anuime-accent-foreground: #087e9f;
+    --anuime-control-radius: 0.3125rem;
+    --anuime-surface-radius: 0.5rem;
+    --anuime-directional-axis: 114deg;
+    --anuime-transition-duration: 120ms;
+  }
+  .anuime-system-mochi {
+    --radius: 0.625rem;
+    --background: #faf6f1;
+    --foreground: #3d2e33;
+    --card: #fffdfa;
+    --card-foreground: #3d2e33;
+    --popover: #fffdfa;
+    --popover-foreground: #3d2e33;
+    --primary: #3d2e33;
+    --primary-foreground: #faf6f1;
+    --secondary: #f3ebdf;
+    --secondary-foreground: #3d2e33;
+    --muted: #f3ebdf;
+    --muted-foreground: #826c72;
+    --accent: #c2708a;
+    --accent-foreground: #3d2e33;
+    --destructive: #a83e50;
+    --destructive-foreground: #fdf6f5;
+    --border: #e8dcc8;
+    --input: #ddd0bb;
+    --ring: #c2708a;
+    --anuime-canvas: #f2ece4;
+    --anuime-surface: #fffdfa;
+    --anuime-elevated: #fffdfa;
+    --anuime-subtle: #f3ebdf;
+    --anuime-subtle-hover: #ece2d2;
+    --anuime-border-strong: #ddd0bb;
+    --anuime-accent: #c2708a;
+    --anuime-accent-foreground: #a05a72;
+    --anuime-secondary-accent: #b08d57;
+    --anuime-secondary-accent-foreground: #8a6a3c;
+    --anuime-control-radius: 0.625rem;
+    --anuime-surface-radius: 0.875rem;
+    --anuime-transition-duration: 250ms;
+  }
+  .anuime-system-atlas {
+    --radius: 0.4375rem;
+    --background: #f4f6f9;
+    --foreground: #2a3340;
+    --card: #fcfdfe;
+    --card-foreground: #2a3340;
+    --popover: #fcfdfe;
+    --popover-foreground: #2a3340;
+    --primary: #2a3340;
+    --primary-foreground: #f4f6f9;
+    --secondary: #e8edf4;
+    --secondary-foreground: #2a3340;
+    --muted: #e8edf4;
+    --muted-foreground: #677282;
+    --accent: #2458c5;
+    --accent-foreground: #f4f6f9;
+    --destructive: #c03d47;
+    --destructive-foreground: #fdf5f5;
+    --border: #d9e0ea;
+    --input: #c8d2e0;
+    --ring: #2458c5;
+    --anuime-canvas: #e9edf3;
+    --anuime-surface: #fcfdfe;
+    --anuime-elevated: #fcfdfe;
+    --anuime-subtle: #e8edf4;
+    --anuime-subtle-hover: #dde5ef;
+    --anuime-border-strong: #c8d2e0;
+    --anuime-accent: #2458c5;
+    --anuime-accent-foreground: #2458c5;
+    --anuime-control-radius: 0.4375rem;
+    --anuime-surface-radius: 0.5625rem;
+    --anuime-directional-axis: 76deg;
+    --anuime-transition-duration: 180ms;
+  }
+  .dark .anuime-system-kira,
+  .anuime-system-kira.dark {
+    --background: #171226;
+    --foreground: #ece8f4;
+    --card: #1f1830;
+    --card-foreground: #ece8f4;
+    --popover: #292040;
+    --popover-foreground: #ece8f4;
+    --primary: #4fd8f0;
+    --primary-foreground: #171226;
+    --secondary: #292040;
+    --secondary-foreground: #ece8f4;
+    --muted: #292040;
+    --muted-foreground: #9a92ab;
+    --accent: #4fd8f0;
+    --accent-foreground: #171226;
+    --destructive: #e14b66;
+    --destructive-foreground: #ece8f4;
+    --border: #3a2f57;
+    --input: #453b58;
+    --ring: #4fd8f0;
+    --anuime-canvas: #0d0b12;
+    --anuime-surface: #1f1830;
+    --anuime-elevated: #292040;
+    --anuime-subtle: #292040;
+    --anuime-subtle-hover: #332b44;
+    --anuime-border-strong: #453b58;
+    --anuime-accent: #4fd8f0;
+    --anuime-accent-foreground: #0e7d99;
+  }
+  .dark .anuime-system-mochi,
+  .anuime-system-mochi.dark {
+    --background: #241a22;
+    --foreground: #f3e9e6;
+    --card: #2e222c;
+    --card-foreground: #f3e9e6;
+    --popover: #332631;
+    --popover-foreground: #f3e9e6;
+    --primary: #f3e9e6;
+    --primary-foreground: #241a22;
+    --secondary: #332631;
+    --secondary-foreground: #f3e9e6;
+    --muted: #332631;
+    --muted-foreground: #a8929e;
+    --accent: #e0899f;
+    --accent-foreground: #241a22;
+    --destructive: #d96a7c;
+    --destructive-foreground: #fffaf7;
+    --border: #443340;
+    --input: #4f3c4a;
+    --ring: #e0899f;
+    --anuime-canvas: #1c141b;
+    --anuime-surface: #2e222c;
+    --anuime-elevated: #332631;
+    --anuime-subtle: #332631;
+    --anuime-subtle-hover: #41313e;
+    --anuime-border-strong: #4f3c4a;
+    --anuime-accent: #e0899f;
+    --anuime-accent-foreground: #e0899f;
+    --anuime-secondary-accent: #d4ad72;
+    --anuime-secondary-accent-foreground: #d4ad72;
+  }
+  .dark .anuime-system-atlas,
+  .anuime-system-atlas.dark {
+    --background: #0e1420;
+    --foreground: #e7edf6;
+    --card: #151d2d;
+    --card-foreground: #e7edf6;
+    --popover: #1c2536;
+    --popover-foreground: #e7edf6;
+    --primary: #e7edf6;
+    --primary-foreground: #0e1420;
+    --secondary: #1c2536;
+    --secondary-foreground: #e7edf6;
+    --muted: #1c2536;
+    --muted-foreground: #8fa0b8;
+    --accent: #5b8cff;
+    --accent-foreground: #0e1420;
+    --destructive: #e0596a;
+    --destructive-foreground: #e7edf6;
+    --border: #263349;
+    --input: #3a4b6b;
+    --ring: #5b8cff;
+    --anuime-canvas: #0a0f18;
+    --anuime-surface: #151d2d;
+    --anuime-elevated: #1c2536;
+    --anuime-subtle: #1c2536;
+    --anuime-subtle-hover: #26324a;
+    --anuime-border-strong: #3a4b6b;
+    --anuime-accent: #5b8cff;
+    --anuime-accent-foreground: #5b8cff;
+  }
+  .anuime-system-kira .anuime-signature-panel {
+    border-radius: 0.5rem;
+    clip-path: polygon(
+      0 0,
+      calc(100% - 12px) 0,
+      100% 12px,
+      100% 100%,
+      12px 100%,
+      0 calc(100% - 12px)
+    );
+  }
+  .anuime-system-mochi .anuime-signature-panel {
+    border-radius: 0.875rem;
+    box-shadow: inset 0 1px var(--anuime-secondary-accent);
+  }
+  .anuime-system-atlas .anuime-signature-panel {
+    border-width: 2px;
+    border-radius: 0.25rem;
+  }
+  .anuime-card-motif {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.28;
+  }
+  .anuime-system-kira .anuime-card-motif {
+    background: linear-gradient(
+      114deg,
+      transparent 0 72%,
+      var(--anuime-accent) 72% 72.4%,
+      transparent 72.4%
+    );
+  }
+  .anuime-system-mochi .anuime-card-motif {
+    background: radial-gradient(
+      circle at 82% 18%,
+      transparent 0 28px,
+      var(--anuime-secondary-accent) 29px 30px,
+      transparent 31px
+    );
+  }
+  .anuime-system-atlas .anuime-card-motif {
+    background:
+      linear-gradient(var(--anuime-accent) 0 0) 18px 18px / 22px 2px no-repeat,
+      linear-gradient(var(--anuime-accent) 0 0) 18px 18px / 2px 22px no-repeat,
+      linear-gradient(var(--anuime-accent) 0 0) calc(100% - 18px) calc(100% - 18px) / 22px 2px
+        no-repeat,
+      linear-gradient(var(--anuime-accent) 0 0) calc(100% - 18px) calc(100% - 18px) / 2px 22px
+        no-repeat;
+  }
   .anuime-avatar {
     display: grid;
     width: 4.5rem;

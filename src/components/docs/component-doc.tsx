@@ -62,7 +62,7 @@ export function RegistryItemDoc({ item }: RegistryItemDocProps) {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="preview">
-            <ComponentPreview preview={item.preview ?? null} />
+            <ComponentPreview preview={item.preview ?? null} itemName={item.name} />
           </TabsContent>
           <TabsContent value="code">
             {item.previewSourceFile.source ? (

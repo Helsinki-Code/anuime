@@ -169,8 +169,8 @@ function StudioPage() {
       <div className="mx-auto max-w-[96rem] px-4 py-8 sm:px-6 lg:px-8">
         <header className="flex flex-col justify-between gap-5 border-b pb-6 xl:flex-row xl:items-end">
           <div>
-            <p className="inline-flex items-center gap-2 text-sm font-semibold text-violet-600 dark:text-violet-400">
-              <IconSparkles className="size-4" /> Component Lab · Studio v2
+            <p className="inline-flex items-center gap-2 font-mono text-xs font-semibold tracking-[0.16em] text-muted-foreground uppercase">
+              <IconSparkles className="size-4" /> Registry v2 · construction Studio
             </p>
             <h1 className="mt-2 text-4xl font-semibold tracking-tight sm:text-5xl">
               Direct the real component.
@@ -226,7 +226,7 @@ function StudioPage() {
           <section className="min-w-0 rounded-3xl border bg-muted/25 p-3 sm:p-5">
             <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
               <div>
-                <p className="font-mono text-xs tracking-[0.18em] text-violet-600 uppercase dark:text-violet-400">
+                <p className="font-mono text-xs tracking-[0.18em] text-muted-foreground uppercase">
                   {component.registryName}
                 </p>
                 <h2 className="mt-1 text-xl font-semibold">{component.title}</h2>
@@ -243,11 +243,12 @@ function StudioPage() {
                 ))}
               </div>
             </div>
-            <div className="flex min-h-[35rem] items-start justify-center overflow-auto rounded-2xl border bg-zinc-100 p-3 sm:p-8 dark:bg-zinc-900">
+            <div className="flex min-h-[35rem] items-start justify-center overflow-auto rounded-2xl border bg-muted/40 p-3 sm:p-8">
               <div
                 ref={previewRef}
                 data-preview-mode={document.recipe.mode}
-                className={`anuime-preview-canvas flex min-h-[30rem] w-full items-center justify-center overflow-hidden rounded-xl border bg-background p-4 transition-[width] sm:p-8 ${viewportClass(document.viewport)} ${document.recipe.mode === "dark" ? "dark bg-zinc-950 text-zinc-50" : document.recipe.mode === "light" ? "bg-white text-zinc-950" : ""} ${document.recipe.motionLevel === "still" ? "anuime-motion-still" : ""}`}
+                data-recipe-version="2"
+                className={`anuime-system anuime-system-${document.recipe.colorSystem} anuime-preview-canvas flex min-h-[30rem] w-full items-center justify-center overflow-hidden border bg-background p-4 text-foreground transition-[width] sm:p-8 ${viewportClass(document.viewport)} ${document.recipe.mode === "dark" ? "dark" : ""} ${document.recipe.motionLevel === "still" ? "anuime-motion-still" : ""}`}
                 style={{ transform: `scale(${document.zoom})`, transformOrigin: "top center" }}
               >
                 <ComponentPreview document={document} />
@@ -263,7 +264,7 @@ function StudioPage() {
                   <button
                     key={state}
                     onClick={() => commit({ ...document, previewState: state })}
-                    className={`rounded-lg border px-3 py-2 text-left text-sm capitalize ${document.previewState === state ? "border-violet-500 bg-violet-500/10" : "hover:bg-muted"}`}
+                    className={`rounded-lg border px-3 py-2 text-left text-sm capitalize ${document.previewState === state ? "border-foreground bg-foreground text-background" : "hover:bg-muted"}`}
                   >
                     {state}
                   </button>
@@ -523,12 +524,12 @@ function StudioControls({
             <button
               key={id}
               onClick={() => setRecipe(createAnuimeRecipe(id))}
-              className={`anuime-character anuime-${id} rounded-xl border p-2 text-left transition hover:-translate-y-0.5 ${isPureCharacter(document.recipe, id) ? "ring-2 ring-[var(--anuime-accent)] ring-offset-2 ring-offset-background" : ""}`}
+              className={`anuime-system anuime-system-${id} border p-2 text-left transition hover:-translate-y-0.5 ${isPureCharacter(document.recipe, id) ? "ring-2 ring-[var(--anuime-accent)] ring-offset-2 ring-offset-background" : ""}`}
             >
-              <span className="anuime-avatar anuime-avatar-xs" aria-hidden="true">
-                {characterSystems[id].name.at(0)}
+              <span className="block font-mono text-[9px] tracking-[0.1em] text-muted-foreground uppercase">
+                {characterSystems[id].adjective}
               </span>
-              <span className="mt-2 block text-xs font-semibold">{characterSystems[id].name}</span>
+              <span className="mt-1 block text-xs font-semibold">{characterSystems[id].name}</span>
             </button>
           ))}
         </div>
@@ -569,7 +570,7 @@ function StudioControls({
             {recentRecipes.map((recipe) => (
               <button
                 key={encodeAnuimeRecipe(recipe)}
-                className="rounded-full border px-2.5 py-1 text-xs hover:bg-muted"
+                className="rounded-md border px-2.5 py-1 text-xs hover:bg-muted"
                 onClick={() => setRecipe(recipe)}
               >
                 {recipe.colorSystem}/{recipe.shapeSystem}

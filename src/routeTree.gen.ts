@@ -18,6 +18,7 @@ import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as LlmsFullDottxtRouteImport } from './routes/llms-full[.]txt'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as DocsDotmdRouteImport } from './routes/docs[.]md'
+import { Route as DesignPhilosophyRouteImport } from './routes/design-philosophy'
 import { Route as ComponentsDotmdRouteImport } from './routes/components[.]md'
 import { Route as BlocksDotmdRouteImport } from './routes/blocks[.]md'
 import { Route as IndexRouteImport } from './routes/index'
@@ -86,6 +87,11 @@ const GalleryRoute = GalleryRouteImport.update({
 const DocsDotmdRoute = DocsDotmdRouteImport.update({
   id: '/docs.md',
   path: '/docs.md',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignPhilosophyRoute = DesignPhilosophyRouteImport.update({
+  id: '/design-philosophy',
+  path: '/design-philosophy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ComponentsDotmdRoute = ComponentsDotmdRouteImport.update({
@@ -217,6 +223,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/blocks.md': typeof BlocksDotmdRoute
   '/components.md': typeof ComponentsDotmdRoute
+  '/design-philosophy': typeof DesignPhilosophyRoute
   '/docs.md': typeof DocsDotmdRoute
   '/gallery': typeof GalleryRoute
   '/llms-full.txt': typeof LlmsFullDottxtRoute
@@ -252,6 +259,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/blocks.md': typeof BlocksDotmdRoute
   '/components.md': typeof ComponentsDotmdRoute
+  '/design-philosophy': typeof DesignPhilosophyRoute
   '/docs.md': typeof DocsDotmdRoute
   '/gallery': typeof GalleryRoute
   '/llms-full.txt': typeof LlmsFullDottxtRoute
@@ -288,6 +296,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/blocks.md': typeof BlocksDotmdRoute
   '/components.md': typeof ComponentsDotmdRoute
+  '/design-philosophy': typeof DesignPhilosophyRoute
   '/docs.md': typeof DocsDotmdRoute
   '/gallery': typeof GalleryRoute
   '/llms-full.txt': typeof LlmsFullDottxtRoute
@@ -325,6 +334,7 @@ export interface FileRouteTypes {
     | '/'
     | '/blocks.md'
     | '/components.md'
+    | '/design-philosophy'
     | '/docs.md'
     | '/gallery'
     | '/llms-full.txt'
@@ -360,6 +370,7 @@ export interface FileRouteTypes {
     | '/'
     | '/blocks.md'
     | '/components.md'
+    | '/design-philosophy'
     | '/docs.md'
     | '/gallery'
     | '/llms-full.txt'
@@ -395,6 +406,7 @@ export interface FileRouteTypes {
     | '/'
     | '/blocks.md'
     | '/components.md'
+    | '/design-philosophy'
     | '/docs.md'
     | '/gallery'
     | '/llms-full.txt'
@@ -431,6 +443,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BlocksDotmdRoute: typeof BlocksDotmdRoute
   ComponentsDotmdRoute: typeof ComponentsDotmdRoute
+  DesignPhilosophyRoute: typeof DesignPhilosophyRoute
   DocsDotmdRoute: typeof DocsDotmdRoute
   GalleryRoute: typeof GalleryRoute
   LlmsFullDottxtRoute: typeof LlmsFullDottxtRoute
@@ -526,6 +539,13 @@ declare module '@tanstack/react-router' {
       path: '/docs.md'
       fullPath: '/docs.md'
       preLoaderRoute: typeof DocsDotmdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/design-philosophy': {
+      id: '/design-philosophy'
+      path: '/design-philosophy'
+      fullPath: '/design-philosophy'
+      preLoaderRoute: typeof DesignPhilosophyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/components.md': {
@@ -703,6 +723,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BlocksDotmdRoute: BlocksDotmdRoute,
   ComponentsDotmdRoute: ComponentsDotmdRoute,
+  DesignPhilosophyRoute: DesignPhilosophyRoute,
   DocsDotmdRoute: DocsDotmdRoute,
   GalleryRoute: GalleryRoute,
   LlmsFullDottxtRoute: LlmsFullDottxtRoute,

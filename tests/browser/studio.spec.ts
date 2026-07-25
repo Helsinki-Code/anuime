@@ -82,9 +82,9 @@ test("Studio has no serious automated accessibility findings", async ({ page }) 
 
 test("signature component matrix is visually stable", async ({ page }) => {
   const cases = [
-    ["kira", "command-palette"],
-    ["mochi", "popover"],
-    ["atlas", "accordion"],
+    ["kira", "checkbox"],
+    ["mochi", "switch"],
+    ["atlas", "progress"],
   ] as const;
   for (const [character, component] of cases) {
     // eslint-disable-next-line no-await-in-loop -- one browser page must navigate sequentially.

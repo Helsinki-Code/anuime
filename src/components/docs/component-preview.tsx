@@ -4,11 +4,30 @@ import { CompositeComponent, type AnyCompositeComponent } from "@tanstack/react-
 
 type ComponentPreviewProps = {
   preview: AnyCompositeComponent | null;
+  itemName: string;
 };
 
-export function ComponentPreview({ preview }: ComponentPreviewProps) {
+export function ComponentPreview({ preview, itemName }: ComponentPreviewProps) {
+  const character = itemName.includes("-mochi-")
+    ? "mochi"
+    : itemName.includes("-atlas-")
+      ? "atlas"
+      : "kira";
+
   if (preview) {
-    return <CompositeComponent src={preview} />;
+    return (
+      <div
+        data-docs-registry-v2
+        className={`anuime-system anuime-system-${character} border bg-background text-foreground`}
+      >
+        <div className="border-b px-4 py-2 font-mono text-[10px] tracking-[0.14em] text-muted-foreground uppercase">
+          Registry v2 · {character} light baseline
+        </div>
+        <div className="p-4 sm:p-6">
+          <CompositeComponent src={preview} />
+        </div>
+      </div>
+    );
   }
 
   return (

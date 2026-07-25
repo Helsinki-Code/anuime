@@ -8,8 +8,8 @@ export function Preview() {
       items={[
         {
           id: "power",
-          title: "What is Gridforge?",
-          content: "A structural ability that makes hierarchy inspectable.",
+          title: "What is a construction map?",
+          content: "A board artifact translated into repeatable geometry and a component job.",
         },
         {
           id: "motion",

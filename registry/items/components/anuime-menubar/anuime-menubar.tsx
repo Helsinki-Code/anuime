@@ -32,7 +32,7 @@ export function AnuimeMenubar({
         { id: "open", label: "Open…", shortcut: "⌘O" },
       ],
     },
-    { id: "view", label: "View", items: [{ id: "grid", label: "Gridforge" }] },
+    { id: "view", label: "View", items: [{ id: "grid", label: "Construction grid" }] },
   ],
   endContent,
 }: AnuimeMenubarProps) {

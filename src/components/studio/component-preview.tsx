@@ -183,9 +183,9 @@ export function ComponentPreview({ document }: { document: StudioDocument }) {
           disabled={previewState === "disabled"}
           hint="Mix individual dimensions in the controls panel."
           options={[
-            { value: "kira", label: "Kira — Neon Ronin" },
-            { value: "mochi", label: "Mochi — Dream Familiar" },
-            { value: "atlas", label: "Atlas — Mecha Architect" },
+            { value: "kira", label: "Kira — Incisive" },
+            { value: "mochi", label: "Mochi — Gracious" },
+            { value: "atlas", label: "Atlas — Engineered" },
           ]}
         />
       );
@@ -288,25 +288,25 @@ export function ComponentPreview({ document }: { document: StudioDocument }) {
           options={[
             {
               value: "signal-cut",
-              label: "Signal Cut",
-              description: "Decisive keyboard-first action.",
+              label: "Blade trace",
+              description: "Incisive linework and decisive focus.",
             },
             {
               value: "dream-cache",
-              label: "Dream Cache",
-              description: "Contextual guidance and recovery.",
+              label: "Pearl clasp",
+              description: "Gracious feedback and measured curves.",
             },
             {
               value: "gridforge",
-              label: "Gridforge",
-              description: "Modular hierarchy and data structure.",
+              label: "Docked strap",
+              description: "Engineered hierarchy and segmented structure.",
             },
           ]}
         />
       );
     case "tooltip":
       return (
-        <AnuimeTooltip recipe={recipe} label="Signal Cut: press ⌘K to isolate the next action.">
+        <AnuimeTooltip recipe={recipe} label="Blade trace: press ⌘K to isolate the next action.">
           <AnuimeButton recipe={recipe}>Focus for power hint</AnuimeButton>
         </AnuimeTooltip>
       );
@@ -315,8 +315,8 @@ export function ComponentPreview({ document }: { document: StudioDocument }) {
         <AnuimePopover
           key={previewState}
           recipe={recipe}
-          trigger="Open Dream Cache"
-          title="Context charm"
+          trigger="Open construction note"
+          title="Context note"
         >
           Useful guidance appears near the task and never mutates your recipe without approval.
         </AnuimePopover>
@@ -346,8 +346,8 @@ export function ComponentPreview({ document }: { document: StudioDocument }) {
           items={[
             {
               id: "power",
-              title: "How does Gridforge work?",
-              content: "It exposes structure through modular hierarchy and inspectable regions.",
+              title: "How does the construction map work?",
+              content: "It exposes structure through functional, inspectable geometry.",
             },
             {
               id: "accessibility",

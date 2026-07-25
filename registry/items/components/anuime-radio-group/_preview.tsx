@@ -5,12 +5,12 @@ import { AnuimeRadioGroup } from "./anuime-radio-group";
 export function Preview() {
   return (
     <AnuimeRadioGroup
-      legend="Choose a power"
-      defaultValue="signal"
+      legend="Choose a construction system"
+      defaultValue="blade"
       options={[
-        { value: "signal", label: "Signal Cut" },
-        { value: "cache", label: "Dream Cache" },
-        { value: "grid", label: "Gridforge" },
+        { value: "blade", label: "Blade trace" },
+        { value: "pearl", label: "Pearl clasp" },
+        { value: "strap", label: "Docked strap" },
       ]}
     />
   );

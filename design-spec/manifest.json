@@ -1,15 +1,39 @@
 {
   "$schema": "./schema.json",
   "specVersion": "2.0.0-phase-0",
-  "status": "approved",
+  "status": "phase-2-complete-phase-3-awaiting-authorization",
   "designAuthority": "The six approved Design Component HTML boards are the only design source of truth. Repository code is legacy wherever it contradicts this spec.",
   "scope": {
-    "phase": 0,
+    "phase": 2,
     "implementationAuthorized": true,
     "approvalDate": "2026-07-25",
-    "approvalCondition": "Contrast audit added with failing pairs reported and proposed adjustments left unapplied.",
-    "nextGate": "Review the first three rebuilt components before mass-producing the remaining catalog.",
-    "nextCheckpointAfterApproval": "Stop after Kira Checkbox, Mochi Switch, and Atlas Progress."
+    "approvalCondition": "Full registry v2 approved: all 51 components are character-aware, all 10 legacy composed blocks were rebuilt from v2 primitives with no skin paths, three canonical themes and twelve Expressive Moments items are present, and Phase 2 is authorized.",
+    "nextGate": "Review the completed Phase 2 site v2 before authorizing Phase 3 MCP server work.",
+    "nextCheckpointAfterApproval": "Stop after the homepage, character system pages, /design-philosophy, component docs, and Studio integration are complete and verified; do not start Phase 3."
+  },
+  "phase1Completion": {
+    "status": "approved",
+    "registryComponents": 51,
+    "canonicalThemes": 3,
+    "expressiveMomentItems": 12,
+    "legacyBlocksDisposition": "All 10 rebuilt against registry v2 primitives; no hand-rolled skin path remains.",
+    "phase2Authorized": true
+  },
+  "phase2Completion": {
+    "status": "complete",
+    "homepage": "Rebuilt around live registry v2 signature primitives and Expressive Moments.",
+    "characterSystemPages": 3,
+    "themeVariantsPresented": 6,
+    "designPhilosophyRoute": "/design-philosophy",
+    "componentDocs": "All registry item previews share the canonical v2 theme surface and current install path.",
+    "studio": "Registry v2 recipes remain URL-owned and restore component, state, viewport, zoom, and theme dimensions.",
+    "verification": {
+      "unitTests": "238 passed",
+      "themeAndCharacterTests": "6 passed",
+      "playwright": "34 passed",
+      "productionBuild": "283 pages prerendered"
+    },
+    "phase3Started": false
   },
   "sources": [
     {
