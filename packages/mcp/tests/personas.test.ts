@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { castCharacters, getPersonaPack, listCharacters } from "../src/personas.js";
-import { PersonaPackSchema } from "../src/schema.js";
+import { CastResultSchema, PersonaPackSchema } from "../src/schema.js";
 
 describe("AnUIme persona packs", () => {
   it.each(["kira", "mochi", "atlas"] as const)(
@@ -26,11 +26,29 @@ describe("AnUIme persona packs", () => {
     expect(listCharacters().map((character) => character.id)).toEqual(["kira", "mochi", "atlas"]);
   });
 
-  it("casts distinct characters without averaging their systems", () => {
-    const result = castCharacters(["kira", "atlas"], "Build a settings page");
+  it("casts path assignments without averaging their systems", () => {
+    const assignments = {
+      "/dashboard": "kira",
+      "/dashboard/settings": "kira",
+      "/marketing": "atlas",
+    } as const;
+    const result = castCharacters(assignments, "Build a settings page");
 
+    expect(CastResultSchema.parse(result)).toEqual(result);
+    expect(result.assignments).toEqual(assignments);
+    expect(result.assignments["/dashboard/settings"]).toBe("kira");
     expect(result.personaPacks.map((pack) => pack.character)).toEqual(["kira", "atlas"]);
     expect(result.compositionRules.join(" ")).toContain("structural owner");
     expect(result.compositionRules.join(" ")).toContain("do not average");
+    expect(result.compositionRules).toHaveLength(5);
+  });
+
+  it("rejects a cast whose assignments resolve to one distinct character", () => {
+    expect(() =>
+      castCharacters({
+        "/dashboard": "kira",
+        "/settings": "kira",
+      }),
+    ).toThrow("cast requires at least two distinct characters.");
   });
 });

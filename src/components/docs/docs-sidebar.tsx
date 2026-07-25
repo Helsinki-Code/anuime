@@ -3,6 +3,10 @@ import { Link } from "@tanstack/react-router";
 import type { SiteNavigationItem, SiteNavigationSection } from "../../lib/navigation";
 import { cn } from "../../lib/utils";
 
+function normalizeProductCasing(title: string) {
+  return title.replace(/\banuime\b/gi, "AnUIme");
+}
+
 type DocsSidebarProps = {
   sections: readonly SiteNavigationSection[];
   pathname: string;
@@ -65,7 +69,7 @@ function SidebarSectionLink({
     case "docs":
       return (
         <Link to="/docs" onClick={onNavigate} className={className}>
-          {section.title}
+          {normalizeProductCasing(section.title)}
         </Link>
       );
     case "components":
@@ -78,13 +82,13 @@ function SidebarSectionLink({
           onClick={onNavigate}
           className={className}
         >
-          {section.title}
+          {normalizeProductCasing(section.title)}
         </Link>
       );
     case "registry":
       return (
         <Link to="/registry" onClick={onNavigate} className={className}>
-          {section.title}
+          {normalizeProductCasing(section.title)}
         </Link>
       );
   }
@@ -147,7 +151,7 @@ function SidebarItemLink({
     if (!item.slug) {
       return (
         <Link to="/docs" onClick={onNavigate} className={className}>
-          {item.title}
+          {normalizeProductCasing(item.title)}
         </Link>
       );
     }
@@ -159,7 +163,7 @@ function SidebarItemLink({
         onClick={onNavigate}
         className={className}
       >
-        {item.title}
+        {normalizeProductCasing(item.title)}
       </Link>
     );
   }
@@ -171,7 +175,7 @@ function SidebarItemLink({
       onClick={onNavigate}
       className={className}
     >
-      {item.title}
+      {normalizeProductCasing(item.title)}
     </Link>
   );
 }

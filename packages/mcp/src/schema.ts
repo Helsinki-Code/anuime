@@ -55,9 +55,29 @@ export const PersonaPackSchema = z.object({
   estimatedTokens: z.number().int().positive().max(1500),
 });
 
+export const CastAssignmentsSchema = z
+  .record(z.string().trim().min(1), CharacterIdSchema)
+  .superRefine((assignments, context) => {
+    if (new Set(Object.values(assignments)).size < 2) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "cast requires at least two distinct characters.",
+      });
+    }
+  });
+
+export const CastResultSchema = z.object({
+  schemaVersion: z.literal("anuime.cast.v2"),
+  assignments: CastAssignmentsSchema,
+  characters: z.array(CharacterIdSchema).min(2).max(3),
+  intent: z.string().optional(),
+  compositionRules: z.array(z.string()).length(5),
+  personaPacks: z.array(PersonaPackSchema).min(2).max(3),
+});
+
 export const ReviewViolationSchema = z.object({
   ruleId: z.string(),
-  severity: z.enum(["error", "warning"]),
+  severity: z.enum(["error", "warning", "cross-contamination"]),
   message: z.string(),
   line: z.number().int().positive(),
   column: z.number().int().positive(),
@@ -68,6 +88,7 @@ export const ReviewViolationSchema = z.object({
 export const ReviewResultSchema = z.object({
   schemaVersion: z.literal("anuime.review.v1"),
   character: CharacterIdSchema,
+  scopeCharacter: CharacterIdSchema.optional(),
   context: z.enum(["workhorse", "expressive"]),
   compliant: z.boolean(),
   violationCount: z.number().int().nonnegative(),
@@ -75,6 +96,8 @@ export const ReviewResultSchema = z.object({
 });
 
 export type CharacterId = z.infer<typeof CharacterIdSchema>;
+export type CastAssignments = z.infer<typeof CastAssignmentsSchema>;
+export type CastResult = z.infer<typeof CastResultSchema>;
 export type PersonaPack = z.infer<typeof PersonaPackSchema>;
 export type ReviewResult = z.infer<typeof ReviewResultSchema>;
 export type ReviewViolation = z.infer<typeof ReviewViolationSchema>;

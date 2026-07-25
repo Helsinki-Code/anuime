@@ -1,5 +1,5 @@
 {
-  "specVersion": "2.0.0-phase-0",
+  "specVersion": "2.1.0-extended-mapping-checkpoint",
   "interpretation": {
     "themeGeometry": "All construction below is theme-invariant by board law.",
     "lightTreatment": {
@@ -12,7 +12,9 @@
       "mochi": "Use Mochi dark tokens; the same rose/gold geometry may gain restrained candlelit warmth.",
       "atlas": "Use Atlas dark tokens; the same cobalt lines may emit a restrained holographic glow."
     },
-    "anatomyPolicy": "Preserve current shadcn anatomy and prop APIs in Phase 1. This file specifies visual construction only."
+    "anatomyPolicy": "Preserve current shadcn anatomy and prop APIs. This file specifies visual construction only.",
+    "extendedSetPolicy": "The 34 Extended Set mappings below are documentation for review only. Light and dark boards have identical construction; theme tokens alone change. POWER remains excluded from every workhorse component.",
+    "honestyPolicy": "When a board declares NO MOTIF FIT, motifIds is empty and carrier states exactly: no artifact claims this, geometry only."
   },
   "explicitBoardComponents": [
     "anuime-button",
@@ -32,7 +34,746 @@
     "anuime-toggle",
     "anuime-tooltip"
   ],
+  "extendedBoardComponents": [
+    "anuime-radio-group",
+    "anuime-select",
+    "anuime-combobox",
+    "anuime-input-otp",
+    "anuime-input-group",
+    "anuime-field",
+    "anuime-date-control",
+    "anuime-calendar",
+    "anuime-textarea",
+    "anuime-popover",
+    "anuime-hover-card",
+    "anuime-context-menu",
+    "anuime-menubar",
+    "anuime-navigation-menu",
+    "anuime-sidebar",
+    "anuime-drawer",
+    "anuime-sheet",
+    "anuime-alert-dialog",
+    "anuime-command-palette",
+    "anuime-accordion",
+    "anuime-collapsible",
+    "anuime-separator",
+    "anuime-aspect-ratio",
+    "anuime-scroll-area",
+    "anuime-button-group",
+    "anuime-toolbar",
+    "anuime-spinner",
+    "anuime-empty-state",
+    "anuime-breadcrumb",
+    "anuime-pagination",
+    "anuime-table",
+    "anuime-avatar",
+    "anuime-kbd",
+    "anuime-typography"
+  ],
+  "extendedBoardSources": [
+    {
+      "id": "extended.kira",
+      "character": "kira",
+      "light": "Character Design Systems 3/Character Design Systems 4/Kira Light Extended.dc.html",
+      "dark": "Character Design Systems 3/Character Design Systems 4/Kira Dark Extended.dc.html",
+      "evidence": "Component captions and construction notes at lines 56-572; motif carrier legend at lines 622-629."
+    },
+    {
+      "id": "extended.mochi",
+      "character": "mochi",
+      "light": "Character Design Systems 3/Character Design Systems 4/Mochi Light Extended.dc.html",
+      "dark": "Character Design Systems 3/Character Design Systems 4/Mochi Dark Extended.dc.html",
+      "evidence": "Component captions and construction notes at lines 56-575; motif carrier legend at lines 625-632."
+    },
+    {
+      "id": "extended.atlas",
+      "character": "atlas",
+      "light": "Character Design Systems 3/Character Design Systems 4/Atlas Light Extended.dc.html",
+      "dark": "Character Design Systems 3/Character Design Systems 4/Atlas Dark Extended.dc.html",
+      "evidence": "Component captions and construction notes at lines 55-586; motif carrier legend at lines 635-642."
+    }
+  ],
   "components": {
+    "accordion": {
+      "kira": {
+        "motifIds": ["kira.hairpin", "kira.circuit"],
+        "geometry": "Unframed stack divided by 1px traces; hairpin rotates −90° to 0° in 120ms and turns accent only when open.",
+        "carrier": "Disclosure indicator carries hairpin; item rules carry circuit.",
+        "source": { "boardPair": "extended.kira", "lines": "353-356" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.ribbon", "mochi.crescent"],
+        "geometry": "Unframed stack with gold open-item rule and neutral closed-item rule; crescent rotates 90° over 250ms.",
+        "carrier": "Item rules carry ribbon; disclosure indicator carries crescent.",
+        "source": { "boardPair": "extended.mochi", "lines": "353-356" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.panel", "atlas.strap"],
+        "geometry": "Unframed stack divided by 1px bands; one bracket corner rotates 90° in 180ms linear and turns cobalt when open.",
+        "carrier": "Disclosure indicator carries panel bracket; item rules carry strap/band.",
+        "source": { "boardPair": "extended.atlas", "lines": "367-370" }
+      }
+    },
+    "collapsible": {
+      "kira": {
+        "motifIds": ["kira.hairpin", "kira.circuit"],
+        "geometry": "Hairpin points right when closed and down when open; revealed content hangs from a 1px vertical trace.",
+        "carrier": "Disclosure indicator carries hairpin; depth guide carries circuit.",
+        "source": { "boardPair": "extended.kira", "lines": "366-369" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.crescent", "mochi.drape"],
+        "geometry": "Crescent is the sole disclosure affordance; revealed content hangs from a 1.2px quadratic depth curve.",
+        "carrier": "Disclosure indicator carries crescent; depth guide carries drape.",
+        "source": { "boardPair": "extended.mochi", "lines": "366-369" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.panel", "atlas.strap"],
+        "geometry": "Bracket corner points right when closed and down when open; revealed content hangs from a 2px structural band.",
+        "carrier": "Disclosure indicator carries panel bracket; depth guide carries strap/band.",
+        "source": { "boardPair": "extended.atlas", "lines": "380-383" }
+      }
+    },
+    "separator": {
+      "kira": {
+        "motifIds": ["kira.circuit"],
+        "geometry": "1px trace at border token; labelled variant may break for a node dot or mono caption at 0.1em tracking; never dashed.",
+        "carrier": "The divider line and optional node carry circuit.",
+        "source": { "boardPair": "extended.kira", "lines": "380-383" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.ribbon", "mochi.pearl"],
+        "geometry": "Ordinary 1px border or consequential gold rule at 55%; labelled variant may break for a pearl or mono caption at 0.12em.",
+        "carrier": "The divider carries ribbon; the optional label marker carries pearl.",
+        "source": { "boardPair": "extended.mochi", "lines": "380-383" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.strap", "atlas.grid"],
+        "geometry": "Ordinary 1px division or 2px structural band; labelled variant may break for a survey diamond or mono caption at 0.12em.",
+        "carrier": "The divider carries strap/band; the optional label marker carries grid/diamond.",
+        "source": { "boardPair": "extended.atlas", "lines": "394-397" }
+      }
+    },
+    "aspect-ratio": {
+      "kira": {
+        "motifIds": [],
+        "geometry": "8px container radius and 1px border token only.",
+        "carrier": "no artifact claims this, geometry only",
+        "source": { "boardPair": "extended.kira", "lines": "392-395" }
+      },
+      "mochi": {
+        "motifIds": [],
+        "geometry": "14px container radius and 1px border token only.",
+        "carrier": "no artifact claims this, geometry only",
+        "source": { "boardPair": "extended.mochi", "lines": "392-395" }
+      },
+      "atlas": {
+        "motifIds": [],
+        "geometry": "9px container radius and 1px dashed drawing-convention border only.",
+        "carrier": "no artifact claims this, geometry only",
+        "source": { "boardPair": "extended.atlas", "lines": "406-409" }
+      }
+    },
+    "scroll-area": {
+      "kira": {
+        "motifIds": ["kira.strap"],
+        "geometry": "Track and thumb are fixed-gauge 4px straps at 2px radius; hover brightens the thumb over 120ms without widening.",
+        "carrier": "The track and thumb carry strap.",
+        "source": { "boardPair": "extended.kira", "lines": "407-410" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.drape", "mochi.pearl"],
+        "geometry": "5px fully rounded cord-and-bead track; thumb warms to gold over 250ms without widening.",
+        "carrier": "The radius profile carries drape; the thumb carries pearl.",
+        "source": { "boardPair": "extended.mochi", "lines": "407-410" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.strap"],
+        "geometry": "Thumb is two 12px square-ended vertical band segments separated by 2px; hover brightens without changing gauge.",
+        "carrier": "The segmented thumb carries strap/band.",
+        "source": { "boardPair": "extended.atlas", "lines": "421-424" }
+      }
+    },
+    "button-group": {
+      "kira": {
+        "motifIds": ["kira.strap"],
+        "geometry": "Single group with 5px outer corners, square interior joints and 1px seams; pressed segment receives a 1px inset edge.",
+        "carrier": "The group shell and segment plates carry strap/buckle.",
+        "source": { "boardPair": "extended.kira", "lines": "423-426" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.clasp"],
+        "geometry": "Single group with 10px outer corners, square interior joints and gold hairline seams; selected segment lifts to elevated fill.",
+        "carrier": "The group shell and seams carry clasp.",
+        "source": { "boardPair": "extended.mochi", "lines": "423-426" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.buckle"],
+        "geometry": "Single 7px outer frame with square interior joints and 1px seams; pressed segment receives a 1px inset edge.",
+        "carrier": "The group shell and segment plates carry buckle/frame.",
+        "source": { "boardPair": "extended.atlas", "lines": "437-440" }
+      }
+    },
+    "toolbar": {
+      "kira": {
+        "motifIds": ["kira.strap", "kira.circuit"],
+        "geometry": "36px strap with 24px plates at 4px radius; groups are divided by a 16px trace.",
+        "carrier": "Toolbar shell/plates carry strap; group divider carries circuit.",
+        "source": { "boardPair": "extended.kira", "lines": "440-443" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.clasp", "mochi.ribbon"],
+        "geometry": "36px clasp bar with 24px plates at 8px radius; groups are divided by a 16px gold rule.",
+        "carrier": "Toolbar shell/plates carry clasp; group divider carries ribbon.",
+        "source": { "boardPair": "extended.mochi", "lines": "440-443" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.buckle", "atlas.strap"],
+        "geometry": "36px frame with 24px plates at 5px radius; groups are divided by a 16px structural rule.",
+        "carrier": "Toolbar shell/plates carry buckle/frame; group divider carries strap/band.",
+        "source": { "boardPair": "extended.atlas", "lines": "454-457" }
+      }
+    },
+    "spinner": {
+      "kira": {
+        "motifIds": ["kira.collar", "kira.fringe"],
+        "geometry": "34px, 1.5px ring with one drawn arc rotating at 1.15s linear; reduced motion freezes the arc at 114°.",
+        "carrier": "The track carries collar; the directional arc carries fringe.",
+        "source": { "boardPair": "extended.kira", "lines": "457-460" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.pearl"],
+        "geometry": "36px orbit of four beads diminishing in size and opacity, rotating at 1.15s linear; reduced motion keeps a static strand.",
+        "carrier": "The orbiting bead sequence carries pearl.",
+        "source": { "boardPair": "extended.mochi", "lines": "459-462" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.core", "atlas.grid"],
+        "geometry": "34px core ring rotates at 1s linear while a survey diamond pulses at 1.15s; reduced motion holds both static.",
+        "carrier": "The loader ring carries core; the pulse marker carries grid/diamond.",
+        "source": { "boardPair": "extended.atlas", "lines": "472-475" }
+      }
+    },
+    "empty-state": {
+      "kira": {
+        "motifIds": ["kira.shard", "kira.fringe"],
+        "geometry": "Approved static-empty assembly: drifting violet wisp with one glimmering shard over 2.6s; centred 13px muted copy and action no taller than 32px.",
+        "carrier": "The marker carries shard; the drifting wisp follows fringe directionality.",
+        "source": { "boardPair": "extended.kira", "lines": "472-475" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.crescent", "mochi.star"],
+        "geometry": "Approved static-empty assembly: hanging crescent with descending sparkles over 2.4s; centred 13px muted copy and action no taller than 32px.",
+        "carrier": "The hanging object carries crescent; descending markers carry star.",
+        "source": { "boardPair": "extended.mochi", "lines": "475-478" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.grid"],
+        "geometry": "Approved static-empty assembly: dormant survey grid with one station pulsing over 2.4s; centred 13px muted copy and action no taller than 32px.",
+        "carrier": "The empty-state field and standby station carry grid/diamond.",
+        "source": { "boardPair": "extended.atlas", "lines": "486-489" }
+      }
+    },
+    "breadcrumb": {
+      "kira": {
+        "motifIds": ["kira.hairpin"],
+        "geometry": "1.5px hairpin separators rotated 90°; only trailing crumb uses full foreground.",
+        "carrier": "Path separators carry hairpin.",
+        "source": { "boardPair": "extended.kira", "lines": "490-493" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.crescent"],
+        "geometry": "9px crescent separators; only trailing crumb uses full foreground while ancestors remain muted.",
+        "carrier": "Path separators carry crescent.",
+        "source": { "boardPair": "extended.mochi", "lines": "493-496" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.grid"],
+        "geometry": "5px hollow survey-diamond separators; full trail uses mono uppercase.",
+        "carrier": "Path separators carry grid/diamond.",
+        "source": { "boardPair": "extended.atlas", "lines": "504-507" }
+      }
+    },
+    "pagination": {
+      "kira": {
+        "motifIds": ["kira.circuit", "kira.hairpin"],
+        "geometry": "Pages are filled-current and 1.5px hollow-pending nodes; previous/next use hairpin arrows; numeric mode uses 32px plates.",
+        "carrier": "Page state carries circuit; navigation arrows carry hairpin.",
+        "source": { "boardPair": "extended.kira", "lines": "511-514" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.pearl", "mochi.crescent"],
+        "geometry": "Pages are rose-current, gold-visited and hollow-pending pearls; previous/next use crescents; numeric mode uses 32px plates.",
+        "carrier": "Page state carries pearl; navigation arrows carry crescent.",
+        "source": { "boardPair": "extended.mochi", "lines": "514-517" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.strap", "atlas.panel"],
+        "geometry": "Pages are square-ended band segments at 3px gaps; previous/next use bracket corners; numeric mode uses 32px plates.",
+        "carrier": "Page state carries strap/band; navigation arrows carry panel bracket.",
+        "source": { "boardPair": "extended.atlas", "lines": "525-528" }
+      }
+    },
+    "table": {
+      "kira": {
+        "motifIds": ["kira.circuit", "kira.shard", "kira.hairpin"],
+        "geometry": "1px ruled table with surface zebra; healthy state uses node dots, degraded uses skewed shard, and sort uses hairpin in the header.",
+        "carrier": "Healthy status carries circuit, degraded status carries shard, and sort carries hairpin.",
+        "source": { "boardPair": "extended.kira", "lines": "529-532" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.ribbon", "mochi.pearl", "mochi.crescent"],
+        "geometry": "Gold rule below header, neutral 1px row rules, surface zebra, pearl status and 8px crescent sort marker.",
+        "carrier": "Header carries ribbon, status carries pearl, and sort carries crescent.",
+        "source": { "boardPair": "extended.mochi", "lines": "532-535" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.grid", "atlas.strap"],
+        "geometry": "Mono uppercase title-block header, 1px banded rules, surface zebra, survey-diamond status and filled-diamond sort marker.",
+        "carrier": "Status/sort carry grid/diamond; table rules carry strap/band.",
+        "source": { "boardPair": "extended.atlas", "lines": "543-546" }
+      }
+    },
+    "avatar": {
+      "kira": {
+        "motifIds": ["kira.strap", "kira.circuit"],
+        "geometry": "Square 34px plate at 5px radius; presence is an 8px corner node; stacks overlap 8px with a 1.5px cut.",
+        "carrier": "Portrait plate carries strap/buckle; presence carries circuit.",
+        "source": { "boardPair": "extended.kira", "lines": "542-545" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.pearl", "mochi.clasp"],
+        "geometry": "Fully round portrait with a 1px gold rim; presence is a rose bead; stacks overlap 9px with a 1.5px surface cut.",
+        "carrier": "Portrait and presence carry pearl; rim carries clasp's gold trim.",
+        "source": { "boardPair": "extended.mochi", "lines": "545-548" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.buckle", "atlas.core"],
+        "geometry": "Square portrait plate at 7px radius; presence is a hollow 2px core ring at the corner.",
+        "carrier": "Portrait plate carries buckle/frame; presence carries core.",
+        "source": { "boardPair": "extended.atlas", "lines": "556-559" }
+      }
+    },
+    "kbd": {
+      "kira": {
+        "motifIds": ["kira.strap"],
+        "geometry": "22px keycap at 4px radius with 1px border and one inset top edge; mono, never bold.",
+        "carrier": "The keycap plate carries strap/buckle.",
+        "source": { "boardPair": "extended.kira", "lines": "555-558" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.clasp"],
+        "geometry": "22px keycap at 8px radius with a full gold hairline border; mono, never bold.",
+        "carrier": "The keycap plate carries clasp.",
+        "source": { "boardPair": "extended.mochi", "lines": "558-561" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.buckle"],
+        "geometry": "22px keycap at 5px radius with 1px border and one inset bottom edge; mono, never bold.",
+        "carrier": "The keycap plate carries buckle/frame.",
+        "source": { "boardPair": "extended.atlas", "lines": "569-572" }
+      }
+    },
+    "typography": {
+      "kira": {
+        "motifIds": [],
+        "geometry": "Space Grotesk 700 at −0.02em for headings, 400/500 for body, and JetBrains Mono at 0.1em for data; ornamented headings are prohibited.",
+        "carrier": "no artifact claims this, geometry only",
+        "source": { "boardPair": "extended.kira", "lines": "569-572" }
+      },
+      "mochi": {
+        "motifIds": [],
+        "geometry": "Cormorant Garamond 600 for titles, Karla 400/600 for body and labels, and JetBrains Mono at 0.12em for data; swashes and ornaments are prohibited.",
+        "carrier": "no artifact claims this, geometry only",
+        "source": { "boardPair": "extended.mochi", "lines": "572-575" }
+      },
+      "atlas": {
+        "motifIds": [],
+        "geometry": "Archivo 700 at −0.01em for headings, 400/500 for body, and JetBrains Mono uppercase at 0.12em for every measured value.",
+        "carrier": "no artifact claims this, geometry only",
+        "source": { "boardPair": "extended.atlas", "lines": "583-586" }
+      }
+    },
+    "radio-group": {
+      "kira": {
+        "motifIds": ["kira.collar", "kira.circuit"],
+        "geometry": "16px, 1.5px collar ring with a 7px filled circuit node; unselected uses a 1px perimeter; opacity-only state transition at 120ms.",
+        "carrier": "The selection ring carries collar; the selected core carries circuit.",
+        "source": { "boardPair": "extended.kira", "lines": "56-59" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.pearl", "mochi.clasp"],
+        "geometry": "16px pearl with a 1.5px gold rim and an 8px rose bead when selected; unselected uses a 1px perimeter; selection fades over 250ms.",
+        "carrier": "The radio core carries pearl; the selected perimeter carries the clasp's gold trim.",
+        "source": { "boardPair": "extended.mochi", "lines": "56-59" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.core", "atlas.grid"],
+        "geometry": "16px, 2px core ring with a 6px survey diamond at centre; unselected uses a 1px perimeter; state transition is 180ms linear.",
+        "carrier": "The radio perimeter carries core; the selected centre carries the survey diamond.",
+        "source": { "boardPair": "extended.atlas", "lines": "55-58" }
+      }
+    },
+    "select": {
+      "kira": {
+        "motifIds": ["kira.hairpin", "kira.strap"],
+        "geometry": "36px trigger, 5px radius, 1px border; a 1.5px mitered open hairpin chevron flips in the open state within 120ms.",
+        "carrier": "The trigger field carries strap/buckle geometry; the caret carries hairpin.",
+        "source": { "boardPair": "extended.kira", "lines": "68-71" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.crescent", "mochi.clasp"],
+        "geometry": "36px trigger at 10px radius; caret is a 1.5px round-capped crescent arc; open state settles over 250ms.",
+        "carrier": "The trigger field carries clasp; the caret carries crescent.",
+        "source": { "boardPair": "extended.mochi", "lines": "68-71" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.panel", "atlas.lens"],
+        "geometry": "36px lens field at 7px radius with a 1px inset shadow; caret is one 2px panel-bracket corner rotated 45°.",
+        "carrier": "The trigger field carries lens; the caret carries panel bracket.",
+        "source": { "boardPair": "extended.atlas", "lines": "67-70" }
+      }
+    },
+    "combobox": {
+      "kira": {
+        "motifIds": ["kira.circuit", "kira.hairpin"],
+        "geometry": "Matched text receives a 1px cyan underline; the active row receives the mitered hairpin marker rather than a block highlight.",
+        "carrier": "The match underline carries circuit; the active-row marker carries hairpin.",
+        "source": { "boardPair": "extended.kira", "lines": "83-86" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.ribbon", "mochi.crescent"],
+        "geometry": "Matched text receives a gold hairline underline; the active row receives the crescent marker.",
+        "carrier": "The match underline carries ribbon; the active-row marker carries crescent.",
+        "source": { "boardPair": "extended.mochi", "lines": "83-86" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.grid", "atlas.lens"],
+        "geometry": "Matched characters receive a 2px cobalt dimension line; the active row receives a 6px survey diamond and the query uses mono type.",
+        "carrier": "The field carries lens; the active-row marker carries grid/diamond.",
+        "source": { "boardPair": "extended.atlas", "lines": "82-85" }
+      }
+    },
+    "input-otp": {
+      "kira": {
+        "motifIds": ["kira.shard", "kira.collar"],
+        "geometry": "Discrete 32×36 cells at 5px radius; the cursor cell carries the collar focus ring and descending stem.",
+        "carrier": "Each separated cell carries shard/fragment logic; the cursor cell carries collar.",
+        "source": { "boardPair": "extended.kira", "lines": "98-101" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.pearl", "mochi.veil"],
+        "geometry": "Four 10px-radius cells at 8px gaps form a bead string; the cursor cell places a bloom veil behind its rose ring.",
+        "carrier": "The cell string carries pearl; the active cell carries veil.",
+        "source": { "boardPair": "extended.mochi", "lines": "98-101" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.panel", "atlas.lens"],
+        "geometry": "Four lens cells at 5px radius with inset gauge shadows; the cursor cell is seated by four scaled dock brackets.",
+        "carrier": "The cells carry lens; the active-cell focus carrier uses panel brackets.",
+        "source": { "boardPair": "extended.atlas", "lines": "105-108" }
+      }
+    },
+    "input-group": {
+      "kira": {
+        "motifIds": ["kira.strap"],
+        "geometry": "One continuous 36px strap with 5px outer corners, square interior joints and 1px seams; addons are elevated buckle plates.",
+        "carrier": "The outer group and addon plates carry strap/buckle.",
+        "source": { "boardPair": "extended.kira", "lines": "114-117" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.clasp", "mochi.ribbon"],
+        "geometry": "One 10px-radius outer clasp with square interior joints; gold ribbon hairlines mark every joint.",
+        "carrier": "The group shell carries clasp; interior seams carry ribbon.",
+        "source": { "boardPair": "extended.mochi", "lines": "114-117" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.buckle", "atlas.strap"],
+        "geometry": "One 7px-radius outer band with square interior joints and 1px seams; addons are elevated buckle plates with mono uppercase labels.",
+        "carrier": "The group shell carries strap/band; addons carry buckle/frame.",
+        "source": { "boardPair": "extended.atlas", "lines": "121-124" }
+      }
+    },
+    "field": {
+      "kira": {
+        "motifIds": ["kira.circuit", "kira.shard"],
+        "geometry": "Label, control and message use a 6px vertical rhythm; an error message begins with the narrow skewed shard mark.",
+        "carrier": "The vertical stack carries circuit rhythm; the error lead carries shard.",
+        "source": { "boardPair": "extended.kira", "lines": "128-131" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.ribbon", "mochi.star"],
+        "geometry": "Label, control and message use a 6px ruled rhythm; every message begins with a star, rose for correction.",
+        "carrier": "The stack rhythm carries ribbon; the message lead carries star.",
+        "source": { "boardPair": "extended.mochi", "lines": "128-131" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.strap", "atlas.beam"],
+        "geometry": "Label, control and message use a 6px banded-row rhythm; every message begins with a 2.5px beam tick.",
+        "carrier": "The stack carries strap/band; the message lead carries beam.",
+        "source": { "boardPair": "extended.atlas", "lines": "135-138" }
+      }
+    },
+    "date-control": {
+      "kira": {
+        "motifIds": ["kira.earring", "kira.strap"],
+        "geometry": "36px buckle field with mono numerals; trigger is an 11px outlined square rotated 45°, at 1.5px stroke and 2px radius.",
+        "carrier": "The field carries strap/buckle; the trigger glyph carries earring/kite.",
+        "source": { "boardPair": "extended.kira", "lines": "140-143" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.crescent", "mochi.clasp"],
+        "geometry": "36px clasp field with mono numerals divided by middots; trigger glyph is a gold crescent.",
+        "carrier": "The field carries clasp; the trigger glyph carries crescent.",
+        "source": { "boardPair": "extended.mochi", "lines": "140-143" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.grid", "atlas.lens"],
+        "geometry": "Lens field with ISO date in mono; trigger is a hollow 10px survey diamond at 1.6px stroke.",
+        "carrier": "The field carries lens; the trigger glyph carries grid/diamond.",
+        "source": { "boardPair": "extended.atlas", "lines": "147-150" }
+      }
+    },
+    "calendar": {
+      "kira": {
+        "motifIds": ["kira.hairpin", "kira.circuit", "kira.earring"],
+        "geometry": "Hairpin month arrows, 3px event nodes, and a selected day with kite-cornered 3px geometry; grid uses 3px gaps and no cell borders.",
+        "carrier": "Navigation carries hairpin, event status carries circuit, and selection carries earring/kite.",
+        "source": { "boardPair": "extended.kira", "lines": "157-160" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.crescent", "mochi.pearl"],
+        "geometry": "Crescent month arrows, 3px event pearls, and an 8px-radius selected day with rose fill and 1px gold rim.",
+        "carrier": "Navigation carries crescent; event and selected-day state carry pearl.",
+        "source": { "boardPair": "extended.mochi", "lines": "157-160" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.panel", "atlas.grid", "atlas.beam"],
+        "geometry": "Bracket-corner month arrows, a solid cobalt selected cell at 3px radius, 2px event ticks, mono numerals and 3px gaps.",
+        "carrier": "Navigation carries panel bracket, selection carries grid/diamond, and event state carries beam.",
+        "source": { "boardPair": "extended.atlas", "lines": "164-167" }
+      }
+    },
+    "textarea": {
+      "kira": {
+        "motifIds": ["kira.strap", "kira.fringe"],
+        "geometry": "Vertical buckle field at 5px radius and 1px border; resize grip uses two 12px hatches at the 114° system axis.",
+        "carrier": "The field carries strap/buckle; the resize grip carries fringe.",
+        "source": { "boardPair": "extended.kira", "lines": "169-172" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.clasp", "mochi.drape"],
+        "geometry": "Vertical clasp field at 10px radius; resize grip uses two 13px quadratic drape curves.",
+        "carrier": "The field carries clasp; the resize grip carries drape.",
+        "source": { "boardPair": "extended.mochi", "lines": "169-172" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.lens", "atlas.beam"],
+        "geometry": "Vertical lens bezel at 7px radius with inset shadow; resize grip uses two 12px hatches at the 76° system axis.",
+        "carrier": "The field carries lens; the resize grip carries beam.",
+        "source": { "boardPair": "extended.atlas", "lines": "176-179" }
+      }
+    },
+    "popover": {
+      "kira": {
+        "motifIds": ["kira.earring", "kira.collar"],
+        "geometry": "6px-radius menu shell with 1px border; pointer is an 8px rotated square inheriting two shell border edges.",
+        "carrier": "The pointer carries earring/kite; the focused shell carries collar.",
+        "source": { "boardPair": "extended.kira", "lines": "186-189" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.ribbon", "mochi.drape"],
+        "geometry": "12px-radius menu shell with a gold rule inset 14px; pointer uses a 2px softened folded-paper corner.",
+        "carrier": "The shell rule carries ribbon; the folded pointer carries drape.",
+        "source": { "boardPair": "extended.mochi", "lines": "186-189" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.panel"],
+        "geometry": "7px-radius shell with two upper 2px panel brackets; pointer is square-cut and borrows two bezel edges.",
+        "carrier": "The shell corners carry panel bracket; the pointer reuses its structural edge language.",
+        "source": { "boardPair": "extended.atlas", "lines": "198-201" }
+      }
+    },
+    "hover-card": {
+      "kira": {
+        "motifIds": ["kira.fringe"],
+        "geometry": "8px-radius floating card with the full 114° corner sweep and no pointer.",
+        "carrier": "The floating card surface carries fringe.",
+        "source": { "boardPair": "extended.kira", "lines": "202-205" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.veil"],
+        "geometry": "14px-radius floating card with a soft upper-left rose mist, no pointer, and a 250ms entrance.",
+        "carrier": "The floating card surface carries veil.",
+        "source": { "boardPair": "extended.mochi", "lines": "202-205" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.grid"],
+        "geometry": "9px-radius floating card with a 16px blueprint grid masked downward and no pointer.",
+        "carrier": "The floating card surface carries grid.",
+        "source": { "boardPair": "extended.atlas", "lines": "214-217" }
+      }
+    },
+    "context-menu": {
+      "kira": {
+        "motifIds": ["kira.hairpin", "kira.circuit"],
+        "geometry": "32px rows at 4px radius, active-row hairpin marker and 1px group-divider trace.",
+        "carrier": "Active row carries hairpin; group divider carries circuit.",
+        "source": { "boardPair": "extended.kira", "lines": "219-222" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.crescent", "mochi.ribbon"],
+        "geometry": "32px rows at 8px radius, active-row crescent marker and group divider in gold at 45% opacity.",
+        "carrier": "Active row carries crescent; group divider carries ribbon.",
+        "source": { "boardPair": "extended.mochi", "lines": "219-222" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.grid", "atlas.strap"],
+        "geometry": "32px banded rows at 3px radius, active-row 6px survey diamond and 1px group rule.",
+        "carrier": "Active row carries grid/diamond; row anatomy carries strap/band.",
+        "source": { "boardPair": "extended.atlas", "lines": "231-234" }
+      }
+    },
+    "menubar": {
+      "kira": {
+        "motifIds": ["kira.strap", "kira.circuit"],
+        "geometry": "36px strap with 28px buckle plates; open item gains the 1.5px descending focus stem.",
+        "carrier": "The bar and item plates carry strap; open-state ownership carries circuit.",
+        "source": { "boardPair": "extended.kira", "lines": "235-238" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.clasp", "mochi.ribbon"],
+        "geometry": "36px clasp bar with 28px plates at 8px radius; open item receives a gold hairline underline.",
+        "carrier": "The bar carries clasp; open-state ownership carries ribbon.",
+        "source": { "boardPair": "extended.mochi", "lines": "235-238" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.strap"],
+        "geometry": "Items sit on a 1px band; open state receives a 2px cobalt underline inset 6px, with no pills or filled plates.",
+        "carrier": "The bar and open-state edge carry strap/band.",
+        "source": { "boardPair": "extended.atlas", "lines": "247-250" }
+      }
+    },
+    "navigation-menu": {
+      "kira": {
+        "motifIds": ["kira.hairpin", "kira.fringe"],
+        "geometry": "Active trigger uses the hairpin indicator; the dropped viewport receives a 114° surface sweep.",
+        "carrier": "Trigger state carries hairpin; viewport surface carries fringe.",
+        "source": { "boardPair": "extended.kira", "lines": "251-254" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.crescent", "mochi.ribbon"],
+        "geometry": "Active trigger uses the crescent indicator; the dropped viewport is headed by a gold rule.",
+        "carrier": "Trigger state carries crescent; viewport surface carries ribbon.",
+        "source": { "boardPair": "extended.mochi", "lines": "251-254" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.strap", "atlas.grid"],
+        "geometry": "Active trigger uses a 2px state band; viewport receives horizontal blueprint rules and mono uppercase labels.",
+        "carrier": "Trigger state carries strap/band; viewport surface carries grid.",
+        "source": { "boardPair": "extended.atlas", "lines": "263-266" }
+      }
+    },
+    "sidebar": {
+      "kira": {
+        "motifIds": ["kira.circuit"],
+        "geometry": "A vertical trace connects filled active nodes and 1px hollow inactive nodes; rows are 4px plates, never pills.",
+        "carrier": "The navigation rail and item states carry circuit.",
+        "source": { "boardPair": "extended.kira", "lines": "270-273" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.pearl", "mochi.ribbon"],
+        "geometry": "A vertical strand uses filled rose active pearls and 1px hollow inactive pearls; the outer rail closes with a gold edge.",
+        "carrier": "Item states carry pearl; the rail edge carries ribbon.",
+        "source": { "boardPair": "extended.mochi", "lines": "270-273" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.grid", "atlas.strap"],
+        "geometry": "Items use solid active and 1px hollow inactive survey diamonds; active row receives a 2px leading band instead of fill.",
+        "carrier": "Item states carry grid/diamond; active-row edge carries strap/band.",
+        "source": { "boardPair": "extended.atlas", "lines": "282-285" }
+      }
+    },
+    "drawer": {
+      "kira": {
+        "motifIds": ["kira.strap"],
+        "geometry": "34×4 handle at 2px radius, 8px leading corners and a square viewport edge; enters in 120ms.",
+        "carrier": "The grab handle carries strap/buckle.",
+        "source": { "boardPair": "extended.kira", "lines": "286-289" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.clasp", "mochi.drape"],
+        "geometry": "36×4 fully rounded gold handle, 14px leading corners, and a 250ms settling entrance.",
+        "carrier": "The grab handle carries clasp; the panel entrance and edge carry drape.",
+        "source": { "boardPair": "extended.mochi", "lines": "286-289" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.strap"],
+        "geometry": "Handle is three 11×4 band segments at 1.5px radius; panel has 9px leading corners and enters in 180ms linear.",
+        "carrier": "The segmented grab handle carries strap/band.",
+        "source": { "boardPair": "extended.atlas", "lines": "298-301" }
+      }
+    },
+    "sheet": {
+      "kira": {
+        "motifIds": ["kira.fringe", "kira.shard"],
+        "geometry": "A square viewport fragment with a 26px leading-edge gradient on the 114° axis and zero radius on its docked edge.",
+        "carrier": "The leading wash carries fringe; the viewport fragment carries shard.",
+        "source": { "boardPair": "extended.kira", "lines": "304-307" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.veil", "mochi.ribbon"],
+        "geometry": "A square docked curtain panel with low-strength interior mist and a gold leading edge.",
+        "carrier": "The panel interior carries veil; the leading edge carries ribbon.",
+        "source": { "boardPair": "extended.mochi", "lines": "304-307" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.beam", "atlas.panel"],
+        "geometry": "A square docked plate with a 24px leading-edge gradient on the 76° system axis and zero radius on its docked edge.",
+        "carrier": "The leading wash carries beam; the docked plate construction carries panel.",
+        "source": { "boardPair": "extended.atlas", "lines": "316-319" }
+      }
+    },
+    "alert-dialog": {
+      "kira": {
+        "motifIds": ["kira.shard"],
+        "geometry": "Dialog anatomy with the surface sweep removed; one destructive skewed shard leads the title.",
+        "carrier": "The title lead carries shard; no additional decorative carrier is claimed.",
+        "source": { "boardPair": "extended.kira", "lines": "319-322" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.star"],
+        "geometry": "Dialog anatomy with the gold ribbon removed; one rose-destructive star leads the title.",
+        "carrier": "The title lead carries star; no additional decorative carrier is claimed.",
+        "source": { "boardPair": "extended.mochi", "lines": "319-322" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.panel", "atlas.beam"],
+        "geometry": "Dialog anatomy without grid wash; destructive corner brackets and a beam tick lead the title.",
+        "carrier": "Corners carry panel bracket; the title lead carries beam.",
+        "source": { "boardPair": "extended.atlas", "lines": "333-336" }
+      }
+    },
+    "command-palette": {
+      "kira": {
+        "motifIds": ["kira.circuit", "kira.hairpin"],
+        "geometry": "1.5px drawn caret and full-bleed 1px input trace; 6px shell, 4px rows, and hairpin on the active row.",
+        "carrier": "Input caret/rule carry circuit; active row carries hairpin.",
+        "source": { "boardPair": "extended.kira", "lines": "337-340" }
+      },
+      "mochi": {
+        "motifIds": ["mochi.pearl", "mochi.ribbon"],
+        "geometry": "Single rose pearl caret, full-bleed gold input rule, and 8px-radius rows.",
+        "carrier": "Input caret carries pearl; input rule carries ribbon.",
+        "source": { "boardPair": "extended.mochi", "lines": "337-340" }
+      },
+      "atlas": {
+        "motifIds": ["atlas.beam", "atlas.grid"],
+        "geometry": "2px cobalt input rule, mono uppercase query, 3px-radius rows, and survey diamond on the active row.",
+        "carrier": "Input rule carries beam; active row carries grid/diamond.",
+        "source": { "boardPair": "extended.atlas", "lines": "351-354" }
+      }
+    },
     "button": {
       "kira": {
         "dimensions": { "heightPx": 36, "paddingInlinePx": 18, "radiusPx": 5 },

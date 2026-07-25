@@ -1,5 +1,8 @@
 import { listComponentItems, readDesignSpec } from "./repository.js";
 import {
+  type CastAssignments,
+  type CastResult,
+  CastResultSchema,
   type CharacterId,
   CharacterIdSchema,
   type PersonaPack,
@@ -73,12 +76,14 @@ const expressiveKind = {
   empty: "empty-state",
 } as const;
 
-export function listCharacters(): {
+type CharacterSummary = {
   id: CharacterId;
   adjective: string;
   themeItem: string;
   personaTool: CharacterId;
-}[] {
+};
+
+export function listCharacters(): CharacterSummary[] {
   const themes = readDesignSpec<ThemeSpec>("themes.json");
   return CharacterIdSchema.options.map((id) => ({
     id,
@@ -158,23 +163,15 @@ export function getPersonaPack(character: CharacterId): PersonaPack {
   return PersonaPackSchema.parse({ ...preliminary, estimatedTokens });
 }
 
-export function castCharacters(
-  characters: CharacterId[],
-  intent?: string,
-): {
-  schemaVersion: "anuime.cast.v1";
-  characters: CharacterId[];
-  intent?: string;
-  compositionRules: string[];
-  personaPacks: PersonaPack[];
-} {
-  const uniqueCharacters = [...new Set(characters)];
+export function castCharacters(assignments: CastAssignments, intent?: string): CastResult {
+  const uniqueCharacters = [...new Set(Object.values(assignments))];
   if (uniqueCharacters.length < 2) {
     throw new Error("cast requires at least two distinct characters.");
   }
 
-  return {
-    schemaVersion: "anuime.cast.v1",
+  return CastResultSchema.parse({
+    schemaVersion: "anuime.cast.v2",
+    assignments,
     characters: uniqueCharacters,
     ...(intent ? { intent } : {}),
     compositionRules: [
@@ -185,5 +182,5 @@ export function castCharacters(
       "Run anuime_review once per structural owner and resolve every error before shipping.",
     ],
     personaPacks: uniqueCharacters.map(getPersonaPack),
-  };
+  });
 }

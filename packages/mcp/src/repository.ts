@@ -22,6 +22,18 @@ export type RegistryItem = {
   files: RegistryFile[];
 };
 
+export type AnuimeRepository = {
+  readDesignSpec(fileName: string): unknown;
+  listRegistryItems(): RegistryItem[];
+  listComponentItems(): RegistryItem[];
+  getRegistryItem(name: string): RegistryItem | undefined;
+};
+
+export type StaticRepositorySnapshot = {
+  designSpecs: Readonly<Record<string, unknown>>;
+  registryItems: readonly RegistryItem[];
+};
+
 type RegistryFrontmatter = {
   name?: unknown;
   type?: unknown;
@@ -36,6 +48,11 @@ type FrontmatterFile = {
 };
 
 const sourceExtensions = new Set([".css", ".js", ".jsx", ".ts", ".tsx"]);
+let configuredRepository: AnuimeRepository | undefined;
+
+export function configureAnuimeRepository(repository: AnuimeRepository): void {
+  configuredRepository = repository;
+}
 
 export function findRepositoryRoot(start = process.cwd()): string {
   const candidates = [resolve(start), dirname(fileURLToPath(import.meta.url))];
@@ -60,8 +77,13 @@ export function findRepositoryRoot(start = process.cwd()): string {
   throw new Error("Could not locate the AnUIme repository root.");
 }
 
-export function readDesignSpec<T>(fileName: string, repositoryRoot = findRepositoryRoot()): T {
-  return JSON.parse(readFileSync(join(repositoryRoot, "design-spec", fileName), "utf8")) as T;
+export function readDesignSpec<T>(fileName: string, repositoryRoot?: string): T {
+  if (!repositoryRoot && configuredRepository) {
+    return configuredRepository.readDesignSpec(fileName) as T;
+  }
+
+  const root = repositoryRoot ?? findRepositoryRoot();
+  return JSON.parse(readFileSync(join(root, "design-spec", fileName), "utf8")) as T;
 }
 
 export function getInstallCommand(names: readonly string[]): string {
@@ -73,11 +95,16 @@ export function getInstallCommand(names: readonly string[]): string {
   return `npx shadcn@latest add ${urls.join(" ")}`;
 }
 
-export function listRegistryItems(repositoryRoot = findRepositoryRoot()): RegistryItem[] {
+export function listRegistryItems(repositoryRoot?: string): RegistryItem[] {
+  if (!repositoryRoot && configuredRepository) {
+    return configuredRepository.listRegistryItems();
+  }
+
+  const root = repositoryRoot ?? findRepositoryRoot();
   const items: RegistryItem[] = [];
 
   for (const kind of REGISTRY_KINDS) {
-    const kindRoot = join(repositoryRoot, "registry", "items", kind);
+    const kindRoot = join(root, "registry", "items", kind);
     if (!existsSync(kindRoot)) continue;
 
     for (const entry of readdirSync(kindRoot, { withFileTypes: true })) {
@@ -92,15 +119,63 @@ export function listRegistryItems(repositoryRoot = findRepositoryRoot()): Regist
   return items.toSorted((left, right) => left.name.localeCompare(right.name));
 }
 
-export function listComponentItems(repositoryRoot = findRepositoryRoot()): RegistryItem[] {
+export function listComponentItems(repositoryRoot?: string): RegistryItem[] {
+  if (!repositoryRoot && configuredRepository) {
+    return configuredRepository.listComponentItems();
+  }
+
   return listRegistryItems(repositoryRoot).filter((item) => item.kind === "components");
 }
 
-export function getRegistryItem(
-  name: string,
-  repositoryRoot = findRepositoryRoot(),
-): RegistryItem | undefined {
+export function getRegistryItem(name: string, repositoryRoot?: string): RegistryItem | undefined {
+  if (!repositoryRoot && configuredRepository) {
+    return configuredRepository.getRegistryItem(name);
+  }
+
   return listRegistryItems(repositoryRoot).find((item) => item.name === name);
+}
+
+export const fileSystemRepository: AnuimeRepository = {
+  readDesignSpec(fileName: string) {
+    return readDesignSpec<unknown>(fileName, findRepositoryRoot());
+  },
+  listRegistryItems() {
+    return listRegistryItems(findRepositoryRoot());
+  },
+  listComponentItems() {
+    return listComponentItems(findRepositoryRoot());
+  },
+  getRegistryItem(name: string) {
+    return getRegistryItem(name, findRepositoryRoot());
+  },
+};
+
+export function createStaticRepository({
+  designSpecs,
+  registryItems,
+}: StaticRepositorySnapshot): AnuimeRepository {
+  const sortedRegistryItems = [...registryItems].toSorted((left, right) =>
+    left.name.localeCompare(right.name),
+  );
+
+  return {
+    readDesignSpec(fileName: string): unknown {
+      if (!Object.hasOwn(designSpecs, fileName)) {
+        throw new Error(`Unknown statically bundled AnUIme design spec: ${fileName}`);
+      }
+
+      return designSpecs[fileName];
+    },
+    listRegistryItems() {
+      return sortedRegistryItems;
+    },
+    listComponentItems() {
+      return sortedRegistryItems.filter((item) => item.kind === "components");
+    },
+    getRegistryItem(name: string) {
+      return sortedRegistryItems.find((item) => item.name === name);
+    },
+  };
 }
 
 function readRegistryItem(registryPath: string, kind: RegistryItem["kind"]): RegistryItem {

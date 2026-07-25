@@ -44,6 +44,21 @@ describe("AnUIme MCP protocol", () => {
     });
   });
 
+  it("publishes consistently cased AnUIme component titles", async () => {
+    const { client } = await connectInMemory();
+    const result = await client.callTool({ name: "list_components", arguments: {} });
+    const structuredContent = result.structuredContent as
+      | { count: number; components: { title: string }[] }
+      | undefined;
+
+    expect(result.isError).not.toBe(true);
+    expect(structuredContent?.count).toBe(63);
+    expect(structuredContent?.components).toHaveLength(63);
+    expect(structuredContent?.components.every(({ title }) => title.startsWith("AnUIme "))).toBe(
+      true,
+    );
+  });
+
   it("returns deterministic structured review violations through MCP", async () => {
     const { client } = await connectInMemory();
     const result = await client.callTool({
@@ -59,6 +74,73 @@ describe("AnUIme MCP protocol", () => {
       schemaVersion: "anuime.review.v1",
       character: "atlas",
       compliant: false,
+    });
+  });
+
+  it("returns lookup-ready cast assignments through MCP", async () => {
+    const { client } = await connectInMemory();
+    const result = await client.callTool({
+      name: "cast",
+      arguments: {
+        assignments: {
+          "/dashboard": "kira",
+          "/marketing": "mochi",
+        },
+        intent: "Build a multi-character application.",
+      },
+    });
+
+    expect(result.isError).not.toBe(true);
+    expect(result.structuredContent).toMatchObject({
+      schemaVersion: "anuime.cast.v2",
+      assignments: {
+        "/dashboard": "kira",
+        "/marketing": "mochi",
+      },
+      characters: ["kira", "mochi"],
+    });
+  });
+
+  it("rejects a cast with only one distinct character through MCP", async () => {
+    const { client } = await connectInMemory();
+    const result = await client.callTool({
+      name: "cast",
+      arguments: {
+        assignments: {
+          "/dashboard": "kira",
+          "/settings": "kira",
+        },
+      },
+    });
+
+    expect(result.isError).toBe(true);
+    expect(JSON.stringify(result.content)).toContain(
+      "cast requires at least two distinct characters.",
+    );
+  });
+
+  it("returns cross-contamination violations for an assigned scope", async () => {
+    const { client } = await connectInMemory();
+    const result = await client.callTool({
+      name: "anuime_review",
+      arguments: {
+        character: "kira",
+        scopeCharacter: "kira",
+        code: '<span className="mochi-pearl-thumb" />',
+      },
+    });
+
+    expect(result.isError).not.toBe(true);
+    expect(result.structuredContent).toMatchObject({
+      character: "kira",
+      scopeCharacter: "kira",
+      compliant: false,
+      violations: expect.arrayContaining([
+        expect.objectContaining({
+          ruleId: "cross-contamination.mochi-in-kira",
+          severity: "cross-contamination",
+        }),
+      ]),
     });
   });
 });

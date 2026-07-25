@@ -85,6 +85,43 @@ const violationCases: {
   },
 ];
 
+const crossContaminationCases: {
+  scopeCharacter: CharacterId;
+  contaminatingCharacter: CharacterId;
+  code: string;
+}[] = [
+  {
+    scopeCharacter: "kira",
+    contaminatingCharacter: "mochi",
+    code: '<span className="mochi-pearl-thumb" />',
+  },
+  {
+    scopeCharacter: "mochi",
+    contaminatingCharacter: "kira",
+    code: "<div>{/* kira.circuit powers this edge */}</div>",
+  },
+  {
+    scopeCharacter: "kira",
+    contaminatingCharacter: "atlas",
+    code: '<span className="atlas-panel-bracket" />',
+  },
+  {
+    scopeCharacter: "atlas",
+    contaminatingCharacter: "kira",
+    code: '<span className="hairpin-chevron" />',
+  },
+  {
+    scopeCharacter: "mochi",
+    contaminatingCharacter: "atlas",
+    code: "<div>{/* atlas.lens carrier */}</div>",
+  },
+  {
+    scopeCharacter: "atlas",
+    contaminatingCharacter: "mochi",
+    code: '<span className="veil-scrim" />',
+  },
+];
+
 describe("anuime_review", () => {
   it.each(violationCases)(
     "detects $ruleId for $character with a structured fix",
@@ -124,5 +161,50 @@ describe("anuime_review", () => {
     `;
 
     expect(reviewCode("mochi", code, "expressive").compliant).toBe(true);
+  });
+
+  it.each(crossContaminationCases)(
+    "detects $contaminatingCharacter motifs in a $scopeCharacter-owned scope",
+    ({ scopeCharacter, contaminatingCharacter, code }) => {
+      const result = reviewCode(scopeCharacter, code, "workhorse", scopeCharacter);
+      const ruleId = `cross-contamination.${contaminatingCharacter}-in-${scopeCharacter}`;
+
+      expect(result).toMatchObject({
+        scopeCharacter,
+        compliant: false,
+      });
+      expect(result.violations).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            ruleId,
+            severity: "cross-contamination",
+            fix: expect.any(String),
+          }),
+        ]),
+      );
+    },
+  );
+
+  it.each([
+    ["kira", '<span className="kira-hairpin-chevron" />'],
+    ["kira", "<div>{/* kira.collar focus carrier */}</div>"],
+    ["mochi", '<span className="mochi-pearl-thumb" />'],
+    ["mochi", "<div>{/* mochi.clasp state */}</div>"],
+    ["atlas", '<span className="atlas-panel-bracket" />'],
+    ["atlas", "<div>{/* atlas.lens bezel */}</div>"],
+  ] as const)("does not flag legitimate %s motifs in their own scope", (character, code) => {
+    const result = reviewCode(character, code, "workhorse", character);
+
+    expect(
+      result.violations.filter((violation) => violation.severity === "cross-contamination"),
+    ).toEqual([]);
+  });
+
+  it("does not run cross-contamination checks without scopeCharacter", () => {
+    const result = reviewCode("kira", '<span className="mochi-pearl-thumb" />');
+
+    expect(
+      result.violations.filter((violation) => violation.severity === "cross-contamination"),
+    ).toEqual([]);
   });
 });

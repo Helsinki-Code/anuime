@@ -35,8 +35,43 @@ Client configuration formats differ, but the endpoint remains the same. Opening 
 - `list_characters` — discover Kira, Mochi, and Atlas
 - `get_character` — retrieve a schema-validated persona pack
 - `kira`, `mochi`, and `atlas` — load one compact character persona directly
-- `cast` — compose two or three characters without averaging their geometry
-- `anuime_review` — review JSX and CSS against character, token, tier, and motion laws
+- `cast` — assign routes, files, or sections to two or more character owners without averaging their geometry
+- `anuime_review` — review JSX and CSS against character, token, tier, and motion laws; add `scopeCharacter` to detect foreign positive motifs inside a cast-owned scope
+
+## Assigning Character Ownership
+
+`cast` accepts a path-to-character assignment table. The returned `assignments` object is the same
+lookup table, so an agent can resolve the owner of a route, file, or named section before it writes
+or reviews that scope.
+
+```json
+{
+  "assignments": {
+    "/dashboard": "kira",
+    "/dashboard/settings": "kira",
+    "/marketing": "mochi"
+  },
+  "intent": "Build a product shell with a gracious public surface."
+}
+```
+
+The cast must contain at least two distinct characters. Its output also includes the distinct
+`characters`, all five composition rules, and one persona pack per participating character.
+
+Pass the resolved owner to `anuime_review` as `scopeCharacter` to enable cross-contamination
+checks:
+
+```json
+{
+  "character": "kira",
+  "scopeCharacter": "kira",
+  "context": "workhorse",
+  "code": "<button className=\"mochi-pearl-thumb\">Deploy</button>"
+}
+```
+
+In addition to normal errors and warnings, scoped review can return
+`"severity": "cross-contamination"` when another character's positive motif appears in the code.
 
 ## Recommended Agent Flow
 

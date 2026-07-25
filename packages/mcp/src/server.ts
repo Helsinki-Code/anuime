@@ -7,9 +7,16 @@ import {
   getRegistryItem,
   listComponentItems,
   listRegistryItems,
+  type RegistryItem,
 } from "./repository.js";
 import { reviewCode } from "./review.js";
-import { CharacterIdSchema, PersonaPackSchema, ReviewResultSchema } from "./schema.js";
+import {
+  CastAssignmentsSchema,
+  CastResultSchema,
+  CharacterIdSchema,
+  PersonaPackSchema,
+  ReviewResultSchema,
+} from "./schema.js";
 
 const RegistrySummarySchema = z.object({
   name: z.string(),
@@ -29,14 +36,6 @@ const CharacterSummarySchema = z.object({
   adjective: z.string(),
   themeItem: z.string(),
   personaTool: CharacterIdSchema,
-});
-
-const CastResultSchema = z.object({
-  schemaVersion: z.literal("anuime.cast.v1"),
-  characters: z.array(CharacterIdSchema).min(2).max(3),
-  intent: z.string().optional(),
-  compositionRules: z.array(z.string()),
-  personaPacks: z.array(PersonaPackSchema).min(2).max(3),
 });
 
 export function createAnuimeMcpServer(): McpServer {
@@ -164,15 +163,17 @@ export function createAnuimeMcpServer(): McpServer {
     {
       title: "Compose AnUIme characters",
       description:
-        "Return persona packs and lawful multi-character composition rules without averaging character geometries.",
+        "Assign routes, files, or sections to character owners and return the assignment table, persona packs, and lawful composition rules without averaging geometries.",
       inputSchema: {
-        characters: z.array(CharacterIdSchema).min(2).max(3),
+        assignments: CastAssignmentsSchema.describe(
+          'Path-to-character ownership, for example {"/dashboard":"kira","/marketing":"mochi"}.',
+        ),
         intent: z.string().max(500).optional(),
       },
       outputSchema: CastResultSchema.shape,
       annotations: { readOnlyHint: true, idempotentHint: true },
     },
-    async ({ characters, intent }) => toolResult(castCharacters(characters, intent)),
+    async ({ assignments, intent }) => toolResult(castCharacters(assignments, intent)),
   );
 
   server.registerTool(
@@ -183,19 +184,23 @@ export function createAnuimeMcpServer(): McpServer {
         "Deterministically lint submitted JSX/CSS against one character's v2 geometry, token, tier, and motion laws.",
       inputSchema: {
         character: CharacterIdSchema,
+        scopeCharacter: CharacterIdSchema.optional().describe(
+          "Declared cast assignment owner for this code scope. Enables cross-character motif contamination checks.",
+        ),
         code: z.string().min(1).max(200_000),
         context: z.enum(["workhorse", "expressive"]).default("workhorse"),
       },
       outputSchema: ReviewResultSchema.shape,
       annotations: { readOnlyHint: true, idempotentHint: true },
     },
-    async ({ character, code, context }) => toolResult(reviewCode(character, code, context)),
+    async ({ character, scopeCharacter, code, context }) =>
+      toolResult(reviewCode(character, code, context, scopeCharacter)),
   );
 
   return server;
 }
 
-function toRegistrySummary(item: ReturnType<typeof listComponentItems>[number]) {
+function toRegistrySummary(item: RegistryItem) {
   return {
     name: item.name,
     type: item.type,

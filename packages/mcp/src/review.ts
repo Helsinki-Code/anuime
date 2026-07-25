@@ -152,12 +152,22 @@ const characterRules: Record<CharacterId, Rule[]> = {
   ],
 };
 
+const positiveMotifPatterns: Record<CharacterId, RegExp> = {
+  kira: /\bkira(?:[.\s_:/-]+)(?:hairpin|earring|circuit|strap|collar|fringe|shard)\b|\b(?:hairpin-chevron|circuit-node|collar-ring|light-shard|fringe-diagonal)\b/giu,
+  mochi:
+    /\bmochi(?:[.\s_:/-]+)(?:clasp|pearl|crescent|star|ribbon|drape|veil)\b|\b(?:gold-clasp|pearl-(?:thumb|bead|string)|crescent-moon|ribbon-rule|drape-curve|veil-scrim)\b/giu,
+  atlas:
+    /\batlas(?:[.\s_:/-]+)(?:buckle|strap|panel|grid|lens|beam|core)\b|\b(?:survey-diamond|panel-bracket|lens-bezel|strap-band|core-ring|light-beam)\b/giu,
+};
+
 export function reviewCode(
   character: CharacterId,
   code: string,
   context: ReviewContext = "workhorse",
+  scopeCharacter?: CharacterId,
 ): ReviewResult {
-  const violations = [...globalRules, ...characterRules[character]]
+  const scopedRules = scopeCharacter ? crossContaminationRules(scopeCharacter) : [];
+  const violations = [...globalRules, ...characterRules[character], ...scopedRules]
     .flatMap((rule) => collectRuleViolations(rule, code, context))
     .filter(
       (violation, index, all) =>
@@ -178,11 +188,24 @@ export function reviewCode(
   return ReviewResultSchema.parse({
     schemaVersion: "anuime.review.v1",
     character,
+    ...(scopeCharacter ? { scopeCharacter } : {}),
     context,
     compliant: violations.length === 0,
     violationCount: violations.length,
     violations,
   });
+}
+
+function crossContaminationRules(scopeCharacter: CharacterId): Rule[] {
+  return (Object.keys(positiveMotifPatterns) as CharacterId[])
+    .filter((motifCharacter) => motifCharacter !== scopeCharacter)
+    .map((motifCharacter) => ({
+      ruleId: `cross-contamination.${motifCharacter}-in-${scopeCharacter}`,
+      severity: "cross-contamination" as const,
+      pattern: positiveMotifPatterns[motifCharacter],
+      message: `${capitalize(motifCharacter)} positive motif geometry appears inside a ${capitalize(scopeCharacter)}-owned scope.`,
+      fix: `Remove the ${capitalize(motifCharacter)} motif, rebuild the detail under ${capitalize(scopeCharacter)}'s laws, or change this path's cast assignment before composing it.`,
+    }));
 }
 
 function collectRuleViolations(
@@ -220,4 +243,8 @@ function getLocation(code: string, index: number): { line: number; column: numbe
     line: lines.length,
     column: (lines.at(-1)?.length ?? 0) + 1,
   };
+}
+
+function capitalize(value: string): string {
+  return `${value.slice(0, 1).toUpperCase()}${value.slice(1)}`;
 }

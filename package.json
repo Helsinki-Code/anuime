@@ -24,6 +24,7 @@
     "test": "vp test",
     "test:browser": "playwright test",
     "mcp:build": "node packages/mcp/scripts/build.mjs",
+    "mcp:verify-remote": "node packages/mcp/scripts/verify-remote.mjs",
     "mcp:start": "node packages/mcp/dist/local.js",
     "mcp:test": "vp test run packages/mcp/tests",
     "fixtures:sync": "node scripts/sync-consumer-fixtures.mjs",
