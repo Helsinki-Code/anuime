@@ -1,13 +1,9 @@
 "use client";
 
+import type { AnuimeCharacter } from "@/lib/anuime-recipe";
+
 import { AnuimeButton } from "./anuime-button";
 
-export function Preview() {
-  return (
-    <div className="flex flex-wrap gap-3">
-      <AnuimeButton character="kira">Activate</AnuimeButton>
-      <AnuimeButton character="mochi">Create magic</AnuimeButton>
-      <AnuimeButton character="atlas">Initialize</AnuimeButton>
-    </div>
-  );
+export function Preview({ character = "kira" }: { character?: AnuimeCharacter }) {
+  return <AnuimeButton character={character}>Activate system</AnuimeButton>;
 }

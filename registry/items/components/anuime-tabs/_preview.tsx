@@ -1,9 +1,13 @@
 "use client";
+
+import type { AnuimeCharacter } from "@/lib/anuime-recipe";
+
 import { AnuimeTabs } from "./anuime-tabs";
-export function Preview() {
+
+export function Preview({ character = "kira" }: { character?: AnuimeCharacter }) {
   return (
     <AnuimeTabs
-      character="kira"
+      character={character}
       tabs={[
         {
           id: "brief",

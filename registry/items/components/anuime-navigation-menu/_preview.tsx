@@ -1,9 +1,13 @@
 "use client";
+
+import type { AnuimeCharacter } from "@/lib/anuime-recipe";
+
 import { AnuimeNavigationMenu } from "./anuime-navigation-menu";
-export function Preview() {
+
+export function Preview({ character = "kira" }: { character?: AnuimeCharacter }) {
   return (
     <AnuimeNavigationMenu
-      character="atlas"
+      character={character}
       items={[
         { label: "Components", href: "#components" },
         { label: "Characters", href: "#characters" },

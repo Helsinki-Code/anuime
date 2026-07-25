@@ -1,9 +1,13 @@
 "use client";
+
+import type { AnuimeCharacter } from "@/lib/anuime-recipe";
+
 import { AnuimeToast } from "./anuime-toast";
-export function Preview() {
+
+export function Preview({ character = "kira" }: { character?: AnuimeCharacter }) {
   return (
     <AnuimeToast
-      character="kira"
+      character={character}
       status="success"
       title="Recipe installed"
       description="Kira Button is now part of your project."

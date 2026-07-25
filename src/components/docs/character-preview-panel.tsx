@@ -4,16 +4,64 @@ import { IconChevronDown } from "@tabler/icons-react";
 import { useState, type CSSProperties } from "react";
 
 import {
-  isRegistryPreviewPilotItem,
+  isRegistryPreviewItem,
   registryPreviewCharacters,
   registryPreviewConstruction,
   type RegistryPreviewCharacter,
-  type RegistryPreviewPilotItem,
+  type RegistryPreviewItem,
 } from "@/lib/anuime/registry-preview-pilot";
 
+import { Preview as AccordionPreview } from "../../../registry/items/components/anuime-accordion/_preview";
+import { Preview as AlertDialogPreview } from "../../../registry/items/components/anuime-alert-dialog/_preview";
+import { Preview as AlertPreview } from "../../../registry/items/components/anuime-alert/_preview";
+import { Preview as AspectRatioPreview } from "../../../registry/items/components/anuime-aspect-ratio/_preview";
+import { Preview as AvatarPreview } from "../../../registry/items/components/anuime-avatar/_preview";
+import { Preview as BadgePreview } from "../../../registry/items/components/anuime-badge/_preview";
 import { Preview as BreadcrumbPreview } from "../../../registry/items/components/anuime-breadcrumb/_preview";
+import { Preview as ButtonGroupPreview } from "../../../registry/items/components/anuime-button-group/_preview";
+import { Preview as ButtonPreview } from "../../../registry/items/components/anuime-button/_preview";
+import { Preview as CalendarPreview } from "../../../registry/items/components/anuime-calendar/_preview";
+import { Preview as CardPreview } from "../../../registry/items/components/anuime-card/_preview";
 import { Preview as CheckboxPreview } from "../../../registry/items/components/anuime-checkbox/_preview";
+import { Preview as CollapsiblePreview } from "../../../registry/items/components/anuime-collapsible/_preview";
+import { Preview as ComboboxPreview } from "../../../registry/items/components/anuime-combobox/_preview";
+import { Preview as CommandPalettePreview } from "../../../registry/items/components/anuime-command-palette/_preview";
+import { Preview as ContextMenuPreview } from "../../../registry/items/components/anuime-context-menu/_preview";
 import { Preview as DataTablePreview } from "../../../registry/items/components/anuime-data-table/_preview";
+import { Preview as DateControlPreview } from "../../../registry/items/components/anuime-date-control/_preview";
+import { Preview as DialogPreview } from "../../../registry/items/components/anuime-dialog/_preview";
+import { Preview as DrawerPreview } from "../../../registry/items/components/anuime-drawer/_preview";
+import { Preview as DropdownMenuPreview } from "../../../registry/items/components/anuime-dropdown-menu/_preview";
+import { Preview as EmptyStatePreview } from "../../../registry/items/components/anuime-empty-state/_preview";
+import { Preview as FieldPreview } from "../../../registry/items/components/anuime-field/_preview";
+import { Preview as HoverCardPreview } from "../../../registry/items/components/anuime-hover-card/_preview";
+import { Preview as InputGroupPreview } from "../../../registry/items/components/anuime-input-group/_preview";
+import { Preview as InputOtpPreview } from "../../../registry/items/components/anuime-input-otp/_preview";
+import { Preview as InputPreview } from "../../../registry/items/components/anuime-input/_preview";
+import { Preview as KbdPreview } from "../../../registry/items/components/anuime-kbd/_preview";
+import { Preview as MenubarPreview } from "../../../registry/items/components/anuime-menubar/_preview";
+import { Preview as NavigationMenuPreview } from "../../../registry/items/components/anuime-navigation-menu/_preview";
+import { Preview as PaginationPreview } from "../../../registry/items/components/anuime-pagination/_preview";
+import { Preview as PopoverPreview } from "../../../registry/items/components/anuime-popover/_preview";
+import { Preview as ProgressPreview } from "../../../registry/items/components/anuime-progress/_preview";
+import { Preview as RadioGroupPreview } from "../../../registry/items/components/anuime-radio-group/_preview";
+import { Preview as ScrollAreaPreview } from "../../../registry/items/components/anuime-scroll-area/_preview";
+import { Preview as SelectPreview } from "../../../registry/items/components/anuime-select/_preview";
+import { Preview as SeparatorPreview } from "../../../registry/items/components/anuime-separator/_preview";
+import { Preview as SheetPreview } from "../../../registry/items/components/anuime-sheet/_preview";
+import { Preview as SidebarPreview } from "../../../registry/items/components/anuime-sidebar/_preview";
+import { Preview as SkeletonPreview } from "../../../registry/items/components/anuime-skeleton/_preview";
+import { Preview as SliderPreview } from "../../../registry/items/components/anuime-slider/_preview";
+import { Preview as SpinnerPreview } from "../../../registry/items/components/anuime-spinner/_preview";
+import { Preview as SwitchPreview } from "../../../registry/items/components/anuime-switch/_preview";
+import { Preview as TablePreview } from "../../../registry/items/components/anuime-table/_preview";
+import { Preview as TabsPreview } from "../../../registry/items/components/anuime-tabs/_preview";
+import { Preview as TextareaPreview } from "../../../registry/items/components/anuime-textarea/_preview";
+import { Preview as ToastPreview } from "../../../registry/items/components/anuime-toast/_preview";
+import { Preview as TogglePreview } from "../../../registry/items/components/anuime-toggle/_preview";
+import { Preview as ToolbarPreview } from "../../../registry/items/components/anuime-toolbar/_preview";
+import { Preview as TooltipPreview } from "../../../registry/items/components/anuime-tooltip/_preview";
+import { Preview as TypographyPreview } from "../../../registry/items/components/anuime-typography/_preview";
 
 type CharacterPreviewPanelProps = {
   itemName: string;
@@ -29,7 +77,7 @@ const characters = ["kira", "mochi", "atlas"] as const;
 export function CharacterPreviewPanel({ itemName }: CharacterPreviewPanelProps) {
   const [character, setCharacter] = useState<RegistryPreviewCharacter>("kira");
 
-  if (!isRegistryPreviewPilotItem(itemName)) return null;
+  if (!isRegistryPreviewItem(itemName)) return null;
 
   const system = registryPreviewCharacters[character];
   const construction = registryPreviewConstruction[itemName][character];
@@ -102,7 +150,7 @@ export function CharacterPreviewPanel({ itemName }: CharacterPreviewPanelProps) 
           className="anuime-docs-character-enter relative z-10 grid min-h-72 place-items-center bg-[var(--background)] p-5 sm:p-8"
         >
           <div className="w-full max-w-3xl">
-            <PilotSpecimen itemName={itemName} character={character} />
+            <CharacterSpecimen itemName={itemName} character={character} />
           </div>
         </div>
 
@@ -143,16 +191,96 @@ export function CharacterPreviewPanel({ itemName }: CharacterPreviewPanelProps) 
   );
 }
 
-function PilotSpecimen({
+function CharacterSpecimen({
   itemName,
   character,
 }: {
-  itemName: RegistryPreviewPilotItem;
+  itemName: RegistryPreviewItem;
   character: RegistryPreviewCharacter;
 }) {
+  if (itemName === "anuime-accordion") return <AccordionPreview character={character} />;
+  if (itemName === "anuime-alert") return <AlertPreview character={character} />;
+  if (itemName === "anuime-alert-dialog") {
+    return <AlertDialogPreview character={character} />;
+  }
+  if (itemName === "anuime-aspect-ratio") {
+    return <AspectRatioPreview character={character} />;
+  }
+  if (itemName === "anuime-avatar") return <AvatarPreview character={character} />;
+  if (itemName === "anuime-badge") return <BadgePreview character={character} />;
   if (itemName === "anuime-breadcrumb") return <BreadcrumbPreview character={character} />;
+  if (itemName === "anuime-button") return <ButtonPreview character={character} />;
+  if (itemName === "anuime-button-group") {
+    return <ButtonGroupPreview character={character} />;
+  }
+  if (itemName === "anuime-calendar") return <CalendarPreview character={character} />;
+  if (itemName === "anuime-card") return <CardPreview character={character} />;
   if (itemName === "anuime-checkbox") return <CheckboxPreview character={character} />;
-  return <DataTablePreview character={character} />;
+  if (itemName === "anuime-collapsible") {
+    return <CollapsiblePreview character={character} />;
+  }
+  if (itemName === "anuime-combobox") return <ComboboxPreview character={character} />;
+  if (itemName === "anuime-command-palette") {
+    return <CommandPalettePreview character={character} />;
+  }
+  if (itemName === "anuime-context-menu") {
+    return <ContextMenuPreview character={character} />;
+  }
+  if (itemName === "anuime-data-table") return <DataTablePreview character={character} />;
+  if (itemName === "anuime-date-control") {
+    return <DateControlPreview character={character} />;
+  }
+  if (itemName === "anuime-dialog") return <DialogPreview character={character} />;
+  if (itemName === "anuime-drawer") return <DrawerPreview character={character} />;
+  if (itemName === "anuime-dropdown-menu") return <DropdownMenuPreview character={character} />;
+  if (itemName === "anuime-empty-state") {
+    return <EmptyStatePreview character={character} />;
+  }
+  if (itemName === "anuime-field") return <FieldPreview character={character} />;
+  if (itemName === "anuime-hover-card") {
+    return <HoverCardPreview character={character} />;
+  }
+  if (itemName === "anuime-input-group") {
+    return <InputGroupPreview character={character} />;
+  }
+  if (itemName === "anuime-input-otp") {
+    return <InputOtpPreview character={character} />;
+  }
+  if (itemName === "anuime-input") return <InputPreview character={character} />;
+  if (itemName === "anuime-kbd") return <KbdPreview character={character} />;
+  if (itemName === "anuime-menubar") return <MenubarPreview character={character} />;
+  if (itemName === "anuime-navigation-menu") {
+    return <NavigationMenuPreview character={character} />;
+  }
+  if (itemName === "anuime-pagination") {
+    return <PaginationPreview character={character} />;
+  }
+  if (itemName === "anuime-popover") return <PopoverPreview character={character} />;
+  if (itemName === "anuime-progress") return <ProgressPreview character={character} />;
+  if (itemName === "anuime-radio-group") {
+    return <RadioGroupPreview character={character} />;
+  }
+  if (itemName === "anuime-scroll-area") {
+    return <ScrollAreaPreview character={character} />;
+  }
+  if (itemName === "anuime-select") return <SelectPreview character={character} />;
+  if (itemName === "anuime-separator") {
+    return <SeparatorPreview character={character} />;
+  }
+  if (itemName === "anuime-sheet") return <SheetPreview character={character} />;
+  if (itemName === "anuime-sidebar") return <SidebarPreview character={character} />;
+  if (itemName === "anuime-skeleton") return <SkeletonPreview character={character} />;
+  if (itemName === "anuime-slider") return <SliderPreview character={character} />;
+  if (itemName === "anuime-spinner") return <SpinnerPreview character={character} />;
+  if (itemName === "anuime-switch") return <SwitchPreview character={character} />;
+  if (itemName === "anuime-table") return <TablePreview character={character} />;
+  if (itemName === "anuime-tabs") return <TabsPreview character={character} />;
+  if (itemName === "anuime-textarea") return <TextareaPreview character={character} />;
+  if (itemName === "anuime-toast") return <ToastPreview character={character} />;
+  if (itemName === "anuime-toggle") return <TogglePreview character={character} />;
+  if (itemName === "anuime-toolbar") return <ToolbarPreview character={character} />;
+  if (itemName === "anuime-tooltip") return <TooltipPreview character={character} />;
+  return <TypographyPreview character={character} />;
 }
 
 function CharacterMark({ character }: { character: RegistryPreviewCharacter }) {

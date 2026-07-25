@@ -1,9 +1,13 @@
 "use client";
+
+import type { AnuimeCharacter } from "@/lib/anuime-recipe";
+
 import { AnuimeSelect } from "./anuime-select";
-export function Preview() {
+
+export function Preview({ character = "kira" }: { character?: AnuimeCharacter }) {
   return (
     <AnuimeSelect
-      character="mochi"
+      character={character}
       label="Choose your familiar"
       options={[
         { value: "kira", label: "Kira — Incisive" },

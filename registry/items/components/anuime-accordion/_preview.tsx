@@ -1,10 +1,13 @@
 "use client";
 
+import type { AnuimeCharacter } from "@/lib/anuime-recipe";
+
 import { AnuimeAccordion } from "./anuime-accordion";
 
-export function Preview() {
+export function Preview({ character = "kira" }: { character?: AnuimeCharacter }) {
   return (
     <AnuimeAccordion
+      character={character}
       items={[
         {
           id: "power",

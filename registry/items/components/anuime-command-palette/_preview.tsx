@@ -1,9 +1,13 @@
 "use client";
+
+import type { AnuimeCharacter } from "@/lib/anuime-recipe";
+
 import { AnuimeCommandPalette } from "./anuime-command-palette";
-export function Preview() {
+
+export function Preview({ character = "kira" }: { character?: AnuimeCharacter }) {
   return (
     <AnuimeCommandPalette
-      character="kira"
+      character={character}
       commands={[
         { id: "kira", label: "Cast Kira", group: "Characters", shortcut: "K" },
         { id: "mochi", label: "Cast Mochi", group: "Characters", shortcut: "M" },

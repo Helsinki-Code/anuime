@@ -1,6 +1,9 @@
 "use client";
 
+import type { AnuimeCharacter } from "@/lib/anuime-recipe";
+
 import { AnuimeEmptyState } from "./anuime-empty-state";
-export function Preview() {
-  return <AnuimeEmptyState />;
+
+export function Preview({ character = "kira" }: { character?: AnuimeCharacter }) {
+  return <AnuimeEmptyState character={character} />;
 }

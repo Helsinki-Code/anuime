@@ -6,7 +6,7 @@ import {
   anuimeExtendedComponentNames,
   anuimeExtendedConstructionMap,
 } from "../../../registry/items/lib/anuime-recipe/anuime-recipe";
-import { isRegistryPreviewPilotItem } from "../../lib/anuime/registry-preview-pilot";
+import { isRegistryPreviewItem } from "../../lib/anuime/registry-preview-pilot";
 import { CharacterPreviewPanel } from "./character-preview-panel";
 
 type ComponentPreviewProps = {
@@ -27,7 +27,7 @@ export function ComponentPreview({ preview, itemName }: ComponentPreviewProps) {
     ? anuimeExtendedConstructionMap[extendedName]
     : undefined;
 
-  if (preview && isRegistryPreviewPilotItem(itemName)) {
+  if (preview && isRegistryPreviewItem(itemName)) {
     return <CharacterPreviewPanel itemName={itemName} />;
   }
 

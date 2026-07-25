@@ -1,9 +1,13 @@
 "use client";
+
+import type { AnuimeCharacter } from "@/lib/anuime-recipe";
+
 import { AnuimeCard } from "./anuime-card";
-export function Preview() {
+
+export function Preview({ character = "kira" }: { character?: AnuimeCharacter }) {
   return (
     <AnuimeCard
-      character="kira"
+      character={character}
       eyebrow="Signal 07"
       title="Deploy at first light."
       description="A sharp surface built from accessible semantic tokens."

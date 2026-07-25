@@ -1,9 +1,13 @@
 "use client";
+
+import type { AnuimeCharacter } from "@/lib/anuime-recipe";
+
 import { AnuimeDialog } from "./anuime-dialog";
-export function Preview() {
+
+export function Preview({ character = "kira" }: { character?: AnuimeCharacter }) {
   return (
     <AnuimeDialog
-      character="atlas"
+      character={character}
       title="Initialize system?"
       description="Your current recipe is valid and ready for installation."
       triggerLabel="Open transmission"
