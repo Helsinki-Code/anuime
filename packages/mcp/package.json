@@ -1,0 +1,26 @@
+{
+  "name": "@anuime/mcp",
+  "version": "2.0.0",
+  "private": true,
+  "description": "AnUIme persona, registry, composition, and deterministic review tools over MCP.",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./http": "./dist/http.js"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "start": "node dist/local.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "yaml": "^2.8.4",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

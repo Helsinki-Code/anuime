@@ -108,7 +108,7 @@ const config = defineConfig({
   },
   test: {
     setupFiles: ["./src/test/setup.ts"],
-    include: ["src/**/*.test.ts", "src/**/*.test.tsx"],
+    include: ["src/**/*.test.ts", "src/**/*.test.tsx", "packages/mcp/tests/**/*.test.ts"],
     globals: true,
   },
   clearScreen: false,

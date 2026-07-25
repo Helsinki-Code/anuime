@@ -1,15 +1,15 @@
 {
   "$schema": "./schema.json",
   "specVersion": "2.0.0-phase-0",
-  "status": "phase-2-complete-phase-3-awaiting-authorization",
+  "status": "phase-3-complete-awaiting-review",
   "designAuthority": "The six approved Design Component HTML boards are the only design source of truth. Repository code is legacy wherever it contradicts this spec.",
   "scope": {
-    "phase": 2,
+    "phase": 3,
     "implementationAuthorized": true,
     "approvalDate": "2026-07-25",
-    "approvalCondition": "Full registry v2 approved: all 51 components are character-aware, all 10 legacy composed blocks were rebuilt from v2 primitives with no skin paths, three canonical themes and twelve Expressive Moments items are present, and Phase 2 is authorized.",
-    "nextGate": "Review the completed Phase 2 site v2 before authorizing Phase 3 MCP server work.",
-    "nextCheckpointAfterApproval": "Stop after the homepage, character system pages, /design-philosophy, component docs, and Studio integration are complete and verified; do not start Phase 3."
+    "approvalCondition": "Phase 2 approved in source: homepage, character system pages, /design-philosophy, component docs, and Studio integration are complete; Phase 3 MCP server implementation is authorized.",
+    "nextGate": "Review the completed local AnUIme MCP server and schema-validated persona packs before authorizing any deployment or registry publication.",
+    "nextCheckpointAfterApproval": "Phase 3 review checkpoint reached. Do not deploy the MCP server or publish the registry without explicit authorization."
   },
   "phase1Completion": {
     "status": "approved",
@@ -33,7 +33,49 @@
       "playwright": "34 passed",
       "productionBuild": "283 pages prerendered"
     },
-    "phase3Started": false
+    "phase3Started": true
+  },
+  "phase3Authorization": {
+    "status": "complete-awaiting-review",
+    "approvalDate": "2026-07-25",
+    "requiredTransport": "Streamable HTTP suitable for Vercel",
+    "packagePath": "packages/mcp",
+    "deploymentAuthorized": false,
+    "registryPublicationAuthorized": false
+  },
+  "phase3Completion": {
+    "status": "complete-awaiting-review",
+    "packagePath": "packages/mcp",
+    "transport": "Official MCP SDK stateless Streamable HTTP over a Web Standards request handler, with a loopback Node adapter.",
+    "tools": [
+      "list_components",
+      "get_component",
+      "get_install_command",
+      "list_characters",
+      "get_character",
+      "kira",
+      "mochi",
+      "atlas",
+      "cast",
+      "anuime_review"
+    ],
+    "personaPacks": {
+      "schemaVersion": "anuime.persona.v2",
+      "kiraEstimatedTokens": 1299,
+      "mochiEstimatedTokens": 1301,
+      "atlasEstimatedTokens": 1308,
+      "maximumAllowedTokens": 1500
+    },
+    "reviewCoverage": "Five distinct deterministic violation cases per character, plus structured clean and reduced-motion cases.",
+    "verification": {
+      "mcpTests": "30 passed",
+      "fullUnitSuite": "268 passed",
+      "playwright": "34 passed",
+      "localProtocol": "Official client initialized anuime 2.0.0, listed 10 tools, validated the Atlas persona pack, and received two expected structured review violations."
+    },
+    "localEndpoint": "http://127.0.0.1:3333/mcp",
+    "deploymentStarted": false,
+    "registryPublicationStarted": false
   },
   "sources": [
     {
