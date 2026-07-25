@@ -260,6 +260,15 @@ html.theme-switching [data-theme-control] {
   }
 }
 
+@keyframes anuime-docs-character-enter {
+  from {
+    opacity: 0.28;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-old(root),
   ::view-transition-new(root),
@@ -657,6 +666,10 @@ html.theme-switching [data-theme-control] {
       linear-gradient(var(--anuime-accent) 0 0) calc(100% - 18px) calc(100% - 18px) / 2px 22px
         no-repeat;
   }
+  .anuime-docs-character-enter {
+    animation: anuime-docs-character-enter var(--anuime-preview-duration)
+      var(--anuime-preview-timing) both;
+  }
   .anuime-avatar {
     display: grid;
     width: 4.5rem;
@@ -773,6 +786,9 @@ html.theme-switching [data-theme-control] {
     transition-duration: 0.001ms !important;
   }
   @media (prefers-reduced-motion: reduce) {
+    .anuime-docs-character-enter {
+      animation: none !important;
+    }
     .anuime-preview-primary {
       transition: none !important;
       transform: none !important;

@@ -1,6 +1,9 @@
 "use client";
 
+import type { AnuimeCharacter } from "@/lib/anuime-recipe";
+
 import { AnuimeBreadcrumb } from "./anuime-breadcrumb";
-export function Preview() {
-  return <AnuimeBreadcrumb />;
+
+export function Preview({ character = "kira" }: { character?: AnuimeCharacter }) {
+  return <AnuimeBreadcrumb character={character} />;
 }
