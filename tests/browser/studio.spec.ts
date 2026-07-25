@@ -11,7 +11,7 @@ test("restores shared Studio state and browser history", async ({ page }) => {
   );
   await waitForStudio(page);
   await expect(page.getByRole("heading", { name: "Popover" })).toBeVisible();
-  const mobileControls = page.getByText("Open Studio controls", { exact: true });
+  const mobileControls = page.getByRole("button", { name: /Open Studio controls/u });
   if (await mobileControls.isVisible()) await mobileControls.click();
   const componentPicker = page.locator('select[aria-label="Component"]:visible');
   await expect(componentPicker).toHaveValue("popover");
@@ -28,9 +28,33 @@ test("shared Studio URLs hydrate without client errors", async ({ page }) => {
   await page.goto("/studio?component=alert&state=warning");
   await waitForStudio(page);
 
-  await expect(page.locator("aside").getByLabel("Component")).toHaveValue("alert");
+  await expect(page.locator("aside").getByLabel("Component", { exact: true })).toHaveValue("alert");
   await expect(page.getByText("Warning transmission")).toBeVisible();
   expect(pageErrors).toEqual([]);
+});
+
+test("Studio presents a guided build, preview, and ship workflow", async ({ page }) => {
+  await page.goto("/studio?component=radio-group&state=selected");
+  await waitForStudio(page);
+
+  await expect(
+    page.getByRole("heading", { name: "Compose a system. See the real component." }),
+  ).toBeVisible();
+  await expect(page.getByText("Live recipe", { exact: true })).toBeVisible();
+
+  const mobileControls = page.getByRole("button", { name: /Open Studio controls/u });
+  const isMobile = await mobileControls.isVisible();
+  if (isMobile) await mobileControls.click();
+  const controls = isMobile
+    ? page.locator("[data-studio-mobile-controls]")
+    : page.locator("[data-studio-desktop-controls]");
+
+  await expect(controls.getByText("Choose a component", { exact: true })).toBeVisible();
+  await expect(controls.getByText("Cast a character", { exact: true })).toBeVisible();
+  await expect(controls.getByText("Set the atmosphere", { exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Radio Group" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Production ready" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Copy install command" })).toBeVisible();
 });
 
 test("recovers from invalid recipes", async ({ page }) => {
@@ -43,7 +67,7 @@ test("recovers from invalid recipes", async ({ page }) => {
 test("undo, redo, component switching, and responsive controls work", async ({ page }) => {
   await page.goto("/studio");
   await waitForStudio(page);
-  const mobileControls = page.getByText("Open Studio controls", { exact: true });
+  const mobileControls = page.getByRole("button", { name: /Open Studio controls/u });
   if (await mobileControls.isVisible()) await mobileControls.click();
   const componentPicker = page.locator('select[aria-label="Component"]:visible');
   await componentPicker.selectOption("switch");

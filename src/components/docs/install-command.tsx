@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex -- Scrollable commands must be keyboard reachable. */
 "use client";
 
 import { IconChevronDown } from "@tabler/icons-react";
@@ -367,7 +368,10 @@ export function PackageManagerCommand({
           size="icon-sm"
         />
       </div>
-      <pre className="overflow-x-auto p-4 text-[13px] text-foreground/80">
+      <pre
+        tabIndex={0}
+        className="overflow-x-auto p-4 text-[13px] text-foreground/80 focus-visible:outline-2 focus-visible:outline-offset-[-2px]"
+      >
         <code>{command}</code>
       </pre>
     </div>

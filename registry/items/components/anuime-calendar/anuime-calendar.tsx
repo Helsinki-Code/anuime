@@ -26,7 +26,11 @@ export function AnuimeCalendar({
   const styles = resolveAnuimeRecipe(recipe, character, "calendar");
   const inputClass = `${styles.field} ${styles.shapeControl} min-h-10 border px-3 py-2 outline-none focus-visible:ring-2 ${className}`;
   return (
-    <fieldset className={`grid ${styles.gap}`}>
+    <fieldset
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="calendar"
+      className={`grid ${styles.gap} ${styles.typography} ${styles.surface} ${styles.surfacePadding}`}
+    >
       <legend className="mb-2 text-sm font-semibold">{label}</legend>
       <div className={`flex flex-wrap ${styles.gap}`}>
         <input type="date" className={inputClass} {...props} />

@@ -1,45 +1,20 @@
 {
-  "specVersion": "2.0.0-phase-0",
-  "status": "awaiting-user-review",
+  "specVersion": "2.0.0-extended",
+  "status": "current",
   "catalogSnapshot": {
     "source": "registry/items/components/*/_registry.mdx",
     "componentCount": 51,
-    "explicitlyConstructedOnBoards": 16,
-    "derivedNotExplicitlyConstructed": 35
+    "explicitlyConstructedOnOriginalBoards": 16,
+    "explicitlyConstructedOnExtendedBoards": 34,
+    "derivedNotExplicitlyConstructed": 1
   },
   "derivationRule": {
-    "anatomy": "Preserve the existing component's shadcn anatomy and prop API.",
-    "visuals": "Choose geometry only from the character's seven workhorse motif laws and component carrier analogies.",
-    "motion": "Do not apply POWER assemblies or looping character motion to these workhorses.",
-    "review": "Every entry remains derived until the user approves its proposed motif basis."
+    "anatomy": "Preserve the existing component anatomy and prop API.",
+    "visuals": "Choose geometry only from the character's approved workhorse motif laws and component carrier analogies.",
+    "motion": "Do not apply POWER assemblies or looping character motion to this workhorse.",
+    "review": "This entry remains derived because neither the original nor Extended boards name its standalone construction."
   },
-  "explicitlyConstructed": [
-    "anuime-badge",
-    "anuime-button",
-    "anuime-card",
-    "anuime-checkbox",
-    "anuime-data-table",
-    "anuime-dialog",
-    "anuime-dropdown-menu",
-    "anuime-input",
-    "anuime-progress",
-    "anuime-skeleton",
-    "anuime-slider",
-    "anuime-switch",
-    "anuime-tabs",
-    "anuime-toast",
-    "anuime-toggle",
-    "anuime-tooltip"
-  ],
   "items": [
-    {
-      "name": "anuime-accordion",
-      "basis": {
-        "kira": "Hairpin chevron disclosure marker; circuit hairline separators; 5–8px rectangular surfaces.",
-        "mochi": "Crescent/curve disclosure marker; ribbon-rule separators; 10–14px drape radius.",
-        "atlas": "Survey-diamond or bracket disclosure marker; strap-band separators; structural 7–9px frame."
-      }
-    },
     {
       "name": "anuime-alert",
       "basis": {
@@ -47,290 +22,42 @@
         "mochi": "Star severity marker with ribbon top rule.",
         "atlas": "Beam severity marker with panel bracket edge."
       }
-    },
-    {
-      "name": "anuime-alert-dialog",
-      "basis": {
-        "kira": "Reuse specified dialog construction; destructive shard marks irreversible state.",
-        "mochi": "Reuse specified veil dialog and ribbon rule; destructive star marks irreversible state.",
-        "atlas": "Reuse specified panel-corner dialog; destructive beam marks irreversible state."
-      }
-    },
-    {
-      "name": "anuime-aspect-ratio",
-      "basis": {
-        "kira": "Fringe hairline corner treatment without decorative motion.",
-        "mochi": "Ribbon-rule edge with drape radius.",
-        "atlas": "Panel brackets identify the constrained frame."
-      }
-    },
-    {
-      "name": "anuime-avatar",
-      "basis": {
-        "kira": "Collar ring or kite status marker; avoid capsule labels.",
-        "mochi": "Pearl profile with small star/crescent status marker.",
-        "atlas": "Core ring profile with survey-diamond status marker."
-      }
-    },
-    {
-      "name": "anuime-breadcrumb",
-      "basis": {
-        "kira": "Hairpin chevrons as separators and circuit-node current marker.",
-        "mochi": "Crescent/soft-curve separators and pearl current marker.",
-        "atlas": "Survey diamonds or short strap segments as separators."
-      }
-    },
-    {
-      "name": "anuime-button-group",
-      "basis": {
-        "kira": "Strap/buckle frame from the specified toggle treatment.",
-        "mochi": "Gold clasp frame from the specified toggle treatment.",
-        "atlas": "Buckle frame and strap-band segmentation from the specified toggle treatment."
-      }
-    },
-    {
-      "name": "anuime-calendar",
-      "basis": {
-        "kira": "Circuit-node selected day; hairpin navigation; no pill range geometry.",
-        "mochi": "Pearl day points, crescent navigation, ribbon week rules.",
-        "atlas": "Survey-diamond selected day, bracket navigation, blueprint grid."
-      }
-    },
-    {
-      "name": "anuime-collapsible",
-      "basis": {
-        "kira": "Hairpin disclosure plus circuit stem.",
-        "mochi": "Crescent disclosure plus ribbon separator.",
-        "atlas": "Panel bracket disclosure plus strap separator."
-      }
-    },
-    {
-      "name": "anuime-combobox",
-      "basis": {
-        "kira": "Specified input plus hairpin menu marker and circuit-node selection.",
-        "mochi": "Specified input plus crescent menu marker and pearl selection.",
-        "atlas": "Specified lens input plus survey-diamond menu marker."
-      }
-    },
-    {
-      "name": "anuime-command-palette",
-      "basis": {
-        "kira": "Specified input and dropdown; chevron active row and circuit dividers.",
-        "mochi": "Specified input and dropdown; crescent active row and ribbon dividers.",
-        "atlas": "Specified lens input and dropdown; survey-diamond active row and title-block labels."
-      }
-    },
-    {
-      "name": "anuime-context-menu",
-      "basis": {
-        "kira": "Reuse specified dropdown construction and hairpin hovered marker.",
-        "mochi": "Reuse specified dropdown construction and crescent hovered marker.",
-        "atlas": "Reuse specified dropdown construction and survey-diamond hovered marker."
-      }
-    },
-    {
-      "name": "anuime-date-control",
-      "basis": {
-        "kira": "Specified input construction with circuit segments and hairpin navigation.",
-        "mochi": "Specified input construction with pearl date points and crescent navigation.",
-        "atlas": "Specified lens input with blueprint-grid calendar and survey points."
-      }
-    },
-    {
-      "name": "anuime-drawer",
-      "basis": {
-        "kira": "Dialog surface construction with fringe edge sweep kept static.",
-        "mochi": "Veil scrim, ribbon top rule, drape radius.",
-        "atlas": "Panel brackets dock the drawer edge to the viewport."
-      }
-    },
-    {
-      "name": "anuime-empty-state",
-      "sourceAdjacency": "Boards explicitly show expressive empty moments, but not the standalone workhorse API/construction of this existing item.",
-      "basis": {
-        "kira": "Static smoke-and-shard composition; motion only in the character-specific expressive empty item.",
-        "mochi": "Static waning crescent with restrained sparkles; motion only in the expressive item.",
-        "atlas": "Static dormant grid and survey point; motion only in the expressive item."
-      }
-    },
-    {
-      "name": "anuime-field",
-      "sourceAdjacency": "Boards show labels, inputs, descriptions, and validation messages but do not name a standalone Field component.",
-      "basis": {
-        "kira": "Specified input anatomy with shard error marker and Space Grotesk label.",
-        "mochi": "Specified input anatomy with star error marker and Karla label.",
-        "atlas": "Specified lens input anatomy with beam error marker and Archivo label."
-      }
-    },
-    {
-      "name": "anuime-hover-card",
-      "basis": {
-        "kira": "Compact specified card with fringe hairline and kite pointer if anchored.",
-        "mochi": "Compact ribbon-rule card with drape radius.",
-        "atlas": "Compact blueprint card with lens/bezel edge."
-      }
-    },
-    {
-      "name": "anuime-input-group",
-      "basis": {
-        "kira": "Specified input framed as a continuous strap; circuit nodes for addons.",
-        "mochi": "Specified input framed as a clasp; gold hairline addon separators.",
-        "atlas": "Specified lens bezel with inset addon compartments."
-      }
-    },
-    {
-      "name": "anuime-input-otp",
-      "basis": {
-        "kira": "Circuit-node sequence with 5px cells and trace focus.",
-        "mochi": "Strung-pearl sequence represented by soft rectangular cells and gold separators.",
-        "atlas": "Segmented strap cells within a lens bezel."
-      }
-    },
-    {
-      "name": "anuime-kbd",
-      "basis": {
-        "kira": "Small 4–5px buckle keycap; no pill.",
-        "mochi": "Small clasp keycap with restrained gold rim.",
-        "atlas": "Small lens/bezel keycap with inset frame."
-      }
-    },
-    {
-      "name": "anuime-menubar",
-      "basis": {
-        "kira": "Strap band with hairpin active marker.",
-        "mochi": "Ribbon band with crescent active marker.",
-        "atlas": "Segmented strap band with survey-diamond active marker."
-      }
-    },
-    {
-      "name": "anuime-navigation-menu",
-      "basis": {
-        "kira": "Hairpin active indicator and fringe-lined content surface.",
-        "mochi": "Crescent active indicator and ribbon-rule content surface.",
-        "atlas": "Strap active band and panel-bracket content surface."
-      }
-    },
-    {
-      "name": "anuime-pagination",
-      "basis": {
-        "kira": "Circuit nodes for pages and hairpin previous/next markers; no pills.",
-        "mochi": "Pearl page points with crescent previous/next markers.",
-        "atlas": "Strap segments and survey-diamond current page."
-      }
-    },
-    {
-      "name": "anuime-popover",
-      "basis": {
-        "kira": "Compact card surface with kite pointer and fringe hairline.",
-        "mochi": "Compact drape-radius surface with softened pointer and ribbon rule.",
-        "atlas": "Lens-bezel surface with survey-diamond pointer or panel brackets."
-      }
-    },
-    {
-      "name": "anuime-radio-group",
-      "basis": {
-        "kira": "Collar rings with circuit-node filled state; retain authored circles as node exceptions.",
-        "mochi": "Pearl rings and rose/gold bead state.",
-        "atlas": "Core rings with filled cobalt center."
-      }
-    },
-    {
-      "name": "anuime-scroll-area",
-      "basis": {
-        "kira": "Rectangular strap track with kite thumb; no pill scrollbar.",
-        "mochi": "Drape-soft track with pearl thumb and gold rim.",
-        "atlas": "Strap track with core or buckle plate thumb."
-      }
-    },
-    {
-      "name": "anuime-select",
-      "basis": {
-        "kira": "Specified input/dropdown hybrid with hairpin trigger and selection marker.",
-        "mochi": "Specified input/dropdown hybrid with crescent marker.",
-        "atlas": "Lens input/dropdown hybrid with survey-diamond marker."
-      }
-    },
-    {
-      "name": "anuime-separator",
-      "basis": {
-        "kira": "Circuit/fringe hairline using border or accent only for state.",
-        "mochi": "Gold ribbon rule paired with warm support line where hierarchy needs it.",
-        "atlas": "Strap band or blueprint title-block rule."
-      }
-    },
-    {
-      "name": "anuime-sheet",
-      "basis": {
-        "kira": "Dialog surface anchored by a static fringe seam.",
-        "mochi": "Veil scrim and ribbon-rule sheet with drape radius at free corners.",
-        "atlas": "Panel brackets dock the sheet to the viewport edge."
-      }
-    },
-    {
-      "name": "anuime-sidebar",
-      "basis": {
-        "kira": "Circuit rail navigation with hairpin active marker.",
-        "mochi": "Ribbon rail with crescent active marker and pearl status.",
-        "atlas": "Strap-band rail with survey points and panel-bracket group frames."
-      }
-    },
-    {
-      "name": "anuime-spinner",
-      "sourceAdjacency": "Boards specify character loaders, but the existing generic Spinner workhorse is not independently shown.",
-      "basis": {
-        "kira": "Static/functional collar-ring spinner geometry; reserve blade-slash for the expressive loader item.",
-        "mochi": "Functional pearl orbit without bloom-magic embellishment; expressive loader owns the full orbit/sparkle assembly.",
-        "atlas": "Functional core ring spinner; expressive loader owns the full bracket/diamond HUD assembly."
-      }
-    },
-    {
-      "name": "anuime-table",
-      "sourceAdjacency": "Boards explicitly show Data table compositions; the lower-level Table registry item's standalone API is not shown.",
-      "basis": {
-        "kira": "Use specified data-table circuit status and 8px framed rows.",
-        "mochi": "Use specified ribbon header and pearl status rows.",
-        "atlas": "Use specified mono title-block header and survey-diamond status rows."
-      }
-    },
-    {
-      "name": "anuime-textarea",
-      "sourceAdjacency": "Boards show single-line inputs only.",
-      "basis": {
-        "kira": "Extend specified 5px input frame vertically; keep shard error and trace focus.",
-        "mochi": "Extend specified 10px input frame vertically; keep star error and bloom focus.",
-        "atlas": "Extend specified 7px lens bezel vertically; keep inset frame and dock focus."
-      }
-    },
-    {
-      "name": "anuime-toolbar",
-      "basis": {
-        "kira": "Strap/toggle-group frame with hairpin active markers.",
-        "mochi": "Clasp/toggle-group frame with gold separators.",
-        "atlas": "Buckle frame with segmented strap groups."
-      }
-    },
-    {
-      "name": "anuime-typography",
-      "basis": {
-        "kira": "Space Grotesk body/display and JetBrains Mono technical labels; incisive spacing.",
-        "mochi": "Cormorant Garamond display, Karla body, JetBrains Mono metrics; gracious hierarchy.",
-        "atlas": "Archivo body/display and JetBrains Mono blueprint labels; monumental title-block hierarchy."
-      }
     }
   ],
-  "existingBlocksDisposition": {
-    "note": "These ten composed registry blocks are not part of the 51-component derivation count. They must be rebuilt from approved v2 components or removed; none may preserve legacy skin paths.",
-    "items": [
-      "anuime-auth-panel",
-      "atlas-analytics-workspace",
-      "atlas-gridforge",
-      "atlas-operations-center",
-      "kira-command-center",
-      "kira-developer-console",
-      "kira-signal-deck",
-      "mochi-community-hub",
-      "mochi-creator-companion",
-      "mochi-dream-cache"
-    ]
-  }
+  "supersededByExtendedBoards": [
+    "anuime-radio-group",
+    "anuime-select",
+    "anuime-combobox",
+    "anuime-input-otp",
+    "anuime-input-group",
+    "anuime-field",
+    "anuime-date-control",
+    "anuime-calendar",
+    "anuime-textarea",
+    "anuime-popover",
+    "anuime-hover-card",
+    "anuime-context-menu",
+    "anuime-menubar",
+    "anuime-navigation-menu",
+    "anuime-sidebar",
+    "anuime-drawer",
+    "anuime-sheet",
+    "anuime-alert-dialog",
+    "anuime-command-palette",
+    "anuime-accordion",
+    "anuime-collapsible",
+    "anuime-separator",
+    "anuime-aspect-ratio",
+    "anuime-scroll-area",
+    "anuime-button-group",
+    "anuime-toolbar",
+    "anuime-spinner",
+    "anuime-empty-state",
+    "anuime-breadcrumb",
+    "anuime-pagination",
+    "anuime-table",
+    "anuime-avatar",
+    "anuime-kbd",
+    "anuime-typography"
+  ]
 }

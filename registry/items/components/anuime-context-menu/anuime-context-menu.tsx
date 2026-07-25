@@ -52,7 +52,12 @@ export function AnuimeContextMenu({
     if (event.key === "Escape") setOpen(false);
   };
   return (
-    <div ref={rootRef} className="relative inline-block">
+    <div
+      ref={rootRef}
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="context-menu"
+      className={`relative inline-block ${styles.typography}`}
+    >
       <button
         type="button"
         className={`${styles.surface} ${styles.surfacePadding} cursor-context-menu text-left outline-none focus-visible:ring-2`}
@@ -75,12 +80,13 @@ export function AnuimeContextMenu({
               key={item.id}
               role="menuitem"
               disabled={item.disabled}
-              className={`block w-full px-3 py-2 text-left text-sm outline-none hover:bg-secondary focus-visible:bg-secondary disabled:opacity-50 ${item.destructive ? "text-destructive" : ""}`}
+              className={`flex w-full items-center gap-3 px-3 py-2 text-left text-sm outline-none hover:bg-secondary focus-visible:bg-secondary disabled:opacity-50 ${item.destructive ? "text-destructive" : ""}`}
               onClick={() => {
                 item.onSelect?.();
                 setOpen(false);
               }}
             >
+              <span aria-hidden="true" className={styles.hollowNode} />
               {item.label}
             </button>
           ))}

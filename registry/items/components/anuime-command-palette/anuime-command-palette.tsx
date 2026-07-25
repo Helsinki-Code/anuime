@@ -52,6 +52,7 @@ export function AnuimeCommandPalette({
       <dialog
         ref={ref}
         data-character={system}
+        data-anuime-component="command-palette"
         className={`m-auto w-[min(38rem,calc(100%-2rem))] p-0 backdrop:bg-foreground/30 ${styles.surface}`}
       >
         <div className="p-3">
@@ -76,11 +77,14 @@ export function AnuimeCommandPalette({
                     ref.current?.close();
                   }}
                 >
-                  <span>
-                    <span className="font-medium">{command.label}</span>
-                    {command.group ? (
-                      <span className="ml-2 text-xs opacity-50">{command.group}</span>
-                    ) : null}
+                  <span className="flex items-center gap-3">
+                    <span aria-hidden="true" className={styles.hollowNode} />
+                    <span>
+                      <span className="font-medium">{command.label}</span>
+                      {command.group ? (
+                        <span className="ml-2 text-xs opacity-50">{command.group}</span>
+                      ) : null}
+                    </span>
                   </span>
                   {command.shortcut ? <kbd className="opacity-50">{command.shortcut}</kbd> : null}
                 </button>

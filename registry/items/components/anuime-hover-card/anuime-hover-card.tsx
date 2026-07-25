@@ -21,7 +21,11 @@ export function AnuimeHoverCard({
 }: AnuimeHoverCardProps) {
   const styles = resolveAnuimeRecipe(recipe, character, "hover-card");
   return (
-    <span className="group relative inline-block">
+    <span
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="hover-card"
+      className={`group relative inline-block ${styles.typography}`}
+    >
       <button
         type="button"
         aria-describedby="anuime-hover-card"

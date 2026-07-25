@@ -45,8 +45,11 @@ export function AnuimeDrawer({
       </button>
       <dialog
         ref={ref}
+        data-character={styles.recipe.structureSystem}
+        data-anuime-component="drawer"
         className={`${styles.surface} ${styles.surfacePadding} ${position} max-w-lg backdrop:bg-foreground/30`}
       >
+        <div aria-hidden="true" className={styles.handle} />
         <div className="flex items-start justify-between gap-4">
           <div>
             <h2 className="text-lg font-bold">{title}</h2>

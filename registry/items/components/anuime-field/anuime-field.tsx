@@ -30,13 +30,18 @@ export function AnuimeField({
 }: AnuimeFieldProps) {
   const styles = resolveAnuimeRecipe(recipe, character, "field");
   return (
-    <div className={`grid ${styles.gap} ${className}`} {...props}>
+    <div
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="field"
+      className={`grid ${styles.gap} ${styles.typography} ${className}`}
+      {...props}
+    >
       <AnuimeLabel htmlFor={htmlFor} required={required}>
         {label}
       </AnuimeLabel>
       {children}
       {error ? (
-        <p role="alert" className="text-sm text-destructive">
+        <p role="alert" className={`text-sm text-destructive ${styles.errorMarker}`}>
           {error}
         </p>
       ) : description ? (
@@ -75,7 +80,9 @@ export function AnuimeFieldset({
   const styles = resolveAnuimeRecipe(recipe, character, "field");
   return (
     <fieldset
-      className={`${styles.surface} ${styles.surfacePadding} grid ${styles.gap} ${className}`}
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="field-set"
+      className={`${styles.surface} ${styles.surfacePadding} grid ${styles.gap} ${styles.typography} ${className}`}
       {...props}
     >
       <legend className="px-2 font-bold">{legend}</legend>

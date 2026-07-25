@@ -162,7 +162,12 @@ const config = defineConfig({
   },
   plugins: [
     devtools(),
-    contentCollections(),
+    contentCollections({
+      // Vitest consumes the already generated collection modules. Starting the
+      // collection watcher inside a test worker duplicates hundreds of file
+      // handles and can exceed macOS's launchd maxfiles limit.
+      isEnabled: (viteUserConfig) => viteUserConfig.mode !== "test",
+    }),
     createMdx({
       include: ["**/registry/docs/*.{md,mdx}", "**/registry/items/**/_registry.mdx"],
       remarkPlugins: [remarkFrontmatter, remarkGfm],

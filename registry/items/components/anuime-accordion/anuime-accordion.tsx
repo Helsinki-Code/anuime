@@ -14,7 +14,11 @@ export type AnuimeAccordionProps = {
 export function AnuimeAccordion({ character = "kira", recipe, items }: AnuimeAccordionProps) {
   const styles = resolveAnuimeRecipe(recipe, character, "accordion");
   return (
-    <div className={`grid w-full max-w-xl ${styles.gap}`}>
+    <div
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="accordion"
+      className={`grid w-full max-w-xl ${styles.gap} ${styles.typography}`}
+    >
       {items.map((item, index) => (
         <details key={item.id} open={index === 0} className={`${styles.surface} overflow-hidden`}>
           <summary
@@ -22,7 +26,7 @@ export function AnuimeAccordion({ character = "kira", recipe, items }: AnuimeAcc
           >
             <span className="flex items-center justify-between gap-4">
               {item.title}
-              <span aria-hidden="true">＋</span>
+              <span aria-hidden="true" className={styles.marker} />
             </span>
           </summary>
           <div

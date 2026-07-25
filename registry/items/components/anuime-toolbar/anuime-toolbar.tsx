@@ -19,6 +19,8 @@ export function AnuimeToolbar({
     <div
       role="toolbar"
       aria-label={label}
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="toolbar"
       className={`${styles.surface} flex flex-wrap items-center gap-1 p-1 ${className}`}
       {...props}
     />

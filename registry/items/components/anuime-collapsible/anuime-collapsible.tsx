@@ -23,14 +23,17 @@ export function AnuimeCollapsible({
 }: AnuimeCollapsibleProps) {
   const styles = resolveAnuimeRecipe(recipe, character, "collapsible");
   return (
-    <details className={`${styles.surface} overflow-hidden ${className}`} {...props}>
+    <details
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="collapsible"
+      className={`${styles.surface} overflow-hidden ${styles.typography} ${className}`}
+      {...props}
+    >
       <summary
         className={`${styles.surfacePadding} cursor-pointer list-none font-semibold marker:hidden`}
       >
         {title}
-        <span aria-hidden="true" className="float-right">
-          ＋
-        </span>
+        <span aria-hidden="true" className={`${styles.marker} float-right mt-1`} />
       </summary>
       <div className={`${styles.surfacePadding} border-t text-sm opacity-80`}>{children}</div>
     </details>

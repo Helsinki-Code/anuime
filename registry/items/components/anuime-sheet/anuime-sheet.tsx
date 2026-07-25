@@ -39,8 +39,11 @@ export function AnuimeSheet({
       </button>
       <dialog
         ref={ref}
+        data-character={styles.recipe.structureSystem}
+        data-anuime-component="sheet"
         className={`${styles.surface} ${styles.surfacePadding} ${side === "left" ? "mr-auto rounded-l-none" : "ml-auto rounded-r-none"} h-full max-h-none w-full max-w-md backdrop:bg-foreground/30`}
       >
+        <span aria-hidden="true" className={`${styles.marker} absolute top-5 left-5`} />
         <div className="flex items-start justify-between gap-4">
           <div>
             <h2 className="text-lg font-bold">{title}</h2>

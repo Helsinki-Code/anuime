@@ -1,0 +1,98 @@
+{
+  "specVersion": "2.0.0-extended",
+  "status": "implemented",
+  "authority": "The six Character Design Systems 4 Extended boards explicitly specify these 34 workhorse constructions. They supersede the Phase 0 derived proposals for the same component names.",
+  "globalLaws": [
+    "The existing seven-motif vocabulary is applied, never extended.",
+    "No new artifact is introduced by an Extended component.",
+    "POWER remains reserved for Expressive Moments and is forbidden on these workhorses.",
+    "Light and dark variants share identical geometry; only declared theme tokens change.",
+    "Aspect Ratio and Typography intentionally add no motif where the boards state NO MOTIF FIT."
+  ],
+  "componentCount": 34,
+  "components": [
+    "radio-group",
+    "select",
+    "combobox",
+    "input-otp",
+    "input-group",
+    "field",
+    "date-control",
+    "calendar",
+    "textarea",
+    "popover",
+    "hover-card",
+    "context-menu",
+    "menubar",
+    "navigation-menu",
+    "sidebar",
+    "drawer",
+    "sheet",
+    "alert-dialog",
+    "command-palette",
+    "accordion",
+    "collapsible",
+    "separator",
+    "aspect-ratio",
+    "scroll-area",
+    "button-group",
+    "toolbar",
+    "spinner",
+    "empty-state",
+    "breadcrumb",
+    "pagination",
+    "table",
+    "avatar",
+    "kbd",
+    "typography"
+  ],
+  "canonicalImplementation": {
+    "constructionMap": "registry/items/lib/anuime-recipe/anuime-recipe.ts#anuimeExtendedConstructionMap",
+    "componentSources": "registry/items/components/anuime-*/anuime-*.tsx",
+    "themeSources": "registry/items/themes/anuime-theme-*/_registry.mdx"
+  },
+  "sources": [
+    {
+      "character": "kira",
+      "theme": "light",
+      "path": "Character Design Systems 3/Character Design Systems 4/Kira Light Extended.dc.html",
+      "sha256": "d26af8ebf689ac86275c403527a0be1379fa37e8fe2f27cfc5b5d20db05146fc",
+      "lines": 636
+    },
+    {
+      "character": "kira",
+      "theme": "dark",
+      "path": "Character Design Systems 3/Character Design Systems 4/Kira Dark Extended.dc.html",
+      "sha256": "9ccfca349c3aeb3a50949fc81a7ddcd354a31b018ca6e7eef551b28b5e341aef",
+      "lines": 636
+    },
+    {
+      "character": "mochi",
+      "theme": "light",
+      "path": "Character Design Systems 3/Character Design Systems 4/Mochi Light Extended.dc.html",
+      "sha256": "fb7251048545d038396c1a5bf3f88800ba1610d717c7b9b470e218852176f3ce",
+      "lines": 639
+    },
+    {
+      "character": "mochi",
+      "theme": "dark",
+      "path": "Character Design Systems 3/Character Design Systems 4/Mochi Dark Extended.dc.html",
+      "sha256": "b9d1fef8d274fce4ce04886ce5c6daa7b0e31e742afe647f4986aca89d548510",
+      "lines": 639
+    },
+    {
+      "character": "atlas",
+      "theme": "light",
+      "path": "Character Design Systems 3/Character Design Systems 4/Atlas Light Extended.dc.html",
+      "sha256": "8ffa68c183c708f002961cdaaf408f74b53341a740dc390a0ed183f031c0d02b",
+      "lines": 649
+    },
+    {
+      "character": "atlas",
+      "theme": "dark",
+      "path": "Character Design Systems 3/Character Design Systems 4/Atlas Dark Extended.dc.html",
+      "sha256": "b22a4b081e0e9223bb6ec61a2be8b14d20862ad1d1ffb41eeaca000b95b252f4",
+      "lines": 649
+    }
+  ]
+}

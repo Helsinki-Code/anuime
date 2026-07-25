@@ -38,6 +38,8 @@ export function AnuimeSidebar({
   return (
     <aside
       aria-label="Application sidebar"
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="sidebar"
       className={`${styles.surface} ${styles.surfacePadding} flex min-h-80 ${collapsed ? "w-20" : "w-64"} flex-col`}
     >
       <div className={`${styles.accent} font-bold`}>{collapsed ? "A" : title}</div>
@@ -50,6 +52,7 @@ export function AnuimeSidebar({
             title={collapsed ? item.label : undefined}
             className={`${styles.shapeControl} flex items-center gap-3 px-3 py-2 text-sm font-medium ${item.active ? styles.secondary : "hover:bg-secondary"}`}
           >
+            <span aria-hidden="true" className={item.active ? styles.node : styles.hollowNode} />
             {item.icon}
             {collapsed ? <span className="sr-only">{item.label}</span> : item.label}
           </a>

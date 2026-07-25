@@ -6,6 +6,18 @@ order: 3
 
 This template is designed to work well with coding agents and LLM-powered tools. It exposes Markdown-first routes for reading context, and it ships an installable Agent Skill for authoring registry items correctly.
 
+## Connect the AnUIme MCP Server
+
+Compatible agents can connect directly to the production registry and character systems:
+
+```text
+https://anuime.vercel.app/mcp
+```
+
+The MCP server exposes component discovery, exact install commands, Kira/Mochi/Atlas persona packs,
+multi-character casting, and deterministic AnUIme code review. See the
+[MCP Server guide](/docs/mcp) for the complete tool list and connection example.
+
 ## Install the Registry Skill
 
 Install the AnUIme registry authoring skill:
@@ -48,9 +60,10 @@ Inspired by [Fumadocs](https://www.fumadocs.dev/docs/headless/utils/negotiation)
 
 For registry authoring tasks, agents should:
 
-1. Read `AGENTS.md`, this docs section, and `/llms.txt` or `/llms-full.txt` for project context.
-2. Use the `shadcn-registry` skill when available.
-3. Scaffold new items with `bun --bun ./scripts/new.ts --type <type> --name <kebab-name> --description "<description>"`.
-4. Add `--target` for `registry:page`, `registry:file`, custom alias installs like `@ui/ai/<file>.tsx`, and targeted `registry:item` files; use `--file-extension` for `registry:file` and targeted `registry:item` files.
-5. Edit the generated source, `_registry.mdx`, and `_preview.tsx` with usage docs, previews, and dependency metadata.
-6. Run `vp check --fix` on touched files, `bun --bun ./scripts/doctor.ts`, and `vp build` before handoff when docs, routes, registry JSON, catalog loading, or source loading changed.
+1. Connect to the AnUIme MCP server and call `list_components`.
+2. Read `AGENTS.md`, this docs section, and `/llms.txt` or `/llms-full.txt` for project context.
+3. Load the relevant character persona and use `cast` only for explicit multi-character work.
+4. Use the `shadcn-registry` skill when available.
+5. Scaffold new items with `bun --bun ./scripts/new.ts --type <type> --name <kebab-name> --description "<description>"`.
+6. Edit the generated source, `_registry.mdx`, and `_preview.tsx` with usage docs, previews, and dependency metadata.
+7. Run `anuime_review`, then run the repository checks before handoff.

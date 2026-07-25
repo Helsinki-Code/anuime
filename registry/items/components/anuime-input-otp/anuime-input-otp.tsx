@@ -21,7 +21,11 @@ export function AnuimeInputOtp({
 }: AnuimeInputOtpProps) {
   const styles = resolveAnuimeRecipe(recipe, character, "input-otp");
   return (
-    <label className="grid gap-2 text-sm font-semibold">
+    <label
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="input-otp"
+      className={`grid gap-2 text-sm font-semibold ${styles.typography}`}
+    >
       <span>{label}</span>
       <input
         type="text"

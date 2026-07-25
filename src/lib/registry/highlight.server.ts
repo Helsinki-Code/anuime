@@ -2,8 +2,8 @@ import { createHighlighterCore, type HighlighterCore, type ShikiTransformer } fr
 import { createOnigurumaEngine } from "@shikijs/engine-oniguruma";
 
 const SHIKI_THEMES = {
-  light: "github-light",
-  dark: "github-dark",
+  light: "github-light-high-contrast",
+  dark: "github-dark-high-contrast",
 } as const;
 
 const LINE_NUMBER_WIDTH_TRANSFORMER: ShikiTransformer = {
@@ -55,8 +55,8 @@ function getHighlighter(): Promise<HighlighterCore> {
   highlighterPromise ??= createHighlighterCore({
     engine: createOnigurumaEngine(import("@shikijs/engine-oniguruma/wasm-inlined")),
     themes: [
-      import("@shikijs/themes/github-light").then((module) => module.default),
-      import("@shikijs/themes/github-dark").then((module) => module.default),
+      import("@shikijs/themes/github-light-high-contrast").then((module) => module.default),
+      import("@shikijs/themes/github-dark-high-contrast").then((module) => module.default),
     ],
     langs: [
       import("@shikijs/langs/ts").then((module) => module.default),

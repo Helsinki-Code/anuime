@@ -8,6 +8,7 @@ import {
   ExpressiveLoader,
   SignatureControl,
 } from "@/components/anuime-v2/system-preview";
+import { SiteLogo } from "@/components/docs/site-logo";
 import { Button } from "@/components/ui/button";
 import { characterIds, characterSystems } from "@/lib/anuime/characters";
 
@@ -26,6 +27,7 @@ export const Route = createFileRoute("/")({
 
 const installThemeCommand = `npx shadcn@latest add ${getCanonicalRegistryItemUrl("anuime-theme-kira")}`;
 const installComponentCommand = `npx shadcn@latest add ${getCanonicalRegistryItemUrl("anuime-checkbox")}`;
+const mcpEndpoint = `${siteConfig.homepage}/mcp`;
 
 function HomePage() {
   return (
@@ -33,6 +35,7 @@ function HomePage() {
       <section className="anuime-grid relative isolate border-b">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[0.92fr_1.08fr] lg:px-8 lg:py-28">
           <div className="flex flex-col items-start justify-center">
+            <SiteLogo className="mb-8 h-10 w-44" />
             <p className="mb-7 font-mono text-xs font-semibold tracking-[0.18em] text-muted-foreground uppercase">
               Registry v2 · 51 workhorses · 12 expressive moments
             </p>
@@ -163,6 +166,66 @@ function HomePage() {
         <div className="grid gap-3">
           <InstallLine label="1 · Theme" command={installThemeCommand} />
           <InstallLine label="2 · Component" command={installComponentCommand} />
+        </div>
+      </section>
+
+      <section className="anuime-grid border-y bg-muted/20 px-5 py-20 lg:px-8">
+        <div className="mx-auto grid max-w-7xl overflow-hidden rounded-[2rem] border bg-background shadow-[0_28px_90px_-58px_color-mix(in_oklab,var(--foreground)_55%,transparent)] lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="flex flex-col items-start justify-center p-7 sm:p-10 lg:p-12">
+            <SiteLogo className="h-9 w-40" />
+            <p className="mt-8 font-mono text-xs font-semibold tracking-[0.16em] text-muted-foreground uppercase">
+              MCP for coding agents
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-5xl">
+              Give your agent the actual system.
+            </h2>
+            <p className="mt-5 max-w-xl leading-7 text-muted-foreground">
+              Discover components, load schema-validated character personas, compose casts, and
+              review code against AnUIme’s construction laws through one remote endpoint.
+            </p>
+            <Link
+              to="/docs/$slug"
+              params={{ slug: "mcp" }}
+              className="mt-7 inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border bg-background px-5 text-sm font-semibold transition hover:bg-muted"
+            >
+              Explore the MCP tools
+              <IconArrowRight className="size-4" />
+            </Link>
+          </div>
+          <div className="relative flex min-h-96 items-center bg-foreground p-6 text-background sm:p-10">
+            <div className="absolute inset-0 [background-image:linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] [background-size:28px_28px] opacity-20" />
+            <div className="relative w-full overflow-hidden rounded-2xl border border-background/15 bg-background/6 shadow-2xl">
+              <div className="flex items-center justify-between border-b border-background/15 px-4 py-3">
+                <span className="font-mono text-[10px] tracking-[0.16em] text-background/60 uppercase">
+                  Remote MCP · Streamable HTTP
+                </span>
+                <span className="flex items-center gap-2 text-xs text-emerald-300">
+                  <span className="size-1.5 rounded-full bg-emerald-300" /> Ready
+                </span>
+              </div>
+              <pre
+                tabIndex={0}
+                className="overflow-x-auto p-5 font-mono text-sm leading-7 focus-visible:outline-2 focus-visible:outline-offset-[-2px]"
+              >
+                <code>{mcpEndpoint}</code>
+              </pre>
+              <div className="grid border-t border-background/15 sm:grid-cols-2">
+                {[
+                  "list_components",
+                  "get_component",
+                  "kira · mochi · atlas",
+                  "cast · anuime_review",
+                ].map((tool) => (
+                  <span
+                    key={tool}
+                    className="border-background/10 px-4 py-3 font-mono text-xs text-background/70 sm:border-r sm:border-b"
+                  >
+                    {tool}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

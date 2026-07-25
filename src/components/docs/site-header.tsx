@@ -73,7 +73,17 @@ export function SiteHeader() {
               pathname.startsWith("/gallery") ? "text-foreground" : "text-muted-foreground",
             )}
           >
-            Gallery
+            Examples
+          </Link>
+          <Link
+            to="/docs/$slug"
+            params={{ slug: "mcp" }}
+            className={cn(
+              "rounded-md px-3 py-1.5 text-sm transition-colors hover:text-foreground",
+              pathname === "/docs/mcp" ? "text-foreground" : "text-muted-foreground",
+            )}
+          >
+            MCP
           </Link>
         </nav>
 

@@ -24,6 +24,8 @@ export function AnuimeAspectRatio({
   const styles = resolveAnuimeRecipe(recipe, character, "aspect-ratio");
   return (
     <div
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="aspect-ratio"
       className={`${styles.surface} flex w-full overflow-hidden ${className}`}
       style={{ aspectRatio: ratio, ...style } as CSSProperties}
       {...props}

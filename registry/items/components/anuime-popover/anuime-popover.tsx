@@ -27,7 +27,11 @@ export function AnuimePopover({
   const [open, setOpen] = useState(false);
   const styles = resolveAnuimeRecipe(recipe, character, "popover");
   return (
-    <div className="relative inline-block">
+    <div
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="popover"
+      className={`relative inline-block ${styles.typography}`}
+    >
       <button
         type="button"
         aria-expanded={open}
@@ -43,6 +47,10 @@ export function AnuimePopover({
           aria-label={title}
           className={`absolute top-full left-0 z-40 mt-2 w-72 ${styles.surface} ${styles.surfacePadding}`}
         >
+          <span
+            aria-hidden="true"
+            className={`${styles.hollowNode} absolute -top-1 left-6 bg-[var(--anuime-surface,var(--popover))]`}
+          />
           <div className="flex items-center justify-between gap-3">
             <h2 className="text-sm font-semibold">{title}</h2>
             <button

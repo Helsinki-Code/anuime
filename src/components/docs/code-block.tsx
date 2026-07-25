@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex -- Scrollable code must be keyboard reachable. */
 import type { ReactNode } from "react";
 
 import { cn } from "../../lib/utils";
@@ -43,14 +44,21 @@ export function CodeBlock({ code, highlightedHtml, header, className }: CodeBloc
       )}
       {highlightedHtml ? (
         <div
+          tabIndex={0}
           className={cn(
-            "overflow-x-auto py-3 pl-4 text-[13px] has-[pre[style*='--line-number-width']]:pl-6",
+            "overflow-x-auto py-3 pl-4 text-[13px] focus-visible:outline-2 focus-visible:outline-offset-[-2px] has-[pre[style*='--line-number-width']]:pl-6",
             header ? "pr-4" : "pr-12",
           )}
           dangerouslySetInnerHTML={{ __html: highlightedHtml }}
         />
       ) : (
-        <pre className={cn("overflow-x-auto py-3 pl-4 text-[13px]", header ? "pr-4" : "pr-12")}>
+        <pre
+          tabIndex={0}
+          className={cn(
+            "overflow-x-auto py-3 pl-4 text-[13px] focus-visible:outline-2 focus-visible:outline-offset-[-2px]",
+            header ? "pr-4" : "pr-12",
+          )}
+        >
           <code>{code}</code>
         </pre>
       )}

@@ -15,7 +15,11 @@ export function AnuimeTable({
 }: TableHTMLAttributes<HTMLTableElement> & RecipeProps) {
   const styles = resolveAnuimeRecipe(recipe, character, "table");
   return (
-    <div className={`${styles.surface} overflow-x-auto`}>
+    <div
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="table"
+      className={`${styles.surface} overflow-x-auto ${styles.typography} [&_thead]:border-b-2 [&_thead]:border-[var(--anuime-accent,var(--accent))]`}
+    >
       <table className={`w-full border-collapse text-sm ${className}`} {...props} />
     </div>
   );

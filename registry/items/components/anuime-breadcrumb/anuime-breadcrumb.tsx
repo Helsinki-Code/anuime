@@ -26,15 +26,15 @@ export function AnuimeBreadcrumb({
 }: AnuimeBreadcrumbProps) {
   const styles = resolveAnuimeRecipe(recipe, character, "breadcrumb");
   return (
-    <nav aria-label="Breadcrumb">
-      <ol className="flex flex-wrap items-center gap-2 text-sm">
+    <nav
+      aria-label="Breadcrumb"
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="breadcrumb"
+    >
+      <ol className={`flex flex-wrap items-center gap-2 text-sm ${styles.typography}`}>
         {items.map((item, index) => (
           <li key={item.href ?? item.label} className="flex items-center gap-2">
-            {index ? (
-              <span aria-hidden="true" className="opacity-40">
-                /
-              </span>
-            ) : null}
+            {index ? <span aria-hidden="true" className={`${styles.marker} opacity-60`} /> : null}
             {item.href && index < items.length - 1 ? (
               <a
                 href={item.href}

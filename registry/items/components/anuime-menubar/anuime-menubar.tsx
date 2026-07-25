@@ -38,13 +38,21 @@ export function AnuimeMenubar({
 }: AnuimeMenubarProps) {
   const styles = resolveAnuimeRecipe(recipe, character, "menubar");
   return (
-    <nav aria-label={label} className={`${styles.surface} flex items-center gap-1 p-1`}>
+    <nav
+      aria-label={label}
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="menubar"
+      className={`${styles.surface} flex items-center gap-1 p-1 ${styles.typography}`}
+    >
       {items.map((menu) => (
         <details key={menu.id} className="group relative">
           <summary
             className={`${styles.shapeControl} cursor-pointer list-none px-3 py-2 text-sm font-semibold marker:hidden hover:bg-secondary`}
           >
-            {menu.label}
+            <span className="flex items-center gap-2">
+              <span aria-hidden="true" className={styles.hollowNode} />
+              {menu.label}
+            </span>
           </summary>
           <div
             role="menu"

@@ -1,8 +1,8 @@
 {
   "$schema": "./schema.json",
   "specVersion": "2.0.0-phase-0",
-  "status": "phase-3-complete-awaiting-review",
-  "designAuthority": "The six approved Design Component HTML boards are the only design source of truth. Repository code is legacy wherever it contradicts this spec.",
+  "status": "phase-3-complete-extended-catalog-complete-awaiting-review",
+  "designAuthority": "The six approved original boards and six Character Design Systems 4 Extended boards are the only design source of truth. Repository code is legacy wherever it contradicts this spec.",
   "scope": {
     "phase": 3,
     "implementationAuthorized": true,
@@ -77,6 +77,25 @@
     "deploymentStarted": false,
     "registryPublicationStarted": false
   },
+  "extendedCatalogCompletion": {
+    "status": "complete-awaiting-review",
+    "sourceSet": "Character Design Systems 4 Extended",
+    "explicitlySpecifiedComponents": 34,
+    "remainingDerivedComponents": 1,
+    "constructionPolicy": "Existing seven-motif vocabulary applied, never extended; no POWER on workhorses; light and dark geometry remains identical.",
+    "freshInstallFix": "All three canonical themes now install the standard shadcn button required by the Nova starter page.",
+    "docsExperience": "The Components catalog and all Extended component detail pages present live specimens, Extended status, and the Kira/Mochi/Atlas construction vocabulary.",
+    "verification": {
+      "freshNovaThemeInstall": "Theme-only Kira install created components/ui/button.tsx and the Next 16 production build passed.",
+      "unitTests": "271 passed",
+      "playwright": "40 passed",
+      "productionBuild": "283 pages prerendered",
+      "accessibility": "Components catalog and AnUIme Radio Group detail page pass automated serious-impact accessibility checks on desktop and mobile.",
+      "visualReview": "Components catalog and AnUIme Radio Group detail page reviewed in the rendered local production site with no browser console errors."
+    },
+    "deploymentStarted": false,
+    "registryPublicationStarted": false
+  },
   "sources": [
     {
       "character": "kira",
@@ -126,7 +145,8 @@
     "motifsAndConstraints": "laws.json",
     "componentConstruction": "components.json",
     "expressiveMotion": "motion.json",
-    "derivedReviewList": "derived-not-specified.json"
+    "derivedReviewList": "derived-not-specified.json",
+    "extendedComponentConstruction": "extended-components.json"
   },
   "extractionConventions": {
     "declared": "Copied directly from board data or captions.",

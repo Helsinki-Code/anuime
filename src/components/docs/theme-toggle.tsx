@@ -38,8 +38,11 @@ type ThemeToggleProps = {
 export function ThemeToggle({ className }: ThemeToggleProps) {
   const { theme, resolvedTheme, setTheme } = useTheme();
   const triggerRef = React.useRef<HTMLButtonElement>(null);
+  const [isHydrated, setIsHydrated] = React.useState(false);
   const currentOption = themeOptions.find((option) => option.value === theme) ?? themeOptions[0];
   const CurrentIcon = currentOption.icon;
+
+  React.useEffect(() => setIsHydrated(true), []);
 
   const handleThemeChange = (value: string) => {
     const nextOption = themeOptions.find((option) => option.value === value);
@@ -68,7 +71,9 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
             variant="ghost"
             size="icon"
             data-theme-control=""
+            data-theme-ready={isHydrated ? "" : undefined}
             data-resolved-theme={resolvedTheme}
+            disabled={!isHydrated}
             className={cn(
               "group/theme relative isolate overflow-hidden border border-cyan-500/15 bg-background/75 shadow-[0_0_0_1px_rgba(34,211,238,0.04)] transition-[border-color,box-shadow,background-color] duration-300 hover:border-cyan-500/35 hover:bg-cyan-500/8 hover:shadow-[0_0_18px_-8px_rgba(34,211,238,0.9)] dark:border-cyan-300/20 dark:bg-cyan-300/5 dark:hover:border-cyan-300/45 dark:hover:bg-cyan-300/10 dark:hover:shadow-[0_0_20px_-7px_rgba(103,232,249,0.95)]",
               className,

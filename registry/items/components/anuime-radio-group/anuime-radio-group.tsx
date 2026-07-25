@@ -34,7 +34,12 @@ export function AnuimeRadioGroup({
   const id = useId();
   const styles = resolveAnuimeRecipe(recipe, character, "radio-group");
   return (
-    <fieldset disabled={disabled} className={`grid max-w-md ${styles.gap}`}>
+    <fieldset
+      disabled={disabled}
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="radio-group"
+      className={`grid max-w-md ${styles.gap} ${styles.typography}`}
+    >
       <legend className="mb-2 text-sm font-semibold">{legend}</legend>
       {options.map((option) => (
         <label
@@ -47,7 +52,7 @@ export function AnuimeRadioGroup({
             value={option.value}
             defaultChecked={defaultValue === option.value}
             disabled={option.disabled}
-            className={`mt-0.5 size-5 ${styles.checkbox}`}
+            className={`mt-0.5 size-4 shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${styles.indicator}`}
           />
           <span>
             <span className="block text-sm font-semibold">{option.label}</span>

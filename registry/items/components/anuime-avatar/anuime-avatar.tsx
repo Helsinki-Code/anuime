@@ -39,11 +39,12 @@ export function AnuimeAvatar({
   return (
     <span
       data-character={system}
+      data-anuime-component="avatar"
       className={`relative inline-flex shrink-0 ${className}`}
       {...props}
     >
       <span
-        className={`${sizes[size]} ${styles.shapeControl} ${styles.surface} inline-flex items-center justify-center overflow-hidden font-bold`}
+        className={`${sizes[size]} ${styles.shapeControl} ${styles.surface} inline-flex items-center justify-center overflow-hidden font-bold ${system === "mochi" ? "border-[var(--anuime-secondary-accent,var(--border))] font-serif" : ""}`}
       >
         {src ? <img src={src} alt={alt} className="size-full object-cover" /> : fallback}
       </span>

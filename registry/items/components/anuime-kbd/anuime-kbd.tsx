@@ -20,9 +20,12 @@ export function AnuimeKbd({
   ...props
 }: AnuimeKbdProps) {
   const styles = resolveAnuimeRecipe(recipe, character, "kbd");
+  const system = styles.recipe.structureSystem;
   return (
     <kbd
-      className={`${styles.shapeControl} ${styles.secondary} inline-flex min-h-0 items-center border-b-2 px-2 py-1 font-mono text-xs font-bold ${className}`}
+      data-character={system}
+      data-anuime-component="kbd"
+      className={`${styles.shapeControl} ${styles.secondary} ${styles.control} inline-flex items-center px-2 py-0 font-mono text-xs font-bold ${system === "kira" ? "border-t-2 border-b" : system === "mochi" ? "border border-[var(--anuime-secondary-accent,var(--border))]" : "border-t border-b-2"} ${className}`}
       {...props}
     >
       {children}

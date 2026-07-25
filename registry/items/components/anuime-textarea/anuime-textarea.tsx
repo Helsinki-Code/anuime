@@ -29,7 +29,12 @@ export function AnuimeTextarea({
   const descriptionId = `${inputId}-description`;
   const styles = resolveAnuimeRecipe(recipe, character, "textarea");
   return (
-    <label className="grid w-full max-w-md gap-2 text-sm font-medium" htmlFor={inputId}>
+    <label
+      className={`grid w-full max-w-md gap-2 text-sm font-medium ${styles.typography}`}
+      htmlFor={inputId}
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="textarea"
+    >
       {label}
       <textarea
         id={inputId}

@@ -1,0 +1,60 @@
+---
+title: MCP Server
+description: Connect an AI agent directly to the AnUIme registry, character personas, composition rules, and deterministic review tools.
+order: 4
+group: Agents
+---
+
+The AnUIme MCP server gives compatible coding agents structured access to the production registry and all three character systems.
+
+## Production Endpoint
+
+```text
+https://anuime.vercel.app/mcp
+```
+
+The endpoint uses stateless Streamable HTTP. Add it as a remote MCP server in any client that accepts an MCP URL:
+
+```json
+{
+  "mcpServers": {
+    "anuime": {
+      "url": "https://anuime.vercel.app/mcp"
+    }
+  }
+}
+```
+
+Client configuration formats differ, but the endpoint remains the same. Opening `/mcp` in a normal browser is not a useful health check; connect with an MCP-compatible client.
+
+## Available Tools
+
+- `list_components` — discover installable AnUIme components
+- `get_component` — retrieve metadata, dependencies, source, and the install command
+- `get_install_command` — compose one shadcn command for one or more items
+- `list_characters` — discover Kira, Mochi, and Atlas
+- `get_character` — retrieve a schema-validated persona pack
+- `kira`, `mochi`, and `atlas` — load one compact character persona directly
+- `cast` — compose two or three characters without averaging their geometry
+- `anuime_review` — review JSX and CSS against character, token, tier, and motion laws
+
+## Recommended Agent Flow
+
+1. Call `list_components` before inventing a primitive.
+2. Load the structural owner with `kira`, `mochi`, `atlas`, or `get_character`.
+3. Use `cast` only when multiple characters have explicit jobs.
+4. Install existing registry items before hand-writing gaps.
+5. Run `anuime_review` against the final workhorse or expressive implementation.
+
+The server is read-only and deterministic. It returns source and recommendations but does not modify your repository, deploy code, or publish registry items.
+
+## Local Development
+
+Run the package locally when working on the server itself:
+
+```sh
+npm run mcp:build
+npm run mcp:start
+```
+
+The local endpoint is `http://127.0.0.1:3333/mcp`.

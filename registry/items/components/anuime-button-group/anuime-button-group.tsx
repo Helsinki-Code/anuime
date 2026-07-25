@@ -18,6 +18,8 @@ export function AnuimeButtonGroup({
   return (
     <div
       role="group"
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="button-group"
       className={`inline-flex overflow-hidden border ${styles.shapeControl} [&>button]:rounded-none [&>button+button]:border-l ${className}`}
       {...props}
     />
@@ -56,7 +58,12 @@ export function AnuimeSplitButton({
 }) {
   const styles = resolveAnuimeRecipe(recipe, character, "button-group");
   return (
-    <div role="group" className={`inline-flex overflow-hidden ${styles.shapeControl}`}>
+    <div
+      role="group"
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="split-button"
+      className={`inline-flex overflow-hidden ${styles.shapeControl}`}
+    >
       <button className={`${styles.primary} ${styles.control} rounded-none`} onClick={onPrimary}>
         {children}
       </button>
@@ -65,7 +72,7 @@ export function AnuimeSplitButton({
         className={`${styles.primary} min-w-10 rounded-none border-l border-current/20`}
         onClick={onMenu}
       >
-        ▾
+        <span aria-hidden="true" className={styles.marker} />
       </button>
     </div>
   );

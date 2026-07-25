@@ -25,7 +25,11 @@ export function AnuimeInputGroup({
 }: AnuimeInputGroupProps) {
   const styles = resolveAnuimeRecipe(recipe, character, "input-group");
   return (
-    <label className="grid gap-2 text-sm font-semibold">
+    <label
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="input-group"
+      className={`grid gap-2 text-sm font-semibold ${styles.typography}`}
+    >
       <span>{label}</span>
       <span className={`${styles.field} flex items-center gap-2 border p-0 focus-within:ring-2`}>
         <span aria-hidden="true" className="pl-3 opacity-60">

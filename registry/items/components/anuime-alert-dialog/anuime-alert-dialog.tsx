@@ -45,9 +45,10 @@ export function AnuimeAlertDialog({
       <dialog
         ref={dialogRef}
         data-character={system}
+        data-anuime-component="alert-dialog"
         className={`${styles.surface} ${styles.surfacePadding} m-auto max-w-md backdrop:bg-foreground/30`}
       >
-        <h2 className="text-lg font-bold">{title}</h2>
+        <h2 className={`text-lg font-bold ${destructive ? styles.errorMarker : ""}`}>{title}</h2>
         <div className="mt-2 text-sm opacity-80">{description}</div>
         <div className="mt-6 flex justify-end gap-2">
           <button

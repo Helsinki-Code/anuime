@@ -16,8 +16,8 @@ describe("registry syntax highlighting", () => {
     const html = await highlightCodeToHtml("export const value = 1;", "example.ts");
 
     expect(html).toContain("shiki-themes");
-    expect(html).toContain("github-light");
-    expect(html).toContain("github-dark");
+    expect(html).toContain("github-light-high-contrast");
+    expect(html).toContain("github-dark-high-contrast");
     expect(html).toContain("export");
   });
 

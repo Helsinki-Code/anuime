@@ -22,7 +22,12 @@ export function AnuimePagination({
   const styles = resolveAnuimeRecipe(recipe, character, "pagination");
   const pages = Array.from({ length: pageCount }, (_, index) => index + 1);
   return (
-    <nav aria-label="Pagination" className="flex flex-wrap items-center gap-2">
+    <nav
+      aria-label="Pagination"
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="pagination"
+      className={`flex flex-wrap items-center gap-2 ${styles.typography}`}
+    >
       <button
         type="button"
         disabled={page <= 1}
@@ -30,6 +35,7 @@ export function AnuimePagination({
         onClick={() => onPageChange?.(page - 1)}
         className={styles.secondary}
       >
+        <span aria-hidden="true" className={`${styles.marker} mr-2 rotate-[225deg]`} />
         Previous
       </button>
       {pages.map((item) => (
@@ -41,7 +47,8 @@ export function AnuimePagination({
           onClick={() => onPageChange?.(item)}
           className={item === page ? styles.primary : styles.secondary}
         >
-          {item}
+          <span aria-hidden="true" className={item === page ? styles.node : styles.hollowNode} />
+          <span className="sr-only">{item}</span>
         </button>
       ))}
       <button
@@ -52,6 +59,7 @@ export function AnuimePagination({
         className={styles.secondary}
       >
         Next
+        <span aria-hidden="true" className={`${styles.marker} ml-2`} />
       </button>
     </nav>
   );

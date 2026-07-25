@@ -35,6 +35,8 @@ export function AnuimeScrollArea({
       role="region"
       aria-label={label}
       tabIndex={tabIndex}
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="scroll-area"
       className={`${styles.surface} ${styles.surfacePadding} overflow-auto focus-visible:ring-2 ${className}`}
       style={{ maxHeight, ...style }}
       {...props}

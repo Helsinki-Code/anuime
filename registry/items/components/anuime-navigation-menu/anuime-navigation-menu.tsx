@@ -31,6 +31,8 @@ export function AnuimeNavigationMenu({
   return (
     <nav
       aria-label="Primary navigation"
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="navigation-menu"
       className={`w-full ${styles.surface} ${styles.surfacePadding}`}
     >
       <div className="flex items-center justify-between gap-4">
@@ -51,8 +53,9 @@ export function AnuimeNavigationMenu({
             <a
               key={item.href}
               href={item.href}
-              className="rounded-[var(--anuime-control-radius,6px)] px-3 py-2 text-sm font-medium opacity-70 transition hover:bg-secondary hover:opacity-100"
+              className="flex items-center gap-2 rounded-[var(--anuime-control-radius,6px)] px-3 py-2 text-sm font-medium opacity-70 transition hover:bg-secondary hover:opacity-100"
             >
+              <span aria-hidden="true" className={styles.marker} />
               {item.label}
             </a>
           ))}

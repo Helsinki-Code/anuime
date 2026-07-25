@@ -26,6 +26,8 @@ export function AnuimeSeparator({
     <div
       role={decorative ? "presentation" : "separator"}
       aria-orientation={decorative ? undefined : orientation}
+      data-character={styles.recipe.structureSystem}
+      data-anuime-component="separator"
       className={`${styles.accent} shrink-0 bg-current opacity-30 ${orientation === "horizontal" ? "h-px w-full" : "h-full min-h-6 w-px"} ${className}`}
       {...props}
     />
