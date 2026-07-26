@@ -1,0 +1,17 @@
+---
+name: anuime-code-window
+type: registry:ui
+title: "AnUIme Code Window"
+description: "A reusable editor frame with line numbers and character-authored chrome."
+localRegistryDependencies:
+  - anuime-recipe
+files:
+  - path: anuime-code-window.tsx
+    type: registry:ui
+---
+
+Window chrome cites `kira.strap`/`kira.fringe`, `mochi.clasp`/`mochi.ribbon`, or `atlas.lens`/`atlas.panel`.
+
+```tsx
+import { AnuimeCodeWindow } from "@/components/ui/anuime-code-window";
+```

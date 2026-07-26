@@ -1,0 +1,17 @@
+---
+name: anuime-scroll-progress
+type: registry:ui
+title: "AnUIme Scroll Progress"
+description: "A functional reading rail built from nodes, pearls, or measured strap segments."
+localRegistryDependencies:
+  - anuime-recipe
+files:
+  - path: anuime-scroll-progress.tsx
+    type: registry:ui
+---
+
+Progress uses `kira.circuit`, `mochi.ribbon`/`mochi.pearl`, or `atlas.strap`; reduced motion removes eased interpolation only.
+
+```tsx
+import { AnuimeScrollProgress } from "@/components/ui/anuime-scroll-progress";
+```

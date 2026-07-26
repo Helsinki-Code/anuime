@@ -1,0 +1,17 @@
+---
+name: anuime-code-diff
+type: registry:ui
+title: "AnUIme Code Diff"
+description: "A token-safe static comparison with character-specific change markers."
+localRegistryDependencies:
+  - anuime-recipe
+files:
+  - path: anuime-code-diff.tsx
+    type: registry:ui
+---
+
+Changed lines carry `kira.shard`/`kira.circuit`, `mochi.ribbon`/`mochi.star`, or `atlas.grid`/`atlas.strap`.
+
+```tsx
+import { AnuimeCodeDiff } from "@/components/ui/anuime-code-diff";
+```
