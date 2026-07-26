@@ -13,6 +13,11 @@ The AnUIme MCP server gives compatible coding agents structured access to the pr
 https://anuime.vercel.app/mcp
 ```
 
+AnUIme advertises its official product name, website, and multi-resolution logo through the
+standard MCP `serverInfo` metadata. Clients that implement MCP icons can display the AnUIme mark
+when the connection is added. If a client cached an older connection, remove and reconnect it
+after a server update to refresh the advertised identity.
+
 The endpoint uses stateless Streamable HTTP. Add it as a remote MCP server in any client that accepts an MCP URL:
 
 ```json

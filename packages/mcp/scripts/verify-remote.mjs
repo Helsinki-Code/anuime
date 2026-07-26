@@ -39,6 +39,22 @@ const calls = [
 
 try {
   await client.connect(transport);
+  const serverInfo = client.getServerVersion();
+  assert(serverInfo?.title === "AnUIme", "Expected the branded AnUIme server title.");
+  assert(
+    serverInfo?.websiteUrl === "https://anuime.vercel.app",
+    "Expected the canonical AnUIme website URL.",
+  );
+  assert(
+    serverInfo?.icons?.some(
+      (icon) =>
+        icon.src === "https://anuime.vercel.app/logo/app_icon_1024.png" &&
+        icon.mimeType === "image/png" &&
+        icon.sizes?.includes("1024x1024"),
+    ),
+    "Expected the canonical AnUIme MCP icon metadata.",
+  );
+
   const tools = await client.listTools();
   const advertisedTools = tools.tools.map((tool) => tool.name).toSorted();
   const expectedTools = calls.map((call) => call.name).toSorted();
@@ -101,6 +117,7 @@ try {
     "Expected the scoped Mochi-in-Kira cross-contamination violation.",
   );
 
+  console.log(`✓ branded server identity (${serverInfo.icons.length} icons)`);
   console.log(`Verified all ${calls.length} AnUIme tools at ${endpoint.href}`);
 } finally {
   await client.close();

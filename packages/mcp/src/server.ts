@@ -38,12 +38,43 @@ const CharacterSummarySchema = z.object({
   personaTool: CharacterIdSchema,
 });
 
+const ANUIME_WEBSITE_URL = "https://anuime.vercel.app";
+const ANUIME_MCP_ICONS = [
+  {
+    src: `${ANUIME_WEBSITE_URL}/logo/app_icon_1024.png`,
+    mimeType: "image/png",
+    sizes: ["1024x1024"],
+  },
+  {
+    src: `${ANUIME_WEBSITE_URL}/logo/maskable_icon_512.png`,
+    mimeType: "image/png",
+    sizes: ["512x512"],
+  },
+  {
+    src: `${ANUIME_WEBSITE_URL}/logo/android_chrome_192.png`,
+    mimeType: "image/png",
+    sizes: ["192x192"],
+  },
+  {
+    src: `${ANUIME_WEBSITE_URL}/logo/favicon_48.png`,
+    mimeType: "image/png",
+    sizes: ["48x48"],
+  },
+  {
+    src: `${ANUIME_WEBSITE_URL}/logo/favicon_32.png`,
+    mimeType: "image/png",
+    sizes: ["32x32"],
+  },
+] as const;
+
 export function createAnuimeMcpServer(): McpServer {
   const server = new McpServer({
     name: "anuime",
-    title: "AnUIme MCP",
-    version: "2.0.0",
+    title: "AnUIme",
+    version: "2.0.1",
     description: "Character-aware registry, persona, composition, and deterministic review tools.",
+    websiteUrl: ANUIME_WEBSITE_URL,
+    icons: [...ANUIME_MCP_ICONS],
   });
 
   server.registerTool(

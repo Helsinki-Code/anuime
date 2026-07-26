@@ -11,6 +11,32 @@ afterEach(async () => {
 });
 
 describe("AnUIme MCP protocol", () => {
+  it("advertises branded server identity metadata", async () => {
+    const { client } = await connectInMemory();
+    const serverInfo = client.getServerVersion();
+
+    expect(serverInfo).toMatchObject({
+      name: "anuime",
+      title: "AnUIme",
+      version: "2.0.1",
+      websiteUrl: "https://anuime.vercel.app",
+    });
+    expect(serverInfo?.icons).toEqual(
+      expect.arrayContaining([
+        {
+          src: "https://anuime.vercel.app/logo/app_icon_1024.png",
+          mimeType: "image/png",
+          sizes: ["1024x1024"],
+        },
+        {
+          src: "https://anuime.vercel.app/logo/favicon_48.png",
+          mimeType: "image/png",
+          sizes: ["48x48"],
+        },
+      ]),
+    );
+  });
+
   it("advertises the complete ten-tool contract", async () => {
     const { client } = await connectInMemory();
     const tools = await client.listTools();

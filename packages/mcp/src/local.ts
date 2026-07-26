@@ -48,7 +48,7 @@ async function routeRequest(
       JSON.stringify({
         status: "ok",
         service: "anuime-mcp",
-        version: "2.0.0",
+        version: "2.0.1",
         transport: "streamable-http",
       }),
     );
