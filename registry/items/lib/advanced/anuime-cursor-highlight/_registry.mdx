@@ -1,0 +1,17 @@
+---
+name: anuime-cursor-highlight
+type: registry:ui
+title: "AnUIme Cursor Highlight"
+description: "An optional character marker that supplements, and never replaces, the native cursor."
+localRegistryDependencies:
+  - anuime-recipe
+files:
+  - path: anuime-cursor-highlight.tsx
+    type: registry:ui
+---
+
+Expressive ambient tier. The marker uses `kira.earring`, `mochi.pearl`, or `atlas.core`; reduced motion removes the follower entirely.
+
+```tsx
+import { AnuimeCursorHighlight } from "@/components/ui/anuime-cursor-highlight";
+```

@@ -1,0 +1,17 @@
+---
+name: anuime-node-map
+type: registry:ui
+title: "AnUIme Node Map"
+description: "A character-aware node topology for workflows, systems, and dependency maps."
+localRegistryDependencies:
+  - anuime-recipe
+files:
+  - path: anuime-node-map.tsx
+    type: registry:ui
+---
+
+Workhorse tier. Kira maps `kira.circuit` to connected stations, Mochi maps `mochi.pearl` to measured beads, and Atlas maps `atlas.grid` to 45° survey diamonds.
+
+```tsx
+import { AnuimeNodeMap } from "@/components/ui/anuime-node-map";
+```

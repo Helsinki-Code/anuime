@@ -1,0 +1,17 @@
+---
+name: anuime-scroll-stack
+type: registry:ui
+title: "AnUIme Scroll Stack"
+description: "A scroll-linked character stack that returns to normal document flow under reduced motion."
+localRegistryDependencies:
+  - anuime-recipe
+files:
+  - path: anuime-scroll-stack.tsx
+    type: registry:ui
+---
+
+Expressive transition/ambient tier. It applies `kira.strap`/`kira.fringe`, `mochi.drape`/`mochi.ribbon`, or `atlas.strap`/`atlas.panel` only to the authored stack carriers.
+
+```tsx
+import { AnuimeScrollStack } from "@/components/ui/anuime-scroll-stack";
+```
