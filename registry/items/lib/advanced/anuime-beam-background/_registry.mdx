@@ -1,0 +1,17 @@
+---
+name: anuime-beam-background
+type: registry:ui
+title: "AnUIme Beam Background"
+description: "A directional ambient background using each character system's authored geometry."
+localRegistryDependencies:
+  - anuime-recipe
+files:
+  - path: anuime-beam-background.tsx
+    type: registry:ui
+---
+
+Use `active` only during an explicit transition. Reduced-motion users receive the final static geometry.
+
+```tsx
+import { AnuimeBeamBackground } from "@/components/ui/anuime-beam-background";
+```

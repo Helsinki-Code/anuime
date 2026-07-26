@@ -1,0 +1,1981 @@
+{
+  "specVersion": "1.0.0-phase-a-checkpoint",
+  "status": "mapping-review-only",
+  "scope": {
+    "atomicCount": 42,
+    "sectionCount": 60,
+    "implementationAuthorized": false,
+    "protectedPaths": [
+      "registry/items/components",
+      "packages/mcp",
+      "src/routes",
+      "design-spec/laws.json",
+      "design-spec/themes.json"
+    ]
+  },
+  "authority": {
+    "visualLaws": "design-spec/laws.json",
+    "themeTokens": "design-spec/themes.json",
+    "motion": "design-spec/motion.json",
+    "mappingShape": "design-spec/components.json",
+    "rules": [
+      "No new motif, color, angle, radius, or motion grammar is authorized.",
+      "Theme geometry is identical in light and dark; only declared theme tokens change.",
+      "Expressive items are limited to waiting, transition, success, empty, or explicitly ambient presentation regions.",
+      "Every animated item must implement the global.reduced-motion static-state rule.",
+      "A geometry-only mapping uses no motif and states: no artifact claims this, geometry only."
+    ]
+  },
+  "atomicComponents": [
+    {
+      "id": "anuime-line-grid-background",
+      "category": "backgrounds",
+      "tier": "expressive",
+      "allowedContexts": ["ambient"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.circuit"],
+          "artifact": "circuit",
+          "geometry": "Sparse 1.5px support traces with 3px nodes; no diagonal axis is introduced.",
+          "carrier": "Background trace field carries the circuit node line.",
+          "sourceLaws": ["kira.circuit", "kira.light-in-lines", "global.two-tier"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.ribbon"],
+          "artifact": "ribbon",
+          "geometry": "Sparse parallel horizontal fine rules only; no literal orthogonal grid is claimed.",
+          "carrier": "Background rule field carries the ribbon.",
+          "sourceLaws": ["mochi.ribbon", "mochi.gracious-never-sweet", "global.two-tier"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.grid"],
+          "artifact": "diamond grid",
+          "geometry": "Measured survey field of outlined and filled 45° diamonds aligned to structure.",
+          "carrier": "Background survey field carries the diamond grid.",
+          "sourceLaws": ["atlas.grid", "atlas.load-bearing", "global.two-tier"]
+        }
+      },
+      "motion": "Static by default; optional entrance uses only the character text-reveal cadence.",
+      "reducedMotion": "Render the final static field."
+    },
+    {
+      "id": "anuime-radial-field-background",
+      "category": "backgrounds",
+      "tier": "expressive",
+      "allowedContexts": ["ambient"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.collar"],
+          "artifact": "collar",
+          "geometry": "One thin authored ring with an anchored stem; no broad cyan radial fill.",
+          "carrier": "Localized background anchor carries the collar ring and stem.",
+          "sourceLaws": ["kira.collar", "kira.light-in-lines", "global.two-tier"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.veil"],
+          "artifact": "veil",
+          "geometry": "Localized concentric rose wash using the restrained 22%/50% veil construction.",
+          "carrier": "Localized background wash carries the veil.",
+          "sourceLaws": ["mochi.veil", "mochi.warmth-as-feedback", "global.two-tier"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.core"],
+          "artifact": "core ring",
+          "geometry": "Outlined ring with a filled core, emitted as small measured data rather than a broad fill.",
+          "carrier": "Localized background anchor carries the core ring.",
+          "sourceLaws": ["atlas.core", "atlas.dark-emitted-data", "global.two-tier"]
+        }
+      },
+      "motion": "Optional one-shot settle uses the character success cadence; never loops.",
+      "reducedMotion": "Render the final static ring or wash."
+    },
+    {
+      "id": "anuime-beam-background",
+      "category": "backgrounds",
+      "tier": "expressive",
+      "allowedContexts": ["ambient", "transition"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.fringe"],
+          "artifact": "fringe",
+          "geometry": "Paired thin lines follow the sole 114° directional axis.",
+          "carrier": "Background sweep carries the fringe diagonal.",
+          "sourceLaws": ["kira.fringe", "kira.directional-angle", "kira.light-in-lines"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.drape"],
+          "artifact": "drape",
+          "geometry": "A measured quadratic fabric curve replaces any literal beam treatment.",
+          "carrier": "Background settling curve carries the drape.",
+          "sourceLaws": ["mochi.drape", "mochi.motion-never-brisk", "mochi.gracious-never-sweet"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.beam"],
+          "artifact": "light beam",
+          "geometry": "Paired 2.2px/1.6px near-vertical lines use the authored 76° pitch.",
+          "carrier": "Background ray field carries the beam.",
+          "sourceLaws": ["atlas.beam", "atlas.beam-angle", "atlas.dark-emitted-data"]
+        }
+      },
+      "motion": "Transition-only sweep uses the existing skeleton timing for each character.",
+      "reducedMotion": "Render the final static lines or curve."
+    },
+    {
+      "id": "anuime-node-field-background",
+      "category": "backgrounds",
+      "tier": "expressive",
+      "allowedContexts": ["ambient"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.circuit"],
+          "artifact": "circuit",
+          "geometry": "Connected 3px active nodes and outlined pending nodes on thin support lines.",
+          "carrier": "Background points and connectors carry the circuit.",
+          "sourceLaws": ["kira.circuit", "kira.light-in-lines", "global.two-tier"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.pearl"],
+          "artifact": "pearl",
+          "geometry": "Sparse graduated beads rest on restrained support lines; never a candy-like dot cloud.",
+          "carrier": "Background points carry the pearl strand.",
+          "sourceLaws": ["mochi.pearl", "mochi.gracious-never-sweet", "global.two-tier"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.grid"],
+          "artifact": "diamond grid",
+          "geometry": "Outlined and filled survey diamonds remain grid-aligned and measured.",
+          "carrier": "Background points carry survey diamonds.",
+          "sourceLaws": ["atlas.grid", "atlas.load-bearing", "global.two-tier"]
+        }
+      },
+      "motion": "Static by default; optional ambient drift is not authorized until a matching existing motion cadence is selected in Phase B.",
+      "reducedMotion": "Render the final static point field."
+    },
+    {
+      "id": "anuime-framed-background",
+      "category": "backgrounds",
+      "tier": "expressive",
+      "allowedContexts": ["ambient"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.strap"],
+          "artifact": "strap",
+          "geometry": "Nested rectangular frames use the authored buckle proportions and never become pills.",
+          "carrier": "Background perimeter carries the strap frame.",
+          "sourceLaws": ["kira.strap", "kira.no-pills", "global.two-tier"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.clasp", "mochi.ribbon"],
+          "artifact": "clasp and ribbon",
+          "geometry": "Restrained framed gold bar with parallel fine trim; ornament stays structural.",
+          "carrier": "Background perimeter carries clasp and ribbon trim.",
+          "sourceLaws": ["mochi.clasp", "mochi.ribbon", "mochi.gracious-never-sweet"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.panel"],
+          "artifact": "panel bracket",
+          "geometry": "Four independent 90° brackets seat at the ambient region corners.",
+          "carrier": "Background perimeter carries panel brackets.",
+          "sourceLaws": ["atlas.panel", "atlas.load-bearing", "global.two-tier"]
+        }
+      },
+      "motion": "Static; optional entrance uses the existing focus-seat cadence.",
+      "reducedMotion": "Render the final seated frame."
+    },
+    {
+      "id": "anuime-signal-card",
+      "category": "cards",
+      "tier": "workhorse",
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.circuit", "kira.shard"],
+          "artifact": "circuit and light shard",
+          "geometry": "Status follows a node line; degraded state uses the authored 6×14 shard skewed −18°.",
+          "carrier": "Status rail carries circuit; exception marker carries shard.",
+          "sourceLaws": ["kira.circuit", "kira.shard", "kira.directional-angle"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.pearl", "mochi.star"],
+          "artifact": "pearl and star",
+          "geometry": "Status is a restrained bead; exception uses one small four-point state marker.",
+          "carrier": "Status rail carries pearl; exception marker carries star.",
+          "sourceLaws": ["mochi.pearl", "mochi.star", "mochi.gracious-never-sweet"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.grid", "atlas.core"],
+          "artifact": "diamond grid and core ring",
+          "geometry": "Survey diamond marks status; certified state uses a small outlined core.",
+          "carrier": "Status rail carries grid; certification marker carries core.",
+          "sourceLaws": ["atlas.grid", "atlas.core", "atlas.load-bearing"]
+        }
+      },
+      "motion": "State transitions use the character production focus duration only.",
+      "reducedMotion": "Switch immediately to the final state."
+    },
+    {
+      "id": "anuime-trace-card",
+      "category": "cards",
+      "tier": "workhorse",
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.fringe"],
+          "artifact": "fringe",
+          "geometry": "One paired 114° hairline sweep is clipped to the card frame.",
+          "carrier": "Card perimeter carries the fringe sweep.",
+          "sourceLaws": ["kira.fringe", "kira.directional-angle", "kira.light-in-lines"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.ribbon"],
+          "artifact": "ribbon",
+          "geometry": "Parallel fine rules remain inset from the card edge as restrained trim.",
+          "carrier": "Card top rule carries the ribbon.",
+          "sourceLaws": ["mochi.ribbon", "mochi.gracious-never-sweet"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.panel"],
+          "artifact": "panel bracket",
+          "geometry": "Four 90° brackets seat at card corners as structural focus.",
+          "carrier": "Card corners carry panel brackets.",
+          "sourceLaws": ["atlas.panel", "atlas.selection-structural", "atlas.load-bearing"]
+        }
+      },
+      "motion": "Focus/selection uses 240ms Kira trace, Mochi settling bloom behavior, or 180ms Atlas docking.",
+      "reducedMotion": "Render the final focused perimeter without tracing."
+    },
+    {
+      "id": "anuime-metric-card",
+      "category": "cards",
+      "tier": "workhorse",
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.circuit"],
+          "artifact": "circuit",
+          "geometry": "Value and delta align to a thin node sequence.",
+          "carrier": "Metric trend rail carries circuit.",
+          "sourceLaws": ["kira.circuit", "kira.light-in-lines"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.pearl", "mochi.ribbon"],
+          "artifact": "pearl and ribbon",
+          "geometry": "Value marker is a bead above one fine horizontal rule.",
+          "carrier": "Metric marker carries pearl; baseline carries ribbon.",
+          "sourceLaws": ["mochi.pearl", "mochi.ribbon"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.grid", "atlas.strap"],
+          "artifact": "diamond grid and strap band",
+          "geometry": "Measured value uses survey diamonds over segmented horizontal bands.",
+          "carrier": "Metric markers carry grid; baseline carries strap.",
+          "sourceLaws": ["atlas.grid", "atlas.strap", "atlas.load-bearing"]
+        }
+      },
+      "motion": "Optional value update uses the existing text-reveal cadence and runs once.",
+      "reducedMotion": "Display the final value and marker."
+    },
+    {
+      "id": "anuime-bento-card",
+      "category": "cards",
+      "tier": "workhorse",
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.strap"],
+          "artifact": "strap",
+          "geometry": "Rectangular framed cells use fixed radii and square interior joints; never pills.",
+          "carrier": "Cell shells carry strap/buckle geometry.",
+          "sourceLaws": ["kira.strap", "kira.no-pills"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.clasp", "mochi.ribbon"],
+          "artifact": "clasp and ribbon",
+          "geometry": "Measured rounded cells share restrained gold seams and one fine rule.",
+          "carrier": "Cell shells carry clasp; seams carry ribbon.",
+          "sourceLaws": ["mochi.clasp", "mochi.ribbon", "mochi.gracious-never-sweet"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.panel", "atlas.strap"],
+          "artifact": "panel bracket and strap band",
+          "geometry": "Cells dock through corner brackets and structural bands.",
+          "carrier": "Cell corners carry panel; joins carry strap.",
+          "sourceLaws": ["atlas.panel", "atlas.strap", "atlas.load-bearing"]
+        }
+      },
+      "motion": "Static layout; focus follows the character production focus system.",
+      "reducedMotion": "No animated layout shift."
+    },
+    {
+      "id": "anuime-comparison-card",
+      "category": "cards",
+      "tier": "workhorse",
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.hairpin", "kira.circuit"],
+          "artifact": "hairpin and circuit",
+          "geometry": "Sharp open chevrons mark included rows; connected nodes show progression.",
+          "carrier": "Feature markers carry hairpin; comparison rail carries circuit.",
+          "sourceLaws": ["kira.hairpin", "kira.circuit", "kira.no-pills"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.crescent", "mochi.pearl"],
+          "artifact": "crescent and pearl",
+          "geometry": "Subtractive crescents mark groups; beads show included states without excess ornament.",
+          "carrier": "Group markers carry crescent; state markers carry pearl.",
+          "sourceLaws": ["mochi.crescent", "mochi.pearl", "mochi.gracious-never-sweet"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.strap", "atlas.grid"],
+          "artifact": "strap band and diamond grid",
+          "geometry": "Segmented bands divide columns; survey diamonds encode states.",
+          "carrier": "Column rails carry strap; state markers carry grid.",
+          "sourceLaws": ["atlas.strap", "atlas.grid", "atlas.load-bearing"]
+        }
+      },
+      "motion": "Selection uses the production focus system only.",
+      "reducedMotion": "Render the selected card state immediately."
+    },
+    {
+      "id": "anuime-line-reveal",
+      "category": "text-effects",
+      "tier": "expressive",
+      "allowedContexts": ["transition", "success", "empty"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.fringe"],
+          "artifact": "fringe",
+          "geometry": "Text reveals behind a thin mask moving on the 114° fringe axis.",
+          "carrier": "Reveal edge carries the fringe diagonal.",
+          "sourceLaws": ["kira.fringe", "kira.directional-angle", "global.two-tier"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.drape"],
+          "artifact": "drape",
+          "geometry": "Text settles through the authored quadratic fabric curve and existing reveal cadence.",
+          "carrier": "Reveal mask carries the drape curve.",
+          "sourceLaws": ["mochi.drape", "mochi.motion-never-brisk", "global.two-tier"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.beam"],
+          "artifact": "light beam",
+          "geometry": "Text reveals behind a paired 76° structural beam.",
+          "carrier": "Reveal edge carries the beam.",
+          "sourceLaws": ["atlas.beam", "atlas.beam-angle", "global.two-tier"]
+        }
+      },
+      "motion": "Use motion.json characters.<character>.expressiveMoments.textReveal verbatim.",
+      "reducedMotion": "Show fully revealed text."
+    },
+    {
+      "id": "anuime-word-cycle",
+      "category": "text-effects",
+      "tier": "expressive",
+      "allowedContexts": ["transition", "ambient"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.hairpin"],
+          "artifact": "hairpin",
+          "geometry": "One open mitered chevron marks the active word; no unapproved rotation angle is used.",
+          "carrier": "Active-word marker carries hairpin.",
+          "sourceLaws": ["kira.hairpin", "kira.directional-angle", "global.two-tier"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.crescent"],
+          "artifact": "crescent",
+          "geometry": "A subtractive crescent marks the active word while copy settles rather than snaps.",
+          "carrier": "Active-word marker carries crescent.",
+          "sourceLaws": ["mochi.crescent", "mochi.motion-never-brisk", "global.two-tier"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.strap"],
+          "artifact": "strap band",
+          "geometry": "A measured segment marks the active word in a fixed structural slot.",
+          "carrier": "Active-word marker carries strap.",
+          "sourceLaws": ["atlas.strap", "atlas.load-bearing", "global.two-tier"]
+        }
+      },
+      "motion": "Cycle uses each character text-reveal cadence; user interaction pauses it.",
+      "reducedMotion": "Show the first word with controls to change it without animation."
+    },
+    {
+      "id": "anuime-typewriter",
+      "category": "text-effects",
+      "tier": "expressive",
+      "allowedContexts": ["transition", "waiting"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.circuit"],
+          "artifact": "circuit",
+          "geometry": "A 1.5px stem and 3px node act as the caret.",
+          "carrier": "Typing caret carries the circuit node line.",
+          "sourceLaws": ["kira.circuit", "kira.light-in-lines", "global.two-tier"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.pearl"],
+          "artifact": "pearl",
+          "geometry": "One small bead rests on a short support line as the caret.",
+          "carrier": "Typing caret carries pearl.",
+          "sourceLaws": ["mochi.pearl", "mochi.gracious-never-sweet", "global.two-tier"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.strap"],
+          "artifact": "strap band",
+          "geometry": "A square-ended measured segment acts as the caret.",
+          "carrier": "Typing caret carries strap.",
+          "sourceLaws": ["atlas.strap", "atlas.load-bearing", "global.two-tier"]
+        }
+      },
+      "motion": "Character cadence is derived from the existing text-reveal duration; no independent blink loop.",
+      "reducedMotion": "Show complete text with a static caret."
+    },
+    {
+      "id": "anuime-number-ticker",
+      "category": "text-effects",
+      "tier": "expressive",
+      "allowedContexts": ["transition", "success"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.circuit"],
+          "artifact": "circuit",
+          "geometry": "The final value resolves onto a connected node baseline.",
+          "carrier": "Value baseline carries circuit.",
+          "sourceLaws": ["kira.circuit", "global.two-tier"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.pearl"],
+          "artifact": "pearl",
+          "geometry": "The final value resolves above one graduated bead marker.",
+          "carrier": "Value marker carries pearl.",
+          "sourceLaws": ["mochi.pearl", "mochi.motion-never-brisk", "global.two-tier"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.strap", "atlas.grid"],
+          "artifact": "strap band and diamond grid",
+          "geometry": "Digits occupy a fixed measured slot with one survey-diamond terminus.",
+          "carrier": "Value slot carries strap; terminus carries grid.",
+          "sourceLaws": ["atlas.strap", "atlas.grid", "global.two-tier"]
+        }
+      },
+      "motion": "One-shot only, bounded by the existing success or text-reveal duration.",
+      "reducedMotion": "Show the final value immediately."
+    },
+    {
+      "id": "anuime-scramble-text",
+      "category": "text-effects",
+      "tier": "expressive",
+      "allowedContexts": ["transition"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.shard", "kira.circuit"],
+          "artifact": "light shard and circuit",
+          "geometry": "Small authored shards resolve into a stable node-aligned word; no broad glitch fill.",
+          "carrier": "Transient fragments carry shard; resolved baseline carries circuit.",
+          "sourceLaws": ["kira.shard", "kira.circuit", "global.two-tier"]
+        },
+        "mochi": {
+          "motifIds": [],
+          "artifact": "none",
+          "geometry": "Restrained opacity crossfade and settling type only; literal scrambling is rejected as too noisy.",
+          "carrier": "no artifact claims this, geometry only",
+          "sourceLaws": [
+            "mochi.gracious-never-sweet",
+            "mochi.motion-never-brisk",
+            "global.two-tier"
+          ]
+        },
+        "atlas": {
+          "motifIds": ["atlas.grid"],
+          "artifact": "diamond grid",
+          "geometry": "Measured glyph cells resolve in grid order without random jitter.",
+          "carrier": "Transient glyph cells carry the survey grid.",
+          "sourceLaws": ["atlas.grid", "atlas.load-bearing", "global.two-tier"]
+        }
+      },
+      "motion": "Use the existing text-reveal cadence; deterministic ordering only.",
+      "reducedMotion": "Show the resolved text."
+    },
+    {
+      "id": "anuime-border-trace-button",
+      "category": "buttons",
+      "tier": "workhorse",
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.collar", "kira.circuit"],
+          "artifact": "collar and circuit",
+          "geometry": "A 1px perimeter traces for 240ms then resolves to the ring and stem.",
+          "carrier": "Focus perimeter carries collar; descending stem carries circuit.",
+          "sourceLaws": ["kira.collar", "kira.circuit", "kira.light-in-lines"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.veil"],
+          "artifact": "veil",
+          "geometry": "Localized bloom extends from the interaction point and settles behind the control.",
+          "carrier": "Focus feedback carries veil.",
+          "sourceLaws": ["mochi.veil", "mochi.warmth-as-feedback", "mochi.motion-never-brisk"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.panel"],
+          "artifact": "panel bracket",
+          "geometry": "Four 10×10 brackets converge and seat in 180ms.",
+          "carrier": "Focus perimeter carries panel brackets.",
+          "sourceLaws": ["atlas.panel", "atlas.selection-structural", "atlas.load-bearing"]
+        }
+      },
+      "motion": "Use the existing production signature focus behavior verbatim.",
+      "reducedMotion": "Render the final focus state without tracing, bloom, or convergence."
+    },
+    {
+      "id": "anuime-loading-button",
+      "category": "buttons",
+      "tier": "workhorse",
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.collar", "kira.fringe"],
+          "artifact": "collar and fringe",
+          "geometry": "Small ring with one 114° directional arc replaces the leading icon only while waiting.",
+          "carrier": "Waiting indicator carries collar and fringe.",
+          "sourceLaws": ["kira.collar", "kira.fringe", "global.two-tier"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.pearl"],
+          "artifact": "pearl",
+          "geometry": "Four restrained graduated beads orbit only while waiting.",
+          "carrier": "Waiting indicator carries pearl.",
+          "sourceLaws": ["mochi.pearl", "mochi.motion-never-brisk", "global.two-tier"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.core", "atlas.grid"],
+          "artifact": "core ring and diamond grid",
+          "geometry": "Small core ring and survey marker animate only while waiting.",
+          "carrier": "Waiting indicator carries core and grid.",
+          "sourceLaws": ["atlas.core", "atlas.grid", "global.two-tier"]
+        }
+      },
+      "motion": "Use motion.json loader cadence only during the pending state.",
+      "reducedMotion": "Show a static waiting glyph and preserve the text label."
+    },
+    {
+      "id": "anuime-copy-button",
+      "category": "buttons",
+      "tier": "workhorse",
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.hairpin", "kira.circuit"],
+          "artifact": "hairpin and circuit",
+          "geometry": "Open chevron confirms the action beside one stable node.",
+          "carrier": "Confirmation mark carries hairpin; state point carries circuit.",
+          "sourceLaws": ["kira.hairpin", "kira.circuit"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.crescent", "mochi.star"],
+          "artifact": "crescent and star",
+          "geometry": "Subtractive crescent changes to one restrained four-point confirmation marker.",
+          "carrier": "Idle marker carries crescent; success marker carries star.",
+          "sourceLaws": ["mochi.crescent", "mochi.star", "mochi.gracious-never-sweet"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.grid", "atlas.core"],
+          "artifact": "diamond grid and core ring",
+          "geometry": "Survey diamond changes to a certified core state.",
+          "carrier": "Idle marker carries grid; success marker carries core.",
+          "sourceLaws": ["atlas.grid", "atlas.core", "atlas.load-bearing"]
+        }
+      },
+      "motion": "Success is a one-shot state change using the existing success cadence.",
+      "reducedMotion": "Swap icons immediately and announce success through the live region."
+    },
+    {
+      "id": "anuime-split-button",
+      "category": "buttons",
+      "tier": "workhorse",
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.strap", "kira.hairpin"],
+          "artifact": "strap and hairpin",
+          "geometry": "Rectangular joined plates with square interior seam; open chevron marks the menu segment.",
+          "carrier": "Group shell carries strap; disclosure carries hairpin.",
+          "sourceLaws": ["kira.strap", "kira.hairpin", "kira.no-pills"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.clasp", "mochi.crescent"],
+          "artifact": "clasp and crescent",
+          "geometry": "Joined clasp frame with measured gold seam; crescent marks disclosure.",
+          "carrier": "Group shell carries clasp; disclosure carries crescent.",
+          "sourceLaws": ["mochi.clasp", "mochi.crescent"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.buckle", "atlas.panel"],
+          "artifact": "buckle and panel bracket",
+          "geometry": "Load-bearing joined frame with a bracket disclosure mark.",
+          "carrier": "Group shell carries buckle; disclosure carries panel.",
+          "sourceLaws": ["atlas.buckle", "atlas.panel", "atlas.load-bearing"]
+        }
+      },
+      "motion": "Disclosure uses the character general transition duration.",
+      "reducedMotion": "Open and close without transform animation."
+    },
+    {
+      "id": "anuime-floating-dock",
+      "category": "navigation-chrome",
+      "tier": "workhorse",
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.strap", "kira.collar"],
+          "artifact": "strap and collar",
+          "geometry": "Compact rectangular dock with authored radii; active item resolves to a ring and stem.",
+          "carrier": "Dock shell carries strap; active state carries collar.",
+          "sourceLaws": ["kira.strap", "kira.collar", "kira.no-pills"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.clasp", "mochi.veil"],
+          "artifact": "clasp and veil",
+          "geometry": "Measured clasp bar with localized active warmth only at the selected item.",
+          "carrier": "Dock shell carries clasp; active state carries veil.",
+          "sourceLaws": ["mochi.clasp", "mochi.veil", "mochi.warmth-as-feedback"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.panel", "atlas.buckle"],
+          "artifact": "panel bracket and buckle",
+          "geometry": "Framed dock with selected item structurally seated by corner brackets.",
+          "carrier": "Dock shell carries buckle; active item carries panel.",
+          "sourceLaws": ["atlas.buckle", "atlas.panel", "atlas.selection-structural"]
+        }
+      },
+      "motion": "Selection uses the existing production focus behavior.",
+      "reducedMotion": "Seat the selected state immediately."
+    },
+    {
+      "id": "anuime-command-dock",
+      "category": "navigation-chrome",
+      "tier": "workhorse",
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.circuit", "kira.hairpin"],
+          "artifact": "circuit and hairpin",
+          "geometry": "Commands align to a node trace; the active command receives an open chevron.",
+          "carrier": "Command rail carries circuit; active marker carries hairpin.",
+          "sourceLaws": ["kira.circuit", "kira.hairpin"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.ribbon", "mochi.crescent"],
+          "artifact": "ribbon and crescent",
+          "geometry": "Fine horizontal rule groups commands; active item uses one crescent.",
+          "carrier": "Command rail carries ribbon; active marker carries crescent.",
+          "sourceLaws": ["mochi.ribbon", "mochi.crescent"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.strap", "atlas.grid"],
+          "artifact": "strap band and diamond grid",
+          "geometry": "Commands sit in measured segments; active command uses a filled survey diamond.",
+          "carrier": "Command rail carries strap; active marker carries grid.",
+          "sourceLaws": ["atlas.strap", "atlas.grid", "atlas.load-bearing"]
+        }
+      },
+      "motion": "Keyboard selection uses the character general transition duration.",
+      "reducedMotion": "Move selection without animated interpolation."
+    },
+    {
+      "id": "anuime-scroll-progress",
+      "category": "navigation-chrome",
+      "tier": "workhorse",
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.circuit"],
+          "artifact": "circuit",
+          "geometry": "Progress is a thin support line with active and pending nodes.",
+          "carrier": "Scroll rail carries circuit.",
+          "sourceLaws": ["kira.circuit", "kira.light-in-lines"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.pearl", "mochi.ribbon"],
+          "artifact": "pearl and ribbon",
+          "geometry": "Progress is a fine rule with graduated bead stations.",
+          "carrier": "Scroll rail carries ribbon; stations carry pearl.",
+          "sourceLaws": ["mochi.ribbon", "mochi.pearl"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.strap"],
+          "artifact": "strap band",
+          "geometry": "Progress is a fixed series of measured square-ended segments.",
+          "carrier": "Scroll rail carries strap.",
+          "sourceLaws": ["atlas.strap", "atlas.load-bearing"]
+        }
+      },
+      "motion": "Position follows user scroll without decorative autonomous animation.",
+      "reducedMotion": "Keep the functional position indicator; remove eased interpolation."
+    },
+    {
+      "id": "anuime-sticky-rail",
+      "category": "navigation-chrome",
+      "tier": "workhorse",
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.circuit", "kira.fringe"],
+          "artifact": "circuit and fringe",
+          "geometry": "Thin vertical trace with nodes; one 114° line marks the active section.",
+          "carrier": "Rail carries circuit; active edge carries fringe.",
+          "sourceLaws": ["kira.circuit", "kira.fringe", "kira.directional-angle"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.ribbon", "mochi.drape"],
+          "artifact": "ribbon and drape",
+          "geometry": "Fine vertical support is paired with a measured settling curve at the active section.",
+          "carrier": "Rail carries ribbon; active marker carries drape.",
+          "sourceLaws": ["mochi.ribbon", "mochi.drape", "mochi.gracious-never-sweet"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.strap", "atlas.panel"],
+          "artifact": "strap band and panel bracket",
+          "geometry": "Structural rail uses measured segments and a seated bracket marker.",
+          "carrier": "Rail carries strap; active marker carries panel.",
+          "sourceLaws": ["atlas.strap", "atlas.panel", "atlas.load-bearing"]
+        }
+      },
+      "motion": "Active-section change uses the character general transition duration.",
+      "reducedMotion": "Move the active marker immediately."
+    },
+    {
+      "id": "anuime-code-window",
+      "category": "dev-tool-chrome",
+      "tier": "workhorse",
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.strap", "kira.fringe"],
+          "artifact": "strap and fringe",
+          "geometry": "Rectangular editor frame with one clipped 114° title sweep.",
+          "carrier": "Window shell carries strap; title edge carries fringe.",
+          "sourceLaws": ["kira.strap", "kira.fringe", "kira.no-pills"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.clasp", "mochi.ribbon"],
+          "artifact": "clasp and ribbon",
+          "geometry": "Measured editor frame with restrained gold title rule.",
+          "carrier": "Window shell carries clasp; title edge carries ribbon.",
+          "sourceLaws": ["mochi.clasp", "mochi.ribbon", "mochi.gracious-never-sweet"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.lens", "atlas.panel"],
+          "artifact": "lens bezel and panel bracket",
+          "geometry": "Double inset editor bezel with structural corner brackets.",
+          "carrier": "Window shell carries lens; corners carry panel.",
+          "sourceLaws": ["atlas.lens", "atlas.panel", "atlas.load-bearing"]
+        }
+      },
+      "motion": "Static chrome; focus uses the character production focus system.",
+      "reducedMotion": "No animated frame tracing."
+    },
+    {
+      "id": "anuime-terminal-window",
+      "category": "dev-tool-chrome",
+      "tier": "workhorse",
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.circuit", "kira.strap"],
+          "artifact": "circuit and strap",
+          "geometry": "Prompt rows align to a thin node trace inside a rectangular framed shell.",
+          "carrier": "Prompt rail carries circuit; shell carries strap.",
+          "sourceLaws": ["kira.circuit", "kira.strap", "kira.no-pills"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.ribbon", "mochi.pearl"],
+          "artifact": "ribbon and pearl",
+          "geometry": "Prompt rows align to a fine rule with one bead caret.",
+          "carrier": "Prompt rail carries ribbon; caret carries pearl.",
+          "sourceLaws": ["mochi.ribbon", "mochi.pearl"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.lens", "atlas.grid"],
+          "artifact": "lens bezel and diamond grid",
+          "geometry": "Double-frame viewport with survey-diamond prompt markers.",
+          "carrier": "Viewport carries lens; prompt markers carry grid.",
+          "sourceLaws": ["atlas.lens", "atlas.grid", "atlas.load-bearing"]
+        }
+      },
+      "motion": "Optional output reveal uses text-reveal cadence only when output is newly produced.",
+      "reducedMotion": "Show complete output and a static prompt marker."
+    },
+    {
+      "id": "anuime-file-tree",
+      "category": "dev-tool-chrome",
+      "tier": "workhorse",
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.circuit", "kira.hairpin"],
+          "artifact": "circuit and hairpin",
+          "geometry": "Hierarchy hangs from thin node stems; disclosure uses the open chevron.",
+          "carrier": "Depth guides carry circuit; disclosure carries hairpin.",
+          "sourceLaws": ["kira.circuit", "kira.hairpin"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.drape", "mochi.crescent"],
+          "artifact": "drape and crescent",
+          "geometry": "Hierarchy hangs from a measured quadratic guide; disclosure uses one crescent.",
+          "carrier": "Depth guides carry drape; disclosure carries crescent.",
+          "sourceLaws": ["mochi.drape", "mochi.crescent"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.strap", "atlas.panel"],
+          "artifact": "strap band and panel bracket",
+          "geometry": "Hierarchy uses structural bands; disclosure uses a rotating bracket corner.",
+          "carrier": "Depth guides carry strap; disclosure carries panel.",
+          "sourceLaws": ["atlas.strap", "atlas.panel", "atlas.load-bearing"]
+        }
+      },
+      "motion": "Expand/collapse uses the character general transition duration.",
+      "reducedMotion": "Reveal or hide descendants immediately."
+    },
+    {
+      "id": "anuime-code-diff",
+      "category": "dev-tool-chrome",
+      "tier": "workhorse",
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.shard", "kira.circuit"],
+          "artifact": "light shard and circuit",
+          "geometry": "Changed lines use small −18° shard markers on a thin connected gutter.",
+          "carrier": "Change markers carry shard; gutter carries circuit.",
+          "sourceLaws": ["kira.shard", "kira.circuit", "kira.directional-angle"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.ribbon", "mochi.star"],
+          "artifact": "ribbon and star",
+          "geometry": "Changed groups are divided by fine rules; one small state star marks consequential changes.",
+          "carrier": "Diff rules carry ribbon; change marker carries star.",
+          "sourceLaws": ["mochi.ribbon", "mochi.star", "mochi.gracious-never-sweet"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.grid", "atlas.strap"],
+          "artifact": "diamond grid and strap band",
+          "geometry": "Change states use survey diamonds on a measured gutter band.",
+          "carrier": "Change markers carry grid; gutter carries strap.",
+          "sourceLaws": ["atlas.grid", "atlas.strap", "atlas.load-bearing"]
+        }
+      },
+      "motion": "Static comparison; optional reveal uses text-reveal cadence once.",
+      "reducedMotion": "Show the complete diff."
+    },
+    {
+      "id": "anuime-connection-beam",
+      "category": "connection-data-visuals",
+      "tier": "expressive",
+      "allowedContexts": ["waiting", "transition", "ambient"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.circuit", "kira.fringe"],
+          "artifact": "circuit and fringe",
+          "geometry": "Connections are 1.5px node lines with transient energy traveling only on the 114° system axis.",
+          "carrier": "Connector carries circuit; transient sweep carries fringe.",
+          "sourceLaws": ["kira.circuit", "kira.fringe", "kira.directional-angle"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.pearl", "mochi.drape"],
+          "artifact": "pearl and drape",
+          "geometry": "Connections are measured fabric curves with sparse beads; no laser-like beam.",
+          "carrier": "Connector carries drape; traveling state carries pearl.",
+          "sourceLaws": ["mochi.pearl", "mochi.drape", "mochi.gracious-never-sweet"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.beam", "atlas.grid"],
+          "artifact": "light beam and diamond grid",
+          "geometry": "Paired 76° rays connect measured survey stations.",
+          "carrier": "Connector carries beam; endpoints carry grid.",
+          "sourceLaws": ["atlas.beam", "atlas.grid", "atlas.beam-angle"]
+        }
+      },
+      "motion": "Only active during waiting, transition, or explicit ambient demo state.",
+      "reducedMotion": "Render static connectors and endpoints."
+    },
+    {
+      "id": "anuime-node-map",
+      "category": "connection-data-visuals",
+      "tier": "workhorse",
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.circuit"],
+          "artifact": "circuit",
+          "geometry": "Active 3px nodes and outlined pending nodes connect through hairline supports.",
+          "carrier": "Map points and connectors carry circuit.",
+          "sourceLaws": ["kira.circuit", "kira.light-in-lines"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.pearl"],
+          "artifact": "pearl",
+          "geometry": "Measured bead stations rest on support lines without decorative scatter.",
+          "carrier": "Map points carry pearl.",
+          "sourceLaws": ["mochi.pearl", "mochi.gracious-never-sweet"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.grid"],
+          "artifact": "diamond grid",
+          "geometry": "Survey stations use outlined and filled 45° diamonds aligned to a measured grid.",
+          "carrier": "Map points carry grid.",
+          "sourceLaws": ["atlas.grid", "atlas.load-bearing"]
+        }
+      },
+      "motion": "Functional state changes use the character general transition duration.",
+      "reducedMotion": "Update nodes without interpolation."
+    },
+    {
+      "id": "anuime-orbit-map",
+      "category": "connection-data-visuals",
+      "tier": "expressive",
+      "allowedContexts": ["waiting", "ambient"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.collar", "kira.circuit"],
+          "artifact": "collar and circuit",
+          "geometry": "One anchored ring hosts sparse connected nodes; no unapproved orbital decoration.",
+          "carrier": "Orbit carries collar; stations carry circuit.",
+          "sourceLaws": ["kira.collar", "kira.circuit", "global.two-tier"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.pearl", "mochi.crescent"],
+          "artifact": "pearl and crescent",
+          "geometry": "Graduated beads follow a restrained crescent path.",
+          "carrier": "Stations carry pearl; path carries crescent.",
+          "sourceLaws": ["mochi.pearl", "mochi.crescent", "mochi.gracious-never-sweet"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.core", "atlas.grid"],
+          "artifact": "core ring and diamond grid",
+          "geometry": "Survey diamonds orbit a fixed core within measured structural rings.",
+          "carrier": "Center carries core; stations carry grid.",
+          "sourceLaws": ["atlas.core", "atlas.grid", "atlas.load-bearing"]
+        }
+      },
+      "motion": "Waiting/ambient only, using existing loader cadence.",
+      "reducedMotion": "Render a static ring and stations."
+    },
+    {
+      "id": "anuime-timeline-flow",
+      "category": "connection-data-visuals",
+      "tier": "workhorse",
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.circuit", "kira.hairpin"],
+          "artifact": "circuit and hairpin",
+          "geometry": "Events sit on a connected node line; current event uses one open chevron.",
+          "carrier": "Timeline carries circuit; current marker carries hairpin.",
+          "sourceLaws": ["kira.circuit", "kira.hairpin"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.pearl", "mochi.ribbon"],
+          "artifact": "pearl and ribbon",
+          "geometry": "Events are beads on a fine rule with restrained graduation.",
+          "carrier": "Timeline carries ribbon; events carry pearl.",
+          "sourceLaws": ["mochi.pearl", "mochi.ribbon"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.strap", "atlas.grid"],
+          "artifact": "strap band and diamond grid",
+          "geometry": "Events occupy measured band segments with survey-diamond stations.",
+          "carrier": "Timeline carries strap; events carry grid.",
+          "sourceLaws": ["atlas.strap", "atlas.grid", "atlas.load-bearing"]
+        }
+      },
+      "motion": "State change uses the character general transition duration.",
+      "reducedMotion": "Move the current marker immediately."
+    },
+    {
+      "id": "anuime-chart-callout",
+      "category": "connection-data-visuals",
+      "tier": "workhorse",
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.shard", "kira.collar"],
+          "artifact": "light shard and collar",
+          "geometry": "A small −18° marker anchors a thin ring-and-stem callout.",
+          "carrier": "Point marker carries shard; focus anchor carries collar.",
+          "sourceLaws": ["kira.shard", "kira.collar", "kira.directional-angle"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.star", "mochi.pearl"],
+          "artifact": "star and pearl",
+          "geometry": "One restrained state star anchors a bead callout.",
+          "carrier": "Point marker carries star; anchor carries pearl.",
+          "sourceLaws": ["mochi.star", "mochi.pearl", "mochi.gracious-never-sweet"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.panel", "atlas.core"],
+          "artifact": "panel bracket and core ring",
+          "geometry": "A small core anchors a bracketed measured callout.",
+          "carrier": "Point marker carries core; callout frame carries panel.",
+          "sourceLaws": ["atlas.panel", "atlas.core", "atlas.load-bearing"]
+        }
+      },
+      "motion": "Open/close uses the character general transition duration.",
+      "reducedMotion": "Show or hide immediately while preserving keyboard access."
+    },
+    {
+      "id": "anuime-scroll-stack",
+      "category": "scroll-parallax",
+      "tier": "expressive",
+      "allowedContexts": ["transition", "ambient"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.strap", "kira.fringe"],
+          "artifact": "strap and fringe",
+          "geometry": "Rectangular cards stack on fixed tracks; reveal edge follows 114°.",
+          "carrier": "Card shells carry strap; reveal edge carries fringe.",
+          "sourceLaws": ["kira.strap", "kira.fringe", "kira.directional-angle"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.drape", "mochi.ribbon"],
+          "artifact": "drape and ribbon",
+          "geometry": "Cards settle through measured fabric easing and retain fine horizontal trim.",
+          "carrier": "Stack motion carries drape; card rule carries ribbon.",
+          "sourceLaws": ["mochi.drape", "mochi.ribbon", "mochi.motion-never-brisk"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.strap", "atlas.panel"],
+          "artifact": "strap band and panel bracket",
+          "geometry": "Cards dock into measured band stations with corner brackets.",
+          "carrier": "Stack track carries strap; seated card carries panel.",
+          "sourceLaws": ["atlas.strap", "atlas.panel", "atlas.load-bearing"]
+        }
+      },
+      "motion": "Scroll-linked transition only; no autonomous loop.",
+      "reducedMotion": "Render all cards in normal document flow."
+    },
+    {
+      "id": "anuime-parallax-layer",
+      "category": "scroll-parallax",
+      "tier": "expressive",
+      "allowedContexts": ["ambient"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.fringe"],
+          "artifact": "fringe",
+          "geometry": "Thin paired lines offset only along the 114° directional axis.",
+          "carrier": "Moving layer carries fringe.",
+          "sourceLaws": ["kira.fringe", "kira.directional-angle", "global.two-tier"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.veil", "mochi.drape"],
+          "artifact": "veil and drape",
+          "geometry": "Localized veil layer settles on a measured quadratic path; never brisk.",
+          "carrier": "Moving layer carries veil; path carries drape.",
+          "sourceLaws": ["mochi.veil", "mochi.drape", "mochi.motion-never-brisk"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.beam"],
+          "artifact": "light beam",
+          "geometry": "Paired layers offset along the authored 76° beam pitch.",
+          "carrier": "Moving layer carries beam.",
+          "sourceLaws": ["atlas.beam", "atlas.beam-angle", "global.two-tier"]
+        }
+      },
+      "motion": "Pointer/scroll-linked ambient motion only; amplitude is determined from existing geometry in Phase B.",
+      "reducedMotion": "Render layers at their final static positions."
+    },
+    {
+      "id": "anuime-sticky-reveal",
+      "category": "scroll-parallax",
+      "tier": "expressive",
+      "allowedContexts": ["transition"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.fringe", "kira.collar"],
+          "artifact": "fringe and collar",
+          "geometry": "Content reveals on the 114° axis and resolves to an anchored ring.",
+          "carrier": "Reveal edge carries fringe; resolved anchor carries collar.",
+          "sourceLaws": ["kira.fringe", "kira.collar", "kira.directional-angle"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.drape", "mochi.veil"],
+          "artifact": "drape and veil",
+          "geometry": "Content settles through a measured curve with a localized wash.",
+          "carrier": "Reveal path carries drape; resolved wash carries veil.",
+          "sourceLaws": ["mochi.drape", "mochi.veil", "mochi.warmth-as-feedback"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.panel", "atlas.beam"],
+          "artifact": "panel bracket and beam",
+          "geometry": "Content travels along the 76° beam and structurally seats into brackets.",
+          "carrier": "Reveal edge carries beam; resolved frame carries panel.",
+          "sourceLaws": ["atlas.panel", "atlas.beam", "atlas.beam-angle"]
+        }
+      },
+      "motion": "Scroll-triggered once per visit using the existing text-reveal cadence.",
+      "reducedMotion": "Show content in normal document flow."
+    },
+    {
+      "id": "anuime-cursor-highlight",
+      "category": "cursor",
+      "tier": "expressive",
+      "allowedContexts": ["ambient"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.earring", "kira.collar"],
+          "artifact": "earring and collar",
+          "geometry": "Outlined 12×12 kite and thin ring mark the pointer without broad glow.",
+          "carrier": "Pointer marker carries earring; target anchor carries collar.",
+          "sourceLaws": ["kira.earring", "kira.collar", "kira.light-in-lines"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.pearl", "mochi.veil"],
+          "artifact": "pearl and veil",
+          "geometry": "One bead and localized wash mark the interaction point; no persistent full-surface bloom.",
+          "carrier": "Pointer marker carries pearl; target feedback carries veil.",
+          "sourceLaws": ["mochi.pearl", "mochi.veil", "mochi.warmth-as-feedback"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.core", "atlas.panel"],
+          "artifact": "core ring and panel bracket",
+          "geometry": "Small core marker docks into target brackets.",
+          "carrier": "Pointer marker carries core; target feedback carries panel.",
+          "sourceLaws": ["atlas.core", "atlas.panel", "atlas.selection-structural"]
+        }
+      },
+      "motion": "Desktop pointer enhancement only; never replaces the native cursor or focus indicator.",
+      "reducedMotion": "Disable the custom follower and retain native pointer/focus."
+    },
+    {
+      "id": "anuime-cursor-trail",
+      "category": "cursor",
+      "tier": "expressive",
+      "allowedContexts": ["ambient"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.circuit", "kira.fringe"],
+          "artifact": "circuit and fringe",
+          "geometry": "A short finite node trace follows the 114° direction; no broad cyan trail.",
+          "carrier": "Trail carries circuit; directional decay carries fringe.",
+          "sourceLaws": ["kira.circuit", "kira.fringe", "kira.light-in-lines"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.pearl", "mochi.drape"],
+          "artifact": "pearl and drape",
+          "geometry": "At most three restrained beads settle on a measured curve; literal glitter is forbidden.",
+          "carrier": "Trail points carry pearl; settling path carries drape.",
+          "sourceLaws": ["mochi.pearl", "mochi.drape", "mochi.gracious-never-sweet"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.grid", "atlas.beam"],
+          "artifact": "diamond grid and beam",
+          "geometry": "A finite sequence of survey diamonds decays along the 76° beam axis.",
+          "carrier": "Trail points carry grid; direction carries beam.",
+          "sourceLaws": ["atlas.grid", "atlas.beam", "atlas.beam-angle"]
+        }
+      },
+      "motion": "Opt-in ambient demo only; finite tail with deterministic placement.",
+      "reducedMotion": "Disable the trail."
+    },
+    {
+      "id": "anuime-page-loader",
+      "category": "loaders",
+      "tier": "expressive",
+      "allowedContexts": ["waiting", "transition"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.power"],
+          "artifact": "seven-plus-power blade assembly",
+          "geometry": "Use the approved blade-slash assembly and 114° fringe motion verbatim.",
+          "carrier": "Full waiting assembly carries Kira power.",
+          "sourceLaws": ["kira.power", "kira.directional-angle", "global.seven-plus-power"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.power"],
+          "artifact": "seven-plus-power bloom-orbit assembly",
+          "geometry": "Use the approved restrained pearl-orbit and bloom assembly verbatim.",
+          "carrier": "Full waiting assembly carries Mochi power.",
+          "sourceLaws": ["mochi.power", "mochi.gracious-never-sweet", "global.seven-plus-power"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.power"],
+          "artifact": "seven-plus-power HUD assembly",
+          "geometry": "Use the approved measured HUD/core assembly verbatim.",
+          "carrier": "Full waiting assembly carries Atlas power.",
+          "sourceLaws": ["atlas.power", "atlas.load-bearing", "global.seven-plus-power"]
+        }
+      },
+      "motion": "Use motion.json characters.<character>.expressiveMoments.loader verbatim.",
+      "reducedMotion": "Use the loader's documented static fallback."
+    },
+    {
+      "id": "anuime-progress-loader",
+      "category": "loaders",
+      "tier": "expressive",
+      "allowedContexts": ["waiting"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.circuit", "kira.fringe"],
+          "artifact": "circuit and fringe",
+          "geometry": "Connected progress nodes receive a single 114° traveling line.",
+          "carrier": "Progress carries circuit; transient sweep carries fringe.",
+          "sourceLaws": ["kira.circuit", "kira.fringe", "global.two-tier"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.pearl", "mochi.ribbon"],
+          "artifact": "pearl and ribbon",
+          "geometry": "Graduated beads advance along a fine rule with settling timing.",
+          "carrier": "Progress track carries ribbon; states carry pearl.",
+          "sourceLaws": ["mochi.pearl", "mochi.ribbon", "mochi.motion-never-brisk"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.strap", "atlas.grid"],
+          "artifact": "strap band and diamond grid",
+          "geometry": "Measured band segments fill toward a survey-diamond terminus.",
+          "carrier": "Progress track carries strap; terminus carries grid.",
+          "sourceLaws": ["atlas.strap", "atlas.grid", "atlas.load-bearing"]
+        }
+      },
+      "motion": "Waiting only; deterministic bounded progress or indeterminate cadence from existing loader motion.",
+      "reducedMotion": "Render current progress as a static state."
+    },
+    {
+      "id": "anuime-success-burst",
+      "category": "delight",
+      "tier": "expressive",
+      "allowedContexts": ["success"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.power", "kira.shard"],
+          "artifact": "power assembly and light shard",
+          "geometry": "One-shot blade-light resolves into small authored shards on the 114° axis.",
+          "carrier": "Success assembly carries power; fragments carry shard.",
+          "sourceLaws": ["kira.power", "kira.shard", "global.two-tier"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.power", "mochi.star"],
+          "artifact": "power assembly and star",
+          "geometry": "One restrained bloom resolves to a sparse set of four-point markers; never glitter.",
+          "carrier": "Success assembly carries power; terminal markers carry star.",
+          "sourceLaws": ["mochi.power", "mochi.star", "mochi.gracious-never-sweet"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.power", "atlas.grid"],
+          "artifact": "power assembly and diamond grid",
+          "geometry": "One-shot HUD lock resolves to measured survey diamonds.",
+          "carrier": "Success assembly carries power; terminal markers carry grid.",
+          "sourceLaws": ["atlas.power", "atlas.grid", "atlas.load-bearing"]
+        }
+      },
+      "motion": "Use motion.json characters.<character>.expressiveMoments.success verbatim and run once.",
+      "reducedMotion": "Show the documented static lock/success state."
+    },
+    {
+      "id": "anuime-particle-field",
+      "category": "delight",
+      "tier": "expressive",
+      "allowedContexts": ["ambient", "waiting"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.circuit", "kira.shard"],
+          "artifact": "circuit and light shard",
+          "geometry": "Sparse connected nodes with occasional small −18° shards; no freeform particle shapes.",
+          "carrier": "Field points carry circuit; exceptional points carry shard.",
+          "sourceLaws": ["kira.circuit", "kira.shard", "kira.light-in-lines"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.pearl", "mochi.veil"],
+          "artifact": "pearl and veil",
+          "geometry": "Sparse beads inside one localized wash; density remains restrained and non-saccharine.",
+          "carrier": "Field points carry pearl; locality carries veil.",
+          "sourceLaws": ["mochi.pearl", "mochi.veil", "mochi.gracious-never-sweet"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.grid", "atlas.core"],
+          "artifact": "diamond grid and core ring",
+          "geometry": "Survey diamonds and rare core stations remain grid-aligned and structural.",
+          "carrier": "Field points carry grid; anchor carries core.",
+          "sourceLaws": ["atlas.grid", "atlas.core", "atlas.load-bearing"]
+        }
+      },
+      "motion": "Ambient/waiting only; deterministic positions and character loader cadence.",
+      "reducedMotion": "Render a sparse static field."
+    },
+    {
+      "id": "anuime-confetti-field",
+      "category": "delight",
+      "tier": "expressive",
+      "allowedContexts": ["success"],
+      "characters": {
+        "kira": {
+          "motifIds": ["kira.shard", "kira.fringe"],
+          "artifact": "light shard and fringe",
+          "geometry": "Sparse narrow shards travel only on the 114° axis; no generic circles or ribbons.",
+          "carrier": "Success fragments carry shard; direction carries fringe.",
+          "sourceLaws": ["kira.shard", "kira.fringe", "kira.directional-angle"]
+        },
+        "mochi": {
+          "motifIds": ["mochi.ribbon", "mochi.star"],
+          "artifact": "ribbon and star",
+          "geometry": "Restrained success fall of a few fine rule fragments and at most one small star; literal party confetti is rejected.",
+          "carrier": "Success fragments carry ribbon; terminal marker carries star.",
+          "sourceLaws": ["mochi.ribbon", "mochi.star", "mochi.gracious-never-sweet"]
+        },
+        "atlas": {
+          "motifIds": ["atlas.strap", "atlas.grid"],
+          "artifact": "strap band and diamond grid",
+          "geometry": "Measured band segments and survey diamonds disperse from a structural origin.",
+          "carrier": "Success fragments carry strap and grid.",
+          "sourceLaws": ["atlas.strap", "atlas.grid", "atlas.load-bearing"]
+        }
+      },
+      "motion": "One-shot success only; never persistent.",
+      "reducedMotion": "Show a static sparse success arrangement, then remove it."
+    }
+  ],
+  "composedSections": [
+    {
+      "id": "anuime-sign-in-section",
+      "category": "auth",
+      "existing": [
+        "anuime-card",
+        "anuime-field",
+        "anuime-input",
+        "anuime-checkbox",
+        "anuime-button",
+        "anuime-separator",
+        "anuime-alert"
+      ],
+      "new": ["anuime-framed-background", "anuime-border-trace-button"]
+    },
+    {
+      "id": "anuime-sign-up-section",
+      "category": "auth",
+      "existing": [
+        "anuime-card",
+        "anuime-field",
+        "anuime-input",
+        "anuime-input-group",
+        "anuime-checkbox",
+        "anuime-button",
+        "anuime-progress"
+      ],
+      "new": ["anuime-line-grid-background", "anuime-loading-button"]
+    },
+    {
+      "id": "anuime-auth-split-section",
+      "category": "auth",
+      "existing": [
+        "anuime-card",
+        "anuime-field",
+        "anuime-input",
+        "anuime-button",
+        "anuime-typography"
+      ],
+      "new": ["anuime-radial-field-background", "anuime-trace-card", "anuime-border-trace-button"]
+    },
+
+    {
+      "id": "anuime-pricing-cards-section",
+      "category": "pricing",
+      "existing": [
+        "anuime-card",
+        "anuime-badge",
+        "anuime-button",
+        "anuime-separator",
+        "anuime-tooltip"
+      ],
+      "new": ["anuime-comparison-card", "anuime-border-trace-button"]
+    },
+    {
+      "id": "anuime-pricing-comparison-section",
+      "category": "pricing",
+      "existing": [
+        "anuime-table",
+        "anuime-checkbox",
+        "anuime-badge",
+        "anuime-button",
+        "anuime-tooltip"
+      ],
+      "new": ["anuime-comparison-card", "anuime-sticky-rail"]
+    },
+    {
+      "id": "anuime-pricing-calculator-section",
+      "category": "pricing",
+      "existing": [
+        "anuime-card",
+        "anuime-slider",
+        "anuime-toggle",
+        "anuime-input",
+        "anuime-button"
+      ],
+      "new": ["anuime-metric-card", "anuime-number-ticker", "anuime-copy-button"]
+    },
+
+    {
+      "id": "anuime-blog-featured-section",
+      "category": "blog",
+      "existing": [
+        "anuime-card",
+        "anuime-badge",
+        "anuime-avatar",
+        "anuime-button",
+        "anuime-aspect-ratio"
+      ],
+      "new": ["anuime-trace-card", "anuime-line-reveal"]
+    },
+    {
+      "id": "anuime-blog-grid-section",
+      "category": "blog",
+      "existing": [
+        "anuime-card",
+        "anuime-badge",
+        "anuime-avatar",
+        "anuime-pagination",
+        "anuime-aspect-ratio"
+      ],
+      "new": ["anuime-bento-card", "anuime-sticky-reveal"]
+    },
+    {
+      "id": "anuime-article-reader-section",
+      "category": "blog",
+      "existing": [
+        "anuime-breadcrumb",
+        "anuime-typography",
+        "anuime-scroll-area",
+        "anuime-separator",
+        "anuime-button"
+      ],
+      "new": ["anuime-scroll-progress", "anuime-sticky-rail", "anuime-copy-button"]
+    },
+
+    {
+      "id": "anuime-feature-bento-section",
+      "category": "features",
+      "existing": ["anuime-card", "anuime-badge", "anuime-button", "anuime-tooltip"],
+      "new": ["anuime-bento-card", "anuime-signal-card", "anuime-node-field-background"]
+    },
+    {
+      "id": "anuime-feature-timeline-section",
+      "category": "features",
+      "existing": ["anuime-card", "anuime-badge", "anuime-button"],
+      "new": ["anuime-timeline-flow", "anuime-sticky-reveal", "anuime-trace-card"]
+    },
+    {
+      "id": "anuime-feature-comparison-section",
+      "category": "features",
+      "existing": ["anuime-tabs", "anuime-table", "anuime-badge", "anuime-button"],
+      "new": ["anuime-comparison-card", "anuime-chart-callout"]
+    },
+
+    {
+      "id": "anuime-hero-signal-section",
+      "category": "hero",
+      "existing": ["anuime-badge", "anuime-button", "anuime-button-group", "anuime-typography"],
+      "new": ["anuime-line-grid-background", "anuime-line-reveal", "anuime-border-trace-button"]
+    },
+    {
+      "id": "anuime-hero-terminal-section",
+      "category": "hero",
+      "existing": ["anuime-badge", "anuime-button", "anuime-typography"],
+      "new": ["anuime-terminal-window", "anuime-typewriter", "anuime-beam-background"]
+    },
+    {
+      "id": "anuime-hero-orbit-section",
+      "category": "hero",
+      "existing": ["anuime-badge", "anuime-button", "anuime-avatar"],
+      "new": ["anuime-orbit-map", "anuime-radial-field-background", "anuime-word-cycle"]
+    },
+    {
+      "id": "anuime-hero-bento-section",
+      "category": "hero",
+      "existing": ["anuime-badge", "anuime-button", "anuime-card"],
+      "new": ["anuime-bento-card", "anuime-metric-card", "anuime-node-field-background"]
+    },
+    {
+      "id": "anuime-hero-developer-section",
+      "category": "hero",
+      "existing": ["anuime-tabs", "anuime-button", "anuime-kbd", "anuime-badge"],
+      "new": ["anuime-code-window", "anuime-code-diff", "anuime-copy-button"]
+    },
+
+    {
+      "id": "anuime-navbar-section",
+      "category": "nav",
+      "existing": [
+        "anuime-navigation-menu",
+        "anuime-button",
+        "anuime-dropdown-menu",
+        "anuime-avatar"
+      ],
+      "new": ["anuime-border-trace-button"]
+    },
+    {
+      "id": "anuime-floating-nav-section",
+      "category": "nav",
+      "existing": ["anuime-tooltip", "anuime-avatar", "anuime-button"],
+      "new": ["anuime-floating-dock", "anuime-scroll-progress"]
+    },
+    {
+      "id": "anuime-docs-nav-section",
+      "category": "nav",
+      "existing": ["anuime-command-palette", "anuime-breadcrumb", "anuime-button", "anuime-kbd"],
+      "new": ["anuime-command-dock", "anuime-sticky-rail"]
+    },
+
+    {
+      "id": "anuime-logo-cloud-section",
+      "category": "social-proof",
+      "existing": ["anuime-card", "anuime-tooltip", "anuime-separator"],
+      "new": ["anuime-line-grid-background", "anuime-trace-card"]
+    },
+    {
+      "id": "anuime-testimonial-grid-section",
+      "category": "social-proof",
+      "existing": ["anuime-card", "anuime-avatar", "anuime-badge"],
+      "new": ["anuime-bento-card", "anuime-trace-card"]
+    },
+    {
+      "id": "anuime-customer-metrics-section",
+      "category": "social-proof",
+      "existing": ["anuime-card", "anuime-avatar", "anuime-badge", "anuime-tooltip"],
+      "new": ["anuime-metric-card", "anuime-number-ticker", "anuime-chart-callout"]
+    },
+
+    {
+      "id": "anuime-cta-banner-section",
+      "category": "cta",
+      "existing": ["anuime-card", "anuime-button", "anuime-button-group", "anuime-badge"],
+      "new": ["anuime-framed-background", "anuime-border-trace-button"]
+    },
+    {
+      "id": "anuime-cta-terminal-section",
+      "category": "cta",
+      "existing": ["anuime-button", "anuime-input", "anuime-kbd"],
+      "new": ["anuime-terminal-window", "anuime-typewriter", "anuime-copy-button"]
+    },
+    {
+      "id": "anuime-cta-success-section",
+      "category": "cta",
+      "existing": ["anuime-card", "anuime-button", "anuime-badge"],
+      "new": ["anuime-success-burst", "anuime-loading-button"]
+    },
+
+    {
+      "id": "anuime-stats-grid-section",
+      "category": "stats",
+      "existing": ["anuime-card", "anuime-badge", "anuime-tooltip"],
+      "new": ["anuime-metric-card", "anuime-bento-card", "anuime-number-ticker"]
+    },
+    {
+      "id": "anuime-stats-timeline-section",
+      "category": "stats",
+      "existing": ["anuime-card", "anuime-badge", "anuime-separator"],
+      "new": ["anuime-timeline-flow", "anuime-chart-callout", "anuime-sticky-reveal"]
+    },
+    {
+      "id": "anuime-live-stats-section",
+      "category": "stats",
+      "existing": ["anuime-card", "anuime-progress", "anuime-badge", "anuime-tooltip"],
+      "new": ["anuime-node-map", "anuime-signal-card", "anuime-number-ticker"]
+    },
+
+    {
+      "id": "anuime-team-grid-section",
+      "category": "team",
+      "existing": ["anuime-card", "anuime-avatar", "anuime-badge", "anuime-button"],
+      "new": ["anuime-bento-card", "anuime-trace-card"]
+    },
+    {
+      "id": "anuime-team-orbit-section",
+      "category": "team",
+      "existing": ["anuime-avatar", "anuime-tooltip", "anuime-card"],
+      "new": ["anuime-orbit-map", "anuime-node-map"]
+    },
+    {
+      "id": "anuime-leadership-section",
+      "category": "team",
+      "existing": ["anuime-card", "anuime-avatar", "anuime-tabs", "anuime-button"],
+      "new": ["anuime-comparison-card", "anuime-line-reveal"]
+    },
+
+    {
+      "id": "anuime-faq-accordion-section",
+      "category": "faq",
+      "existing": ["anuime-accordion", "anuime-button", "anuime-badge"],
+      "new": ["anuime-framed-background", "anuime-sticky-rail"]
+    },
+    {
+      "id": "anuime-faq-search-section",
+      "category": "faq",
+      "existing": ["anuime-command-palette", "anuime-input", "anuime-accordion", "anuime-kbd"],
+      "new": ["anuime-command-dock", "anuime-border-trace-button"]
+    },
+    {
+      "id": "anuime-faq-categories-section",
+      "category": "faq",
+      "existing": ["anuime-tabs", "anuime-card", "anuime-accordion", "anuime-badge"],
+      "new": ["anuime-bento-card", "anuime-trace-card"]
+    },
+
+    {
+      "id": "anuime-contact-form-section",
+      "category": "contact",
+      "existing": [
+        "anuime-card",
+        "anuime-field",
+        "anuime-input",
+        "anuime-textarea",
+        "anuime-select",
+        "anuime-button",
+        "anuime-alert"
+      ],
+      "new": ["anuime-loading-button", "anuime-framed-background"]
+    },
+    {
+      "id": "anuime-contact-directory-section",
+      "category": "contact",
+      "existing": ["anuime-card", "anuime-avatar", "anuime-badge", "anuime-button"],
+      "new": ["anuime-bento-card", "anuime-node-map"]
+    },
+    {
+      "id": "anuime-contact-support-section",
+      "category": "contact",
+      "existing": ["anuime-card", "anuime-tabs", "anuime-accordion", "anuime-button"],
+      "new": ["anuime-signal-card", "anuime-command-dock"]
+    },
+
+    {
+      "id": "anuime-dashboard-overview-section",
+      "category": "dashboard",
+      "existing": [
+        "anuime-sidebar",
+        "anuime-toolbar",
+        "anuime-card",
+        "anuime-data-table",
+        "anuime-badge"
+      ],
+      "new": ["anuime-metric-card", "anuime-chart-callout", "anuime-sticky-rail"]
+    },
+    {
+      "id": "anuime-dashboard-operations-section",
+      "category": "dashboard",
+      "existing": [
+        "anuime-sidebar",
+        "anuime-toolbar",
+        "anuime-table",
+        "anuime-progress",
+        "anuime-alert"
+      ],
+      "new": ["anuime-signal-card", "anuime-node-map", "anuime-timeline-flow"]
+    },
+    {
+      "id": "anuime-dashboard-developer-section",
+      "category": "dashboard",
+      "existing": ["anuime-sidebar", "anuime-tabs", "anuime-command-palette", "anuime-badge"],
+      "new": [
+        "anuime-code-window",
+        "anuime-terminal-window",
+        "anuime-file-tree",
+        "anuime-code-diff"
+      ]
+    },
+    {
+      "id": "anuime-dashboard-network-section",
+      "category": "dashboard",
+      "existing": ["anuime-sidebar", "anuime-card", "anuime-tooltip", "anuime-badge"],
+      "new": ["anuime-node-map", "anuime-connection-beam", "anuime-chart-callout"]
+    },
+
+    {
+      "id": "anuime-product-grid-section",
+      "category": "ecommerce",
+      "existing": [
+        "anuime-card",
+        "anuime-badge",
+        "anuime-button",
+        "anuime-select",
+        "anuime-pagination",
+        "anuime-aspect-ratio"
+      ],
+      "new": ["anuime-bento-card", "anuime-loading-button"]
+    },
+    {
+      "id": "anuime-product-detail-section",
+      "category": "ecommerce",
+      "existing": [
+        "anuime-breadcrumb",
+        "anuime-card",
+        "anuime-tabs",
+        "anuime-radio-group",
+        "anuime-button",
+        "anuime-aspect-ratio"
+      ],
+      "new": ["anuime-signal-card", "anuime-border-trace-button"]
+    },
+    {
+      "id": "anuime-cart-section",
+      "category": "ecommerce",
+      "existing": [
+        "anuime-sheet",
+        "anuime-table",
+        "anuime-input",
+        "anuime-button",
+        "anuime-separator"
+      ],
+      "new": ["anuime-number-ticker", "anuime-loading-button"]
+    },
+    {
+      "id": "anuime-checkout-section",
+      "category": "ecommerce",
+      "existing": [
+        "anuime-card",
+        "anuime-field",
+        "anuime-input",
+        "anuime-radio-group",
+        "anuime-checkbox",
+        "anuime-button",
+        "anuime-progress"
+      ],
+      "new": ["anuime-progress-loader", "anuime-success-burst"]
+    },
+
+    {
+      "id": "anuime-onboarding-steps-section",
+      "category": "onboarding",
+      "existing": [
+        "anuime-card",
+        "anuime-progress",
+        "anuime-button",
+        "anuime-field",
+        "anuime-input"
+      ],
+      "new": ["anuime-timeline-flow", "anuime-loading-button"]
+    },
+    {
+      "id": "anuime-onboarding-workspace-section",
+      "category": "onboarding",
+      "existing": [
+        "anuime-card",
+        "anuime-radio-group",
+        "anuime-avatar",
+        "anuime-button",
+        "anuime-alert"
+      ],
+      "new": ["anuime-bento-card", "anuime-border-trace-button"]
+    },
+    {
+      "id": "anuime-onboarding-complete-section",
+      "category": "onboarding",
+      "existing": ["anuime-card", "anuime-badge", "anuime-button"],
+      "new": ["anuime-success-burst", "anuime-confetti-field"]
+    },
+
+    {
+      "id": "anuime-changelog-feed-section",
+      "category": "changelog",
+      "existing": ["anuime-badge", "anuime-card", "anuime-pagination", "anuime-separator"],
+      "new": ["anuime-timeline-flow", "anuime-sticky-rail"]
+    },
+    {
+      "id": "anuime-release-detail-section",
+      "category": "changelog",
+      "existing": ["anuime-breadcrumb", "anuime-badge", "anuime-typography", "anuime-button"],
+      "new": ["anuime-code-diff", "anuime-copy-button", "anuime-line-reveal"]
+    },
+
+    {
+      "id": "anuime-careers-list-section",
+      "category": "careers",
+      "existing": [
+        "anuime-card",
+        "anuime-badge",
+        "anuime-select",
+        "anuime-button",
+        "anuime-pagination"
+      ],
+      "new": ["anuime-bento-card", "anuime-trace-card"]
+    },
+    {
+      "id": "anuime-career-detail-section",
+      "category": "careers",
+      "existing": [
+        "anuime-breadcrumb",
+        "anuime-card",
+        "anuime-typography",
+        "anuime-button",
+        "anuime-accordion"
+      ],
+      "new": ["anuime-sticky-rail", "anuime-border-trace-button"]
+    },
+
+    {
+      "id": "anuime-status-overview-section",
+      "category": "status",
+      "existing": [
+        "anuime-card",
+        "anuime-badge",
+        "anuime-alert",
+        "anuime-progress",
+        "anuime-tooltip"
+      ],
+      "new": ["anuime-signal-card", "anuime-node-map", "anuime-timeline-flow"]
+    },
+    {
+      "id": "anuime-incident-detail-section",
+      "category": "status",
+      "existing": ["anuime-breadcrumb", "anuime-alert", "anuime-badge", "anuime-card"],
+      "new": ["anuime-timeline-flow", "anuime-chart-callout", "anuime-copy-button"]
+    },
+
+    {
+      "id": "anuime-waitlist-form-section",
+      "category": "waitlist",
+      "existing": ["anuime-card", "anuime-field", "anuime-input", "anuime-button", "anuime-badge"],
+      "new": ["anuime-loading-button", "anuime-radial-field-background"]
+    },
+    {
+      "id": "anuime-waitlist-success-section",
+      "category": "waitlist",
+      "existing": ["anuime-card", "anuime-badge", "anuime-button"],
+      "new": ["anuime-number-ticker", "anuime-success-burst", "anuime-particle-field"]
+    },
+
+    {
+      "id": "anuime-docs-shell-section",
+      "category": "docs",
+      "existing": [
+        "anuime-sidebar",
+        "anuime-breadcrumb",
+        "anuime-command-palette",
+        "anuime-scroll-area",
+        "anuime-typography"
+      ],
+      "new": ["anuime-sticky-rail", "anuime-scroll-progress", "anuime-command-dock"]
+    },
+    {
+      "id": "anuime-api-reference-section",
+      "category": "docs",
+      "existing": ["anuime-tabs", "anuime-accordion", "anuime-table", "anuime-badge", "anuime-kbd"],
+      "new": ["anuime-code-window", "anuime-copy-button", "anuime-file-tree"]
+    },
+    {
+      "id": "anuime-docs-example-section",
+      "category": "docs",
+      "existing": ["anuime-card", "anuime-tabs", "anuime-button", "anuime-alert"],
+      "new": [
+        "anuime-code-window",
+        "anuime-terminal-window",
+        "anuime-code-diff",
+        "anuime-copy-button"
+      ]
+    }
+  ],
+  "contrastAudit": {
+    "policy": {
+      "bodyTextMinimum": 4.5,
+      "uiComponentMinimum": 3.0,
+      "tokenChangesAuthorized": false,
+      "pairingRestriction": "New items may use only the pairings listed here. Any additional pairing discovered in Phase B requires a new report before implementation."
+    },
+    "pairings": {
+      "kira-light": {
+        "foreground/background": 14.9765,
+        "foreground/surface": 15.8633,
+        "mutedForeground/background": 4.8885,
+        "mutedForeground/surface": 5.1779,
+        "accent/background": 2.7588,
+        "accent/surface": 2.9221
+      },
+      "kira-dark": {
+        "foreground/background": 15.1316,
+        "foreground/surface": 14.1406,
+        "mutedForeground/background": 6.1459,
+        "mutedForeground/surface": 5.7435,
+        "accent/background": 10.7851,
+        "accent/surface": 10.0788
+      },
+      "mochi-light": {
+        "foreground/background": 11.9224,
+        "foreground/surface": 12.6343,
+        "mutedForeground/background": 4.5,
+        "mutedForeground/surface": 4.7687,
+        "rose/background": 3.2646,
+        "rose/surface": 3.4595,
+        "gold/background": 2.8729,
+        "gold/surface": 3.0444
+      },
+      "mochi-dark": {
+        "foreground/background": 14.134,
+        "foreground/surface": 12.7478,
+        "mutedForeground/background": 5.8355,
+        "mutedForeground/surface": 5.2631,
+        "rose/background": 6.6206,
+        "rose/surface": 5.9712,
+        "gold/background": 8.0424,
+        "gold/surface": 7.2536
+      },
+      "atlas-light": {
+        "foreground/background": 11.7841,
+        "foreground/surface": 12.5275,
+        "mutedForeground/background": 4.5046,
+        "mutedForeground/surface": 4.7888,
+        "cobalt/background": 5.9188,
+        "cobalt/surface": 6.2922
+      },
+      "atlas-dark": {
+        "foreground/background": 15.6567,
+        "foreground/surface": 14.3251,
+        "mutedForeground/background": 6.9221,
+        "mutedForeground/surface": 6.3334,
+        "cobalt/background": 5.8267,
+        "cobalt/surface": 5.3311
+      }
+    },
+    "failures": [
+      {
+        "theme": "kira-light",
+        "pairings": ["accent/background 2.7588:1", "accent/surface 2.9221:1"],
+        "handling": "The cyan accent may remain decorative hairline/emphasis, but cannot be the sole indicator, boundary, or affordance. Functional state must also use foreground text, geometry, native semantics, or another passing non-color cue. No token adjustment proposed."
+      },
+      {
+        "theme": "mochi-light",
+        "pairings": ["gold/background 2.8729:1"],
+        "handling": "Gold on background may remain nonessential hairline trim only. Functional gold markers must sit on surface (3.0444:1) or be paired with a passing shape/text cue. No token adjustment proposed."
+      }
+    ],
+    "result": "All proposed body-text pairings pass WCAG AA. The three reported non-text UI failures are explicitly constrained to decorative/non-sole-indicator use; no token values are changed."
+  },
+  "phaseBProposedBatches": [
+    [
+      "anuime-line-grid-background",
+      "anuime-radial-field-background",
+      "anuime-beam-background",
+      "anuime-node-field-background",
+      "anuime-framed-background",
+      "anuime-signal-card",
+      "anuime-trace-card",
+      "anuime-metric-card",
+      "anuime-bento-card",
+      "anuime-comparison-card",
+      "anuime-line-reveal",
+      "anuime-word-cycle",
+      "anuime-typewriter",
+      "anuime-number-ticker"
+    ],
+    [
+      "anuime-scramble-text",
+      "anuime-border-trace-button",
+      "anuime-loading-button",
+      "anuime-copy-button",
+      "anuime-split-button",
+      "anuime-floating-dock",
+      "anuime-command-dock",
+      "anuime-scroll-progress",
+      "anuime-sticky-rail",
+      "anuime-code-window",
+      "anuime-terminal-window",
+      "anuime-file-tree",
+      "anuime-code-diff",
+      "anuime-connection-beam"
+    ],
+    [
+      "anuime-node-map",
+      "anuime-orbit-map",
+      "anuime-timeline-flow",
+      "anuime-chart-callout",
+      "anuime-scroll-stack",
+      "anuime-parallax-layer",
+      "anuime-sticky-reveal",
+      "anuime-cursor-highlight",
+      "anuime-cursor-trail",
+      "anuime-page-loader",
+      "anuime-progress-loader",
+      "anuime-success-burst",
+      "anuime-particle-field",
+      "anuime-confetti-field"
+    ]
+  ],
+  "nextGate": "Await explicit Phase A inventory approval before creating any registry item or block."
+}

@@ -1,0 +1,17 @@
+---
+name: anuime-number-ticker
+type: registry:ui
+title: "AnUIme Number Ticker"
+description: "A character-aware one-shot number transition with a static reduced-motion fallback."
+localRegistryDependencies:
+  - anuime-recipe
+files:
+  - path: anuime-number-ticker.tsx
+    type: registry:ui
+---
+
+Expressive tier only. Use for transition or success feedback, never persistent autonomous motion.
+
+```tsx
+import { AnuimeNumberTicker } from "@/components/ui/anuime-number-ticker";
+```

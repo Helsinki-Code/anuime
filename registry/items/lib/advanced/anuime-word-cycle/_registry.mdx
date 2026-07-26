@@ -1,0 +1,17 @@
+---
+name: anuime-word-cycle
+type: registry:ui
+title: "AnUIme Word Cycle"
+description: "A character-aware word cycle with accessible controls and a static motion fallback."
+localRegistryDependencies:
+  - anuime-recipe
+files:
+  - path: anuime-word-cycle.tsx
+    type: registry:ui
+---
+
+Expressive tier only. Autoplay is disabled when reduced motion is requested; controls remain available.
+
+```tsx
+import { AnuimeWordCycle } from "@/components/ui/anuime-word-cycle";
+```
