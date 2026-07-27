@@ -1,0 +1,31 @@
+---
+name: anuime-blog-grid-section
+type: registry:block
+title: "AnUIme Blog Grid Section"
+description: "Balance editorial hierarchy with fast filtering and predictable pagination."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-card
+  - anuime-badge
+  - anuime-avatar
+  - anuime-pagination
+  - anuime-aspect-ratio
+  - anuime-bento-card
+  - anuime-sticky-reveal
+files:
+  - path: anuime-blog-grid-section.tsx
+    type: registry:block
+---
+
+A publication built for discovery. Balance editorial hierarchy with fast filtering and predictable pagination.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeBlogGridSection } from "@/components/blocks/anuime-blog-grid-section";
+```

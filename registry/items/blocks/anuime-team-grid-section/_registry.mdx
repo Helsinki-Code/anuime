@@ -1,0 +1,30 @@
+---
+name: anuime-team-grid-section
+type: registry:block
+title: "AnUIme Team Grid Section"
+description: "Organize roles and expertise without flattening everyone into identical cards."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-card
+  - anuime-avatar
+  - anuime-badge
+  - anuime-button
+  - anuime-bento-card
+  - anuime-trace-card
+files:
+  - path: anuime-team-grid-section.tsx
+    type: registry:block
+---
+
+Meet the people carrying the work. Organize roles and expertise without flattening everyone into identical cards.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeTeamGridSection } from "@/components/blocks/anuime-team-grid-section";
+```

@@ -1,0 +1,30 @@
+---
+name: anuime-leadership-section
+type: registry:block
+title: "AnUIme Leadership Section"
+description: "Pair each leader with scope, decisions, and the principles guiding their work."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-card
+  - anuime-avatar
+  - anuime-tabs
+  - anuime-button
+  - anuime-comparison-card
+  - anuime-line-reveal
+files:
+  - path: anuime-leadership-section.tsx
+    type: registry:block
+---
+
+Leadership with a visible operating thesis. Pair each leader with scope, decisions, and the principles guiding their work.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeLeadershipSection } from "@/components/blocks/anuime-leadership-section";
+```

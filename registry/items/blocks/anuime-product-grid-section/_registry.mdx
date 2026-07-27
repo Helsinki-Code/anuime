@@ -1,0 +1,32 @@
+---
+name: anuime-product-grid-section
+type: registry:block
+title: "AnUIme Product Grid Section"
+description: "Keep filters, availability, price, and pagination predictable across the catalog."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-card
+  - anuime-badge
+  - anuime-button
+  - anuime-select
+  - anuime-pagination
+  - anuime-aspect-ratio
+  - anuime-bento-card
+  - anuime-loading-button
+files:
+  - path: anuime-product-grid-section.tsx
+    type: registry:block
+---
+
+Find the right product without fighting the grid. Keep filters, availability, price, and pagination predictable across the catalog.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeProductGridSection } from "@/components/blocks/anuime-product-grid-section";
+```

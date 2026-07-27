@@ -1,0 +1,31 @@
+---
+name: anuime-dashboard-network-section
+type: registry:block
+title: "AnUIme Dashboard Network Section"
+description: "Show topology, connection health, and supporting trend context in one map."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-sidebar
+  - anuime-card
+  - anuime-tooltip
+  - anuime-badge
+  - anuime-node-map
+  - anuime-connection-beam
+  - anuime-chart-callout
+files:
+  - path: anuime-dashboard-network-section.tsx
+    type: registry:block
+---
+
+Understand the system between the endpoints. Show topology, connection health, and supporting trend context in one map.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeDashboardNetworkSection } from "@/components/blocks/anuime-dashboard-network-section";
+```

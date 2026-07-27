@@ -1,0 +1,29 @@
+---
+name: anuime-faq-accordion-section
+type: registry:block
+title: "AnUIme FAQ Accordion Section"
+description: "Keep common questions calm, scannable, and easy to revisit."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-accordion
+  - anuime-button
+  - anuime-badge
+  - anuime-framed-background
+  - anuime-sticky-rail
+files:
+  - path: anuime-faq-accordion-section.tsx
+    type: registry:block
+---
+
+Straight answers, progressively disclosed. Keep common questions calm, scannable, and easy to revisit.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeFaqAccordionSection } from "@/components/blocks/anuime-faq-accordion-section";
+```

@@ -1,0 +1,31 @@
+---
+name: anuime-cart-section
+type: registry:block
+title: "AnUIme Cart Section"
+description: "Keep quantity, adjustments, and the order summary explicit before checkout."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-sheet
+  - anuime-table
+  - anuime-input
+  - anuime-button
+  - anuime-separator
+  - anuime-number-ticker
+  - anuime-loading-button
+files:
+  - path: anuime-cart-section.tsx
+    type: registry:block
+---
+
+Every item and total, accounted for. Keep quantity, adjustments, and the order summary explicit before checkout.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeCartSection } from "@/components/blocks/anuime-cart-section";
+```

@@ -51,6 +51,169 @@
       "@/components/blocks/mochi-creator-companion": [
         "./registry/items/blocks/mochi-creator-companion/mochi-creator-companion.tsx"
       ],
+      "@/components/ui/anuime-aspect-ratio": [
+        "./registry/items/components/anuime-aspect-ratio/anuime-aspect-ratio.tsx"
+      ],
+      "@/components/ui/anuime-beam-background": [
+        "./registry/items/lib/advanced/anuime-beam-background/anuime-beam-background.tsx"
+      ],
+      "@/components/ui/anuime-bento-card": [
+        "./registry/items/lib/advanced/anuime-bento-card/anuime-bento-card.tsx"
+      ],
+      "@/components/ui/anuime-border-trace-button": [
+        "./registry/items/lib/advanced/anuime-border-trace-button/anuime-border-trace-button.tsx"
+      ],
+      "@/components/ui/anuime-breadcrumb": [
+        "./registry/items/components/anuime-breadcrumb/anuime-breadcrumb.tsx"
+      ],
+      "@/components/ui/anuime-button-group": [
+        "./registry/items/components/anuime-button-group/anuime-button-group.tsx"
+      ],
+      "@/components/ui/anuime-chart-callout": [
+        "./registry/items/lib/advanced/anuime-chart-callout/anuime-chart-callout.tsx"
+      ],
+      "@/components/ui/anuime-checkbox": [
+        "./registry/items/components/anuime-checkbox/anuime-checkbox.tsx"
+      ],
+      "@/components/ui/anuime-code-diff": [
+        "./registry/items/lib/advanced/anuime-code-diff/anuime-code-diff.tsx"
+      ],
+      "@/components/ui/anuime-code-window": [
+        "./registry/items/lib/advanced/anuime-code-window/anuime-code-window.tsx"
+      ],
+      "@/components/ui/anuime-command-dock": [
+        "./registry/items/lib/advanced/anuime-command-dock/anuime-command-dock.tsx"
+      ],
+      "@/components/ui/anuime-comparison-card": [
+        "./registry/items/lib/advanced/anuime-comparison-card/anuime-comparison-card.tsx"
+      ],
+      "@/components/ui/anuime-confetti-field": [
+        "./registry/items/lib/advanced/anuime-confetti-field/anuime-confetti-field.tsx"
+      ],
+      "@/components/ui/anuime-connection-beam": [
+        "./registry/items/lib/advanced/anuime-connection-beam/anuime-connection-beam.tsx"
+      ],
+      "@/components/ui/anuime-copy-button": [
+        "./registry/items/lib/advanced/anuime-copy-button/anuime-copy-button.tsx"
+      ],
+      "@/components/ui/anuime-dropdown-menu": [
+        "./registry/items/components/anuime-dropdown-menu/anuime-dropdown-menu.tsx"
+      ],
+      "@/components/ui/anuime-field": ["./registry/items/components/anuime-field/anuime-field.tsx"],
+      "@/components/ui/anuime-file-tree": [
+        "./registry/items/lib/advanced/anuime-file-tree/anuime-file-tree.tsx"
+      ],
+      "@/components/ui/anuime-floating-dock": [
+        "./registry/items/lib/advanced/anuime-floating-dock/anuime-floating-dock.tsx"
+      ],
+      "@/components/ui/anuime-framed-background": [
+        "./registry/items/lib/advanced/anuime-framed-background/anuime-framed-background.tsx"
+      ],
+      "@/components/ui/anuime-input": ["./registry/items/components/anuime-input/anuime-input.tsx"],
+      "@/components/ui/anuime-input-group": [
+        "./registry/items/components/anuime-input-group/anuime-input-group.tsx"
+      ],
+      "@/components/ui/anuime-line-grid-background": [
+        "./registry/items/lib/advanced/anuime-line-grid-background/anuime-line-grid-background.tsx"
+      ],
+      "@/components/ui/anuime-line-reveal": [
+        "./registry/items/lib/advanced/anuime-line-reveal/anuime-line-reveal.tsx"
+      ],
+      "@/components/ui/anuime-loading-button": [
+        "./registry/items/lib/advanced/anuime-loading-button/anuime-loading-button.tsx"
+      ],
+      "@/components/ui/anuime-metric-card": [
+        "./registry/items/lib/advanced/anuime-metric-card/anuime-metric-card.tsx"
+      ],
+      "@/components/ui/anuime-navigation-menu": [
+        "./registry/items/components/anuime-navigation-menu/anuime-navigation-menu.tsx"
+      ],
+      "@/components/ui/anuime-node-field-background": [
+        "./registry/items/lib/advanced/anuime-node-field-background/anuime-node-field-background.tsx"
+      ],
+      "@/components/ui/anuime-node-map": [
+        "./registry/items/lib/advanced/anuime-node-map/anuime-node-map.tsx"
+      ],
+      "@/components/ui/anuime-number-ticker": [
+        "./registry/items/lib/advanced/anuime-number-ticker/anuime-number-ticker.tsx"
+      ],
+      "@/components/ui/anuime-orbit-map": [
+        "./registry/items/lib/advanced/anuime-orbit-map/anuime-orbit-map.tsx"
+      ],
+      "@/components/ui/anuime-pagination": [
+        "./registry/items/components/anuime-pagination/anuime-pagination.tsx"
+      ],
+      "@/components/ui/anuime-particle-field": [
+        "./registry/items/lib/advanced/anuime-particle-field/anuime-particle-field.tsx"
+      ],
+      "@/components/ui/anuime-progress-loader": [
+        "./registry/items/lib/advanced/anuime-progress-loader/anuime-progress-loader.tsx"
+      ],
+      "@/components/ui/anuime-radial-field-background": [
+        "./registry/items/lib/advanced/anuime-radial-field-background/anuime-radial-field-background.tsx"
+      ],
+      "@/components/ui/anuime-radio-group": [
+        "./registry/items/components/anuime-radio-group/anuime-radio-group.tsx"
+      ],
+      "@/components/ui/anuime-scroll-area": [
+        "./registry/items/components/anuime-scroll-area/anuime-scroll-area.tsx"
+      ],
+      "@/components/ui/anuime-scroll-progress": [
+        "./registry/items/lib/advanced/anuime-scroll-progress/anuime-scroll-progress.tsx"
+      ],
+      "@/components/ui/anuime-select": [
+        "./registry/items/components/anuime-select/anuime-select.tsx"
+      ],
+      "@/components/ui/anuime-separator": [
+        "./registry/items/components/anuime-separator/anuime-separator.tsx"
+      ],
+      "@/components/ui/anuime-sheet": ["./registry/items/components/anuime-sheet/anuime-sheet.tsx"],
+      "@/components/ui/anuime-signal-card": [
+        "./registry/items/lib/advanced/anuime-signal-card/anuime-signal-card.tsx"
+      ],
+      "@/components/ui/anuime-slider": [
+        "./registry/items/components/anuime-slider/anuime-slider.tsx"
+      ],
+      "@/components/ui/anuime-sticky-rail": [
+        "./registry/items/lib/advanced/anuime-sticky-rail/anuime-sticky-rail.tsx"
+      ],
+      "@/components/ui/anuime-sticky-reveal": [
+        "./registry/items/lib/advanced/anuime-sticky-reveal/anuime-sticky-reveal.tsx"
+      ],
+      "@/components/ui/anuime-success-burst": [
+        "./registry/items/lib/advanced/anuime-success-burst/anuime-success-burst.tsx"
+      ],
+      "@/components/ui/anuime-tabs": ["./registry/items/components/anuime-tabs/anuime-tabs.tsx"],
+      "@/components/ui/anuime-terminal-window": [
+        "./registry/items/lib/advanced/anuime-terminal-window/anuime-terminal-window.tsx"
+      ],
+      "@/components/ui/anuime-textarea": [
+        "./registry/items/components/anuime-textarea/anuime-textarea.tsx"
+      ],
+      "@/components/ui/anuime-timeline-flow": [
+        "./registry/items/lib/advanced/anuime-timeline-flow/anuime-timeline-flow.tsx"
+      ],
+      "@/components/ui/anuime-toggle": [
+        "./registry/items/components/anuime-toggle/anuime-toggle.tsx"
+      ],
+      "@/components/ui/anuime-toolbar": [
+        "./registry/items/components/anuime-toolbar/anuime-toolbar.tsx"
+      ],
+      "@/components/ui/anuime-tooltip": [
+        "./registry/items/components/anuime-tooltip/anuime-tooltip.tsx"
+      ],
+      "@/components/ui/anuime-trace-card": [
+        "./registry/items/lib/advanced/anuime-trace-card/anuime-trace-card.tsx"
+      ],
+      "@/components/ui/anuime-typewriter": [
+        "./registry/items/lib/advanced/anuime-typewriter/anuime-typewriter.tsx"
+      ],
+      "@/components/ui/anuime-typography": [
+        "./registry/items/components/anuime-typography/anuime-typography.tsx"
+      ],
+      "@/components/ui/anuime-word-cycle": [
+        "./registry/items/lib/advanced/anuime-word-cycle/anuime-word-cycle.tsx"
+      ],
       "@/*": ["./src/*"],
       "content-collections": ["./.content-collections/generated"]
     },

@@ -1,0 +1,32 @@
+---
+name: anuime-dashboard-overview-section
+type: registry:block
+title: "AnUIme Dashboard Overview Section"
+description: "Put high-level health, active work, and the next useful drill-down in one view."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-sidebar
+  - anuime-toolbar
+  - anuime-card
+  - anuime-data-table
+  - anuime-badge
+  - anuime-metric-card
+  - anuime-chart-callout
+  - anuime-sticky-rail
+files:
+  - path: anuime-dashboard-overview-section.tsx
+    type: registry:block
+---
+
+A workspace built for decisions. Put high-level health, active work, and the next useful drill-down in one view.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeDashboardOverviewSection } from "@/components/blocks/anuime-dashboard-overview-section";
+```

@@ -1,0 +1,32 @@
+---
+name: anuime-docs-shell-section
+type: registry:block
+title: "AnUIme Docs Shell Section"
+description: "Coordinate navigation, search, reading position, and reference content."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-sidebar
+  - anuime-breadcrumb
+  - anuime-command-palette
+  - anuime-scroll-area
+  - anuime-typography
+  - anuime-sticky-rail
+  - anuime-scroll-progress
+  - anuime-command-dock
+files:
+  - path: anuime-docs-shell-section.tsx
+    type: registry:block
+---
+
+A documentation workspace that keeps context. Coordinate navigation, search, reading position, and reference content.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeDocsShellSection } from "@/components/blocks/anuime-docs-shell-section";
+```

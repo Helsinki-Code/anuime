@@ -1,0 +1,30 @@
+---
+name: anuime-feature-comparison-section
+type: registry:block
+title: "AnUIme Feature Comparison Section"
+description: "Put competing approaches beside concrete signals and implementation detail."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-tabs
+  - anuime-table
+  - anuime-badge
+  - anuime-button
+  - anuime-comparison-card
+  - anuime-chart-callout
+files:
+  - path: anuime-feature-comparison-section.tsx
+    type: registry:block
+---
+
+Choose by behavior, not adjectives. Put competing approaches beside concrete signals and implementation detail.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeFeatureComparisonSection } from "@/components/blocks/anuime-feature-comparison-section";
+```

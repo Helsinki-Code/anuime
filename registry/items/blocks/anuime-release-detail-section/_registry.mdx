@@ -1,0 +1,31 @@
+---
+name: anuime-release-detail-section
+type: registry:block
+title: "AnUIme Release Detail Section"
+description: "Pair release context with an inspectable diff and a copyable migration path."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-breadcrumb
+  - anuime-badge
+  - anuime-typography
+  - anuime-button
+  - anuime-code-diff
+  - anuime-copy-button
+  - anuime-line-reveal
+files:
+  - path: anuime-release-detail-section.tsx
+    type: registry:block
+---
+
+What changed, why, and how to adopt it. Pair release context with an inspectable diff and a copyable migration path.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeReleaseDetailSection } from "@/components/blocks/anuime-release-detail-section";
+```

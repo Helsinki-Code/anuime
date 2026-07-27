@@ -1,0 +1,30 @@
+---
+name: anuime-docs-nav-section
+type: registry:block
+title: "AnUIme Docs Nav Section"
+description: "Bring search, breadcrumbs, shortcuts, and section position into one docs control layer."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-command-palette
+  - anuime-breadcrumb
+  - anuime-button
+  - anuime-kbd
+  - anuime-command-dock
+  - anuime-sticky-rail
+files:
+  - path: anuime-docs-nav-section.tsx
+    type: registry:block
+---
+
+Find the reference before context expires. Bring search, breadcrumbs, shortcuts, and section position into one docs control layer.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeDocsNavSection } from "@/components/blocks/anuime-docs-nav-section";
+```

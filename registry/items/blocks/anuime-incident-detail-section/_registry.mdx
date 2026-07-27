@@ -1,0 +1,31 @@
+---
+name: anuime-incident-detail-section
+type: registry:block
+title: "AnUIme Incident Detail Section"
+description: "Track impact, response milestones, evidence, and the current resolution state."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-breadcrumb
+  - anuime-alert
+  - anuime-badge
+  - anuime-card
+  - anuime-timeline-flow
+  - anuime-chart-callout
+  - anuime-copy-button
+files:
+  - path: anuime-incident-detail-section.tsx
+    type: registry:block
+---
+
+A complete account of the incident. Track impact, response milestones, evidence, and the current resolution state.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeIncidentDetailSection } from "@/components/blocks/anuime-incident-detail-section";
+```

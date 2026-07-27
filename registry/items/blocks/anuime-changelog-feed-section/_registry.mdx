@@ -1,0 +1,30 @@
+---
+name: anuime-changelog-feed-section
+type: registry:block
+title: "AnUIme Changelog Feed Section"
+description: "Keep dates, impact, and product areas aligned across every update."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-badge
+  - anuime-card
+  - anuime-pagination
+  - anuime-separator
+  - anuime-timeline-flow
+  - anuime-sticky-rail
+files:
+  - path: anuime-changelog-feed-section.tsx
+    type: registry:block
+---
+
+A release history built to be scanned. Keep dates, impact, and product areas aligned across every update.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeChangelogFeedSection } from "@/components/blocks/anuime-changelog-feed-section";
+```

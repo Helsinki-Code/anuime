@@ -1,0 +1,29 @@
+---
+name: anuime-floating-nav-section
+type: registry:block
+title: "AnUIme Floating Nav Section"
+description: "Use a compact dock and reading progress without covering the work underneath."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-tooltip
+  - anuime-avatar
+  - anuime-button
+  - anuime-floating-dock
+  - anuime-scroll-progress
+files:
+  - path: anuime-floating-nav-section.tsx
+    type: registry:block
+---
+
+The next destination stays within reach. Use a compact dock and reading progress without covering the work underneath.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeFloatingNavSection } from "@/components/blocks/anuime-floating-nav-section";
+```

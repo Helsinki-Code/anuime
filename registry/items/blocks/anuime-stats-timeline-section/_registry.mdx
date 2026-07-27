@@ -1,0 +1,30 @@
+---
+name: anuime-stats-timeline-section
+type: registry:block
+title: "AnUIme Stats Timeline Section"
+description: "Connect trend callouts to the product events that explain them."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-card
+  - anuime-badge
+  - anuime-separator
+  - anuime-timeline-flow
+  - anuime-chart-callout
+  - anuime-sticky-reveal
+files:
+  - path: anuime-stats-timeline-section.tsx
+    type: registry:block
+---
+
+See the metric and the moment that moved it. Connect trend callouts to the product events that explain them.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeStatsTimelineSection } from "@/components/blocks/anuime-stats-timeline-section";
+```

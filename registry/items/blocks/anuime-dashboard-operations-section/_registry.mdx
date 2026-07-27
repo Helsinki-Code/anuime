@@ -1,0 +1,32 @@
+---
+name: anuime-dashboard-operations-section
+type: registry:block
+title: "AnUIme Dashboard Operations Section"
+description: "Align service state, active incidents, and recent operational events."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-sidebar
+  - anuime-toolbar
+  - anuime-table
+  - anuime-progress
+  - anuime-alert
+  - anuime-signal-card
+  - anuime-node-map
+  - anuime-timeline-flow
+files:
+  - path: anuime-dashboard-operations-section.tsx
+    type: registry:block
+---
+
+Operate from signal, not surprise. Align service state, active incidents, and recent operational events.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeDashboardOperationsSection } from "@/components/blocks/anuime-dashboard-operations-section";
+```

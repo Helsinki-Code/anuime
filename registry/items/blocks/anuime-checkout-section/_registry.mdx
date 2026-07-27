@@ -1,0 +1,33 @@
+---
+name: anuime-checkout-section
+type: registry:block
+title: "AnUIme Checkout Section"
+description: "Show progress, payment choices, consent, and success as one continuous flow."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-card
+  - anuime-field
+  - anuime-input
+  - anuime-radio-group
+  - anuime-checkbox
+  - anuime-button
+  - anuime-progress
+  - anuime-progress-loader
+  - anuime-success-burst
+files:
+  - path: anuime-checkout-section.tsx
+    type: registry:block
+---
+
+Complete the order with confidence. Show progress, payment choices, consent, and success as one continuous flow.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeCheckoutSection } from "@/components/blocks/anuime-checkout-section";
+```

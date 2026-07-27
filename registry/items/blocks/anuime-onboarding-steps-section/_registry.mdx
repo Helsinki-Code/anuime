@@ -1,0 +1,31 @@
+---
+name: anuime-onboarding-steps-section
+type: registry:block
+title: "AnUIme Onboarding Steps Section"
+description: "Turn setup into owned steps with visible progress and recoverable choices."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-card
+  - anuime-progress
+  - anuime-button
+  - anuime-field
+  - anuime-input
+  - anuime-timeline-flow
+  - anuime-loading-button
+files:
+  - path: anuime-onboarding-steps-section.tsx
+    type: registry:block
+---
+
+A clear path from account to useful. Turn setup into owned steps with visible progress and recoverable choices.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeOnboardingStepsSection } from "@/components/blocks/anuime-onboarding-steps-section";
+```

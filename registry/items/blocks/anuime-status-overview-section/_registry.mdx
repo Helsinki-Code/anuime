@@ -1,0 +1,32 @@
+---
+name: anuime-status-overview-section
+type: registry:block
+title: "AnUIme Status Overview Section"
+description: "Summarize every service, active issue, and recent event without hiding nuance."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-card
+  - anuime-badge
+  - anuime-alert
+  - anuime-progress
+  - anuime-tooltip
+  - anuime-signal-card
+  - anuime-node-map
+  - anuime-timeline-flow
+files:
+  - path: anuime-status-overview-section.tsx
+    type: registry:block
+---
+
+Current health, plainly stated. Summarize every service, active issue, and recent event without hiding nuance.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeStatusOverviewSection } from "@/components/blocks/anuime-status-overview-section";
+```

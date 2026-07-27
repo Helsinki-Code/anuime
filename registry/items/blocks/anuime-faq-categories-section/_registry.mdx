@@ -1,0 +1,30 @@
+---
+name: anuime-faq-categories-section
+type: registry:block
+title: "AnUIme FAQ Categories Section"
+description: "Group answers by intent before opening the detail inside each category."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-tabs
+  - anuime-card
+  - anuime-accordion
+  - anuime-badge
+  - anuime-bento-card
+  - anuime-trace-card
+files:
+  - path: anuime-faq-categories-section.tsx
+    type: registry:block
+---
+
+Start with the kind of help you need. Group answers by intent before opening the detail inside each category.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeFaqCategoriesSection } from "@/components/blocks/anuime-faq-categories-section";
+```

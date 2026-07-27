@@ -1,0 +1,32 @@
+---
+name: anuime-article-reader-section
+type: registry:block
+title: "AnUIme Article Reader Section"
+description: "Preserve location, reading progress, and useful actions without crowding the page."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-breadcrumb
+  - anuime-typography
+  - anuime-scroll-area
+  - anuime-separator
+  - anuime-button
+  - anuime-scroll-progress
+  - anuime-sticky-rail
+  - anuime-copy-button
+files:
+  - path: anuime-article-reader-section.tsx
+    type: registry:block
+---
+
+Stay with the argument, not the chrome. Preserve location, reading progress, and useful actions without crowding the page.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeArticleReaderSection } from "@/components/blocks/anuime-article-reader-section";
+```

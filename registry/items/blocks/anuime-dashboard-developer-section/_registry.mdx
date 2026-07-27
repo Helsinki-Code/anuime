@@ -1,0 +1,32 @@
+---
+name: anuime-dashboard-developer-section
+type: registry:block
+title: "AnUIme Dashboard Developer Section"
+description: "Keep commands, source, files, and changes together for fast technical work."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-sidebar
+  - anuime-tabs
+  - anuime-command-palette
+  - anuime-badge
+  - anuime-code-window
+  - anuime-terminal-window
+  - anuime-file-tree
+  - anuime-code-diff
+files:
+  - path: anuime-dashboard-developer-section.tsx
+    type: registry:block
+---
+
+The developer surface, fully inspectable. Keep commands, source, files, and changes together for fast technical work.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeDashboardDeveloperSection } from "@/components/blocks/anuime-dashboard-developer-section";
+```

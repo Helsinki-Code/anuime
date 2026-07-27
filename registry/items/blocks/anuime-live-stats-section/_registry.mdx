@@ -1,0 +1,31 @@
+---
+name: anuime-live-stats-section
+type: registry:block
+title: "AnUIme Live Stats Section"
+description: "Show changing counts beside service health and the system path producing them."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-card
+  - anuime-progress
+  - anuime-badge
+  - anuime-tooltip
+  - anuime-node-map
+  - anuime-signal-card
+  - anuime-number-ticker
+files:
+  - path: anuime-live-stats-section.tsx
+    type: registry:block
+---
+
+Live state without dashboard theater. Show changing counts beside service health and the system path producing them.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeLiveStatsSection } from "@/components/blocks/anuime-live-stats-section";
+```

@@ -1,0 +1,31 @@
+---
+name: anuime-onboarding-workspace-section
+type: registry:block
+title: "AnUIme Onboarding Workspace Section"
+description: "Collect team structure and defaults before the first real project begins."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-card
+  - anuime-radio-group
+  - anuime-avatar
+  - anuime-button
+  - anuime-alert
+  - anuime-bento-card
+  - anuime-border-trace-button
+files:
+  - path: anuime-onboarding-workspace-section.tsx
+    type: registry:block
+---
+
+Shape the workspace around the work. Collect team structure and defaults before the first real project begins.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeOnboardingWorkspaceSection } from "@/components/blocks/anuime-onboarding-workspace-section";
+```

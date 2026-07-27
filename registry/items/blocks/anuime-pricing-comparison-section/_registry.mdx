@@ -1,0 +1,31 @@
+---
+name: anuime-pricing-comparison-section
+type: registry:block
+title: "AnUIme Pricing Comparison Section"
+description: "Keep plan differences aligned, labeled, and available while the table moves."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-table
+  - anuime-checkbox
+  - anuime-badge
+  - anuime-button
+  - anuime-tooltip
+  - anuime-comparison-card
+  - anuime-sticky-rail
+files:
+  - path: anuime-pricing-comparison-section.tsx
+    type: registry:block
+---
+
+Compare the details that change the decision. Keep plan differences aligned, labeled, and available while the table moves.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimePricingComparisonSection } from "@/components/blocks/anuime-pricing-comparison-section";
+```

@@ -1,0 +1,30 @@
+---
+name: anuime-feature-timeline-section
+type: registry:block
+title: "AnUIme Feature Timeline Section"
+description: "Show capability as a sequence so every stage has context and consequence."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-card
+  - anuime-badge
+  - anuime-button
+  - anuime-timeline-flow
+  - anuime-sticky-reveal
+  - anuime-trace-card
+files:
+  - path: anuime-feature-timeline-section.tsx
+    type: registry:block
+---
+
+From first signal to shipped interface. Show capability as a sequence so every stage has context and consequence.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeFeatureTimelineSection } from "@/components/blocks/anuime-feature-timeline-section";
+```

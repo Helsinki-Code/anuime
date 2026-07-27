@@ -1,0 +1,32 @@
+---
+name: anuime-docs-example-section
+type: registry:block
+title: "AnUIme Docs Example Section"
+description: "Put explanation, code, terminal output, and the meaningful diff side by side."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-card
+  - anuime-tabs
+  - anuime-button
+  - anuime-alert
+  - anuime-code-window
+  - anuime-terminal-window
+  - anuime-code-diff
+  - anuime-copy-button
+files:
+  - path: anuime-docs-example-section.tsx
+    type: registry:block
+---
+
+Learn from the source and the result together. Put explanation, code, terminal output, and the meaningful diff side by side.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeDocsExampleSection } from "@/components/blocks/anuime-docs-example-section";
+```

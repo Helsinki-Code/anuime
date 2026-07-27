@@ -1,0 +1,29 @@
+---
+name: anuime-navbar-section
+type: registry:block
+title: "AnUIme Navbar Section"
+description: "Keep routes, account context, and the highest-value action in one stable bar."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-navigation-menu
+  - anuime-button
+  - anuime-dropdown-menu
+  - anuime-avatar
+  - anuime-border-trace-button
+files:
+  - path: anuime-navbar-section.tsx
+    type: registry:block
+---
+
+Primary navigation with a clear center. Keep routes, account context, and the highest-value action in one stable bar.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeNavbarSection } from "@/components/blocks/anuime-navbar-section";
+```

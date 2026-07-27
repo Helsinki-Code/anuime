@@ -1,0 +1,32 @@
+---
+name: anuime-pricing-calculator-section
+type: registry:block
+title: "AnUIme Pricing Calculator Section"
+description: "Turn volume and billing choices into a transparent live estimate."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-card
+  - anuime-slider
+  - anuime-toggle
+  - anuime-input
+  - anuime-button
+  - anuime-metric-card
+  - anuime-number-ticker
+  - anuime-copy-button
+files:
+  - path: anuime-pricing-calculator-section.tsx
+    type: registry:block
+---
+
+Price the usage you actually expect. Turn volume and billing choices into a transparent live estimate.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimePricingCalculatorSection } from "@/components/blocks/anuime-pricing-calculator-section";
+```

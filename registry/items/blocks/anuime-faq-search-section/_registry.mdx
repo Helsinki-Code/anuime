@@ -1,0 +1,30 @@
+---
+name: anuime-faq-search-section
+type: registry:block
+title: "AnUIme FAQ Search Section"
+description: "Combine command search, shortcuts, and expandable answers for fast resolution."
+localRegistryDependencies:
+  - anuime-theme-kira
+  - anuime-theme-mochi
+  - anuime-theme-atlas
+  - anuime-recipe
+  - anuime-command-palette
+  - anuime-input
+  - anuime-accordion
+  - anuime-kbd
+  - anuime-command-dock
+  - anuime-border-trace-button
+files:
+  - path: anuime-faq-search-section.tsx
+    type: registry:block
+---
+
+Ask the documentation directly. Combine command search, shortcuts, and expandable answers for fast resolution.
+
+Composition provenance: `global.two-tier`, `global.theme-geometry-parity`,
+`global.token-only-color`, and `global.reduced-motion`. Character-specific
+motifs, geometry, and motion remain owned by the imported primitives.
+
+```tsx
+import { AnuimeFaqSearchSection } from "@/components/blocks/anuime-faq-search-section";
+```
