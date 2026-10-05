@@ -459,12 +459,60 @@
   "latestVerification": {
     "build": "vp build passed",
     "checks": "Touched TS/TSX files: no warnings, lint errors, or type errors",
-    "tests": "337/338 passed in full run; one existing 5-second render test timed out during concurrent build. Its suite passed separately: 7/7.",
+    "tests": "vp test run: 40 suites, 358 tests passed",
     "browser": "Homepage Kira/Mochi/Atlas switch and Mochi completion confirmed; Atlas mobile screenshot inspected.",
     "screenshots": [
       "/private/tmp/anuime-kira-home.jpg",
       "/private/tmp/anuime-mochi-home.jpg",
       "/private/tmp/anuime-atlas-mobile.jpg"
+    ]
+  },
+  "sceneFoundation": {
+    "contract": "registry/items/lib/anuime-scene/anuime-scene.ts",
+    "editing": "src/lib/anuime/scene-editor.ts",
+    "storage": "src/lib/anuime/scene-projects.ts",
+    "status": "Studio UI connected: outline, editing, responsive preview, projects, JSON import/export. React source export and complete editable data adapters pending.",
+    "verified": [
+      "bounded JSON imports and strict fields",
+      "recipe-preserving legacy migration",
+      "prop/state/slot and compatibility validation",
+      "transactional edits, subtree duplication, undo/redo",
+      "IndexedDB lifecycle and revision conflicts",
+      "write failures and corrupt records preserve previous saved state"
+    ],
+    "focusedTests": 20
+  },
+  "studioIntegration": {
+    "files": [
+      "src/components/studio/scene-studio.tsx",
+      "src/components/studio/scene-preview.tsx",
+      "src/lib/anuime/scene-catalog.ts"
+    ],
+    "legacyPreviews": 52,
+    "editablePropAdapters": ["button", "input", "card", "typography"],
+    "browserVerification": "pending: IAB navigation and frame-tree operations timed out",
+    "buildVerification": "Previous Studio build passed; source-export integration build running in session 22856 (/private/tmp/anuime-source-export-build.log).",
+    "tests": "360 tests passed before recovery-draft UI follow-up",
+    "remaining": [
+      "Full catalog editable data adapters",
+      "React source export",
+      "Studio browser, keyboard, import/export and storage recovery walkthrough",
+      "Full scene flagship workflows"
+    ],
+    "sourceExport": {
+      "status": "React/CSS/install downloads implemented; emitted TypeScript checked for 52 adapters and 3 starters",
+      "missing": [
+        "World runtime and assets",
+        "Fresh consumer installation matrix",
+        "Visual equivalence checks"
+      ],
+      "generationCommand": "node scripts/generate-scene-previews.mjs",
+      "focusedTests": 4
+    },
+    "legacyFixes": [
+      "URL zoom values normalize to numbers",
+      "Text inputs retain native undo in component lab",
+      "Blocked localStorage no longer causes a second exception during recovery"
     ]
   }
 }

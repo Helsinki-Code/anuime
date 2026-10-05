@@ -29,7 +29,8 @@
     "mcp:test": "vp test run packages/mcp/tests",
     "fixtures:sync": "node scripts/sync-consumer-fixtures.mjs",
     "prepare": "vp config",
-    "knip": "vp exec knip"
+    "knip": "vp exec knip",
+    "scene:generate": "node scripts/generate-scene-previews.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",
@@ -95,6 +96,7 @@
     "@vitejs/plugin-react": "^6.0.1",
     "@vitejs/plugin-rsc": "^0.5.25",
     "babel-plugin-react-compiler": "1.0.0",
+    "fake-indexeddb": "6.2.5",
     "knip": "^6.11.0",
     "tailwindcss": "^4.2.4",
     "typescript": "^6.0.3",

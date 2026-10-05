@@ -68,13 +68,14 @@ function openDatabase(): Promise<IDBDatabase> {
         ),
       );
     };
-    request.onerror = () =>
+    request.addEventListener("error", () =>
       reject(
         new ProjectStorageError(
           "unavailable",
           "Could not open local projects. Download your current scene before leaving.",
         ),
-      );
+      ),
+    );
     request.onsuccess = () => {
       if (failed) {
         request.result.close();
@@ -163,7 +164,7 @@ async function transact<T>(
           ),
         );
     };
-    transaction.onabort = () => {
+    transaction.addEventListener("abort", () => {
       db.close();
       reject(
         failure ??
@@ -172,10 +173,7 @@ async function transact<T>(
             "Could not save the project, possibly because device storage is full. Download your scene JSON to preserve changes.",
           ),
       );
-    };
-    transaction.onerror = () => {
-      /* onabort reports the failed transaction exactly once. */
-    };
+    });
     try {
       work(
         transaction.objectStore(storeName),
@@ -287,8 +285,17 @@ export async function saveLocalProject(
         revision: expectedRevision + 1,
         scene: validated,
       };
-      store.put(project);
-      setResult(project);
+      try {
+        store.put(project);
+        setResult(project);
+      } catch {
+        fail(
+          new ProjectStorageError(
+            "unavailable",
+            "Could not save this project. Download your current scene JSON and retry.",
+          ),
+        );
+      }
     };
   });
 }
@@ -337,8 +344,17 @@ export async function deleteLocalProject(
         );
         return;
       }
-      store.delete(id);
-      setResult(undefined);
+      try {
+        store.delete(id);
+        setResult(undefined);
+      } catch {
+        fail(
+          new ProjectStorageError(
+            "unavailable",
+            "Could not delete this project. Refresh and retry.",
+          ),
+        );
+      }
     };
   });
 }

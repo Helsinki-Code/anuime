@@ -36,6 +36,14 @@ describe("Component Lab URL state", () => {
     );
   });
 
+  it("normalizes URL zoom strings to numbers without coercing other data", () => {
+    expect(parseStudioSearch({ zoom: "1.25" }).zoom).toBe(1.25);
+    expect(parseStudioSearch({ zoom: "0.75" }).zoom).toBe(0.75);
+    expect(parseStudioSearch({ zoom: true }).zoom).toBeUndefined();
+    expect(parseStudioSearch({ zoom: [1] }).zoom).toBeUndefined();
+    expect(parseStudioSearch({ zoom: "2" }).zoom).toBeUndefined();
+  });
+
   it("builds canonical install commands", () => {
     expect(getInstallCommand("checkbox")).toBe(
       "npx shadcn@latest add https://anuime.vercel.app/r/anuime-checkbox.json",

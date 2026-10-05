@@ -21,6 +21,7 @@ import { z } from "zod";
 
 import { SiteLogo } from "@/components/docs/site-logo";
 import { ComponentPreview } from "@/components/studio/component-preview";
+import { SceneStudio } from "@/components/studio/scene-studio";
 import { Button } from "@/components/ui/button";
 import { trackProductEvent } from "@/lib/analytics";
 import { characterIds, characterSystems } from "@/lib/anuime/characters";
@@ -37,6 +38,7 @@ import {
   type AnuimeCharacter,
   type AnuimeRecipeV2,
 } from "@/lib/anuime/recipe";
+import { shouldHandleSceneUndo } from "@/lib/anuime/scene-editor";
 import {
   componentCatalog,
   defaultStudioDocument,
@@ -78,6 +80,28 @@ const directorApiResponseSchema = z.object({ proposal: directorProposalSchema })
 
 function StudioPage() {
   const search = Route.useSearch();
+  const [lab, setLab] = React.useState(false);
+  if (lab)
+    return (
+      <>
+        <button className="m-4 rounded border px-4 py-2" onClick={() => setLab(false)}>
+          Return to scene builder
+        </button>
+        <LegacyStudioPage />
+      </>
+    );
+  return (
+    <SceneStudio
+      key={JSON.stringify(search)}
+      initial={studioDocumentFromSearch(search)}
+      legacyLink={Boolean(search.recipe || search.component)}
+      onOpenLab={() => setLab(true)}
+    />
+  );
+}
+
+function LegacyStudioPage() {
+  const search = Route.useSearch();
   const navigate = Route.useNavigate();
   const [document, setDocument] = React.useState(() => studioDocumentFromSearch(search));
   const [past, setPast] = React.useState<StudioDocument[]>([]);
@@ -106,7 +130,7 @@ function StudioPage() {
           .slice(0, 5),
       );
     } catch {
-      localStorage.removeItem("anuime:recent-recipes");
+      setNotice("Recent recipes could not be read on this device. You can still edit and export.");
     }
   }, []);
 
@@ -144,7 +168,7 @@ function StudioPage() {
 
   React.useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (!(event.metaKey || event.ctrlKey)) return;
+      if (!(event.metaKey || event.ctrlKey) || !shouldHandleSceneUndo(event.target)) return;
       if (event.key.toLowerCase() === "z" && !event.shiftKey) {
         event.preventDefault();
         undo();

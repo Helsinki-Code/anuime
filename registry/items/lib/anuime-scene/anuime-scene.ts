@@ -191,6 +191,7 @@ function inspectPortableData(value: unknown, depth = 0, ancestors = new Set<obje
     Object.getPrototypeOf(value) !== null
   )
     return false;
+  if (Object.getOwnPropertySymbols(value).length > 0) return false;
   ancestors.add(value);
   const descriptors = Object.getOwnPropertyDescriptors(value);
   const valid = Object.entries(descriptors).every(([key, descriptor]) => {

@@ -413,7 +413,7 @@ export function parseStudioSearch(input: Record<string, unknown>): StudioSearch 
   const recipe = recipeValue ? decodeAnuimeRecipe(recipeValue) : null;
   const component = isRegistryComponentId(input.component) ? input.component : undefined;
   const viewport = isStudioViewport(input.viewport) ? input.viewport : undefined;
-  const zoom = isStudioZoom(input.zoom) ? input.zoom : undefined;
+  const zoom = parseStudioZoom(input.zoom);
   return {
     recipe: recipe ? encodeAnuimeRecipe(recipe) : undefined,
     component,
@@ -471,7 +471,8 @@ function isStudioViewport(value: unknown): value is StudioViewport {
   return value === "mobile" || value === "tablet" || value === "desktop";
 }
 
-function isStudioZoom(value: unknown): value is StudioZoom {
-  const numeric = typeof value === "number" ? value : Number(value);
-  return numeric === 0.75 || numeric === 1 || numeric === 1.25;
+function parseStudioZoom(value: unknown): StudioZoom | undefined {
+  if (typeof value !== "number" && typeof value !== "string") return undefined;
+  const numeric = Number(value);
+  return numeric === 0.75 || numeric === 1 || numeric === 1.25 ? numeric : undefined;
 }

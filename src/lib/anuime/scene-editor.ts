@@ -139,7 +139,7 @@ export function redoScene(history: SceneHistory): SceneHistory {
 }
 
 export function shouldHandleSceneUndo(target: EventTarget | null): boolean {
-  if (!(target instanceof Element)) return false;
+  if (typeof Element === "undefined" || !(target instanceof Element)) return false;
   return !target.closest(
     'input, textarea, select, [contenteditable]:not([contenteditable="false"]), [role="textbox"]',
   );

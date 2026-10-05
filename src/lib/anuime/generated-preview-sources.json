@@ -1,0 +1,709 @@
+{
+  "button": {
+    "body": "return (\n        <AnuimeButton\n          recipe={recipe}\n          variant={previewState === \"secondary\" ? \"secondary\" : \"primary\"}\n          disabled={previewState === \"disabled\" || previewState === \"loading\"}\n        >\n          {previewState === \"loading\" ? (\n            <>\n              <IconLoader2 className=\"size-4 animate-spin motion-reduce:animate-none\" />\n              Activating…\n            </>\n          ) : (\n            <>\n              <IconBolt className=\"size-4\" /> Activate sequence\n            </>\n          )}\n        </AnuimeButton>\n      );",
+    "imports": [
+      {
+        "module": "@tabler/icons-react",
+        "names": ["IconBolt", "IconLoader2"]
+      },
+      {
+        "module": "@/components/ui/anuime-button",
+        "names": ["AnuimeButton"]
+      }
+    ],
+    "registry": ["anuime-button"],
+    "packages": ["@tabler/icons-react@3.41.1"],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "input": {
+    "body": "return (\n        <AnuimeInput\n          recipe={recipe}\n          label=\"Call sign\"\n          placeholder=\"Starlight\"\n          hint={\n            previewState === \"error\" ? undefined : \"Visible labels and supporting text included.\"\n          }\n          error={previewState === \"error\" ? \"Call sign is required.\" : undefined}\n          disabled={previewState === \"disabled\"}\n          className={previewState === \"focus\" ? \"ring-2 ring-offset-2\" : \"\"}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-input",
+        "names": ["AnuimeInput"]
+      }
+    ],
+    "registry": ["anuime-input"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "checkbox": {
+    "body": "return (\n        <AnuimeCheckbox\n          recipe={recipe}\n          label=\"Enable tactical motion\"\n          description=\"The system preference always overrides decorative motion.\"\n          defaultChecked={previewState === \"selected\"}\n          disabled={previewState === \"disabled\"}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-checkbox",
+        "names": ["AnuimeCheckbox"]
+      }
+    ],
+    "registry": ["anuime-checkbox"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "card": {
+    "body": "return (\n        <AnuimeCard\n          recipe={recipe}\n          eyebrow=\"Mission 07\"\n          title=\"Build something unmistakable.\"\n          description=\"A real registry component rendered through the selected recipe.\"\n          aria-current={previewState === \"selected\" ? \"true\" : undefined}\n          action={<AnuimeButton recipe={recipe}>Inspect tokens</AnuimeButton>}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-button",
+        "names": ["AnuimeButton"]
+      },
+      {
+        "module": "@/components/ui/anuime-card",
+        "names": ["AnuimeCard"]
+      }
+    ],
+    "registry": ["anuime-button", "anuime-card"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "tabs": {
+    "body": "return (\n        <AnuimeTabs\n          recipe={recipe}\n          defaultTab={previewState === \"selected\" ? \"tokens\" : \"brief\"}\n          tabs={[\n            { id: \"brief\", label: \"Brief\", content: \"Direct an expressive, bounded interface.\" },\n            {\n              id: \"tokens\",\n              label: \"Tokens\",\n              content: \"Color, shape, structure, and motion stay explicit.\",\n            },\n            { id: \"code\", label: \"Code\", content: \"Install readable React and TypeScript source.\" },\n          ]}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-tabs",
+        "names": ["AnuimeTabs"]
+      }
+    ],
+    "registry": ["anuime-tabs"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "dialog": {
+    "body": "return (\n        <AnuimeDialog\n          recipe={recipe}\n          title=\"Initialize system?\"\n          description=\"Your recipe is valid and ready for installation.\"\n          triggerLabel=\"Open transmission\"\n        >\n          <p className=\"text-sm\">Keyboard focus remains inside the native modal.</p>\n        </AnuimeDialog>\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-dialog",
+        "names": ["AnuimeDialog"]
+      }
+    ],
+    "registry": ["anuime-dialog"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": false
+  },
+  "select": {
+    "body": "return (\n        <AnuimeSelect\n          recipe={recipe}\n          label=\"Choose your system\"\n          disabled={previewState === \"disabled\"}\n          hint=\"Mix individual dimensions in the controls panel.\"\n          options={[\n            { value: \"kira\", label: \"Kira — Incisive\" },\n            { value: \"mochi\", label: \"Mochi — Gracious\" },\n            { value: \"atlas\", label: \"Atlas — Engineered\" },\n          ]}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-select",
+        "names": ["AnuimeSelect"]
+      }
+    ],
+    "registry": ["anuime-select"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "toast": {
+    "body": "return (\n        <AnuimeToast\n          recipe={recipe}\n          status={previewState === \"success\" || previewState === \"warning\" ? previewState : \"info\"}\n          title={previewState === \"warning\" ? \"Review recipe\" : \"Recipe installed\"}\n          description=\"The component source now belongs to your project.\"\n          onDismiss={() => undefined}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-toast",
+        "names": ["AnuimeToast"]
+      }
+    ],
+    "registry": ["anuime-toast"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "navigation-menu": {
+    "body": "return (\n        <AnuimeNavigationMenu\n          recipe={recipe}\n          items={[\n            { label: \"Components\", href: \"#components\" },\n            { label: \"Characters\", href: \"#characters\" },\n            { label: \"Docs\", href: \"#docs\" },\n          ]}\n          action={<AnuimeButton recipe={recipe}>Studio</AnuimeButton>}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-button",
+        "names": ["AnuimeButton"]
+      },
+      {
+        "module": "@/components/ui/anuime-navigation-menu",
+        "names": ["AnuimeNavigationMenu"]
+      }
+    ],
+    "registry": ["anuime-button", "anuime-navigation-menu"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": false
+  },
+  "command-palette": {
+    "body": "return (\n        <AnuimeCommandPalette\n          recipe={recipe}\n          commands={\n            previewState === \"empty\"\n              ? []\n              : [\n                  { id: \"kira\", label: \"Cast Kira\", group: \"Characters\", shortcut: \"K\" },\n                  { id: \"mochi\", label: \"Cast Mochi\", group: \"Characters\", shortcut: \"M\" },\n                  { id: \"atlas\", label: \"Cast Atlas\", group: \"Characters\", shortcut: \"A\" },\n                ]\n          }\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-command-palette",
+        "names": ["AnuimeCommandPalette"]
+      }
+    ],
+    "registry": ["anuime-command-palette"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "data-table": {
+    "body": "return (\n        <AnuimeDataTable\n          recipe={recipe}\n          caption=\"Component readiness\"\n          rows={\n            previewState === \"empty\"\n              ? []\n              : [\n                  { id: \"1\", component: \"Button\", system: \"Kira\", status: \"Ready\" },\n                  { id: \"2\", component: \"Dialog\", system: \"Atlas\", status: \"Review\" },\n                  { id: \"3\", component: \"Card\", system: \"Mochi\", status: \"Ready\" },\n                ]\n          }\n          columns={[\n            { key: \"component\", header: \"Component\" },\n            { key: \"system\", header: \"System\" },\n            { key: \"status\", header: \"Status\" },\n          ]}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-data-table",
+        "names": ["AnuimeDataTable"]
+      }
+    ],
+    "registry": ["anuime-data-table"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "auth-panel": {
+    "body": "return (\n        <div className={previewState === \"loading\" ? \"pointer-events-none animate-pulse\" : \"\"}>\n          <AnuimeAuthPanel recipe={recipe} />\n        </div>\n      );",
+    "imports": [
+      {
+        "module": "@/components/blocks/anuime-auth-panel",
+        "names": ["AnuimeAuthPanel"]
+      }
+    ],
+    "registry": ["anuime-auth-panel"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "textarea": {
+    "body": "return (\n        <AnuimeTextarea\n          recipe={recipe}\n          label=\"Mission brief\"\n          placeholder=\"Describe the intended experience…\"\n          hint={\n            previewState === \"error\" ? undefined : \"The Director receives bounded product context.\"\n          }\n          error={previewState === \"error\" ? \"A mission brief is required.\" : undefined}\n          disabled={previewState === \"disabled\"}\n          className={previewState === \"focus\" ? \"ring-2 ring-offset-2\" : \"\"}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-textarea",
+        "names": ["AnuimeTextarea"]
+      }
+    ],
+    "registry": ["anuime-textarea"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "switch": {
+    "body": "return (\n        <AnuimeSwitch\n          key={previewState}\n          recipe={recipe}\n          label=\"Enable signature power\"\n          description=\"Character behavior remains bounded by accessibility preferences.\"\n          defaultChecked={previewState === \"selected\"}\n          disabled={previewState === \"disabled\"}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-switch",
+        "names": ["AnuimeSwitch"]
+      }
+    ],
+    "registry": ["anuime-switch"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "radio-group": {
+    "body": "return (\n        <AnuimeRadioGroup\n          recipe={recipe}\n          legend=\"Choose a specialty\"\n          defaultValue={previewState === \"selected\" ? \"dream-cache\" : \"signal-cut\"}\n          disabled={previewState === \"disabled\"}\n          options={[\n            {\n              value: \"signal-cut\",\n              label: \"Blade trace\",\n              description: \"Incisive linework and decisive focus.\",\n            },\n            {\n              value: \"dream-cache\",\n              label: \"Pearl clasp\",\n              description: \"Gracious feedback and measured curves.\",\n            },\n            {\n              value: \"gridforge\",\n              label: \"Docked strap\",\n              description: \"Engineered hierarchy and segmented structure.\",\n            },\n          ]}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-radio-group",
+        "names": ["AnuimeRadioGroup"]
+      }
+    ],
+    "registry": ["anuime-radio-group"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "tooltip": {
+    "body": "return (\n        <AnuimeTooltip recipe={recipe} label=\"Blade trace: press ⌘K to isolate the next action.\">\n          <AnuimeButton recipe={recipe}>Focus for power hint</AnuimeButton>\n        </AnuimeTooltip>\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-button",
+        "names": ["AnuimeButton"]
+      },
+      {
+        "module": "@/components/ui/anuime-tooltip",
+        "names": ["AnuimeTooltip"]
+      }
+    ],
+    "registry": ["anuime-button", "anuime-tooltip"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": false
+  },
+  "popover": {
+    "body": "return (\n        <AnuimePopover\n          key={previewState}\n          recipe={recipe}\n          trigger=\"Open construction note\"\n          title=\"Context note\"\n        >\n          Useful guidance appears near the task and never mutates your recipe without approval.\n        </AnuimePopover>\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-popover",
+        "names": ["AnuimePopover"]
+      }
+    ],
+    "registry": ["anuime-popover"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "combobox": {
+    "body": "return (\n        <AnuimeCombobox\n          recipe={recipe}\n          label=\"Find a component\"\n          placeholder={previewState === \"empty\" ? \"No matching signal\" : \"Start typing…\"}\n          disabled={previewState === \"disabled\"}\n          options={\n            previewState === \"empty\"\n              ? []\n              : [\n                  { value: \"Accordion\", label: \"Accordion\" },\n                  { value: \"Command Palette\", label: \"Command Palette\" },\n                  { value: \"Data Table\", label: \"Data Table\" },\n                ]\n          }\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-combobox",
+        "names": ["AnuimeCombobox"]
+      }
+    ],
+    "registry": ["anuime-combobox"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "accordion": {
+    "body": "return (\n        <AnuimeAccordion\n          recipe={recipe}\n          items={[\n            {\n              id: \"power\",\n              title: \"How does the construction map work?\",\n              content: \"It exposes structure through functional, inspectable geometry.\",\n            },\n            {\n              id: \"accessibility\",\n              title: \"Does it respect accessibility?\",\n              content: \"Native disclosure semantics work with keyboards and assistive technology.\",\n            },\n          ]}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-accordion",
+        "names": ["AnuimeAccordion"]
+      }
+    ],
+    "registry": ["anuime-accordion"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": false
+  },
+  "progress": {
+    "body": "return (\n        <AnuimeProgress\n          recipe={recipe}\n          label={previewState === \"success\" ? \"Power ready\" : \"Charging signature power\"}\n          value={previewState === \"loading\" ? undefined : previewState === \"success\" ? 100 : 68}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-progress",
+        "names": ["AnuimeProgress"]
+      }
+    ],
+    "registry": ["anuime-progress"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "skeleton": {
+    "body": "return (\n        <AnuimeSkeleton\n          recipe={recipe}\n          lines={previewState === \"compact\" ? 2 : 4}\n          label=\"Loading component signal\"\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-skeleton",
+        "names": ["AnuimeSkeleton"]
+      }
+    ],
+    "registry": ["anuime-skeleton"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "pagination": {
+    "body": "return (\n        <AnuimePagination\n          recipe={recipe}\n          page={previewState === \"first\" ? 1 : previewState === \"last\" ? 4 : 2}\n          pageCount={4}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-pagination",
+        "names": ["AnuimePagination"]
+      }
+    ],
+    "registry": ["anuime-pagination"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "date-control": {
+    "body": "return (\n        <AnuimeDateControl\n          recipe={recipe}\n          label=\"Launch date\"\n          hint=\"Uses the browser's locale-aware date picker.\"\n          disabled={previewState === \"disabled\"}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-date-control",
+        "names": ["AnuimeDateControl"]
+      }
+    ],
+    "registry": ["anuime-date-control"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "alert": {
+    "body": "return (\n        <AnuimeAlert\n          recipe={recipe}\n          tone={\n            previewState === \"success\" || previewState === \"warning\" || previewState === \"error\"\n              ? previewState\n              : \"info\"\n          }\n          title={`${previewState} transmission`}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-alert",
+        "names": ["AnuimeAlert"]
+      }
+    ],
+    "registry": ["anuime-alert"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "alert-dialog": {
+    "body": "return <AnuimeAlertDialog recipe={recipe} destructive={previewState === \"destructive\"} />;",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-alert-dialog",
+        "names": ["AnuimeAlertDialog"]
+      }
+    ],
+    "registry": ["anuime-alert-dialog"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "avatar": {
+    "body": "return previewState === \"group\" ? (\n        <AnuimeAvatarGroup>\n          <AnuimeAvatar recipe={recipe} fallback=\"KI\" />\n          <AnuimeAvatar recipe={recipe} fallback=\"MO\" />\n          <AnuimeAvatar recipe={recipe} fallback=\"AT\" />\n        </AnuimeAvatarGroup>\n      ) : (\n        <AnuimeAvatar\n          recipe={recipe}\n          size=\"lg\"\n          fallback=\"AN\"\n          status={previewState === \"online\" || previewState === \"busy\" ? previewState : undefined}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-avatar",
+        "names": ["AnuimeAvatar", "AnuimeAvatarGroup"]
+      }
+    ],
+    "registry": ["anuime-avatar"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "badge": {
+    "body": "return previewState === \"neutral\" ? (\n        <AnuimeBadge recipe={recipe}>Component</AnuimeBadge>\n      ) : (\n        <AnuimeStatusIndicator\n          recipe={recipe}\n          tone={previewState === \"warning\" || previewState === \"danger\" ? previewState : \"success\"}\n          label={previewState}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-badge",
+        "names": ["AnuimeBadge", "AnuimeStatusIndicator"]
+      }
+    ],
+    "registry": ["anuime-badge"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "breadcrumb": {
+    "body": "return <AnuimeBreadcrumb recipe={recipe} />;",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-breadcrumb",
+        "names": ["AnuimeBreadcrumb"]
+      }
+    ],
+    "registry": ["anuime-breadcrumb"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": false
+  },
+  "button-group": {
+    "body": "return previewState === \"split\" ? (\n        <AnuimeSplitButton recipe={recipe}>Deploy</AnuimeSplitButton>\n      ) : (\n        <AnuimeButtonGroup recipe={recipe}>\n          <AnuimeButtonGroupItem recipe={recipe}>Preview</AnuimeButtonGroupItem>\n          <AnuimeButtonGroupItem recipe={recipe}>Code</AnuimeButtonGroupItem>\n          <AnuimeButtonGroupItem recipe={recipe}>Install</AnuimeButtonGroupItem>\n        </AnuimeButtonGroup>\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-button-group",
+        "names": ["AnuimeButtonGroup", "AnuimeButtonGroupItem", "AnuimeSplitButton"]
+      }
+    ],
+    "registry": ["anuime-button-group"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "calendar": {
+    "body": "return (\n        <AnuimeCalendar\n          recipe={recipe}\n          mode={previewState === \"range\" ? \"range\" : \"single\"}\n          disabled={previewState === \"disabled\"}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-calendar",
+        "names": ["AnuimeCalendar"]
+      }
+    ],
+    "registry": ["anuime-calendar"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "collapsible": {
+    "body": "return <AnuimeCollapsible recipe={recipe} open={previewState === \"open\"} />;",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-collapsible",
+        "names": ["AnuimeCollapsible"]
+      }
+    ],
+    "registry": ["anuime-collapsible"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "context-menu": {
+    "body": "return <AnuimeContextMenu recipe={recipe} />;",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-context-menu",
+        "names": ["AnuimeContextMenu"]
+      }
+    ],
+    "registry": ["anuime-context-menu"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": false
+  },
+  "dropdown-menu": {
+    "body": "return <AnuimeDropdownMenu recipe={recipe} />;",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-dropdown-menu",
+        "names": ["AnuimeDropdownMenu"]
+      }
+    ],
+    "registry": ["anuime-dropdown-menu"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": false
+  },
+  "drawer": {
+    "body": "return (\n        <AnuimeDrawer\n          recipe={recipe}\n          placement={previewState === \"left\" || previewState === \"right\" ? previewState : \"bottom\"}\n        >\n          <p className=\"text-sm\">Secondary workflow content.</p>\n        </AnuimeDrawer>\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-drawer",
+        "names": ["AnuimeDrawer"]
+      }
+    ],
+    "registry": ["anuime-drawer"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "empty-state": {
+    "body": "return (\n        <AnuimeEmptyState\n          recipe={recipe}\n          action={\n            previewState === \"action\" ? (\n              <AnuimeButton recipe={recipe}>Create first project</AnuimeButton>\n            ) : undefined\n          }\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-button",
+        "names": ["AnuimeButton"]
+      },
+      {
+        "module": "@/components/ui/anuime-empty-state",
+        "names": ["AnuimeEmptyState"]
+      }
+    ],
+    "registry": ["anuime-button", "anuime-empty-state"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "field": {
+    "body": "return previewState === \"fieldset\" ? (\n        <AnuimeFieldset recipe={recipe}>\n          <AnuimeField recipe={recipe} label=\"Call sign\">\n            <input className=\"rounded border bg-transparent px-3 py-2\" />\n          </AnuimeField>\n        </AnuimeFieldset>\n      ) : (\n        <AnuimeField\n          recipe={recipe}\n          label=\"Call sign\"\n          error={previewState === \"error\" ? \"Call sign is required.\" : undefined}\n        >\n          <input className=\"rounded border bg-transparent px-3 py-2\" />\n        </AnuimeField>\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-field",
+        "names": ["AnuimeField", "AnuimeFieldset"]
+      }
+    ],
+    "registry": ["anuime-field"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "hover-card": {
+    "body": "return <AnuimeHoverCard recipe={recipe} />;",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-hover-card",
+        "names": ["AnuimeHoverCard"]
+      }
+    ],
+    "registry": ["anuime-hover-card"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": false
+  },
+  "input-group": {
+    "body": "return (\n        <AnuimeInputGroup\n          recipe={recipe}\n          placeholder=\"Search the registry…\"\n          disabled={previewState === \"disabled\"}\n          trailing={<AnuimeKbd recipe={recipe}>⌘K</AnuimeKbd>}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-input-group",
+        "names": ["AnuimeInputGroup"]
+      },
+      {
+        "module": "@/components/ui/anuime-kbd",
+        "names": ["AnuimeKbd"]
+      }
+    ],
+    "registry": ["anuime-input-group", "anuime-kbd"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "input-otp": {
+    "body": "return <AnuimeInputOtp recipe={recipe} disabled={previewState === \"disabled\"} />;",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-input-otp",
+        "names": ["AnuimeInputOtp"]
+      }
+    ],
+    "registry": ["anuime-input-otp"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "kbd": {
+    "body": "return previewState === \"shortcut\" ? (\n        <AnuimeShortcutHint recipe={recipe} />\n      ) : (\n        <AnuimeKbd recipe={recipe}>Enter</AnuimeKbd>\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-kbd",
+        "names": ["AnuimeKbd", "AnuimeShortcutHint"]
+      }
+    ],
+    "registry": ["anuime-kbd"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "menubar": {
+    "body": "return <AnuimeMenubar recipe={recipe} />;",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-menubar",
+        "names": ["AnuimeMenubar"]
+      }
+    ],
+    "registry": ["anuime-menubar"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": false
+  },
+  "scroll-area": {
+    "body": "return (\n        <AnuimeScrollArea\n          recipe={recipe}\n          maxHeight={previewState === \"compact\" ? \"9rem\" : \"16rem\"}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-scroll-area",
+        "names": ["AnuimeScrollArea"]
+      }
+    ],
+    "registry": ["anuime-scroll-area"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "separator": {
+    "body": "return (\n        <div\n          className={\n            previewState === \"vertical\" ? \"flex h-24 items-center gap-4\" : \"grid w-full gap-4\"\n          }\n        >\n          <span>Before</span>\n          <AnuimeSeparator\n            recipe={recipe}\n            decorative={false}\n            orientation={previewState === \"vertical\" ? \"vertical\" : \"horizontal\"}\n          />\n          <span>After</span>\n        </div>\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-separator",
+        "names": ["AnuimeSeparator"]
+      }
+    ],
+    "registry": ["anuime-separator"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "sheet": {
+    "body": "return (\n        <AnuimeSheet recipe={recipe} side={previewState === \"left\" ? \"left\" : \"right\"}>\n          <p className=\"text-sm\">Inspectable system properties.</p>\n        </AnuimeSheet>\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-sheet",
+        "names": ["AnuimeSheet"]
+      }
+    ],
+    "registry": ["anuime-sheet"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "sidebar": {
+    "body": "return <AnuimeSidebar recipe={recipe} collapsed={previewState === \"collapsed\"} />;",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-sidebar",
+        "names": ["AnuimeSidebar"]
+      }
+    ],
+    "registry": ["anuime-sidebar"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "slider": {
+    "body": "return previewState === \"range\" ? (\n        <AnuimeRangeSlider recipe={recipe} />\n      ) : (\n        <AnuimeSlider recipe={recipe} disabled={previewState === \"disabled\"} output=\"68%\" />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-slider",
+        "names": ["AnuimeRangeSlider", "AnuimeSlider"]
+      }
+    ],
+    "registry": ["anuime-slider"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "spinner": {
+    "body": "return (\n        <AnuimeSpinner\n          recipe={recipe}\n          size={previewState === \"small\" ? \"sm\" : previewState === \"large\" ? \"lg\" : \"md\"}\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-spinner",
+        "names": ["AnuimeSpinner"]
+      }
+    ],
+    "registry": ["anuime-spinner"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "toggle": {
+    "body": "return previewState === \"group\" ? (\n        <AnuimeToggleGroup recipe={recipe} />\n      ) : (\n        <AnuimeToggle recipe={recipe} pressed={previewState === \"on\"}>\n          Overdrive\n        </AnuimeToggle>\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-toggle",
+        "names": ["AnuimeToggle", "AnuimeToggleGroup"]
+      }
+    ],
+    "registry": ["anuime-toggle"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "toolbar": {
+    "body": "return (\n        <AnuimeToolbar recipe={recipe}>\n          <AnuimeToolbarButton recipe={recipe}>Undo</AnuimeToolbarButton>\n          <AnuimeToolbarButton recipe={recipe}>Redo</AnuimeToolbarButton>\n          <AnuimeToolbarButton recipe={recipe}>Share</AnuimeToolbarButton>\n        </AnuimeToolbar>\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-toolbar",
+        "names": ["AnuimeToolbar", "AnuimeToolbarButton"]
+      }
+    ],
+    "registry": ["anuime-toolbar"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": false
+  },
+  "typography": {
+    "body": "return (\n        <div className=\"grid max-w-lg gap-3\">\n          <AnuimeHeading recipe={recipe}>Every system has a story.</AnuimeHeading>\n          <AnuimeText>Typography preserves hierarchy across every character recipe.</AnuimeText>\n          <AnuimeCode recipe={recipe}>anuime init</AnuimeCode>\n        </div>\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-typography",
+        "names": ["AnuimeCode", "AnuimeHeading", "AnuimeText"]
+      }
+    ],
+    "registry": ["anuime-typography"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": false
+  },
+  "aspect-ratio": {
+    "body": "return (\n        <AnuimeAspectRatio\n          recipe={recipe}\n          ratio={previewState === \"square\" ? 1 : previewState === \"portrait\" ? 3 / 4 : 16 / 9}\n          className=\"max-w-lg\"\n        />\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-aspect-ratio",
+        "names": ["AnuimeAspectRatio"]
+      }
+    ],
+    "registry": ["anuime-aspect-ratio"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  },
+  "table": {
+    "body": "return (\n        <AnuimeTable recipe={recipe}>\n          <AnuimeTableHeader>\n            <AnuimeTableRow>\n              <AnuimeTableHead>System</AnuimeTableHead>\n              <AnuimeTableHead>Status</AnuimeTableHead>\n            </AnuimeTableRow>\n          </AnuimeTableHeader>\n          <AnuimeTableBody>\n            {previewState === \"empty\" ? null : (\n              <>\n                <AnuimeTableRow>\n                  <AnuimeTableCell>Kira</AnuimeTableCell>\n                  <AnuimeTableCell>Ready</AnuimeTableCell>\n                </AnuimeTableRow>\n                <AnuimeTableRow>\n                  <AnuimeTableCell>Atlas</AnuimeTableCell>\n                  <AnuimeTableCell>Review</AnuimeTableCell>\n                </AnuimeTableRow>\n              </>\n            )}\n          </AnuimeTableBody>\n        </AnuimeTable>\n      );",
+    "imports": [
+      {
+        "module": "@/components/ui/anuime-table",
+        "names": [
+          "AnuimeTable",
+          "AnuimeTableBody",
+          "AnuimeTableCell",
+          "AnuimeTableHead",
+          "AnuimeTableHeader",
+          "AnuimeTableRow"
+        ]
+      }
+    ],
+    "registry": ["anuime-table"],
+    "packages": [],
+    "usesRecipe": true,
+    "usesState": true
+  }
+}
