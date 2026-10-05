@@ -1,0 +1,470 @@
+{
+  "schemaVersion": 1,
+  "status": "in-progress",
+  "objective": "ANUIME-CINEMATIC-PLAN.md",
+  "review": "ANUIME-ENHANCEMENT-REVIEW.md",
+  "release": "whole-product-three-world-creative-release",
+  "lastReviewed": "2026-10-05",
+  "baseline": {
+    "dependencies": "installed",
+    "checks": "Touched world files pass formatting, lint, and type checks; repository-wide formatting issues remain in pre-existing documents.",
+    "build": "passed: vp build including prerendered anuime-world registry JSON",
+    "tests": {
+      "command": "vp test run",
+      "suites": 38,
+      "passed": 338,
+      "failed": 0
+    },
+    "doctor": "passed"
+  },
+  "enhancements": [
+    {
+      "id": "E01",
+      "requirement": "Session signing falls back to public development strings. Empty environment strings are also accepted because `??` does not reject them.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E02",
+      "requirement": "The Director proxy and Eve channel have a default basic-auth password.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E03",
+      "requirement": "Vercel gallery storage defaults to a SQLite file in the temporary directory. Data is neither durable nor shared between function instances.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E04",
+      "requirement": "Director limiting is per generated session in process memory. Studio requests a new session on each proposal.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E05",
+      "requirement": "Gallery creation/reporting has no visible rate limiting; several endpoints parse unrestricted bodies. Some size checks happen after reading the whole body. Analytics trusts Content-Length for its limit.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E06",
+      "requirement": "Gallery identity is a randomly minted browser cookie, not a recoverable account.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E07",
+      "requirement": "AI output is schema-validated but the server does not independently enforce the brief's requested constraints.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E08",
+      "requirement": "Artwork records still say review and usage approval are pending.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E09",
+      "requirement": "Fixtures directly copy Button, Switch, Accordion, and the recipe utility. They do not test actual registry installation or the full catalog.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E10",
+      "requirement": "Fixture pages render a small subset; the inspected Vite and Next pages do not import character CSS. A successful build can therefore hide visual failure.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E11",
+      "requirement": "`resolveAnuimeRecipe` returns class strings but does not itself activate the color scope or recipe mode. Installed output depends on surrounding CSS/theme setup.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E12",
+      "requirement": "Several component files use React hooks without a client directive; the Next fixture only exercises a client page. This alone is not proof of failure: `useId` and consuming boundaries need framework-specific verification.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E13",
+      "requirement": "`getUsageSnippet` mechanically generates `<Component recipe={...} />`; many components require labels, rows, columns, tabs, or children.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E14",
+      "requirement": "Standalone component installation only declares the recipe utility for inspected items; fonts and character styling require additional setup.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E15",
+      "requirement": "No demonstrated immutable release artifacts or consumer rollback workflow.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E16",
+      "requirement": "`validateAnuimeRecipe` checks supported values and completeness only. It has no actual compatibility/conflict rules.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E17",
+      "requirement": "Fixed per-character geometry in components can override the separate recipe shape dimension. Many fields use fixed heights instead of density styles. `calm` and `expressive` resolve to the same motion classes in the shared resolver.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E18",
+      "requirement": "Studio catalogs 52 IDs separately from registry inventory and excludes many newer UI items and blocks.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E19",
+      "requirement": "Gallery remix picks `entry.componentIds[0]`; Studio stores a single component ID.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E20",
+      "requirement": "Recent local saves contain only recipes, not named full Studio documents.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E21",
+      "requirement": "Global Cmd/Ctrl-Z interception also catches typing inside editable fields.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E22",
+      "requirement": "The storage-read error handler calls `localStorage.removeItem` without its own guard.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E23",
+      "requirement": "Zoom parsing accepts numeric strings but returns the original value; runtime data can remain a string despite `StudioZoom`.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E24",
+      "requirement": "PNG export serializes a DOM clone into SVG without collecting external CSS, computed styles, fonts, or form state.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E25",
+      "requirement": "Browser viewport controls and illustrative states do not constitute full interaction inspection.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E26",
+      "requirement": "The inspected native dialog has no explicit accessible name/description association.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E27",
+      "requirement": "Calendar's first date input has no individual label by default; a fieldset legend names the group. Tooltip describes a wrapper rather than ensuring the focusable trigger owns the association.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E28",
+      "requirement": "Navigation uses the fixed ID `anuime-mobile-navigation`; 59 block source files repeat `overview` and `details` IDs.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E29",
+      "requirement": "Tabs only handle left/right arrows and expose an uncontrolled default selection.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E30",
+      "requirement": "The data-table component is currently a semantic static renderer.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E31",
+      "requirement": "Toast is a single status element with optional dismissal, not a complete notification system. Calendar uses native date fields; combobox uses datalist.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E32",
+      "requirement": "Many new blocks place unrelated component examples in the same auto-fit grid. Checkout has no submission interface, and FAQ search includes a work-email field.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E33",
+      "requirement": "Fourteen block source files contain explicit no-op callbacks; only one contains `onSubmit`; only eleven contain a recipe prop.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E34",
+      "requirement": "Component-level props, sizing, labels, class overrides, controlled state, and ref behavior vary.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E35",
+      "requirement": "Native/custom input behavior and data assumptions need edge-case verification.",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E36",
+      "requirement": "Accessibility coverage",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E37",
+      "requirement": "Visual regression",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E38",
+      "requirement": "Browser CI",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E39",
+      "requirement": "AI eval CI",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E40",
+      "requirement": "AI contract drift",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E41",
+      "requirement": "AI usability",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E42",
+      "requirement": "MCP exposure",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E43",
+      "requirement": "MCP review accuracy",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E44",
+      "requirement": "Gallery integration",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E45",
+      "requirement": "Moderation",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E46",
+      "requirement": "Database correctness",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E47",
+      "requirement": "HTTP consistency",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E48",
+      "requirement": "Security headers",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E49",
+      "requirement": "Performance",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E50",
+      "requirement": "Operations",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E51",
+      "requirement": "Reproducibility",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E52",
+      "requirement": "Test honesty",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E53",
+      "requirement": "Catalog truth",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E54",
+      "requirement": "Useful documentation",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E55",
+      "requirement": "Contribution process",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E56",
+      "requirement": "Canonical design generation",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E57",
+      "requirement": "Maintainability",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E58",
+      "requirement": "Analytics validity",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E59",
+      "requirement": "North-star measurement",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E60",
+      "requirement": "User evidence",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E61",
+      "requirement": "Discovery and onboarding",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E62",
+      "requirement": "Preview and SEO consistency",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E63",
+      "requirement": "Weighted mixing",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E64",
+      "requirement": "Saved cloud projects",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E65",
+      "requirement": "Figma/token export",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E66",
+      "requirement": "Curated community publishing",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E67",
+      "requirement": "Pro billing",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E68",
+      "requirement": "Team workspaces",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E69",
+      "requirement": "New character packs",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "E70",
+      "requirement": "Launch and growth",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "releaseGates": {
+    "riggedCharacters": "pending",
+    "humanArtReview": "pending",
+    "browserMatrix": "pending",
+    "consumerInstallMatrix": "pending",
+    "fiveExternalWalkthroughs": "pending",
+    "performanceMeasurements": "pending"
+  },
+  "foundation": {
+    "worldContract": "registry/items/lib/anuime-world/anuime-world.ts",
+    "worldBibles": "design-spec/CINEMATIC-WORLDS.md",
+    "screenRequirements": "design-spec/SCREEN-PROTOTYPES.md",
+    "modelAudit": "design-spec/character-model-audit.json",
+    "runtime": "Draft lazy R3F environments and illustrated characters integrated into homepage; real GLB animation and detailed environment production pending.",
+    "productionAssetApproval": "pending",
+    "visualReview": "Internal browser check: desktop world switching, Mochi sample completion, Atlas day palette at 390x844. Full review matrix and human approval pending."
+  },
+  "latestVerification": {
+    "build": "vp build passed",
+    "checks": "Touched TS/TSX files: no warnings, lint errors, or type errors",
+    "tests": "337/338 passed in full run; one existing 5-second render test timed out during concurrent build. Its suite passed separately: 7/7.",
+    "browser": "Homepage Kira/Mochi/Atlas switch and Mochi completion confirmed; Atlas mobile screenshot inspected.",
+    "screenshots": [
+      "/private/tmp/anuime-kira-home.jpg",
+      "/private/tmp/anuime-mochi-home.jpg",
+      "/private/tmp/anuime-atlas-mobile.jpg"
+    ]
+  }
+}

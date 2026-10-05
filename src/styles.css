@@ -3,6 +3,11 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
 @import "@fontsource-variable/geist-mono";
+@import "@fontsource-variable/space-grotesk";
+@import "@fontsource-variable/karla";
+@import "@fontsource-variable/archivo";
+@import "@fontsource-variable/cormorant-garamond";
+@import "@fontsource-variable/jetbrains-mono";
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
@@ -801,5 +806,313 @@ html.theme-switching [data-theme-control] {
       scroll-behavior: auto !important;
       transition-duration: 0.001ms !important;
     }
+  }
+}
+
+/* Cinematic stage: HTML owns the task; scenery is a decorative sibling. */
+.world-stage {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--world-sky);
+  color: var(--world-text);
+  font-family: var(--world-font);
+}
+.world-stage-scenery {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.world-stage-horizon {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    165deg,
+    var(--world-sky) 20%,
+    var(--world-horizon) 65%,
+    var(--world-surface)
+  );
+}
+.world-stage-character {
+  position: absolute;
+  right: -1%;
+  bottom: 0;
+  width: 55%;
+  height: 92%;
+  object-fit: contain;
+  object-position: bottom;
+  mix-blend-mode: normal;
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+.world-stage-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      var(--world-sky) 5%,
+      color-mix(in srgb, var(--world-sky) 88%, transparent) 35%,
+      transparent 75%
+    ),
+    linear-gradient(0deg, var(--world-sky), transparent 25%);
+}
+.world-stage-content {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: 24px clamp(20px, 4vw, 64px);
+}
+.world-showcase-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.world-selector {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--world-structure);
+  background: var(--world-surface);
+  border-radius: var(--world-radius);
+}
+.world-selector button {
+  min-height: 54px;
+  padding: 8px 18px;
+  text-align: left;
+  border-radius: var(--world-radius);
+  border: 1px solid transparent;
+}
+.world-selector button[aria-pressed="true"] {
+  border-color: var(--world-accent);
+  background: color-mix(in srgb, var(--world-accent) 15%, var(--world-surface));
+}
+.world-selector span,
+.world-selector small {
+  display: block;
+}
+.world-selector span {
+  font-weight: 650;
+}
+.world-selector small {
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+.world-theme-button {
+  font-size: 12px;
+  padding: 12px;
+  border: 1px solid var(--world-structure);
+  background: var(--world-surface);
+  border-radius: var(--world-radius);
+}
+.world-showcase-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  padding: 72px 0 40px;
+  min-height: 690px;
+}
+.world-showcase-copy {
+  max-width: 590px;
+}
+.world-eyebrow {
+  font-family: var(--world-mono-font);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.world-showcase-copy h1 {
+  margin-top: 20px;
+  font-family: var(--world-display-font);
+  font-size: clamp(44px, 5.2vw, 76px);
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+  font-weight: 550;
+}
+.world-showcase-copy h1 em {
+  color: var(--world-accent);
+  font-style: normal;
+}
+.world-showcase-description {
+  margin-top: 22px;
+  max-width: 430px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.world-showcase-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+.world-primary-action,
+.world-secondary-action {
+  padding: 13px 18px;
+  border: 1px solid var(--world-accent);
+  border-radius: var(--world-radius);
+  font-size: 14px;
+  font-weight: 600;
+}
+.world-primary-action {
+  background: var(--world-accent);
+  color: var(--world-sky);
+}
+.world-secondary-action {
+  background: var(--world-surface);
+  color: var(--world-text);
+  border-color: var(--world-structure);
+}
+.world-task-panel {
+  margin-top: 34px;
+  padding: 20px;
+  max-width: 450px;
+  background: var(--world-surface);
+  border: 1px solid var(--world-structure);
+  border-radius: var(--world-radius);
+  box-shadow: 0 12px 50px #0002;
+}
+.world-task-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.world-task-heading > span:last-child {
+  font-size: 10px;
+  color: var(--world-accent);
+}
+.world-task-panel h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 15px;
+}
+.world-task-panel > p {
+  font-size: 12px;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+.world-task-status {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 13px 0;
+  margin: 8px 0;
+  font-size: 11px;
+  border-block: 1px solid var(--world-structure);
+}
+.world-task-panel > button {
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid var(--world-accent);
+  border-radius: var(--world-radius);
+  font-size: 12px;
+}
+.world-task-panel > button:disabled {
+  opacity: 0.65;
+}
+.world-task-panel .world-task-reset {
+  border: 0;
+  padding-left: 0;
+  text-decoration: underline;
+}
+.world-location {
+  padding: 0 0 20px 30px;
+  text-align: right;
+  display: grid;
+  gap: 4px;
+}
+.world-location strong {
+  font-family: var(--world-display-font);
+  font-size: 32px;
+}
+.world-location > span {
+  font-family: var(--world-mono-font);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+.world-experience-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding-top: 18px;
+  border-top: 1px solid var(--world-structure);
+  font-size: 11px;
+}
+.world-experience-controls label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.world-experience-controls select,
+.world-experience-controls button {
+  border: 1px solid var(--world-structure);
+  background: var(--world-surface);
+  color: var(--world-text);
+  padding: 9px 12px;
+  min-height: 40px;
+  border-radius: var(--world-radius);
+}
+.world-stage :is(button, a, select):focus-visible {
+  outline: 2px solid var(--world-secondary);
+  outline-offset: 4px;
+}
+.world-stage-notice {
+  position: relative;
+  padding: 12px 24px;
+  font-size: 12px;
+  background: var(--world-surface);
+}
+@media (max-width: 767px) {
+  .world-showcase-top {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .world-selector {
+    justify-content: space-between;
+  }
+  .world-selector button {
+    padding: 8px;
+    flex: 1;
+  }
+  .world-selector small {
+    font-size: 8px;
+  }
+  .world-theme-button {
+    align-self: flex-end;
+  }
+  .world-showcase-body {
+    display: block;
+    padding-top: 40px;
+    min-height: 0;
+  }
+  .world-showcase-copy {
+    max-width: none;
+  }
+  .world-stage-character {
+    width: 70%;
+    height: 42%;
+    top: 160px;
+    right: -20%;
+    opacity: 0.38;
+  }
+  .world-stage-scrim {
+    background:
+      linear-gradient(90deg, var(--world-sky), transparent),
+      linear-gradient(0deg, var(--world-sky) 35%, transparent);
+  }
+  .world-task-panel {
+    max-width: none;
+  }
+  .world-showcase-description {
+    max-width: 85%;
+  }
+  .world-location {
+    text-align: left;
+    padding: 24px 0 0;
+  }
+  .world-location strong {
+    font-size: 24px;
   }
 }

@@ -9,6 +9,7 @@ import { SiteHeader } from "@/components/docs/site-header";
 import { ThemeProvider } from "@/components/docs/theme-provider";
 import { Button } from "@/components/ui/button";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ExperienceProvider } from "@/components/worlds/experience-provider";
 
 import type { RegistrySectionId } from "../lib/registry/sections";
 import { getJsonLdScripts, getWebSiteJsonLd } from "../lib/seo";
@@ -97,16 +98,18 @@ export const Route = createRootRoute({
 function RootRoute() {
   return (
     <ThemeProvider>
-      <TooltipProvider>
-        <NavigationProgress />
-        <div data-theme-canvas className="flex min-h-svh flex-col">
-          <SiteHeader />
-          <div className="flex-1">
-            <Outlet />
+      <ExperienceProvider>
+        <TooltipProvider>
+          <NavigationProgress />
+          <div data-theme-canvas className="flex min-h-svh flex-col">
+            <SiteHeader />
+            <div className="flex-1">
+              <Outlet />
+            </div>
+            <SiteFooter />
           </div>
-          <SiteFooter />
-        </div>
-      </TooltipProvider>
+        </TooltipProvider>
+      </ExperienceProvider>
     </ThemeProvider>
   );
 }

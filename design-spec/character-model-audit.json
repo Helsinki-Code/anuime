@@ -1,0 +1,55 @@
+{
+  "inspected": "2026-10-05",
+  "status": "static-source-assets",
+  "visualInspection": "All three loaded in Three.js GLTFLoader and were inspected from front and back. This does not certify topology, deformation, or human likeness approval.",
+  "models": [
+    {
+      "file": "atlas-3d-model.glb",
+      "bytes": 30230256,
+      "sha256": "34f3141d773676cd08e42fafb40dbef4c5ee696c2de2a17dbf284d06fe20c883",
+      "triangles": 499718,
+      "vertices": 308655,
+      "skins": 0,
+      "animations": [],
+      "morphTargets": 0,
+      "meshes": 1,
+      "materials": 1,
+      "generator": "Khronos glTF Blender I/O v4.0.43"
+    },
+    {
+      "file": "kira-3d-model.glb",
+      "bytes": 30737756,
+      "sha256": "4649682aaffde065ff887b3233f355186ea34132fdeb5efb7e40b6451bd06c06",
+      "triangles": 499714,
+      "vertices": 315276,
+      "skins": 0,
+      "animations": [],
+      "morphTargets": 0,
+      "meshes": 1,
+      "materials": 1,
+      "generator": "Khronos glTF Blender I/O v4.0.43"
+    },
+    {
+      "file": "mochi-3d-model.glb",
+      "bytes": 34513080,
+      "sha256": "55f9716c74604b257f18c0be93211268bcf8096ea88b1457a8411e130506b26e",
+      "triangles": 495812,
+      "vertices": 324975,
+      "skins": 0,
+      "animations": [],
+      "morphTargets": 0,
+      "meshes": 1,
+      "materials": 1,
+      "generator": "Khronos glTF Blender I/O v4.0.43"
+    }
+  ],
+  "missing": [
+    "Skeletons and skin weights",
+    "idle, greeting, attention, confirmation, recovery clips",
+    "Facial expression morph targets or facial rigs",
+    "Optimized desktop and mobile variants",
+    "Environment models",
+    "Editable source files and distribution provenance in this folder"
+  ],
+  "originalsModified": false
+}

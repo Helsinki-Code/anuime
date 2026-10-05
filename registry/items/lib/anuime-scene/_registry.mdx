@@ -1,0 +1,22 @@
+---
+name: anuime-scene
+type: registry:lib
+title: "Anuime Scene"
+description: "Validated portable scene documents and structured editing operations."
+dependencies:
+  - zod@^4.3.6
+localRegistryDependencies:
+  - anuime-recipe
+files:
+  - path: anuime-scene.ts
+    type: registry:lib
+    target: "@lib/anuime-scene.ts"
+---
+
+Validated portable scene documents and structured editing operations.
+
+```ts
+import { createScene, validateScene, importScene } from "@/lib/anuime-scene";
+```
+
+Scene documents contain ordered sections, responsive stacks/grids, component props, approved slots, recipe-v2 settings, and attribution. Pass your component definitions to validation before rendering or saving imported data. No executable callbacks are serialized. Unknown fields, components, props, states, and slots are rejected. Imports are limited to 1 MB, 200 nodes, and eight nesting levels.

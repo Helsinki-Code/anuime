@@ -6,10 +6,10 @@ import {
   CharacterSystemCard,
   CharacterThemeSurface,
   ExpressiveLoader,
-  SignatureControl,
 } from "@/components/anuime-v2/system-preview";
 import { SiteLogo } from "@/components/docs/site-logo";
 import { Button } from "@/components/ui/button";
+import { WorldShowcase } from "@/components/worlds/world-showcase";
 import { characterIds, characterSystems } from "@/lib/anuime/characters";
 
 import { getSeoHead } from "../lib/seo";
@@ -32,62 +32,7 @@ const mcpEndpoint = `${siteConfig.homepage}/mcp`;
 function HomePage() {
   return (
     <main className="overflow-hidden">
-      <section className="anuime-grid relative isolate border-b">
-        <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[0.92fr_1.08fr] lg:px-8 lg:py-28">
-          <div className="flex flex-col items-start justify-center">
-            <SiteLogo className="mb-8 h-10 w-44" />
-            <p className="mb-7 font-mono text-xs font-semibold tracking-[0.18em] text-muted-foreground uppercase">
-              Registry v2 · 51 workhorses · 12 expressive moments
-            </p>
-            <h1 className="max-w-3xl font-heading text-5xl leading-[0.96] font-semibold tracking-[-0.055em] text-balance sm:text-6xl lg:text-7xl">
-              Your component library just got a cast.
-            </h1>
-            <p className="mt-7 max-w-xl text-lg leading-8 text-pretty text-muted-foreground">
-              Three character systems built from artifacts, geometry, and enforceable laws—not
-              decorative skins. Install accessible React source you own.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Button size="lg" nativeButton={false} render={<Link to="/studio" />}>
-                Direct in Studio
-                <IconArrowRight data-icon="inline-end" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                nativeButton={false}
-                render={<Link to="/$section" params={{ section: "components" }} />}
-              >
-                Browse 51 components
-              </Button>
-            </div>
-          </div>
-
-          <div className="grid gap-3 self-center">
-            {characterIds.map((character) => (
-              <CharacterThemeSurface
-                key={character}
-                character={character}
-                className="relative overflow-hidden border p-5 shadow-sm"
-              >
-                <div className="anuime-card-motif" aria-hidden="true" />
-                <div className="relative grid items-center gap-5 sm:grid-cols-[10rem_1fr]">
-                  <div>
-                    <p className="font-mono text-[11px] tracking-[0.16em] text-muted-foreground uppercase">
-                      {characterSystems[character].adjective}
-                    </p>
-                    <h2 className="mt-1 text-2xl font-semibold">
-                      {characterSystems[character].name}
-                    </h2>
-                  </div>
-                  <div className="anuime-signature-panel border bg-[var(--anuime-surface)] p-4">
-                    <SignatureControl character={character} compact />
-                  </div>
-                </div>
-              </CharacterThemeSurface>
-            ))}
-          </div>
-        </div>
-      </section>
+      <WorldShowcase />
 
       <section className="border-b py-20">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">

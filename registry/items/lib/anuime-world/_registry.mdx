@@ -1,0 +1,34 @@
+---
+name: anuime-world
+type: registry:lib
+title: "AnUIme World"
+description: "Versioned character worlds, cinematic preferences, and asset contracts for AnUIme."
+files:
+  - path: anuime-world.ts
+    type: registry:lib
+    target: "@lib/anuime-world.ts"
+---
+
+World identity, light/dark palettes, typography, lighting, asset readiness, and experience preferences share one renderer-independent contract. This library adds no graphics dependencies and does not change recipe-v2 links.
+
+```ts
+import {
+  worlds,
+  worldCssVariables,
+  defaultExperiencePreferences,
+  resolveExperience,
+} from "@/lib/anuime-world";
+
+const world = worlds.mochi;
+const variables = worldCssVariables(world, "dark");
+const preferences = defaultExperiencePreferences();
+const experience = resolveExperience(preferences, {
+  reducedMotion: true,
+  graphics: true,
+  visible: true,
+  lowPerformance: false,
+});
+// experience.mode === "still"; preferences.mode remains "cinematic".
+```
+
+Asset URLs point to the AnUIme site's public asset tree. Consumers must supply assets on their own host or replace those URLs. Installing this contract does not download models or grant asset distribution rights. Current GLBs are unrigged source assets; reviewed desktop/mobile variants and animation clips are still pending. `getCharacterAsset` returns null until an approved variant is available, allowing renderers to use the illustrated fallback.
