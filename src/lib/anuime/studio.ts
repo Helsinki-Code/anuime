@@ -74,6 +74,7 @@ export type StudioDocument = {
 };
 
 export type StudioSearch = {
+  example?: string;
   recipe?: string;
   component?: RegistryComponentId;
   state?: string;
@@ -415,6 +416,10 @@ export function parseStudioSearch(input: Record<string, unknown>): StudioSearch 
   const viewport = isStudioViewport(input.viewport) ? input.viewport : undefined;
   const zoom = parseStudioZoom(input.zoom);
   return {
+    example:
+      typeof input.example === "string" && /^[a-z0-9-]{1,80}$/.test(input.example)
+        ? input.example
+        : undefined,
     recipe: recipe ? encodeAnuimeRecipe(recipe) : undefined,
     component,
     state: typeof input.state === "string" ? input.state : undefined,

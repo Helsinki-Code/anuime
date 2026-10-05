@@ -1,12 +1,12 @@
 import { createHmac, randomUUID, timingSafeEqual } from "node:crypto";
 
+import { requiredSecret } from "./server-config.server";
+
 const COOKIE_NAME = "anuime_director_session";
 const MAX_AGE_SECONDS = 30 * 60;
 
 function secret() {
-  return (
-    process.env.ANUIME_DIRECTOR_SESSION_SECRET ?? "local-development-director-secret-change-me"
-  );
+  return requiredSecret("ANUIME_DIRECTOR_SESSION_SECRET");
 }
 
 function sign(value: string) {

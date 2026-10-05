@@ -5,7 +5,7 @@ import { SiteLogo } from "@/components/docs/site-logo";
 import { Button } from "@/components/ui/button";
 import { trackProductEvent } from "@/lib/analytics";
 import { curatedGalleryEntries, type GalleryEntry } from "@/lib/anuime/gallery";
-import { componentCatalog, studioSearchFromDocument } from "@/lib/anuime/studio";
+import { componentCatalog } from "@/lib/anuime/studio";
 import { featureFlags } from "@/lib/feature-flags";
 
 import { AnuimeAlert } from "../../registry/items/components/anuime-alert/anuime-alert";
@@ -126,14 +126,7 @@ function GalleryPage() {
 }
 
 function ExampleCard({ entry, featured }: { entry: GalleryEntry; featured: boolean }) {
-  const componentId = entry.componentIds[0] ?? "button";
-  const search = studioSearchFromDocument({
-    recipe: entry.recipe,
-    componentId,
-    previewState: componentCatalog[componentId].states[0] ?? "default",
-    viewport: "desktop",
-    zoom: 1,
-  });
+  const search = { example: entry.id };
 
   return (
     <article

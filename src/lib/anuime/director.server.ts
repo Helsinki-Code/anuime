@@ -1,6 +1,7 @@
 import { Client } from "eve/client";
 
 import { directorBriefSchema, directorProposalSchema, type DirectorBrief } from "./director";
+import { requiredProductionSecret } from "./server-config.server";
 
 const proposalJsonSchema = {
   type: "object",
@@ -53,8 +54,12 @@ export async function requestDirectorProposal(input: unknown) {
   const brief = directorBriefSchema.parse(input);
   const host = process.env.ANUIME_EVE_DIRECTOR_URL;
   if (!host) throw new Error("The Director service is not configured.");
-  const username = process.env.ANUIME_EVE_DIRECTOR_USERNAME ?? "anuime-proxy";
-  const password = process.env.ANUIME_EVE_DIRECTOR_PASSWORD ?? "local-director-password";
+  const username = process.env.ANUIME_EVE_DIRECTOR_USERNAME?.trim();
+  const password = requiredProductionSecret("ANUIME_EVE_DIRECTOR_PASSWORD");
+  if (!username)
+    throw new Error(
+      "ANUIME_EVE_DIRECTOR_USERNAME must be configured before enabling the Director.",
+    );
   const client = new Client({
     host,
     auth: { basic: { username, password } },

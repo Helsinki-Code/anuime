@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 
-import { anuimeExtendedComponentNames } from "../../../registry/items/lib/anuime-recipe/anuime-recipe";
+import { worldIds, worlds } from "../../lib/anuime/worlds";
 import type { RegistryRouteItem } from "../../lib/registry/sections";
-import { getRegistrySectionIdForType } from "../../lib/registry/sections";
+import { CatalogBrowser } from "./catalog-browser";
 import { DocsPageHeader } from "./docs-page-header";
 
 type RegistryListItem = RegistryRouteItem & {
@@ -21,10 +21,6 @@ type RegistryItemListProps = {
 
 export function RegistryItemList({ catalog }: RegistryItemListProps) {
   const isComponentCatalog = catalog.basePath === "/components";
-  const extendedNames = new Set(
-    anuimeExtendedComponentNames.map((componentName) => `anuime-${componentName}`),
-  );
-
   return (
     <div className="flex w-full flex-col gap-8">
       <DocsPageHeader
@@ -67,36 +63,34 @@ export function RegistryItemList({ catalog }: RegistryItemListProps) {
         </section>
       ) : null}
 
-      {catalog.items.length > 0 ? (
-        <div className="grid gap-3 sm:grid-cols-2">
-          {catalog.items.map((item, index) => (
-            <Link
-              key={item.name}
-              to="/$section/$name"
-              params={{ section: getRegistrySectionIdForType(item.type), name: item.name }}
-              className="group relative flex min-h-36 flex-col overflow-hidden rounded-xl border bg-card p-5 transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-[var(--anuime-accent,var(--accent))]/50 hover:shadow-[0_18px_40px_-30px_color-mix(in_oklab,var(--anuime-accent,var(--accent))_75%,transparent)]"
-            >
-              <div className="mb-5 flex items-center justify-between gap-3">
-                <span className="font-mono text-[9px] tracking-[0.14em] text-muted-foreground uppercase">
-                  {String(index + 1).padStart(2, "0")} · {item.type.replace("registry:", "")}
+      {isComponentCatalog ? (
+        <nav aria-label="Browse by character world" className="grid gap-2 sm:grid-cols-3">
+          {worldIds.map((worldId) => {
+            const world = worlds[worldId];
+            return (
+              <Link
+                key={worldId}
+                to="/characters/$character"
+                params={{ character: worldId }}
+                className="group rounded-xl border bg-card/70 p-4 transition-colors hover:border-[var(--anuime-accent,var(--accent))]/60"
+              >
+                <span className="font-mono text-[9px] tracking-[0.16em] text-muted-foreground uppercase">
+                  {world.character} · {world.location}
                 </span>
-                {extendedNames.has(item.name) ? (
-                  <span className="rounded-full border border-border bg-secondary px-2 py-1 font-mono text-[8px] font-semibold tracking-wider text-secondary-foreground uppercase">
-                    Extended
+                <span className="mt-2 block text-sm font-semibold tracking-tight">
+                  Browse {world.character} components
+                  <span className="ml-1 text-[var(--anuime-accent,var(--accent))] transition-transform group-hover:translate-x-0.5">
+                    →
                   </span>
-                ) : null}
-              </div>
-              <span className="text-base font-semibold tracking-tight">{item.title}</span>
-              <span className="mt-1 text-sm leading-6 text-muted-foreground">
-                {item.description}
-              </span>
-              <span className="mt-auto pt-5 text-xs font-semibold text-[var(--anuime-accent,var(--accent))] opacity-0 transition-opacity group-hover:opacity-100">
-                Inspect construction →
-              </span>
-              <span className="pointer-events-none absolute right-0 bottom-0 h-px w-0 bg-[var(--anuime-accent,var(--accent))] transition-[width] duration-300 group-hover:w-full" />
-            </Link>
-          ))}
-        </div>
+                </span>
+              </Link>
+            );
+          })}
+        </nav>
+      ) : null}
+
+      {catalog.items.length > 0 ? (
+        <CatalogBrowser items={catalog.items} />
       ) : (
         <p className="rounded-lg border p-4 text-sm text-muted-foreground">
           Add items under <code>registry/items</code> to publish the registry.

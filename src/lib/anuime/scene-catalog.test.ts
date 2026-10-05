@@ -28,4 +28,11 @@ describe("Studio scene adapters", () => {
       expect(scene.world).toBe(world);
     }
   });
+  it("classifies the canonical catalog from the shared extended-component list", () => {
+    expect(sceneCatalog.button.maturity).toBe("stable");
+    expect(sceneCatalog.accordion.maturity).toBe("beta");
+    expect(
+      Object.values(sceneCatalog).every((definition) => definition.maturity !== "experimental"),
+    ).toBe(true);
+  });
 });

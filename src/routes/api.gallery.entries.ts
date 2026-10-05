@@ -4,6 +4,18 @@ import { z } from "zod";
 import { readGallerySession } from "@/lib/anuime/gallery-auth.server";
 import { createGalleryEntry, listGalleryEntries } from "@/lib/anuime/gallery-repository.server";
 
+const galleryEntryRequestSchema = z
+  .object({
+    submit: z.boolean().optional(),
+    title: z.string(),
+    description: z.string(),
+    recipe: z.unknown(),
+    componentIds: z.array(z.string()).max(105),
+    tags: z.array(z.string()).max(8).optional(),
+    remixOf: z.string().nullable().optional(),
+  })
+  .strict();
+
 export const Route = createFileRoute("/api/gallery/entries")({
   server: {
     handlers: {
@@ -19,10 +31,7 @@ export const Route = createFileRoute("/api/gallery/entries")({
         if (text.length > 12_000)
           return Response.json({ error: "Payload too large" }, { status: 413 });
         try {
-          const body = z
-            .object({ submit: z.boolean().optional() })
-            .passthrough()
-            .parse(JSON.parse(text));
+          const body = galleryEntryRequestSchema.parse(JSON.parse(text));
           const submit = body.submit === true;
           if (submit && process.env.ANUIME_GALLERY_PUBLISH_ENABLED !== "true") {
             return Response.json({ error: "Publishing is closed" }, { status: 403 });

@@ -1,10 +1,12 @@
 import { createHmac, randomUUID, timingSafeEqual } from "node:crypto";
 
+import { requiredSecret } from "./server-config.server";
+
 const COOKIE_NAME = "anuime_gallery_session";
 const MAX_AGE_SECONDS = 60 * 60 * 24 * 30;
 
 function secret() {
-  return process.env.ANUIME_GALLERY_SESSION_SECRET ?? "local-gallery-secret-change-me";
+  return requiredSecret("ANUIME_GALLERY_SESSION_SECRET");
 }
 
 function sign(value: string) {

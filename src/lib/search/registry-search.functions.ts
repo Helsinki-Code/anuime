@@ -4,7 +4,7 @@ import { setResponseHeader } from "@tanstack/react-start/server";
 import type { RegistrySearchInput } from "./registry-search";
 
 export const searchRegistryItemsFn = createServerFn({ method: "GET" })
-  .inputValidator(validateRegistrySearchInput)
+  .validator(validateRegistrySearchInput)
   .handler(async ({ data }) => {
     setResponseHeader(
       "Cache-Control",

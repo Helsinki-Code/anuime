@@ -1,4 +1,7 @@
 import { createAnuimeRecipe, type AnuimeRecipeV2 } from "./recipe";
+import { createSceneComponent } from "./scene-catalog";
+import { createScene, createSection } from "./scenes";
+import type { SceneDocumentV1 } from "./scenes";
 import type { RegistryComponentId } from "./studio";
 
 export type GalleryModerationStatus = "draft" | "pending" | "approved" | "rejected" | "removed";
@@ -91,3 +94,21 @@ export const curatedGalleryEntries: GalleryEntry[] = [
     remixOf: null,
   },
 ];
+
+export function createGalleryScene(id: string): SceneDocumentV1 | null {
+  const entry = curatedGalleryEntries.find((candidate) => candidate.id === id);
+  if (!entry) return null;
+  const scene = createScene(entry.recipe.colorSystem, `gallery-${entry.id}`, entry.title);
+  scene.recipe = entry.recipe;
+  scene.lighting = entry.recipe.mode === "dark" ? "dark" : "light";
+  scene.attribution = [{ name: entry.author.displayName }];
+  scene.sections = [
+    createSection(
+      "main",
+      entry.componentIds.map((component, index) =>
+        createSceneComponent(component, `${entry.id}-${index}`),
+      ),
+    ),
+  ];
+  return scene;
+}

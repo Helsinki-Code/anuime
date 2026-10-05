@@ -27,6 +27,7 @@ import { trackProductEvent } from "@/lib/analytics";
 import { characterIds, characterSystems } from "@/lib/anuime/characters";
 import { directorProposalSchema, type DirectorProposal } from "@/lib/anuime/director";
 import { exportPreviewAsPng } from "@/lib/anuime/export-preview";
+import { createGalleryScene } from "@/lib/anuime/gallery";
 import {
   anuimeDensities,
   anuimeModes,
@@ -94,6 +95,7 @@ function StudioPage() {
     <SceneStudio
       key={JSON.stringify(search)}
       initial={studioDocumentFromSearch(search)}
+      initialScene={search.example ? (createGalleryScene(search.example) ?? undefined) : undefined}
       legacyLink={Boolean(search.recipe || search.component)}
       onOpenLab={() => setLab(true)}
     />

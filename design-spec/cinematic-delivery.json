@@ -443,7 +443,7 @@
     "riggedCharacters": "pending",
     "humanArtReview": "pending",
     "browserMatrix": "pending",
-    "consumerInstallMatrix": "pending",
+    "consumerInstallMatrix": "verified for locked Vite React, Next.js, and TanStack Start fixtures",
     "fiveExternalWalkthroughs": "pending",
     "performanceMeasurements": "pending"
   },
@@ -452,26 +452,27 @@
     "worldBibles": "design-spec/CINEMATIC-WORLDS.md",
     "screenRequirements": "design-spec/SCREEN-PROTOTYPES.md",
     "modelAudit": "design-spec/character-model-audit.json",
-    "runtime": "Draft lazy R3F environments and illustrated characters integrated into homepage; real GLB animation and detailed environment production pending.",
+    "runtime": "Lazy R3F environments now load the supplied GLB source model at high quality with auto-scaling, while balanced/low quality and all failures retain procedural or illustrated fallbacks; rigging, clips, and approved mobile variants remain pending.",
     "productionAssetApproval": "pending",
     "visualReview": "Internal browser check: desktop world switching, Mochi sample completion, Atlas day palette at 390x844. Full review matrix and human approval pending."
   },
   "latestVerification": {
-    "build": "vp build passed",
+    "build": "vp build passed through SSR, client bundling, and prerendering with elevated local preview binding",
     "checks": "Touched TS/TSX files: no warnings, lint errors, or type errors",
-    "tests": "vp test run: 40 suites, 358 tests passed",
+    "tests": "vp test run: 43 suites, 368 tests passed",
     "browser": "Homepage Kira/Mochi/Atlas switch and Mochi completion confirmed; Atlas mobile screenshot inspected.",
     "screenshots": [
       "/private/tmp/anuime-kira-home.jpg",
       "/private/tmp/anuime-mochi-home.jpg",
       "/private/tmp/anuime-atlas-mobile.jpg"
-    ]
+    ],
+    "deploymentSecurity": "@tanstack/react-start 1.168.60 with @tanstack/start-server-core 1.169.39; Vercel vulnerable-package gate resolved"
   },
   "sceneFoundation": {
     "contract": "registry/items/lib/anuime-scene/anuime-scene.ts",
     "editing": "src/lib/anuime/scene-editor.ts",
     "storage": "src/lib/anuime/scene-projects.ts",
-    "status": "Studio UI connected: outline, editing, responsive preview, projects, JSON import/export. React source export and complete editable data adapters pending.",
+    "status": "Studio UI connected: outline, editing, responsive preview, projects, JSON import/export, source export, and deterministic styled DOM image export. Complete editable data adapters pending.",
     "verified": [
       "bounded JSON imports and strict fields",
       "recipe-preserving legacy migration",
@@ -480,7 +481,8 @@
       "IndexedDB lifecycle and revision conflicts",
       "write failures and corrupt records preserve previous saved state"
     ],
-    "focusedTests": 20
+    "focusedTests": 20,
+    "storageRecovery": "Recovery drafts remain available when IndexedDB writes fail."
   },
   "studioIntegration": {
     "files": [
@@ -489,30 +491,71 @@
       "src/lib/anuime/scene-catalog.ts"
     ],
     "legacyPreviews": 52,
-    "editablePropAdapters": ["button", "input", "card", "typography"],
+    "editablePropAdapters": ["button", "input", "card", "typography", "progress", "alert"],
     "browserVerification": "pending: IAB navigation and frame-tree operations timed out",
-    "buildVerification": "Previous Studio build passed; source-export integration build running in session 22856 (/private/tmp/anuime-source-export-build.log).",
-    "tests": "360 tests passed before recovery-draft UI follow-up",
+    "buildVerification": "passed: vp build completed SSR and catalog prerendering; sitemap and pages data written",
+    "tests": "368 tests passed across 43 suites",
     "remaining": [
       "Full catalog editable data adapters",
-      "React source export",
       "Studio browser, keyboard, import/export and storage recovery walkthrough",
-      "Full scene flagship workflows"
+      "Full scene flagship workflows",
+      "3D frame capture verification on graphics-capable browsers"
     ],
     "sourceExport": {
       "status": "React/CSS/install downloads implemented; emitted TypeScript checked for 52 adapters and 3 starters",
-      "missing": [
-        "World runtime and assets",
-        "Fresh consumer installation matrix",
-        "Visual equivalence checks"
-      ],
+      "missing": ["World runtime and assets", "Visual equivalence checks"],
       "generationCommand": "node scripts/generate-scene-previews.mjs",
       "focusedTests": 4
+    },
+    "galleryRemix": {
+      "status": "implemented",
+      "file": "src/lib/anuime/gallery.ts",
+      "capabilities": [
+        "curated examples open as complete scene documents",
+        "gallery-to-Studio links preserve recipe, world, lighting, attribution, and component order"
+      ],
+      "focusedTests": 3
     },
     "legacyFixes": [
       "URL zoom values normalize to numbers",
       "Text inputs retain native undo in component lab",
       "Blocked localStorage no longer causes a second exception during recovery"
     ]
+  },
+  "securityHardening": {
+    "status": "implemented and tested",
+    "changes": [
+      "Production session secrets reject absent or blank values; development uses a process-local random secret.",
+      "Director service credentials no longer have baked-in defaults and are required when the service is enabled.",
+      "Gallery entry requests use a strict bounded schema and reject unknown fields.",
+      "All 43 suites and 368 tests pass after the hardening changes."
+    ],
+    "files": [
+      "src/lib/anuime/server-config.server.ts",
+      "src/lib/anuime/director-auth.server.ts",
+      "src/lib/anuime/gallery-auth.server.ts",
+      "src/routes/api.gallery.entries.ts"
+    ]
+  },
+  "publicSurface": {
+    "characterPages": {
+      "status": "implemented",
+      "file": "src/routes/characters.$character.tsx",
+      "capabilities": [
+        "world stage with illustrated and graphics fallbacks",
+        "persistent Cinematic/Balanced/Still controls",
+        "light/dark character presentation",
+        "direct Build with this character Studio handoff"
+      ]
+    },
+    "componentCatalog": {
+      "status": "implemented",
+      "file": "src/components/docs/registry-item-list.tsx",
+      "capabilities": [
+        "world-aware character navigation",
+        "catalog identity metrics and extended component labeling",
+        "search with type, character, maturity, and interaction filters"
+      ]
+    }
   }
 }

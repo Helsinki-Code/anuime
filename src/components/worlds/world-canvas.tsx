@@ -1,5 +1,7 @@
+import { useGLTF } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
+import { Box3, Vector3 } from "three";
 import type { Group } from "three";
 
 import { worlds } from "@/lib/anuime/worlds";
@@ -58,6 +60,15 @@ function Block({
       <meshStandardMaterial color={color} roughness={0.65} />
     </mesh>
   );
+}
+
+function CharacterModel({ worldId }: { worldId: WorldId }) {
+  const { scene } = useGLTF(worlds[worldId].assets.character.source.src);
+  const bounds = new Box3().setFromObject(scene);
+  const size = bounds.getSize(new Vector3());
+  const largestDimension = Math.max(size.x, size.y, size.z, 0.01);
+  const scale = 3.6 / largestDimension;
+  return <primitive object={scene} position={[0, -2.35, 0.6]} scale={scale} />;
 }
 
 /** Modular environment blocking. Detailed art assets are a separate production gate. */
@@ -187,6 +198,7 @@ export default function WorldCanvas(props: CanvasProps) {
         animate={props.animate}
       />
       <Environment worldId={props.worldId} theme={props.theme} animate={props.animate} />
+      {props.quality === "high" ? <CharacterModel worldId={props.worldId} /> : null}
     </Canvas>
   );
 }

@@ -1,3 +1,4 @@
+import { toPng } from "html-to-image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ChangeEvent } from "react";
 
@@ -60,6 +61,21 @@ function downloadJson(scene: SceneDocumentV1) {
   link.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
+async function downloadSceneImage(element: HTMLElement, scene: SceneDocumentV1) {
+  if (document.fonts) await document.fonts.ready;
+  await new Promise<void>((resolve) =>
+    requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+  );
+  const dataUrl = await toPng(element, {
+    cacheBust: true,
+    pixelRatio: 2,
+    backgroundColor: scene.lighting === "dark" ? "#100e24" : "#f7f5ff",
+  });
+  const link = document.createElement("a");
+  link.href = dataUrl;
+  link.download = `${scene.name.replace(/[^a-zA-Z0-9_-]/g, "-") || "scene"}.png`;
+  link.click();
+}
 function flatten(
   nodes: SceneNode[],
   parentId: string | null = null,
@@ -85,14 +101,17 @@ function flatten(
 
 export function SceneStudio({
   initial,
+  initialScene,
   legacyLink,
   onOpenLab,
 }: {
   initial: StudioDocument;
+  initialScene?: SceneDocumentV1;
   legacyLink: boolean;
   onOpenLab: () => void;
 }) {
   const [history, setHistory] = useState<SceneHistory>(() => {
+    if (initialScene) return { past: [], present: initialScene, future: [] };
     const migrated = sceneFromLegacy(
       { recipe: initial.recipe, component: initial.componentId, state: initial.previewState },
       sceneCatalog,
@@ -124,6 +143,7 @@ export function SceneStudio({
   const [dragged, setDragged] = useState<string | null>(null);
   const revisions = useRef(new Map<string, number>());
   const saveQueue = useRef<Promise<void>>(Promise.resolve());
+  const previewRef = useRef<HTMLDivElement>(null);
   const currentId = useRef(scene.id);
   const rows = flatten(scene.sections);
   const selectedRow = rows.find((row) => row.node.id === selected);
@@ -453,13 +473,15 @@ export function SceneStudio({
               className="scene-preview-device"
               style={{ width: { mobile: 390, tablet: 768, desktop: 1100 }[viewport] }}
             >
-              <WorldStage
-                worldId={scene.world}
-                theme={scene.lighting}
-                className="scene-editor-world"
-              >
-                <ScenePreview scene={scene} />
-              </WorldStage>
+              <div ref={previewRef}>
+                <WorldStage
+                  worldId={scene.world}
+                  theme={scene.lighting}
+                  className="scene-editor-world"
+                >
+                  <ScenePreview scene={scene} />
+                </WorldStage>
+              </div>
             </div>
           </div>
           <p className="scene-editor-notice" role="status">
@@ -671,6 +693,21 @@ export function SceneStudio({
                 onChange={(event) => void importFile(event)}
               />
             </label>
+            <button
+              disabled={!validation.valid || !previewRef.current}
+              onClick={() => {
+                if (!previewRef.current) return;
+                void downloadSceneImage(previewRef.current, scene).catch((error) => {
+                  setNotice(
+                    error instanceof Error
+                      ? `Image export failed: ${error.message}`
+                      : "Image export failed. Download the illustrated scene instead.",
+                  );
+                });
+              }}
+            >
+              Export image
+            </button>
           </div>
           <p className="text-xs">
             JSON preserves the complete composition. React export includes component usage, fonts,

@@ -5,9 +5,11 @@ import { CharacterThemeSurface } from "@/components/anuime-v2/system-preview";
 import type { SceneDocumentV1, SceneNode } from "@/lib/anuime/scenes";
 import { isRegistryComponentId } from "@/lib/anuime/studio";
 
+import { AnuimeAlert } from "../../../registry/items/components/anuime-alert/anuime-alert";
 import { AnuimeButton } from "../../../registry/items/components/anuime-button/anuime-button";
 import { AnuimeCard } from "../../../registry/items/components/anuime-card/anuime-card";
 import { AnuimeInput } from "../../../registry/items/components/anuime-input/anuime-input";
+import { AnuimeProgress } from "../../../registry/items/components/anuime-progress/anuime-progress";
 import {
   AnuimeHeading,
   AnuimeText,
@@ -85,6 +87,29 @@ function SceneNodeView({
           <AnuimeHeading recipe={recipe}>{text(node.props.title)}</AnuimeHeading>
           <AnuimeText recipe={recipe}>{text(node.props.text)}</AnuimeText>
         </div>
+      );
+    case "progress":
+      return (
+        <AnuimeProgress
+          recipe={recipe}
+          label={text(node.props.label)}
+          value={typeof node.props.value === "number" ? node.props.value : undefined}
+        />
+      );
+    case "alert":
+      return (
+        <AnuimeAlert
+          recipe={recipe}
+          title={text(node.props.title)}
+          description={text(node.props.description)}
+          tone={
+            node.props.tone === "error" ||
+            node.props.tone === "warning" ||
+            node.props.tone === "success"
+              ? node.props.tone
+              : "info"
+          }
+        />
       );
     default:
       return isRegistryComponentId(node.component) ? (

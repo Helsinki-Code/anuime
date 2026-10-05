@@ -9,8 +9,11 @@ import {
 } from "@/components/anuime-v2/system-preview";
 import { DocsPageActions } from "@/components/docs/docs-page-actions";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ExperienceControls } from "@/components/worlds/experience-provider";
+import { WorldStage } from "@/components/worlds/world-stage";
 import { characterSystems, isCharacterId } from "@/lib/anuime/characters";
 import { componentCatalog } from "@/lib/anuime/studio";
+import { worlds } from "@/lib/anuime/worlds";
 import {
   getCanonicalRegistryItemUrl,
   getCanonicalSiteUrl,
@@ -55,59 +58,76 @@ function CharacterPage() {
 
   return (
     <main>
-      <CharacterThemeSurface character={characterId} className="border-b">
-        <section className="anuime-grid">
-          <div className="mx-auto max-w-7xl px-5 py-12 lg:px-8 lg:py-20">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <Link
-                to="/characters"
-                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
-              >
-                <IconArrowLeft className="size-4" /> Character systems
-              </Link>
-              <DocsPageActions
-                markdownPath={getDocsMarkdownPath(pagePath)}
-                pageDescription={character.description}
-                pageTitle={`${character.name} character system`}
-                pageUrl={getCanonicalSiteUrl(pagePath)}
-              />
-            </div>
+      <WorldStage worldId={characterId} theme="dark" className="border-b">
+        <CharacterThemeSurface character={characterId} className="border-b bg-transparent">
+          <section className="anuime-grid">
+            <div className="mx-auto max-w-7xl px-5 py-12 lg:px-8 lg:py-20">
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <Link
+                  to="/characters"
+                  className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
+                >
+                  <IconArrowLeft className="size-4" /> Character systems
+                </Link>
+                <DocsPageActions
+                  markdownPath={getDocsMarkdownPath(pagePath)}
+                  pageDescription={character.description}
+                  pageTitle={`${character.name} character system`}
+                  pageUrl={getCanonicalSiteUrl(pagePath)}
+                />
+              </div>
 
-            <div className="mt-12 grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
-              <div>
-                <p className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">
-                  {character.adjective} · {character.themeName}
-                </p>
-                <h1 className="mt-4 text-6xl font-semibold tracking-tight sm:text-8xl">
-                  {character.name}
-                </h1>
-                <p className="mt-5 text-2xl font-medium">{character.tagline}</p>
-                <p className="mt-6 max-w-xl text-lg leading-8 text-muted-foreground">
-                  {character.story}
-                </p>
-              </div>
-              <div className="grid grid-cols-2 border">
-                {(["light", "dark"] as const).map((mode) => (
-                  <CharacterThemeSurface
-                    key={mode}
-                    character={characterId}
-                    mode={mode}
-                    className="relative grid min-h-80 content-between overflow-hidden p-5 sm:p-8"
-                  >
-                    <div className="anuime-card-motif" aria-hidden="true" />
-                    <p className="relative font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
-                      {mode} variant
-                    </p>
-                    <div className="anuime-signature-panel relative border bg-[var(--anuime-surface)] p-4">
-                      <SignatureControl character={characterId} />
-                    </div>
-                  </CharacterThemeSurface>
-                ))}
+              <div className="mt-12 grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
+                <div>
+                  <p className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">
+                    {character.adjective} · {character.themeName}
+                  </p>
+                  <h1 className="mt-4 text-6xl font-semibold tracking-tight sm:text-8xl">
+                    {character.name}
+                  </h1>
+                  <p className="mt-5 text-2xl font-medium">{character.tagline}</p>
+                  <p className="mt-6 max-w-xl text-lg leading-8 text-muted-foreground">
+                    {character.story}
+                  </p>
+                  <div className="mt-7 flex flex-wrap gap-3">
+                    <Link
+                      to="/studio"
+                      search={{ component: character.specialty.signatureComponent }}
+                      className="world-primary-action"
+                    >
+                      Build with {character.name} <span aria-hidden="true">↗</span>
+                    </Link>
+                    <span className="self-center font-mono text-[10px] tracking-[0.12em] text-muted-foreground uppercase">
+                      {worlds[characterId].location}
+                    </span>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 border">
+                  {(["light", "dark"] as const).map((mode) => (
+                    <CharacterThemeSurface
+                      key={mode}
+                      character={characterId}
+                      mode={mode}
+                      className="relative grid min-h-80 content-between overflow-hidden p-5 sm:p-8"
+                    >
+                      <div className="anuime-card-motif" aria-hidden="true" />
+                      <p className="relative font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
+                        {mode} variant
+                      </p>
+                      <div className="anuime-signature-panel relative border bg-[var(--anuime-surface)] p-4">
+                        <SignatureControl character={characterId} />
+                      </div>
+                    </CharacterThemeSurface>
+                  ))}
+                </div>
               </div>
             </div>
+          </section>
+          <div className="mx-auto max-w-7xl px-5 pb-5 lg:px-8">
+            <ExperienceControls />
           </div>
-        </section>
-      </CharacterThemeSurface>
+        </CharacterThemeSurface>
+      </WorldStage>
 
       <section className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">

@@ -1,8 +1,11 @@
+import { anuimeExtendedComponentNames } from "../../../registry/items/lib/anuime-recipe/anuime-recipe";
 import type { AnuimeCharacter } from "./recipe";
 import { createScene, createSection } from "./scenes";
 import type { ComponentDefinition, SceneCatalog, SceneComponentNode } from "./scenes";
 import { componentCatalog, registryComponentIds } from "./studio";
 import { worlds } from "./worlds";
+
+const betaComponents = new Set<string>(anuimeExtendedComponentNames);
 
 /** Existing preview adapters retain their state contracts while prop adapters are audited. */
 export const sceneCatalog: SceneCatalog = Object.fromEntries(
@@ -11,7 +14,7 @@ export const sceneCatalog: SceneCatalog = Object.fromEntries(
     const definition: ComponentDefinition = {
       registryName: item.registryName,
       title: item.title,
-      maturity: "experimental",
+      maturity: betaComponents.has(id) ? "beta" : "stable",
       props: {},
       defaultProps: {},
       states: item.states,
@@ -58,6 +61,25 @@ export const sceneCatalog: SceneCatalog = Object.fromEntries(
         definition.defaultProps = {
           title: "A world of your own",
           text: "Make something with character.",
+        };
+        break;
+      case "progress":
+        definition.props = {
+          label: { type: "string", label: "Label", required: true, maxLength: 120 },
+          value: { type: "number", label: "Value", min: 0, max: 100 },
+        };
+        definition.defaultProps = { label: "Deployment signal", value: 72 };
+        break;
+      case "alert":
+        definition.props = {
+          title: { type: "string", label: "Title", required: true, maxLength: 160 },
+          description: { type: "string", label: "Description", maxLength: 400 },
+          tone: { type: "enum", label: "Tone", values: ["info", "success", "warning", "error"] },
+        };
+        definition.defaultProps = {
+          title: "All checks passed",
+          description: "The next action is ready.",
+          tone: "success",
         };
         break;
     }
